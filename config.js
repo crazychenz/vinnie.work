@@ -31,10 +31,10 @@ const config = {
   sidebar: {
     forcedNavOrder: [
       // summary should be on landing page
-      '/resume',
-      '/usdod',
+      //'/resume',
+      //'/usdod',
       '/gamedev',
-      '/snip',
+      //'/snip',
       '/llc',
       '/usna',
       '/contracts',
@@ -42,8 +42,8 @@ const config = {
       '/hobbies',
     ],
     collapsedNav: [
-      '/usdod',
-      '/snip',
+      //'/usdod',
+      //'/snip',
       '/gamedev',
       '/llc',
       '/usna',
