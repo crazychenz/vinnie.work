@@ -1,6 +1,6 @@
 const config = {
   gatsby: {
-    pathPrefix: '/portfolio',
+    pathPrefix: '', //'/portfolio',
     siteUrl: 'https://omethingelseshouldgohere',
     gaTrackingId: null,
     trailingSlash: false,
