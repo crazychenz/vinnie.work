@@ -66,9 +66,9 @@ export default class MDXRuntimeTest extends Component {
       });
 
     // meta tags
-    const metaTitle = mdx.frontmatter.metaTitle;
+    const metaTitle = null; //mdx.frontmatter.metaTitle;
 
-    const metaDescription = mdx.frontmatter.metaDescription;
+    const metaDescription = null; //mdx.frontmatter.metaDescription;
 
     let canonicalUrl = config.gatsby.siteUrl;
 
@@ -79,7 +79,7 @@ export default class MDXRuntimeTest extends Component {
     return (
       <Layout {...this.props}>
         <Helmet>
-          {metaTitle ? <title>{metaTitle}</title> : null}
+          {/*metaTitle ? <title>{metaTitle}</title> : null}
           {metaTitle ? <meta name="title" content={metaTitle} /> : null}
           {metaDescription ? <meta name="description" content={metaDescription} /> : null}
           {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
@@ -87,7 +87,7 @@ export default class MDXRuntimeTest extends Component {
           {metaTitle ? <meta property="twitter:title" content={metaTitle} /> : null}
           {metaDescription ? (
             <meta property="twitter:description" content={metaDescription} />
-          ) : null}
+          ) : null*/}
           <link rel="canonical" href={canonicalUrl} />
         </Helmet>
         <div className={'titleWrapper'}>
@@ -110,7 +110,12 @@ export default class MDXRuntimeTest extends Component {
     );
   }
 }
-
+/*
+frontmatter {
+metaTitle
+        metaDescription
+}
+*/
 export const pageQuery = graphql`
   query($id: String!) {
     site {
@@ -131,10 +136,6 @@ export const pageQuery = graphql`
         ... on File {
           relativePath
         }
-      }
-      frontmatter {
-        metaTitle
-        metaDescription
       }
     }
     allMdx {

@@ -101,6 +101,7 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                   className={'img-responsive displayInline'}
                   src={logo.image !== '' ? logo.image : logoImg}
                   alt={'logo'}
+                  style={{ width: 64, borderRadius: 8 }}
                 />
               </Link>
               <div
@@ -170,7 +171,7 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                     ></ul>
                   </li>
                 ) : null}
-                {githubUrl !== '' ? (
+                {/*githubUrl !== '' ? (
                   <li className={'githubBtn'}>
                     <GitHubButton
                       href={githubUrl}
@@ -180,7 +181,7 @@ const Header = ({ location, isDarkThemeActive, toggleActiveTheme }) => (
                       Star
                     </GitHubButton>
                   </li>
-                ) : null}
+                ) : null*/}
                 <li>
                   <DarkModeSwitch
                     isDarkThemeActive={isDarkThemeActive}

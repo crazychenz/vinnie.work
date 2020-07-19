@@ -5,3 +5,6 @@ node_modules
 *.env
 
 .idea/
+content/resume.md
+content/snip.md
+content/usdod.md

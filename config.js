@@ -1,33 +1,25 @@
 const config = {
   gatsby: {
-    pathPrefix: '/',
-    siteUrl: 'https://hasura.io',
+    pathPrefix: '/portfolio',
+    siteUrl: 'https://omethingelseshouldgohere',
     gaTrackingId: null,
     trailingSlash: false,
   },
   header: {
-    logo: 'https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/brand.svg',
-    logoLink: 'https://hasura.io/learn/',
-    title:
-      "<a href='https://hasura.io/learn/'><img class='img-responsive' src='https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/learn-logo.svg' alt='Learn logo' /></a>",
-    githubUrl: 'https://github.com/hasura/gatsby-gitbook-boilerplate',
+    logo: 'vinnie-lighthouse.png',
+    logoLink: '',
+    title: 'Portfolio',
+    githubUrl: 'https://github.com/crazychenz',
     helpUrl: '',
     tweetText: '',
     social: `<li>
-		    <a href="https://twitter.com/hasurahq" target="_blank" rel="noopener">
-		      <div class="twitterBtn">
-		        <img src='https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/twitter-brands-block.svg' alt={'Discord'}/>
-		      </div>
-		    </a>
-		  </li>
-			<li>
-		    <a href="https://discordapp.com/invite/hasura" target="_blank" rel="noopener">
-		      <div class="discordBtn">
-		        <img src='https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/discord-brands-block.svg' alt={'Discord'}/>
-		      </div>
-		    </a>
-		  </li>`,
-    links: [{ text: '', link: '' }],
+        <a href="https://discordapp.com/invite/hasura" target="_blank" rel="noopener">
+          <div class="discordBtn">
+            <img src='https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/discord-brands-block.svg' alt={'Discord'}/>
+          </div>
+        </a>
+      </li>`,
+    links: [{ text: 'Home', link: '' }],
     search: {
       enabled: false,
       indexName: '',
@@ -38,17 +30,36 @@ const config = {
   },
   sidebar: {
     forcedNavOrder: [
-      '/introduction', // add trailing slash if enabled above
-      '/codeblock',
+      // summary should be on landing page
+      '/resume',
+      '/usdod',
+      '/gamedev',
+      '/snip',
+      '/llc',
+      '/usna',
+      '/contracts',
+      '/oddjobs',
+      '/hobbies',
     ],
     collapsedNav: [
-      '/codeblock', // add trailing slash if enabled above
+      '/usdod',
+      '/snip',
+      '/gamedev',
+      '/llc',
+      '/usna',
+      '/contracts',
+      '/oddjobs',
+      '/hobbies',
     ],
-    links: [{ text: 'Hasura', link: 'https://hasura.io' }],
+    links: [
+      { text: 'Stackoverflow Profile', link: 'https://stackoverflow.com/users/6316437/vincent-agriesti' },
+      { text: 'GitHub Profile', link: 'https://github.com/crazychenz' },
+      { text: '(New) LinkedIn Profile', link: 'https://www.linkedin.com/in/vincent-agriesti-267aa21ab/' },
+    ],
     frontline: false,
     ignoreIndex: true,
-    title:
-      "<a href='https://hasura.io/learn/'>graphql </a><div class='greenCircle'></div><a href='https://hasura.io/learn/graphql/react/introduction/'>react</a>",
+    title: "Section List",
+    //"<a href='https://somelink1'>link1 </a><div class='greenCircle'></div><a href='https://somelink2'>link2</a>",
   },
   siteMetadata: {
     title: 'Gatsby Gitbook Boilerplate | Hasura',
