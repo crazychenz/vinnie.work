@@ -1,15 +1,27 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
+import { useImage } from "react-image"
+
+import { InlineIcon } from "@iconify/react"
+// npm install --save-dev @iconify/react @iconify/icons-mdi
+
+//import githubIcon from "@iconify/icons-mdi/github"
+//import linkedinIcon from "@iconify/icons-mdi/linkedin"
+//import stackOverflow from "@iconify/icons-mdi/stack-overflow"
+
+import githubIcon from "../../content/assets/GitHub-Mark-120px-plus.png"
+import linkedinIcon from "../../content/assets/LI-In-Bug.png"
+import stackOverflow from "../../content/assets/so-icon.png"
 
 import Layout from "../components/layout"
 
 export default function AboutPage(props) {
   const bio = useStaticQuery(graphql`
     query BioQuery2 {
-      avatar: file(absolutePath: { regex: "/profile-pic.png/" }) {
+      avatar: file(absolutePath: { regex: "/garage-from-side-512px.jpg/" }) {
         childImageSharp {
-          fixed(width: 50, height: 50) {
+          fixed(width: 512, height: 555) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -22,30 +34,60 @@ export default function AboutPage(props) {
     }
   `)
 
+  const icon_width = 60
+  const icon_height = 60
+  //const { soIcon } = useImage({
+  //  srcList: "content/assets/so-icon.png",
+  //})
   return (
-    <Layout
-      location={props.location}
-      title={"About: Vincent (Vinnie) Agriesti"}
-    >
+    <Layout location={props.location} title={"About Me"}>
       <br />
-      <div className="flex">
+
+      <div className="flex flex-row">
         <Image
-          className="mr-6 mb-0 rounded-full"
+          className="inline-block object-contain mr-6 mb-0 rounded-lg"
           fixed={bio.avatar.childImageSharp.fixed}
           alt={bio.site.author}
           style={{
-            minWidth: 100,
-            minHeight: 100,
+            minWidth: 50,
+            minHeight: 54,
+            width: 256,
+            height: 278,
           }}
         />
-        <div style={{ flex: 1, flexDirection: "column" }}>
-          <p>Vincent Agriesti</p>
-          <p>
-            Email: <a href="mailto:vinnie@vinnie.work">vinnie@vinnie.work</a>
-            {/*<!-- TODO: LinkedIn, Github, StackOverflow -->*/}
-          </p>
+        <div className="flex flex-col">
+          <a href="https://github.com/crazychenz">
+            <img
+              style={{ margin: 10, width: 60 }}
+              src={githubIcon}
+              alt="github"
+            />
+          </a>
+          <a href="https://www.linkedin.com/in/vincent-agriesti-267aa21ab/">
+            <img
+              style={{ margin: 10, width: 60 }}
+              src={linkedinIcon}
+              alt="linkedin"
+            />
+          </a>
+          <a href="https://stackoverflow.com/users/71865/crazy-chenz">
+            <img
+              style={{ width: 80 }}
+              src={stackOverflow}
+              alt="Stackoverflow"
+            />
+          </a>
         </div>
       </div>
+      <div className="flex flex-col">
+        <p>Vinnie Agriesti</p>
+        <p>
+          <a style={{ color: "blue" }} href="mailto:vinnie@vinnie.work">
+            vinnie@vinnie.work
+          </a>
+        </p>
+      </div>
+
       <h2 className="text-2xl font-sans font-black mt-10 mb-6">Welcome</h2>
       <p>
         Greetings!, My name is Vincent Agriesti but I generally go by Vinnie. I

@@ -28,7 +28,7 @@ class Layout extends React.Component {
     }
     return (
       <>
-        <div style={{ ["text-align"]: "center" }}>
+        <div style={{ ["text-align"]: "center", marginTop: 10 }}>
           <center>
             <Link to={`/`}>Home</Link>
             {"\u00A0\u00A0\u00A0\u00A0\u00A0"}|
@@ -39,7 +39,9 @@ class Layout extends React.Component {
         <div className="max-w-2xl mx-auto px-5 py-10">
           <header>{header}</header>
           <main>{children}</main>
-          <footer>© {new Date().getFullYear()}, Vincent Agriesti</footer>
+          <footer className="mt-30">
+            © {new Date().getFullYear()}, Vincent Agriesti
+          </footer>
         </div>
       </>
     )
