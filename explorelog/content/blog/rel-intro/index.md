@@ -38,3 +38,17 @@ You can see a showcase of these themes and make tweaks within the themes as [Typ
 # Future Plans
 
 Since I originally stated that this log was for intentional research and explorations, I suppose it would be good to log ahead of time some of the research topics I plan to pursue. Note: This list will likely change as time goes on, so don't consider it gospel.
+
+- Transitioning from Python 2 to 3
+- Learning modern Javascript/Typescript
+- The true impact of IPv6 in embedded development.
+- DNSSEC Internals
+- Containerization - Docker (Compose/Swarm), Kubernetes
+- Embedded DevOps - Containerization -> Jenkins
+- Hardware Description Languages (VHDL,VeriLog)
+- Advanced GDB/LLDB usage
+- JTAG Internals and State Machine
+- Linux Kernel Device Tree Internals
+- Building DIY Linux For Commercial DIY Platforms (e.g. RPi)
+- Building a test orchestration system for heterogenous systems.
+- Development of a program to determine the delta of two tar files.
