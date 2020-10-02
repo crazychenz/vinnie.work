@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import { rhythm, scale } from "../utils/typography"
+//import { rhythm, scale } from "../utils/typography"
 
 class Layout extends React.Component {
   render() {
@@ -27,17 +27,21 @@ class Layout extends React.Component {
       )
     }
     return (
-      <div className="max-w-2xl mx-auto px-5 py-10">
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a className="text-blue-600" href="https://www.gatsbyjs.org">
-            Gatsby
-          </a>
-        </footer>
-      </div>
+      <>
+        <div style={{ ["text-align"]: "center" }}>
+          <center>
+            <Link to={`/`}>Home</Link>
+            {"\u00A0\u00A0\u00A0\u00A0\u00A0"}|
+            {"\u00A0\u00A0\u00A0\u00A0\u00A0"}
+            <Link to={`/about`}>About</Link>
+          </center>
+        </div>
+        <div className="max-w-2xl mx-auto px-5 py-10">
+          <header>{header}</header>
+          <main>{children}</main>
+          <footer>© {new Date().getFullYear()}, Vincent Agriesti</footer>
+        </div>
+      </>
     )
   }
 }

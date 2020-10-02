@@ -6,8 +6,6 @@ description: |
   instead of a bare metal operating system.
 ---
 
-# Linux Is DOS: Windows returns to its roots.
-
 After seeing the headline that read, "[Eric Raymond: Windows 10 will soon be just an emulation layer on Linux kernel](https://www.zdnet.com/article/open-sources-eric-raymond-windows-10-will-soon-be-just-an-emulation-layer-on-linux-kernel/)", it had occurred to me that perhaps the proverbial pendulum is now swinging back on Microsoft. I believe that Microsoft is returning to their roots as an operating environment and not an operating system.
 
 This is to say that it is likely that Windows will accept that they have no stake in the fight to own the bare metal operating system. Instead they can now leverage the Linux kernel for their business and productivity applications while investing in Azure. Running windows on top of Linux, with zero performance lost to all Windows applications, is ultimately the sweet spot (IMHO).

@@ -4,8 +4,6 @@ date: "2020-09-23T12:00:00.000Z"
 description: "What is name debt? What is brand debt?"
 ---
 
-# Brand Debt
-
 ## Protecting The Brand
 
 I just listened to a podcast that made reference to "name debt". It was centered around how the interviewee wanted to present a new product and whether they should give the new product its own brand or ride an existing brand that it didn't quite fit within the scope of. The term "name debt" in google brought up another concept called "brand debt". Clicking on the first reasonable looking link led to some nice to know nuggets and a nice terse checklist that can help a non-business person like myself wrap my head around defending against brand debt.

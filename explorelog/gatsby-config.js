@@ -4,7 +4,7 @@ module.exports = {
     title: `Vinnie's Research & Exploration Log`,
     author: `Vinnie Agriesti`,
     description: `A simple log of discoveries and research.`,
-    siteUrl: `https://vinnie.work/`,
+    siteUrl: `https://rel.vinnie.work/`,
     social: { twitter: "" },
   },
   plugins: [

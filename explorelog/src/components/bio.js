@@ -44,7 +44,7 @@ const Bio = () => {
         }}
       />
       <p>
-        Content created by <strong>{author}</strong>.{` `}
+        Content created by <strong>{author}</strong>. (vinnie@vinnie.work) {` `}
       </p>
     </div>
   )

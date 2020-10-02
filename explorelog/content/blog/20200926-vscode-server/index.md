@@ -4,8 +4,6 @@ date: "2020-09-26T12:00:00.000Z"
 description: "My VSCode In The Browser"
 ---
 
-# VSCode In The Browser
-
 ## Code Server
 
 I've had friends telling me about online IDEs and IDEs in the cloud for about a year now. At the time, I always thought, that's great but:
