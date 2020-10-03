@@ -28,7 +28,7 @@ class Layout extends React.Component {
     }
     return (
       <>
-        <div style={{ ["text-align"]: "center", marginTop: 10 }}>
+        <div style={{ textAlign: "center", marginTop: 10 }}>
           <center>
             <Link to={`/`}>Home</Link>
             {"\u00A0\u00A0\u00A0\u00A0\u00A0"}|
