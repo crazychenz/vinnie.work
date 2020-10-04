@@ -1,5 +1,5 @@
 ---
-title: 'The Full Stack isn't the Whole Stack.'
+title: "The Full Stack isn't the Whole Stack."
 date: "2020-10-04T12:00:00.000Z"
 description: |
   My exploration into understanding the modern term "full stack"
