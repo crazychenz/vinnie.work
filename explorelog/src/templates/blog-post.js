@@ -1,10 +1,101 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 //import { rhythm, scale } from "../utils/typography"
+
+function CommentForm({ post }) {
+  //Spam Checking: akismet.com
+  //Serverless with Firebase Functions
+  //Comments stored in Firestore
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    comment: "",
+  })
+
+  const styles = {
+    form: {
+      overflow: "hidden",
+    },
+
+    label: {
+      float: "left",
+      width: "200px",
+      paddingRight: "24px",
+    },
+
+    input: {
+      float: "left",
+      width: "calc(100% - 200px)",
+      border: "1px solid #c1c1c1",
+      marginTop: 5,
+    },
+
+    button: {
+      padding: 5,
+      float: "right",
+      border: "1px solid #c1c1c1",
+      borderRadius: 3,
+      marginTop: 5,
+      //width: "calc(100% - 200px)",
+    },
+  }
+
+  function handleSubmit() {
+    console.log("We are handling the submit: ", values)
+  }
+  return (
+    <form
+      style={styles.form}
+      method="post"
+      onSubmit={handleSubmit}
+      className="overflow-hidden"
+    >
+      <label style={styles.label} for="name" class="name">
+        Name
+      </label>
+      <input
+        style={styles.input}
+        type="text"
+        value={values.name}
+        onChange={evt => setValues({ ...values, name: evt.target.value })}
+      />
+      <br />
+
+      <label style={styles.label} for="email" class="email">
+        E-Mail (for gravatar)
+      </label>
+      <input
+        style={styles.input}
+        type="text"
+        value={values.email}
+        onChange={evt => setValues({ ...values, email: evt.target.value })}
+      />
+      <br />
+
+      <label style={styles.label} for="comment" class="comment">
+        Comment
+      </label>
+      <textarea
+        style={styles.input}
+        value={values.comment}
+        onChange={evt => setValues({ ...values, comment: evt.target.value })}
+      />
+      <br />
+
+      <input
+        style={styles.button}
+        type="button"
+        value="Submit"
+        onClick={handleSubmit}
+      />
+      <pre>{post ? post.id : ""}</pre>
+    </form>
+  )
+}
 
 class BlogPostTemplate extends React.Component {
   render() {

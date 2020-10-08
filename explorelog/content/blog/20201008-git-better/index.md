@@ -191,7 +191,11 @@ One of the absolute best features I've
 
 Git has a pretty [good documentation on aliases](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases) themselves. I just thought I would jott up the aliases I like to use.
 
-As a subversion user for many years I type `svn st` probably more than any other revision control command. Going between subversion and git and having to type out `git status` is frustrating. To compound this fustration, I've been using a tool by Michael Henry called [svnwrap](https://pypi.org/project/svnwrap/) that simplifies the output of `svn status` so it looks at lot like `git status -s` (but svnwrap has more clever coloring). Hence, I use the `git st` to perform `git config alias.st 'status -s'`.
+As a subversion user for many years I type `svn st` probably more than any other revision control command. Going between subversion and git and having to type out `git status` is frustrating. To compound this fustration, I've been using a tool by Michael Henry called [svnwrap](https://pypi.org/project/svnwrap/) that simplifies the output of `svn status` so it looks at lot like `git status -s` (but svnwrap has more clever coloring). Hence, I use the `git st` to perform:
+
+```
+git config alias.st 'status -s'
+```
 
 In subversion land, a checkout is usually coming from a remote server and is usually run when I am starting a new project or pulling an existing project into a new enironment for the first time. The best analogy I can use for git is `clone`. I've developed a habit over the years of using the subversion abbreviation `co` to checkout subversion working copies so I enjoy using the same verb for cloning repositories from git.
 
