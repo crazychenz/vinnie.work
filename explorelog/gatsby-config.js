@@ -97,6 +97,5 @@ module.exports = {
         },
       },
     },
-    "gatsby-theme-comments",
   ],
 }
