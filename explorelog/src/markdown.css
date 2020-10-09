@@ -8,8 +8,9 @@
   @apply text-gray-900 leading-normal break-words;
 }
 
+/* Replaced mt-0 with mt-4. I don't know why it was the former. */
 .markdown > * + * {
-  @apply mt-0 mb-4;
+  @apply mt-4 mb-4;
 }
 
 .markdown li + li {
