@@ -5,9 +5,9 @@ description: |
   A different way to look for software shops.
 ---
 
-[KeyValues](https://www.keyvalues.com/) is a web site that matches software engineers by their desirable values. This is kind of neat because it pre-filters companies that you may find yourself miserable at because you simply joined because of potential of location, money, or prestiege.
+[KeyValues](https://www.keyvalues.com/) is a web site that matches software engineers by their desirable values. This is kind of neat because it pre-filters companies that you may find yourself miserable at due to prioritizing based simply on location, money, or prestiege. These are only 3 dimensions in a career that you'll likely be spending a third of your day involved in, with the other 2 thirds being life and sleep.
 
-I believe these to be my key values at this point in my life:
+For those interested, these are my chosen key values at this point in my life:
 
 ![My Key Values](./keyvalues.png)
 
