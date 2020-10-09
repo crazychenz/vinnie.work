@@ -59,7 +59,7 @@ sudo dnf install powerline-fonts
 
 I've personally opted to go with "DejaVu Sans Mono for Powerline". Now here is what I think will be the biggest pain for powerline. The font face needs to be configured by the application presenting the prompt, not the host serving the prompt. Therefore, I need to install the powerline compatible fonts in all environments I plan to use it from and configure the presentation applications to use the particular font face.
 
-- Visual Studio Code - Open settings with Ctrl-, and search for "terminal font". Then you can just drop your font face name in the field: `DejaVu Sans Mono for Powerline`
+- Visual Studio Code - Open settings with Ctrl-, and search for "terminal font". Then you can just drop your font face name in the field: `"DejaVu Sans Mono for Powerline", Consolas, 'Courier New', monospace`
 
 - Windows Terminal - Open settings and add a [fontFace property](https://docs.microsoft.com/en-us/windows/terminal/customize-settings/profile-settings#text-settings) to the profile or default section for all profiles. I added it to the default section:
 
@@ -185,7 +185,7 @@ Here is a snapshot of my powerline theme config:
 
 ## VSCode Usage and Extensions (cherry picking changes for stage)
 
-One of the absolute best features I've
+One of the absolute best features I've never known about
 
 ## Aliases (st, co, ie, tcr) - Can I add aliases to repo?
 
@@ -214,5 +214,3 @@ When pulling in subversion, its referred to as performing an update. Therefore h
 ```
 git config alias.up pull
 ```
-
-## New commands: switch, restore

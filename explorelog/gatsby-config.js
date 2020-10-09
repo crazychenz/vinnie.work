@@ -1,3 +1,6 @@
+require("dotenv").config()
+const env = process.env
+
 module.exports = {
   pathPrefix: "/rel",
   siteMetadata: {
@@ -77,8 +80,23 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-2749090-4",
+        trackingId: env.GATSBY_GOOGLE_ANALYTICS_ID,
       },
     },
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: env.GATSBY_FIREBASE_API_KEY,
+          authDomain: env.GATSBY_FIREBASE_AUTH_DOMAIN,
+          databaseURL: env.GATSBY_FIREBASE_DATABASE_URL,
+          projectId: env.GATSBY_FIREBASE_PROJECT_ID,
+          storageBucket: env.GATSBY_FIREBASE_STORAGE_BUCKET,
+          messagingSenderId: env.GATSBY_FIREBASE_MESSAGING_SENDER_ID,
+          appId: env.GATSBY_FIREBASE_APP_ID,
+        },
+      },
+    },
+    "gatsby-theme-comments",
   ],
 }

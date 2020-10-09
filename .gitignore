@@ -4,6 +4,8 @@ node_modules
 *DS_Store
 *.env
 
+.vscode
+
 .idea/
 content/resume.md
 content/snip.md

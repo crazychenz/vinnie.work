@@ -1,0 +1,15 @@
+Topics:
+
+Git as master, main, or trunk?
+
+Trunk Based Dev & TCR
+
+Virtualenv as a service, Python manylinuxX control (e.g. CentOS[5,6,7]), mention AppImage
+
+Cherrypicking workspace changes from command line
+Cherrypicking branch changes from master.
+
+Credentials and secrets.
+
+TODOs:
+- Manage each post from its own branch.
