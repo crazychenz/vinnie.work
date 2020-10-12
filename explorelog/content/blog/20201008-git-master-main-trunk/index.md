@@ -5,7 +5,7 @@ description: |
   What is the context of Git's master semantics? What would be better?
 ---
 
-Due to a growing awareness of unconcience bias, removing terms that have historically been associated with slavery or racially incensitive terminology has become a trend. To be mindful about this entire process I decided to do some "re-google" to learn what Git's context of its famously used "master" branch.
+Due to a growing awareness of unconcience bias, replacing terms that have historically (or directly) been associated with slavery or racially incensitive terminology has become a trend. To be mindful about this entire process I decided to do some "re-google" to learn what Git's context of its famously used "master" branch.
 
 ## Origins of 'master' in Git
 
@@ -25,9 +25,9 @@ An [interesting set of references](https://mail.gnome.org/archives/desktop-devel
 > Therefore, yes it does refer to the slavery concept and given that git took
 > the name from BitKeeper, so does git."
 
-## Why 'main'?
+## Why 'main'? Let's consider other options...
 
-The most common reason I've seen for going to main is that its popular, short, to the point, and doesn't interrupt muscle memory that much (which sounds like a C coder's comment). My personal experience with revision control is deeply seeded in using subversion. In subversion you have trunk, branches, and tags. Trunk in this context refers to the fact that revision control commonly creates tree structures from graph theory. In my opinion, other than [Linus' hatred of SVN](https://www.youtube.com/watch?v=4XpnKHJAok8), there is no reason to not use `trunk` as the default branch name.
+The most common reason I've seen for going to `main` is that its popular, short, to the point, and doesn't "interrupt muscle memory" (which sounds like a C coder's comment). My personal experience with revision control is deeply seeded in using subversion. In subversion you have trunk, branches, and tags. Trunk in this context refers to the fact that revision control commonly creates tree structures from graph theory. In my opinion, other than [Linus' hatred of SVN](https://www.youtube.com/watch?v=4XpnKHJAok8), there is no reason to not use `trunk` as the default branch name.
 
 There is an oppurtunity here to actually communicate further intentions in the name of the default branch. There have been a number of common workflows developed and published over the past decade. Fernando Villalba
 has written post [Branching Models in a nutshell](https://medium.com/factualopinions/branching-models-in-a-nutshell-bf24ea1d888a) on a few of these flows. The one that both of us prefer is trunk based development. This is where you bascially perform all your work locally (branch or checkout) and then only merge into trunk. If you are going to use a "trunk based development", why not name the default branch **trunk**.
@@ -36,28 +36,34 @@ If you have other flows, like a develop, preprod, production ... Why use a main?
 
 In addition to naming the master or trunk branches of a repository, it should go without saying that development branches should probably have an organizationally defined convention. For example, all feature branches should be prefixed with `feature/` or side experiements be prefixed with `dev/` and so forth.
 
-## Moving from master to trunk.
+## Moving from master to branch development.
+
+In an exercise to build my git muscle, I am attempting to over branch and merge. The intention here is to quickly as possible become more familiar with how git branching and merging actually effects how I work and manage the state of my projects. With subversion, you often do everything you can to keep subversion away from your mind while coding (until a merge is required.) A common git philosophy, when doing branch based development, is almost such that you really need to keep the life of a branch to the length of a story, feature, or less.
 
 For this site, I'm attempting a new workflow that has me writing each blog post as a new branch prefixed with `post/`. (Intending to streamline this with scripts soon.) I then plan to squash merge each post into trunk. Perform some quick integration testing and then merge into my `netlify` branch that triggers the netlify deployment process.
 
 The key here is that all _work_ is performed in `post` or `feature` branches. Then all changes to `trunk` should be merges. And finally, all triggered CI/CD branches (like `netlify`) should be fast-foward merges.
 
-## Instructions For Moving From Master
+## Moving From Master To Anything Else
+
+The following instructions are for moving `master` to `trunk`.
 
 ### Initial environment move and upstream.
 
-1. Comment local changes.
+1. Commit all local changes on `master`.
 
-2. Move and push local branch.
+2. Its recommended that you limit commit/push access to origin repository at this point.
+
+3. Rename local `master` with a branch move command and push local `master` branch to origin to synchronize any commits.
 
 ```
 git branch -m master trunk
 pit push -u origin trunk
 ```
 
-3. If using a GitHub, GitLab, or BitBucker like service, ensure that you've updated your default branch to `trunk` and unprotected master branch.
+4. If using a GitHub, GitLab, or BitBucker like service, ensure that you've updated your default branch to `trunk` and unprotected master branch.
 
-4. Remove old remote master
+5. Remove old remote master
 
 ```
 git push origin --delete master
