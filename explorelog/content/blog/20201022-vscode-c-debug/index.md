@@ -54,9 +54,9 @@ WORKDIR /workspace
 
 ## Managing Containers from a (`code-server`) Container
 
-Ok, so the first thing is that we need to in spirit run docker from inside of docker. There is a great article about how this is done for several different uses cases in the article titled [Using Docker-in-Docker for your CI or testing environment? Think Twice.](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)
+Ok, so the first thing is that we need to figure out is how to run docker from inside of docker. There is a great article about how this is done for several different uses cases in the article titled [Using Docker-in-Docker for your CI or testing environment? Think Twice.](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)
 
-The conclusion from that article is that for our purposes, we must volume mount `/var/run/docker.sock` into our `code-server` docker image so it can control the host docker and sibling containers. Something to point out her is that it isn't just a matter of volume mounting for the win, we must also add docker to our code-server image and setup permissions so the container docker matches to host docker service group ids.
+The conclusion from that article is that, for our purposes, we must volume mount `/var/run/docker.sock` into our `code-server` docker image so it can control the host docker and sibling containers. Something to point out here is that it isn't just a matter of volume mounting for the win... we must also add docker to our code-server image and setup permissions so the container docker matches to host docker service group ids and user ids.
 
 Here is the Dockerfile I constructed to extend the `linuxserver/code-server` docker image:
 
@@ -76,7 +76,7 @@ RUN usermod -aG docker abc
 
 What we're doing here is first installing the docker engine via APT. This will automatically create a docker group that will likely not match the host docker group's gid number. Therefore, after the incorrect group addition, we remove that group and add our own with our own host matched group id. Also, out of pure laziness I've added user abc to the docker group because that happens to match my uid, but using the docker group id approach could be done for the user id as well.
 
-Where does the DOCKER_GID get defined? I created a build-image.sh script to fetch and inject that bit for me. I usually have a build script for my docker images so that I don't have to retype/fat-finger the image name for each rebuild or update. My build-image.sh for this process is:
+Where does the DOCKER_GID get defined? I created a `build-image.sh` script to fetch and inject that bit for me. I usually have a build script for my docker images so that I don't have to retype/fat-finger the image name for each rebuild or update. My build-image.sh for this process is:
 
 ```
 #!/bin/sh
@@ -144,10 +144,10 @@ This task essentially launches a short lived docker container that simply builds
 
 These tasks can be more dynamic using special [substitution variables provided by VSCode](https://code.visualstudio.com/docs/editor/variables-reference). Here are a list of the ones I've found most commonly used:
 
-* ${workspaceFolder} - Top of the workspace. (${workspaceRoot} is deprecated).
-* ${file} - Currently opened file path. (Nice for quick ${file}.o builds.)
-* ${env:ENVIRONMENT_VAR} - Substitute in any environment variable.
-* ${input:userDefined} - Enumerated list of options picked at task runtime.
+* `${workspaceFolder}` - Top of the workspace. (${workspaceRoot} is deprecated).
+* `${file}` - Currently opened file path. (Nice for quick ${file}.o builds.)
+* `${env:ENVIRONMENT_VAR}` - Substitute in any environment variable.
+* `${input:userDefined}` - Enumerated list of options picked at task runtime.
 
 A nice tip I got from the bottom of the documentation on these variables... Use an echo task to output the value of a variable if its in question:
 
@@ -258,11 +258,11 @@ Assuming you already had the container up and running, you can setup the debug s
         "StrictHostKeyChecking=no",
         "root@localhost"
     ],
-    "pipeCwd": "${workspaceRoot}"
+    "pipeCwd": "${workspaceFolder}"
 }
 ```
 
-Alternatively, you can also perform a `docker exec` with a pipeTransport configuration that resembles the following, assuming you know the name of the container (its 'lldb' in this example):
+Alternatively, you can also perform a `docker exec` with a pipeTransport configuration that resembles the following, assuming you know the name of the container (its 'container_name_here' in this example):
 
 ```
 "pipeTransport": {
@@ -270,10 +270,10 @@ Alternatively, you can also perform a `docker exec` with a pipeTransport configu
     "pipeProgram": "docker",
     "pipeArgs": [
         "exec", "-i",
-        "lldb",
+        "container_name_here",
         "sh", "-c"
     ],
-    "pipeCwd": "${workspaceRoot}"
+    "pipeCwd": "${workspaceFolder}"
 }
 ```
 
