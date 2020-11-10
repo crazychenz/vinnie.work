@@ -2,10 +2,7 @@
 title: "I intend to ... : Avoid asking for permission."
 date: "2020-11-07T12:00:00.000Z"
 description: |
-  A phrase that caught my ear "I intend to..." from a podcast had peaked my 
-  interest. This has lead me to searching for other information on the 
-  subject, leading to some great takeaways following me listening to some
-  interviews of the author David Marquet from [Turn The Ship Around!](https://www.davidmarquet.com/turn-the-ship-around-a-true-story-of-turning-followers-into-leaders-by-david-marquet/).
+  Takeaways from interviews of the author David Marquet from the book titled Turn The Ship Around! and the phrase "I intend to ...".
 ---
 
 ## Background
