@@ -7,7 +7,7 @@ module.exports = {
     title: `Vinnie's Research & Exploration Log`,
     author: `Vinnie Agriesti`,
     description: `A simple log of discoveries and research.`,
-    siteUrl: `https://rel.vinnie.work/`,
+    siteUrl: `https://www.vinnie.work/`,
     social: { twitter: "" },
   },
   plugins: [
@@ -69,6 +69,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,
