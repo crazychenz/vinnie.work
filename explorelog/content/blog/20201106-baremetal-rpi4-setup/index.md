@@ -20,7 +20,7 @@ Hopefully this article can serve as a quick (but complete) getting started guide
 
 **The following pre-requisites should run you roughly $110 + shipping. (Total estimated budget is ~$150 per setup.) Note: This does not include solder or solder iron for assembling FT\*232H PCB pins.**
 
-- Get OpenOCD [[Windows](https://github.com/xpack-dev-tools/openocd-xpack/releases)] [[GitHub](https://github.com/ntfreak/openocd)][use package manager for linux/mac os] _Free_ - For primary JTAG control and communicating between GDB and JTAG port.
+- Get OpenOCD [[Windows](https://github.com/xpack-dev-tools/openocd-xpack/releases)] [[GitHub](https://github.com/ntfreak/openocd)] _Free_ - For primary JTAG control and communicating between GDB and JTAG port.
 
 [//]: # "Moving all toolchain related content to other articles. This article should stop with OpenOCD working."
 
