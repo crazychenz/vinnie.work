@@ -105,21 +105,21 @@ make -C export
 
 In a more real world toolchain configuration, there a bunch of other variables that we need to set. As we proceed, keep in mind that in a typical make environment, the following variables are not unlike having to set CC, CXX, CFLAGS, CXXFLAGS, LD, LDFLAGS and so forth. A _non-exhaustive_ set of toolchain variables that you may find relevant include:
 
-- [CMAKE_SYSTEM_NAME](https://cmake.org/cmake/help/v3.14/variable/CMAKE_SYSTEM_NAME.html) - Set to `Generic` for bare metal. If left alone, CMake is configured for host builds. Other values indicate the target Operating System.
-- [CMAKE_SYSTEM_PROCESSOR](https://cmake.org/cmake/help/v3.14/variable/CMAKE_SYSTEM_PROCESSOR.html) - Set this to the processor architecture of the target. (e.g. `aarch64`)
-- CMAKE_ASM_FLAGS - Global flags to apply to an assembler. (i.e. ASFLAGS)
-- CMAKE_C_FLAGS - Global flags to apply to a C compiler. (i.e. CCFLAGS)
-- CMAKE_EXE_LINKER_FLAGS - Global flags to apply to the linker. (i.e. LDFLAGS)
-- CMAKE_ASM_FLAGS_DEBUG - Assembler flags to apply when CMAKE_BUILD_TYPE is `Debug`
-- CMAKE_C_FLAGS_DEBUG - C Compiler flags to apply when CMAKE_BUILD_TYPE is `Debug`
-- CMAKE_EXE_LINKER_FLAGS_DEBUG - Linker flags to apply when CMAKE_BUILD_TYPE is `Debug`
-- CMAKE_ASM_FLAGS_RELEASE - Assembler flags to apply when CMAKE_BUILD_TYPE is `Release`
-- CMAKE_C_FLAGS_RELEASE - C Compiler flags to apply when CMAKE_BUILD_TYPE is `Release`
-- CMAKE_EXE_LINKER_FLAGS_RELEASE - Linker flags to apply when CMAKE_BUILD_TYPE is `Release`
-- CMAKE_LINKER - The binary path and prefix of the linker executable. (i.e. LD)
-- CMAKE_ASM_COMPILER - The binary path and prefix of the assembler executable. (i.e. AS)
-- CMAKE_C_COMPILER - The binary path and prefix of the C compiler executable. (i.e. CC)
-- CMAKE_OBJCOPY - The binary path and prefix of the objcopy executable. (i.e. OBJCOPY)
+- [`CMAKE_SYSTEM_NAME`](https://cmake.org/cmake/help/v3.14/variable/CMAKE_SYSTEM_NAME.html) - Set to `Generic` for bare metal. If left alone, CMake is configured for host builds. Other values indicate the target Operating System.
+- [`CMAKE_SYSTEM_PROCESSOR`](https://cmake.org/cmake/help/v3.14/variable/CMAKE_SYSTEM_PROCESSOR.html) - Set this to the processor architecture of the target. (e.g. `aarch64`)
+- `CMAKE_ASM_FLAGS` - Global flags to apply to an assembler. (i.e. ASFLAGS)
+- `CMAKE_C_FLAGS` - Global flags to apply to a C compiler. (i.e. CCFLAGS)
+- `CMAKE_EXE_LINKER_FLAGS` - Global flags to apply to the linker. (i.e. LDFLAGS)
+- `CMAKE_ASM_FLAGS_DEBUG` - Assembler flags to apply when CMAKE_BUILD_TYPE is `Debug`
+- `CMAKE_C_FLAGS_DEBUG` - C Compiler flags to apply when CMAKE_BUILD_TYPE is `Debug`
+- `CMAKE_EXE_LINKER_FLAGS_DEBUG` - Linker flags to apply when CMAKE_BUILD_TYPE is `Debug`
+- `CMAKE_ASM_FLAGS_RELEASE` - Assembler flags to apply when CMAKE_BUILD_TYPE is `Release`
+- `CMAKE_C_FLAGS_RELEASE` - C Compiler flags to apply when CMAKE_BUILD_TYPE is `Release`
+- `CMAKE_EXE_LINKER_FLAGS_RELEASE` - Linker flags to apply when CMAKE_BUILD_TYPE is `Release`
+- `CMAKE_LINKER` - The binary path and prefix of the linker executable. (i.e. LD)
+- `CMAKE_ASM_COMPILER` - The binary path and prefix of the assembler executable. (i.e. AS)
+- `CMAKE_C_COMPILER` - The binary path and prefix of the C compiler executable. (i.e. CC)
+- `CMAKE_OBJCOPY` - The binary path and prefix of the objcopy executable. (i.e. OBJCOPY)
 
 There are others, but these will get us started. Assuming the following:
 
@@ -263,9 +263,9 @@ Ok, so compared to the HelloWorld example, there is a lot more going on here. I'
 
 Notice the project() call above references `LANGUAGES C ASM`. This means that we're telling CMake to expect to have to use the C compiler and an assembler.
 
-The CMAKE_VERBOSE_MAKEFILE variable is only relevant when building Makefiles. It allows us to see the actual commands being run by CMake and `make` when running. This is very useful when attempting to figure out the behavior of these different variables and the functions of CMake.
+The `CMAKE_VERBOSE_MAKEFILE` variable is only relevant when building Makefiles. It allows us to see the actual commands being run by CMake and `make` when running. This is very useful when attempting to figure out the behavior of these different variables and the functions of CMake.
 
-The CMAKE_DEPFILE_FLAGS_ASM is a monkey patch to fix an issue when building with Ninja files. This is a non-obvious fix that I found when scrolling github issues after I originally couldn't get Ninja builds working. Just use this line unless you are using CMake 1.18 or greater.
+The `CMAKE_DEPFILE_FLAGS_ASM` is a monkey patch to fix an issue when building with Ninja files. This is a non-obvious fix that I found when scrolling github issues after I originally couldn't get Ninja builds working. Just use this line unless you are using CMake 1.18 or greater.
 
 `add_executable()` is simply the function that instructs CMake to create the `minimal.elf` binary from the given sources. CMake in the instance is smart enough to pass the `*.s` files to an assembler and the `*.c` files to a C compiler. Something worth noting here is that the `coerce.c` file is empty. It only exists because if we don't use this file, CMake will assume that we don't want to link the `startup.s` into a proper ELF. This is really only an edge case and we'll almost always have real C code, in which case we don't need the `coerce.c` file. (i.e. Its only there to _coerce_ CMake to behave the way we expect.)
 
@@ -403,7 +403,7 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 ```
 
-Notice the CMAKE_ASM_COMPILER and CMAKE_C_COMPILER are the same. This is because `clang` is the inteface to the assembler as well as the C compiler. Also take note of the cooresponding flag variables CMAKE_ASM_FLAGS and CMAKE_C_FLAGS. In those variables we're now setting the `--target` argument to target a particular architecture.
+Notice the `CMAKE_ASM_COMPILER` and `CMAKE_C_COMPILER` are the same. This is because `clang` is the inteface to the assembler as well as the C compiler. Also take note of the cooresponding flag variables `CMAKE_ASM_FLAGS` and `CMAKE_C_FLAGS`. In those variables we're now setting the `--target` argument to target a particular architecture.
 
 With this toolchain in place, we can now update our top level `CMakeLists.txt` so that it uses LLVM.
 
@@ -528,7 +528,7 @@ endfunction()
 
 There are two notable differences between `add_containerized_target()` and `add_multi_target_component()`. The first is that we've now pre-pended the toolchainTuple with the name of the docker image used to launch the container. The name has been slightly modified so that it doesn't inadvertently create a deeper directory structure by using the common slash found separating docker image names and their namespaces.
 
-The second thing to notice is the BUILD_COMMAND of the `ExternalProject_Add()` function call. Here is where we actually invoke docker and request it runs a builder binary (i.e. make or ninja). Within this docker command, we're forced to use `-v ${CMAKE_SOURCE_DIR}:${CMAKE_SOURCE_DIR}` as a volume mount. This is because CMake doesn't support the creation of relative paths when it generates Makefiles and Ninja files. Usually when running a process in a container, we mount a local directory to a different container directory. Without relative pathing, all absolute paths will no longer work without additionally mounting them as well. To simplify all of this, we simply define the convention that all source and binaries are located within the CMAKE_SOURCE_DIR and then map the CMAKE_SOURCE_DIR into the container as itself. Assuming this doesn't conflict with any parts of the image, absolute paths should now work within the context of the source folder.
+The second thing to notice is the `BUILD_COMMAND` of the `ExternalProject_Add()` function call. Here is where we actually invoke docker and request it runs a builder binary (i.e. make or ninja). Within this docker command, we're forced to use `-v ${CMAKE_SOURCE_DIR}:${CMAKE_SOURCE_DIR}` as a volume mount. This is because CMake doesn't support the creation of relative paths when it generates Makefiles and Ninja files. Usually when running a process in a container, we mount a local directory to a different container directory. Without relative pathing, all absolute paths will no longer work without additionally mounting them as well. To simplify all of this, we simply define the convention that all source and binaries are located within the `CMAKE_SOURCE_DIR` and then map the CMAKE_SOURCE_DIR into the container as itself. Assuming this doesn't conflict with any parts of the image, absolute paths should now work within the context of the source folder.
 
 That said, we can update our top level `CMakeLists.txt` to have something like the following so that we get a LLVM-11 built Minimal component:
 
