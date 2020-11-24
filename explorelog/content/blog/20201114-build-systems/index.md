@@ -43,9 +43,11 @@ From an OO perspective, autotools is a suite of tools that more or less follow t
 
 SCons describes itself as ...
 
-```
-SCons is an Open Source software construction tool—that is, a next-generation build tool. Think of SCons as an improved, cross-platform substitute for the classic Make utility with integrated functionality similar to autoconf/automake and compiler caches such as ccache. In short, SCons is an easier, more reliable and faster way to build software.
-```
+> SCons is an Open Source software construction tool—that is, a next-generation
+> build tool. Think of SCons as an improved, cross-platform substitute for the
+> classic Make utility with integrated functionality similar to autoconf/automake
+> and compiler caches such as ccache. In short, SCons is an easier, more reliable
+> and faster way to build software.
 
 Although 14 years old at the time of this writing, I recently read an article about [KDE's transition from autotools to CMake](https://lwn.net/Articles/188693/). The point that I am attempting to make from the article is that even though the KDE developers had a lot of excitment for SCons, due to the shear size and diversity of the project they ultimately decided that SCons wasn't a good solution. Several reasons were mentioned, but the ones that stand out to me were related to fragility and reliability of maintaining the flexibility provided by the build system.
 
@@ -53,9 +55,10 @@ On the flip side, as a game developer I am in love with Godot. Godot is currentl
 
 From the Godot documentation:
 
-```
-Developers often need to compile for several of the platforms at the same time, or even different targets of the same platform. They can't afford reconfiguring and rebuilding the project each time. SCons can do this with no sweat, without breaking the builds.
-```
+> Developers often need to compile for several of the platforms at the same
+> time, or even different targets of the same platform. They can't afford
+> reconfiguring and rebuilding the project each time. SCons can do this with
+> no sweat, without breaking the builds.
 
 These are only two testimonials for and against SCons amongst many on the internet, but I personally am thinking that CMake has a bit of a leg up on SCons from several perspectives. Obviously with SCons being implemented by one of the most popular programming languages in 2020 (i.e. Python) you can make it do what ever you want, but at what cost to maintenance, sustainability, and reliability? In conclusion, SCons is clearly an improvement above and beyond Autotools but when you compare SCons to CMake, the pros and cons get more murky and devolve into individual preference.
 
@@ -67,9 +70,11 @@ Observed Pros:
 
 CMake describes itself as ...
 
-```
-CMake is an open-source, cross-platform family of tools designed to build, test and package software. CMake is used to control the software compilation process using simple platform and compiler independent configuration files, and generate native makefiles and workspaces that can be used in the compiler environment of your choice.
-```
+> CMake is an open-source, cross-platform family of tools designed to build,
+> test and package software. CMake is used to control the software compilation
+> process using simple platform and compiler independent configuration files,
+> and generate native makefiles and workspaces that can be used in the compiler
+> environment of your choice.
 
 CMake is best known as a meta-build system. Like autotools, CMake takes in configuration and generates other build system configuration to perform the _actual_ build of the code. Unlike autotools, CMake has been developed to generate build system configuration files for not just make but also Visual Studio, XCode, ninja, and a number of other platforms.
 
