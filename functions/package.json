@@ -1,0 +1,21 @@
+{
+    "name": "firebase",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "prebuild": "node node_modules/rimraf/bin functions",
+      "build": "babel app --out-dir functions --copy-files --ignore app/node_modules",
+      "postbuild": "cd functions && yarn"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "babel-cli": "^6.26.0",
+      "babel-preset-env": "^1.7.0",
+      "rimraf": "^3.0.2"
+    }
+  }
+  
