@@ -1,38 +1,60 @@
-import React, { useEffect, useState } from "react"
-import { Link, graphql } from "gatsby"
+import React, { useEffect, useState } from "react";
+import { Link, graphql } from "gatsby";
 
-import TextField from "@material-ui/core/TextField/TextField"
-import Button from "@material-ui/core/Button"
-import moment from "moment"
+import TextField from "@material-ui/core/TextField/TextField";
+import Button from "@material-ui/core/Button";
+import moment from "moment";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { createPostComment, readCommentPage } from "../components/firebase"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import { createPostComment, readCommentPage } from "../components/firebase";
 
 // import { rhythm, scale } from "../utils/typography"
 
 // TODO: Comment Page needs paging, flagging, ?gravatar?, hiding.
 
-function CommentPage({ slug }) {
-  const [comments, setComments] = useState([])
-  useEffect(() => {
-    readCommentPage({ slug })
-      .then(result => {
-        console.log("Setting comments: ", result.data.comments)
-        setComments(result.data.comments)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [slug])
+function updateComments(slug, offset, setComments) {
+  readCommentPage({ slug: slug, offset: offset })
+    .then(result => {
+      console.log("Setting comments: ", result.data.comments);
+      setComments(result.data.comments);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+}
 
+function CommentSection({ post, slug }) {
+  const [comments, setComments] = useState([]);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    console.log("Fetching updated comments.");
+    updateComments(slug, offset, setComments);
+  }, [offset]);
+
+  return (
+    <>
+      <CommentForm post={post} slug={slug} />
+      <CommentPage
+        slug={slug}
+        comments={comments}
+        setComments={setComments}
+        offset={offset}
+        setOffset={setOffset}
+      />
+    </>
+  );
+}
+
+function CommentPage({ slug, comments, setComments, offset, setOffset }) {
   return (
     <>
       {comments &&
         comments.map(entry => {
-          console.log("Entry: ", entry)
-          const postDate = moment(entry.date)
+          //console.log("Entry: ", entry);
+          const postDate = moment(entry.date);
           return (
             <div style={{ marginBottom: 10 }} key={entry.signature}>
               <span className="font-bold text-black-500">{entry.username}</span>
@@ -44,10 +66,19 @@ function CommentPage({ slug }) {
               </span>
               <div>{entry.comment}</div>
             </div>
-          )
+          );
         })}
+      <Button>Prev</Button>
+      <Button
+        onClick={() => {
+          setOffset(comments[comments.length - 1].date);
+          //updateComments(slug, offset, setComments);
+        }}
+      >
+        Next
+      </Button>
     </>
-  )
+  );
 }
 
 function CommentForm({ post, slug }) {
@@ -60,7 +91,7 @@ function CommentForm({ post, slug }) {
     captcha: "",
     comment: "",
     slug: slug.slice(1, slug.length - 1),
-  })
+  });
 
   const styles = {
     form: {
@@ -124,18 +155,19 @@ function CommentForm({ post, slug }) {
       // marginTop: 5,
       // width: "calc(100% - 200px)",
     },
-  }
+  };
 
   async function handleSubmit() {
-    console.log("We are handling the submit: ", values)
+    console.log("We are handling the submit: ", values);
 
     // Ideally, the backend of this service will require a create call and
     // an update call. The create call simply creates a blog comment entry
     // with an author alias and password hash. The update function will allow
     // the original author to modify/hide their post.
 
-    const result = await createPostComment(values)
-    console.log("Result: ", result)
+    const result = await createPostComment(values);
+    console.log("Result: ", result);
+    // TODO: We need to refactor so we can load new comment.
   }
   return (
     <div
@@ -204,14 +236,14 @@ function CommentForm({ post, slug }) {
         </div>
       </form>
     </div>
-  )
+  );
 }
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { slug, previous, next } = this.props.pageContext
+    const post = this.props.data.markdownRemark;
+    const siteTitle = this.props.data.site.siteMetadata.title;
+    const { slug, previous, next } = this.props.pageContext;
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -238,8 +270,7 @@ class BlogPostTemplate extends React.Component {
           </footer>
         </article>
 
-        {/*<CommentForm post={post} slug={slug} />
-        <CommentPage slug={slug} />*/}
+        <CommentSection post={post} slug={slug} />
 
         <nav>
           <ul
@@ -277,11 +308,11 @@ class BlogPostTemplate extends React.Component {
           </ul>
         </nav>
       </Layout>
-    )
+    );
   }
 }
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -301,4 +332,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
