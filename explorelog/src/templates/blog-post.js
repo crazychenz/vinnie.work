@@ -238,8 +238,8 @@ class BlogPostTemplate extends React.Component {
           </footer>
         </article>
 
-        <CommentForm post={post} slug={slug} />
-        <CommentPage slug={slug} />
+        {/*<CommentForm post={post} slug={slug} />
+        <CommentPage slug={slug} />*/}
 
         <nav>
           <ul
