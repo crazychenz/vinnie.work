@@ -1,32 +1,41 @@
 {
   "functions": {
-    "predeploy": [
-      "npm --prefix \"$RESOURCE_DIR\" run lint"
-    ]
+    "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run lint"]
   },
   "emulators": {
     "auth": {
-      "host": "192.168.1.184",
-      "port": 9099
+      "enabled": true,
+      "host": "10.0.0.85",
+      "port": 6099
     },
     "functions": {
-      "host": "192.168.1.184",
+      "enabled": true,
+      "host": "10.0.0.85",
       "port": 6001,
-      "headers" : [ {
-        "key" : "Access-Control-Allow-Origin",
-        "value" : "*"
-      } ]
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
     },
     "firestore": {
-      "host": "192.168.1.184",
+      "enabled": true,
+      "host": "10.0.0.85",
       "port": 6080
     },
     "hosting": {
-      "host": "192.168.1.184",
+      "enabled": false,
+      "host": "10.0.0.85",
       "port": 6000
     },
+    "database": {
+      "enabled": false,
+      "host": "10.0.0.85",
+      "port": 6058
+    },
     "ui": {
-      "host": "192.168.1.184",
+      "host": "10.0.0.85",
       "enabled": true,
       "port": 6180
     }

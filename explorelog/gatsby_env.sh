@@ -6,7 +6,7 @@ docker run \
     --rm -ti \
     -v $(pwd):/workspace \
     -v $(pwd)/_env/home/user:/home/user \
-    crazychenz/gatsby \
+    crazychenz/node-lts \
     bash -li -c "${*}"
 
 

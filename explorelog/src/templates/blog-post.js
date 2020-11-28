@@ -1,17 +1,55 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, graphql } from "gatsby"
 
 import TextField from "@material-ui/core/TextField/TextField"
 import Button from "@material-ui/core/Button"
+import moment from "moment"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-//import { createPostComment } from "../components/firebase"
+import { createPostComment, readCommentPage } from "../components/firebase"
 
-//import { rhythm, scale } from "../utils/typography"
+// import { rhythm, scale } from "../utils/typography"
 
-/*
+// TODO: Comment Page needs paging, flagging, ?gravatar?, hiding.
+
+function CommentPage({ slug }) {
+  const [comments, setComments] = useState([])
+  useEffect(() => {
+    readCommentPage({ slug })
+      .then(result => {
+        console.log("Setting comments: ", result.data.comments)
+        setComments(result.data.comments)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }, [slug])
+
+  return (
+    <>
+      {comments &&
+        comments.map(entry => {
+          console.log("Entry: ", entry)
+          const postDate = moment(entry.date)
+          return (
+            <div style={{ marginBottom: 10 }} key={entry.signature}>
+              <span className="font-bold text-black-500">{entry.username}</span>
+              {"  -  "}
+              <span className="text-gray-700">{postDate.fromNow()}</span>
+              {"  "}
+              <span className="text-gray-500">
+                ({postDate.format("YYYY-MM-DDTHH:mm:ss")})
+              </span>
+              <div>{entry.comment}</div>
+            </div>
+          )
+        })}
+    </>
+  )
+}
+
 function CommentForm({ post, slug }) {
   //Spam Checking: akismet.com
   //Serverless with Firebase Functions
@@ -28,7 +66,7 @@ function CommentForm({ post, slug }) {
     form: {
       overflow: "hidden",
       flex: 1,
-      //backgroundColor: "green",
+      //backgroundColor: "#FFF4FF",
     },
 
     // label: {
@@ -100,57 +138,74 @@ function CommentForm({ post, slug }) {
     console.log("Result: ", result)
   }
   return (
-    <form method="post" onSubmit={handleSubmit} className="overflow-hidden">
-      <div style={styles.form}>
-        <TextField
-          id="username"
-          label="Username / Alias / Name"
-          variant="outlined"
-          style={styles.username}
-          onChange={evt => setValues({ ...values, username: evt.target.value })}
-        />
-        <br />
+    <div
+      style={{
+        borderColor: "#CCC",
+        borderWidth: 3,
+        padding: 10,
+        borderRadius: 10,
+      }}
+    >
+      <form method="post" onSubmit={handleSubmit} className="overflow-hidden">
+        <div className="text-2xl">Leave A Comment</div>
+        <div style={styles.form}>
+          <TextField
+            id="username"
+            label="Username / Alias / Name"
+            variant="outlined"
+            style={styles.username}
+            onChange={evt =>
+              setValues({ ...values, username: evt.target.value })
+            }
+          />
+          <br />
 
-        <TextField
-          id="password"
-          label="Password / Secret"
-          variant="outlined"
-          type="password"
-          style={styles.password}
-          onChange={evt => setValues({ ...values, password: evt.target.value })}
-        />
-        <br />
-        <TextField
-          id="captcha"
-          label={'Type "human" to verify you are a human.'}
-          variant="outlined"
-          style={styles.captcha}
-          onChange={evt => setValues({ ...values, captcha: evt.target.value })}
-        />
-        <br />
-        <TextField
-          id="comment"
-          label="Comment"
-          variant="outlined"
-          style={styles.comment}
-          multiline
-          rows={6}
-          onChange={evt => setValues({ ...values, comment: evt.target.value })}
-        />
-        <br />
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleSubmit}
-          style={styles.button}
-        >
-          Send
-        </Button>
-      </div>
-    </form>
+          <TextField
+            id="password"
+            label="Password / Secret"
+            variant="outlined"
+            type="password"
+            style={styles.password}
+            onChange={evt =>
+              setValues({ ...values, password: evt.target.value })
+            }
+          />
+          <br />
+          <TextField
+            id="captcha"
+            label={'Type "human" to verify you are a human.'}
+            variant="outlined"
+            style={styles.captcha}
+            onChange={evt =>
+              setValues({ ...values, captcha: evt.target.value })
+            }
+          />
+          <br />
+          <TextField
+            id="comment"
+            label="Comment"
+            variant="outlined"
+            style={styles.comment}
+            multiline
+            rows={6}
+            onChange={evt =>
+              setValues({ ...values, comment: evt.target.value })
+            }
+          />
+          <br />
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleSubmit}
+            style={styles.button}
+          >
+            Send
+          </Button>
+        </div>
+      </form>
+    </div>
   )
 }
-*/
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -183,7 +238,8 @@ class BlogPostTemplate extends React.Component {
           </footer>
         </article>
 
-        {/*<CommentForm post={post} slug={slug} />*/}
+        <CommentForm post={post} slug={slug} />
+        <CommentPage slug={slug} />
 
         <nav>
           <ul

@@ -16,9 +16,16 @@ var firebaseConfig = {
 // Initialize Firebase
 const server = firebase.initializeApp(firebaseConfig)
 //server.functions().useFunctionsEmulator("http://192.168.1.184:6001")
+//server.functions().useEmulator("10.0.0.85", 6001)
+//server.auth().useEmulator("http://10.0.0.85:6099/")
+// server.firestore().useEmulator("10.0.0.85", 6080)
 
 const createPostComment = server
   .functions()
   .httpsCallable("createPostCommentCallable")
 
-export { server, createPostComment }
+const readCommentPage = server
+  .functions()
+  .httpsCallable("readCommentPageCallable")
+
+export { server, createPostComment, readCommentPage }
