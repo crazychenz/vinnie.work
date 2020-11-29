@@ -44,10 +44,15 @@ async function createPostComment(body) {
 
     const entry = {
       date: recv_date,
+      version: '1.0',
       username: body.username,
       dynUserId,
       signature,
       comment: body.comment,
+      counts: {
+        redFlags: 0,
+        stars: 0,
+      },
     };
 
     const writeResult = await admin

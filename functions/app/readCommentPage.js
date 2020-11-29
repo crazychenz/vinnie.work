@@ -9,32 +9,29 @@ import Base64 from 'crypto-js/enc-base64';
 // TODO: use startAfter and the latter would use endAt. These
 // TODO: should be sub functions of readCommentPage() function.
 
+// slug, offset
 async function readCommentPage(body) {
-  console.log('Fetching comment page.');
-
   try {
-    const allCommentsSnapshot = await admin
+    const limit = 10;
+    const commentsSnapshot = await admin
       .firestore()
       .collection('blog_comments')
       .doc(body.slug)
       .collection('comments')
-      .orderBy('date')
-      .startAfter(body.offset)
-      .limit(3)
+      .limit(limit)
+      .offset(body.offset)
       .get();
 
     let comments = [];
-
-    allCommentsSnapshot.forEach((doc) => {
-      //console.log(doc.data());
-      comments.push(doc.data());
+    commentsSnapshot.forEach((doc) => {
+      const data = doc.data();
+      comments.push(data);
     });
 
     return {
       message: `You made it. Comments returned.`,
       comments: comments,
-      prevOffset: comments[0].date,
-      nextOffset: comments[comments.length - 1].date,
+      offset: body.offset,
       date: Date.now(),
       sent: body,
     };

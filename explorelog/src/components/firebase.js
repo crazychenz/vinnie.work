@@ -1,7 +1,7 @@
-import firebase from "firebase/app"
-import "firebase/auth"
-import "firebase/functions"
-import "firebase/storage"
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/functions";
+import "firebase/storage";
 
 var firebaseConfig = {
   apiKey: "AIzaSyBK496vRixZjkozxhSZPMpePfPvTfS6Ftc",
@@ -12,20 +12,20 @@ var firebaseConfig = {
   messagingSenderId: "1046523210545",
   appId: "1:1046523210545:web:e812141d94f0bf65911e10",
   measurementId: "G-2P5WQTD9Q6",
-}
+};
 // Initialize Firebase
-const server = firebase.initializeApp(firebaseConfig)
+const server = firebase.initializeApp(firebaseConfig);
 //server.functions().useFunctionsEmulator("http://192.168.1.184:6001")
-//server.functions().useEmulator("10.0.0.85", 6001)
+server.functions().useEmulator("192.168.73.130", 6001);
 //server.auth().useEmulator("http://10.0.0.85:6099/")
 // server.firestore().useEmulator("10.0.0.85", 6080)
 
 const createPostComment = server
   .functions()
-  .httpsCallable("createPostCommentCallable")
+  .httpsCallable("createPostCommentCallable");
 
 const readCommentPage = server
   .functions()
-  .httpsCallable("readCommentPageCallable")
+  .httpsCallable("readCommentPageCallable");
 
-export { server, createPostComment, readCommentPage }
+export { server, createPostComment, readCommentPage };
