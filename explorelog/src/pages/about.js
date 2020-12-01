@@ -1,27 +1,27 @@
-import React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
-import { useImage } from "react-image"
+import React from "react";
+import { Link, useStaticQuery, graphql } from "gatsby";
+import Image from "gatsby-image";
+import { useImage } from "react-image";
 
-import { InlineIcon } from "@iconify/react"
+import { InlineIcon } from "@iconify/react";
 // npm install --save-dev @iconify/react @iconify/icons-mdi
 
 //import githubIcon from "@iconify/icons-mdi/github"
 //import linkedinIcon from "@iconify/icons-mdi/linkedin"
 //import stackOverflow from "@iconify/icons-mdi/stack-overflow"
 
-import githubIcon from "../../content/assets/GitHub-Mark-120px-plus.png"
-import linkedinIcon from "../../content/assets/LI-In-Bug.png"
-import stackOverflow from "../../content/assets/so-icon.png"
+import githubIcon from "../../content/assets/GitHub-Mark-120px-plus.png";
+import linkedinIcon from "../../content/assets/LI-In-Bug.png";
+import stackOverflow from "../../content/assets/so-icon.png";
 
-import Layout from "../components/layout"
+import Layout from "../components/layout";
 
 export default function AboutPage(props) {
   const bio = useStaticQuery(graphql`
     query BioQuery2 {
-      avatar: file(absolutePath: { regex: "/garage-from-side-512px.jpg/" }) {
+      avatar: file(absolutePath: { regex: "/freshcut-512px.jpg/" }) {
         childImageSharp {
-          fixed(width: 512, height: 555) {
+          fixed(width: 512, height: 512) {
             ...GatsbyImageSharpFixed
           }
         }
@@ -32,10 +32,10 @@ export default function AboutPage(props) {
         }
       }
     }
-  `)
+  `);
 
-  const icon_width = 60
-  const icon_height = 60
+  const icon_width = 60;
+  const icon_height = 60;
   //const { soIcon } = useImage({
   //  srcList: "content/assets/so-icon.png",
   //})
@@ -50,9 +50,10 @@ export default function AboutPage(props) {
           alt={bio.site.author}
           style={{
             minWidth: 50,
-            minHeight: 54,
+            minHeight: 50,
             width: 256,
-            height: 278,
+            height: 256,
+            borderRadius: 64,
           }}
         />
         <div className="flex flex-col">
@@ -190,5 +191,5 @@ export default function AboutPage(props) {
         <li>Adjunct Intructor at National Cryptologic School</li>
       </ul>
     </Layout>
-  )
+  );
 }

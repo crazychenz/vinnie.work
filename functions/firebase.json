@@ -5,12 +5,12 @@
   "emulators": {
     "auth": {
       "enabled": true,
-      "host": "10.0.0.85",
+      "host": "192.168.73.130",
       "port": 6099
     },
     "functions": {
       "enabled": true,
-      "host": "10.0.0.85",
+      "host": "192.168.73.130",
       "port": 6001,
       "headers": [
         {
@@ -21,21 +21,11 @@
     },
     "firestore": {
       "enabled": true,
-      "host": "10.0.0.85",
+      "host": "192.168.73.130",
       "port": 6080
     },
-    "hosting": {
-      "enabled": false,
-      "host": "10.0.0.85",
-      "port": 6000
-    },
-    "database": {
-      "enabled": false,
-      "host": "10.0.0.85",
-      "port": 6058
-    },
     "ui": {
-      "host": "10.0.0.85",
+      "host": "192.168.73.130",
       "enabled": true,
       "port": 6180
     }

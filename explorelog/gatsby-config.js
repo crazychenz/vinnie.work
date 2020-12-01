@@ -1,5 +1,5 @@
-require("dotenv").config()
-const env = process.env
+require("dotenv").config();
+const env = process.env;
 
 module.exports = {
   pathPrefix: "/rel",
@@ -65,7 +65,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/garage-from-side-512px.jpg`,
+        icon: `content/assets/freshcut-512px.jpg`,
       },
     },
     `gatsby-plugin-offline`,
@@ -99,4 +99,4 @@ module.exports = {
       },
     },
   ],
-}
+};

@@ -12,13 +12,15 @@ import { createPostComment, readCommentPage } from "../components/firebase";
 
 // import { rhythm, scale } from "../utils/typography"
 
-// TODO: Comment Page needs paging, flagging, ?gravatar?, hiding.
+// TODO: Comment Page needs flagging, ?gravatar?, hiding, **counting**.
 
-function updateComments(slug, offset, setComments) {
+function fetchComments(slug, setComments, offset = 0) {
   readCommentPage({ slug: slug, offset: offset })
     .then(result => {
       console.log("Setting comments: ", result.data.comments);
-      setComments(result.data.comments);
+      if (result.data.comments && result.data.comments.length > 0) {
+        setComments(result.data.comments);
+      }
     })
     .catch(error => {
       console.log(error);
@@ -28,55 +30,96 @@ function updateComments(slug, offset, setComments) {
 function CommentSection({ post, slug }) {
   const [comments, setComments] = useState([]);
   const [offset, setOffset] = useState(0);
+  const limit = 10;
 
   useEffect(() => {
     console.log("Fetching updated comments.");
-    updateComments(slug, offset, setComments);
-  }, [offset]);
+    fetchComments(slug, setComments, offset);
+  }, [slug, offset]);
 
   return (
     <>
-      <CommentForm post={post} slug={slug} />
       <CommentPage
         slug={slug}
         comments={comments}
-        setComments={setComments}
         offset={offset}
         setOffset={setOffset}
+        limit={limit}
       />
+      <CommentForm post={post} slug={slug} />
     </>
   );
 }
 
-function CommentPage({ slug, comments, setComments, offset, setOffset }) {
+function CommentPage({ slug, comments, offset, setOffset, limit }) {
+  let prevAttrs = { disabled: true };
+  let nextAttrs = { disabled: false };
+
+  console.log("Comment Count", comments.length);
+  if (offset === 0 && comments.length > 0) {
+    prevAttrs.disabled = false;
+  }
+  if (comments && comments.length < limit) {
+    nextAttrs.disabled = true;
+  }
+
   return (
     <>
-      {comments &&
-        comments.map(entry => {
-          //console.log("Entry: ", entry);
-          const postDate = moment(entry.date);
-          return (
-            <div style={{ marginBottom: 10 }} key={entry.signature}>
-              <span className="font-bold text-black-500">{entry.username}</span>
-              {"  -  "}
-              <span className="text-gray-700">{postDate.fromNow()}</span>
-              {"  "}
-              <span className="text-gray-500">
-                ({postDate.format("YYYY-MM-DDTHH:mm:ss")})
-              </span>
-              <div>{entry.comment}</div>
-            </div>
-          );
-        })}
-      <Button>Prev</Button>
-      <Button
-        onClick={() => {
-          setOffset(comments[comments.length - 1].date);
-          //updateComments(slug, offset, setComments);
+      <div
+        className="flex flex-col"
+        style={{
+          //backgroundColor: "green",
+          marginBottom: 20,
+          borderColor: "#CCC",
+          borderWidth: 3,
+          padding: 10,
+          borderRadius: 10,
         }}
       >
-        Next
-      </Button>
+        <div className="text-2xl" style={{ marginBottom: 12 }}>
+          Comments ...
+        </div>
+        <div className="flex flex-col justify-center">
+          {comments &&
+            comments.map(entry => {
+              //console.log("Entry: ", entry);
+              const postDate = moment(entry.date);
+              return (
+                <div style={{ marginBottom: 10 }} key={entry.signature}>
+                  <span className="font-bold text-black-500">
+                    {entry.username}
+                  </span>
+                  {"  -  "}
+                  <span className="text-gray-700">{postDate.fromNow()}</span>
+                  {"  "}
+                  <span className="text-gray-500">
+                    ({postDate.format("YYYY-MM-DDTHH:mm:ss")})
+                  </span>
+                  <div>{entry.comment}</div>
+                </div>
+              );
+            })}
+        </div>
+        <div className="flex justify-center" style={{ marginTop: 10 }}>
+          <Button
+            onClick={() => {
+              setOffset(offset - limit < 0 ? 0 : offset - limit);
+            }}
+            {...prevAttrs}
+          >
+            Prev
+          </Button>
+          <div className="w-6/12"></div>
+          <Button
+            onClick={() => {
+              setOffset(offset + limit);
+            }}
+            {...nextAttrs}
+          >
+            Next
+          </Button>
+        </div>
+      </div>
     </>
   );
 }
@@ -270,8 +313,6 @@ class BlogPostTemplate extends React.Component {
           </footer>
         </article>
 
-        <CommentSection post={post} slug={slug} />
-
         <nav>
           <ul
             className="flex flex-wrap justify-between mb-8"
@@ -307,6 +348,8 @@ class BlogPostTemplate extends React.Component {
             </li>
           </ul>
         </nav>
+
+        {/*<CommentSection post={post} slug={slug} />*/}
       </Layout>
     );
   }

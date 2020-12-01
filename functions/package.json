@@ -20,5 +20,6 @@
     "eslint-plugin-react": "^7.21.5",
     "firebase-tools": "^8.16.2",
     "rimraf": "^3.0.2"
-  }
+  },
+  "dependencies": {}
 }
