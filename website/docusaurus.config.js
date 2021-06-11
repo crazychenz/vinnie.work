@@ -1,20 +1,20 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: "Vinnie dot Work",
-  tagline: "",
-  url: "https://www.vinnie.work",
-  baseUrl: "/",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
-  organizationName: "crazychenz", // Usually your GitHub org/user name.
-  projectName: "vinnie.work", // Usually your repo name.
+  title: 'Vinnie dot Work',
+  tagline: '',
+  url: 'https://www.vinnie.work',
+  baseUrl: '/',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/favicon.ico',
+  organizationName: 'crazychenz', // Usually your GitHub org/user name.
+  projectName: 'vinnie.work', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: "Vinnie dot Work",
+      title: 'Vinnie dot Work',
       logo: {
-        alt: "My Site Logo",
-        src: "img/profile.png",
+        alt: 'My Site Logo',
+        src: 'img/profile.png',
       },
       items: [
         // {
@@ -23,8 +23,8 @@ module.exports = {
         //   position: "left",
         //   label: "Tutorial",
         // },
-        { to: "/blog", label: "Blog", position: "left" },
-        { to: "/about", label: "About", position: "left" },
+        { to: '/blog', label: 'Blog', position: 'left' },
+        { to: '/about', label: 'About', position: 'left' },
         // {
         //   href: "https://github.com/facebook/docusaurus",
         //   label: "GitHub",
@@ -33,7 +33,7 @@ module.exports = {
       ],
     },
     footer: {
-      style: "dark",
+      style: 'dark',
       links: [
         // {
         //   title: 'Docs',
@@ -80,25 +80,23 @@ module.exports = {
   },
   presets: [
     [
-      "@docusaurus/preset-classic",
+      '@docusaurus/preset-classic',
       {
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
+          sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl:
-            "https://github.com/facebook/docusaurus/edit/master/website/",
+          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
         },
         blog: {
           /**
            * Path to data on filesystem relative to site dir.
            */
-          path: "blog",
+          path: 'blog',
           /**
            * Base url to edit your site.
            * Docusaurus will compute the final editUrl with "editUrl + relativeDocPath"
            */
-          editUrl:
-            "https://github.com/facebook/docusaurus/edit/master/website/",
+          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
           /**
            * For advanced cases, compute the edit url for each markdown file yourself.
            */
@@ -115,11 +113,11 @@ module.exports = {
           /**
            * Blog page title for better SEO
            */
-          blogTitle: "Blog title",
+          blogTitle: 'Blog title',
           /**
            * Blog page meta description for better SEO
            */
-          blogDescription: "Blog",
+          blogDescription: 'Blog',
           /**
            * Number of blog post elements to show in the blog sidebar
            * 'ALL' to show all blog posts
@@ -129,21 +127,21 @@ module.exports = {
           /**
            * Title of the blog sidebar
            */
-          blogSidebarTitle: "All our posts",
+          blogSidebarTitle: 'All our posts',
           /**
            * URL route for the blog section of your site.
            * *DO NOT* include a trailing slash.
            */
-          routeBasePath: "blog",
-          include: ["*.md", "*.mdx"],
+          routeBasePath: 'blog',
+          include: ['*.md', '*.mdx'],
           postsPerPage: 10,
           /**
            * Theme components used by the blog pages.
            */
-          blogListComponent: "@theme/BlogListPage",
-          blogPostComponent: "@theme/BlogPostPage",
-          blogTagsListComponent: "@theme/BlogTagsListPage",
-          blogTagsPostsComponent: "@theme/BlogTagsPostsPage",
+          blogListComponent: '@theme/BlogListPage',
+          blogPostComponent: '@theme/BlogPostPage',
+          blogTagsListComponent: '@theme/BlogTagsListPage',
+          blogTagsPostsComponent: '@theme/BlogTagsPostsPage',
           /**
            * Remark and Rehype plugins passed to MDX.
            */
@@ -179,22 +177,22 @@ module.exports = {
         },*/
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve('./src/css/custom.css'),
         },
       },
     ],
   ],
   plugins: [
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        redirects: [
-          {
-            to: "/blog", // string
-            from: ["/"], // string | string[]
-          },
-        ],
-      },
-    ],
+    // [
+    //   "@docusaurus/plugin-client-redirects",
+    //   {
+    //     redirects: [
+    //       {
+    //         to: "/blog", // string
+    //         from: ["/"], // string | string[]
+    //       },
+    //     ],
+    //   },
+    // ],
   ],
 };

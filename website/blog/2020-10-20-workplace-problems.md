@@ -1,7 +1,7 @@
 ---
 slug: 2020-10-20-workplace-problems
-title: "Workplace Problems"
-date: "2020-10-20T12:00:00.000Z"
+title: 'Workplace Problems'
+date: '2020-10-20T12:00:00.000Z'
 description: |
   Problems In The Workspace
 ---
@@ -16,7 +16,7 @@ This is a retrospective on some of the issues with my current organization that 
 
 ## Key Values
 
-Before I begin, I think it would be good to define my ideal work environment. An ideal work environment is different for everyone, but to provide a bit of context, here are some key values (some of which I have previously identified in my [key values post](/20201007-keyvalues).)
+Before I begin, I think it would be good to define my ideal work environment. An ideal work environment is different for everyone, but to provide a bit of context, here are some key values (some of which I have previously identified in my [key values post](/blog/2020-10-07-keyvalues).)
 
 - Continuous Feedback
 - Creative + Innovative
@@ -84,7 +84,7 @@ When things go sour, its often due to:
 
 - Process being instated or codified that has little to no buy-in from the workforce.
 - A double standard where some projects are allowed to skip process while others are not given that luxury.
-- Providing no observable value, for example ramping up process to mitigate lack of requirement understanding and test coverage, but then *ignoring results* as mitigation.
+- Providing no observable value, for example ramping up process to mitigate lack of requirement understanding and test coverage, but then _ignoring results_ as mitigation.
 
 It is important to either enforce process or have a healthy habit of updating process to meet the current needs of an organization. Mandatory and mature retrospectives as part of an organizational process (and culture) help to facilitate keeping process fresh and the "right size".
 
@@ -100,7 +100,7 @@ Furthermore, an organization that doesn't have a clear idea what they need to se
 
 Carrot and stick motivation is the idea that we can reward people for good things and reprimand them for bad behaviors and over time they'll perform better. Research has clearly shown that this is only applicable for mechanical or trivial tasks that are repeated often (e.g. an assembly line).
 
-For more creative, innovative, and cognitively demanding work (often associated with engineering), you need a different approach. Research has shown repeatably that, assuming an individual has become comfortable with their wage and work environment (extrinsic motivators), the most effective way to further motivate workers is to ensure they have intrinsic motivators (mastery, purpose, and autonomy). Here are the primary intrinsic motivators as mentioned by Pink, D in his book called *DRiVE*:
+For more creative, innovative, and cognitively demanding work (often associated with engineering), you need a different approach. Research has shown repeatably that, assuming an individual has become comfortable with their wage and work environment (extrinsic motivators), the most effective way to further motivate workers is to ensure they have intrinsic motivators (mastery, purpose, and autonomy). Here are the primary intrinsic motivators as mentioned by Pink, D in his book called _DRiVE_:
 
 - Mastery - Allow workers to improve themselves.
 - Purpose - Everyone must know how the big picture doesn't work without them.

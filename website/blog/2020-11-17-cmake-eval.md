@@ -1,14 +1,14 @@
 ---
 slug: 2020-11-17-cmake-eval
-title: "Bare Metal CMake Development: Multiple Toolchains and Containers"
-date: "2020-11-17T12:00:00.000Z"
+title: 'Bare Metal CMake Development: Multiple Toolchains and Containers'
+date: '2020-11-17T12:00:00.000Z'
 description: |
   An evaluation of CMake's capabilities as a build system for embedded systems development.
 ---
 
 ## Overview
 
-In my previous article on [Build Systems for Embedded Development: From 30000 feet.](/20201114-build-systems), I had concluded that CMake was going to be where any initial efforts would take place. There are a few things that I want to accomplish to prove to myself that CMake can get the job done:
+In my previous article on [Build Systems for Embedded Development: From 30000 feet.](/blog/2020-11-14-build-systems), I had concluded that CMake was going to be where any initial efforts would take place. There are a few things that I want to accomplish to prove to myself that CMake can get the job done:
 
 <!--truncate-->
 
