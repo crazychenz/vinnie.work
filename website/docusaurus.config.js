@@ -13,23 +13,14 @@ module.exports = {
     navbar: {
       title: 'Vinnie dot Work',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Vinnie dot Work Site Logo',
         src: 'img/profile.png',
       },
       items: [
-        // {
-        //   type: "doc",
-        //   docId: "intro",
-        //   position: "left",
-        //   label: "Tutorial",
-        // },
-        { to: '/blog', label: 'Blog', position: 'left' },
         { to: '/about', label: 'About', position: 'left' },
-        // {
-        //   href: "https://github.com/facebook/docusaurus",
-        //   label: "GitHub",
-        //   position: "left",
-        // },
+        { type: 'doc', docId: 'intro', label: 'Notes', position: 'left' },
+        { to: '/blog', label: 'Blog', position: 'left' },
+        //{ href: "https://github.com/", label: "GitHub", position: "left" },
       ],
     },
     footer: {
@@ -85,7 +76,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl: 'https://github.com/crazychenz/vinnie.work/edit/trunk/website/',
         },
         blog: {
           /**
@@ -96,13 +87,13 @@ module.exports = {
            * Base url to edit your site.
            * Docusaurus will compute the final editUrl with "editUrl + relativeDocPath"
            */
-          editUrl: 'https://github.com/facebook/docusaurus/edit/master/website/',
+          editUrl: 'https://github.com/crazychenz/vinnie.work/edit/trunk/website/',
           /**
            * For advanced cases, compute the edit url for each markdown file yourself.
            */
-          editUrl: ({ locale, blogDirPath, blogPath, permalink }) => {
-            return `https://github.com/facebook/docusaurus/edit/master/website/${blogDirPath}/${blogPath}`;
-          },
+          //editUrl: ({ locale, blogDirPath, blogPath, permalink }) => {
+          //  return `https://github.com/facebook/docusaurus/edit/master/website/${blogDirPath}/${blogPath}`;
+          //},
           /**
            * Useful if you commit localized files to git.
            * When markdown files are localized, the edit url will target the localized file,
@@ -113,11 +104,11 @@ module.exports = {
           /**
            * Blog page title for better SEO
            */
-          blogTitle: 'Blog title',
+          blogTitle: 'Vinnie dot Work',
           /**
            * Blog page meta description for better SEO
            */
-          blogDescription: 'Blog',
+          blogDescription: '',
           /**
            * Number of blog post elements to show in the blog sidebar
            * 'ALL' to show all blog posts
@@ -127,7 +118,7 @@ module.exports = {
           /**
            * Title of the blog sidebar
            */
-          blogSidebarTitle: 'All our posts',
+          blogSidebarTitle: 'Articles',
           /**
            * URL route for the blog section of your site.
            * *DO NOT* include a trailing slash.
