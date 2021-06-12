@@ -1,0 +1,25 @@
+# Ignore this stuff.
+
+Curriculum:
+
+Embedded Systems Primer: Getting Started
+
+- Architectures - Arm, Mips, PowerPC, AVR
+- "none" OS
+- EABI - embedded-application binary interface (GNU OABI)
+- libc - glibc, musl, ulibc
+- Yocto, OpenWRT/LEDE, Buildroot
+
+- Embedded System's limited resources
+
+QEmu - CRT
+
+QEmu - Linux Kernel
+
+Baremetal: Getting Started
+
+RPi - CRT
+
+RPi - Linux Kernel
+
+Binary Analysis

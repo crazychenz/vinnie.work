@@ -1,0 +1,18 @@
+# https://developers.google.com/search/reference/robots_txt
+
+Sitemap: http://www.vinnie.work/sitemap.xml
+Sitemap: http://www.vinnie.work/gatsby-sitemap-20210611.xml
+
+User-agent: Googlebot-Image
+Disallow: / 
+
+# Group 1
+# User-agent: Googlebot
+# Disallow: /norobot/
+
+# User-agent: AdsBot-Google
+# Disallow: /
+
+# Group 2
+User-agent: *
+Allow: /
