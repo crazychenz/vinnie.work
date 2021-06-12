@@ -29,6 +29,7 @@ article {
 }
 
 /* This is a really stupid selector. */
+.blogPostTitle_GeHD,
 .blogPostTitle_node_modules-\@docusaurus-theme-classic-lib-next-theme-BlogPostItem- > a {
   font-size: 2rem;
 }
