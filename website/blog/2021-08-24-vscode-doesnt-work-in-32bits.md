@@ -38,7 +38,7 @@ After reading the above referenced stackoverflow question and adjusting it to sp
 sudo dpkg --add-architecture amd64
 sudo apt-get update
 sudo apt-get install \
-    linux-image:amd64
+    linux-image:amd64 \
     libstdc++6:amd64 \
     libc6:amd64 \
     gcc-multilib \
