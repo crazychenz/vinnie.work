@@ -38,7 +38,7 @@ After reading the above referenced stackoverflow question and adjusting it to sp
 sudo dpkg --add-architecture amd64
 sudo apt-get update
 sudo apt-get install \
-    linux-image:amd64 \
+    linux-image-3.13.0-170-generic:amd64 \
     libstdc++6:amd64 \
     libc6:amd64 \
     gcc-multilib \
@@ -47,3 +47,5 @@ sudo update-grub
 ```
 
 Once that was all done I rebooted the VM, fired up my modern 1.59 VSCode with RemoteSSH and everything installed and worked as expected.
+
+It is also worth mentioning that some other tools that I was using required Java 11+. I was able to successfully install Oracle's JDK 16 (compressed archive) without issue.
