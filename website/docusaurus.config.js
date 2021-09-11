@@ -10,6 +10,7 @@ module.exports = {
   organizationName: 'crazychenz', // Usually your GitHub org/user name.
   projectName: 'vinnie.work', // Usually your repo name.
   themeConfig: {
+    hideableSidebar: true,
     navbar: {
       title: 'Vinnie dot Work',
       logo: {
@@ -17,9 +18,9 @@ module.exports = {
         src: 'img/profile.png',
       },
       items: [
-        { to: '/about', label: 'About', position: 'left' },
-        { type: 'doc', docId: 'intro', label: 'Notes', position: 'left' },
         { to: '/blog', label: 'Blog', position: 'left' },
+        { type: 'doc', docId: 'Inform', label: 'Inform', position: 'left' },
+        { to: '/about', label: 'About', position: 'left' },
         //{ href: "https://github.com/", label: "GitHub", position: "left" },
       ],
     },

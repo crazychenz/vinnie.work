@@ -1,0 +1,4 @@
+label: 'Firmware Analysis'
+position: 6 # float position is supported
+#collapsible: true # make the category collapsible
+#collapsed: false # keep the category open by default
