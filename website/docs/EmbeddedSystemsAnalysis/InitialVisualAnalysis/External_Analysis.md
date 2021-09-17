@@ -24,7 +24,7 @@ Some standard identifications that can be further queried:
 - **IC** - [Industry Canada](https://www.ic.gc.ca/eic/site/icgc.nsf/eng/home), you can search for radio information via the [Radio Equipment Search](https://sms-sgs.ic.gc.ca/equipmentSearch/searchRadioEquipments?execution=e1s1&lang=en) (Fill in the _Certification Number_ with IC ID)
 - **FCC** - [US Federal Communications Commission](https://www.fcc.gov/)
 
-As an example of some information you can gather from a simple label, check out the [Belkin Case Study](./Belkin_CaseStudy) where we start with only the label and work our way to more detailed information about the device including part numbers and a datasheet!
+As an example of some information you can gather from a simple label, check out the [Belkin Case Study](./ExampleExternalAnalysis) where we start with only the label and work our way to more detailed information about the device including part numbers and a datasheet!
 
 ## Port / Button / LED Labels
 
