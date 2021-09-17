@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Handling Hardware
+# Prereq: Handling Hardware
 
 Handling Hardware - ESD, Things To Not Break Stuff (1 hours)
 

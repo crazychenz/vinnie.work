@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1.1
-title: Belkin Case Study
+title: Example External Analysis
 ---
 
 Ok, so we've been asked to get all the information we can about a Belkin that we intend to perform some deep analysis on. Without any tear down, what information can we glean?
@@ -43,24 +43,23 @@ The serial number should uniquely define the device, but for additional purposes
 
 ## Certifications
 
-When commercial devices, like this Belkin router are sold in countries like the US or Canada, there are always FCC IDs and IC IDs. Out device has:
+When commercial devices, like this Belkin router are sold in countries like the US or Canada, there are always FCC IDs and IC IDs. Our device has:
 
 - IC ID: 3623A-F9K1104V1
 - FCC ID: K7SF9K1104V1
 - RoHS: 8830-06456 Rev A01
 
-### Industry Canada
+### Industry Canada (IC)
 
 The IC ID, when looked up with the [Radio Equipment Search](https://sms-sgs.ic.gc.ca/equipmentSearch/searchRadioEquipments?execution=e1s1&lang=en) in Industry Canada's site get us:
 
-- Agent: Darren Shih CB - Bureau Veritas
 - Approval Date: Wed Feb 15 00:00:00 EST 2012
 - Type of Radio: Spread Spectrum or Digital Device (2400-2483.5 MHz) & Spread Spectrum or Digital Device (5725-5850 MHz)
 - [Emission Details are provided across the bands](https://sms-sgs.ic.gc.ca/equipmentSearch/searchRadioEquipments?execution=e1s5&index=0).
 
 While this doesn't provide immediate value add, if this wasn't a device will well known frequency ranges, this could be used as a starting point for dialing in on a spectrum analyzer and other related RF capturing equipment.
 
-### Federal Communications Commission
+### Federal Communications Commission (FCC)
 
 The FCC ID, when looked up with the [FCC ID Search](https://www.fcc.gov/oet/ea/fccid) nets us all kinds of nice information. For starters, when we search we need to break up the FCC ID into the first three characters and then the rest (likely a model number):
 

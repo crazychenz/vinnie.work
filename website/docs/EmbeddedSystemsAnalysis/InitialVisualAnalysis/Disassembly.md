@@ -2,7 +2,17 @@
 sidebar_position: 3
 ---
 
-# Disassembly
+# Prereq: Disassembly
+
+## Consider Approach and Risks
+
+Before proceeding, this is a good time to consider your goals for the target device. Before potentially damaging the device during disassembly, you may be able to accomplish your objectives with a low risk software analysis technique.
+
+If my goals are merely to grab a single file off the device for analysis, I may skip any disassembly and simply attempt to grab the one file. On the other hand, if I intend to modify the firmware and flash the result back onto the board, I'll take the extra risk associated with disassembly and internal visual inspection. I know that if I muck up writing to the flash memory I'll have to be prepared to restore the device from that bricked state.
+
+In summary, the analysis process going forward has risks and you should prescriptively apply the approach and risks you take based on the project's objectives. This is no one size fits all process.
+
+With that out of the way, on to disassembly!
 
 ## What Holds It Together
 

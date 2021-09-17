@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Initial Analysis
+# External Analysis
 
 When beginning to tear down a device, you'll want to take in as much information as reasonable at each step of the process. Initially, this means taking pictures or notes of all of the stickers, seams, and interfaces of the device.
 
