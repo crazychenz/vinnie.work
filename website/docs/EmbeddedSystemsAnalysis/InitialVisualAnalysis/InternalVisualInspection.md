@@ -3,12 +3,6 @@ sidebar_position: 4
 title: Internal Visual Inspection
 ---
 
-:::danger Incomplete
-
-This document is not yet complete.
-
-:::
-
 ## Overview
 
 Assuming you've successfully removed (reversibly or through more aggressive means) the aesthetic cover from the target device we can now start to perform some non-invasive/non-interactive visual analysis of the hardware. In general we want to cover the following bullets:
@@ -98,8 +92,27 @@ At times I've opened a device to find a bunch of traces going to a hill of epoxy
 
 ## Datasheets
 
-- Some are proprietary.
-- Some are available.
-- Some available datasheets are compatible with proprietary chip pin outs.
-- Some datasheets have pin outs and packaging information but lack technical insight. While not very useful, still may contain valuable information.
-- https://datasheetspdf.com/
+Datasheets are your friends. These documents can be anything from a 3 page product brief, to 10s of pages for assembly, to 100s/1000s of pages for technical programmer data. Obviously our goal is to get as much information as we can about our target device, but getting the complete and official vendor documentation isn't always feasible. In many situations, the official documentation is locked behind sketchy pay walls or Nondisclosure Agreements.
+
+When searching for datasheets on the internet, there is a large market of advertisers and scammers that return search results saying they have everything when in reality they'll give you some sub string search of what you need while filling your screen with ads and adware. Some popular sites that often disappoint include: alldatasheetarchive.com, datasheet-archive.com, and so forth.
+
+### Consider Competitor Compatibility
+
+Sometimes not having the exact datasheet can be acceptable. Manufacturers will sometimes match the pin out of a competitor and when you know this to be true you can derive the pin outs of your target device from a competitor's datasheet. If you're really lucky, some of the register addresses may match as well.
+
+### Use More Powerful Queries
+
+When googling, its often wise to use search syntax to limit the types of results that show up.
+
+- Use site specific qualifiers, for example if you know you can trust datasheetpdf.com, perhaps use `site:datasheetpdf.com` in your google query. You can also negate untrustworthy sites by dropping a hypen in front of the entry, `-site:alldatasheetarchive.com`.
+
+- Use file type qualifiers. More often than not, datasheets are presented as a PDF and therefore you can add `filetype:pdf` to your google queries so that only PDF files that google has crawled will show up. This also has the additional benefit of allowing you to grab a cached version of the file if the site is unavailable for what ever reason.
+
+### Use Linux Community
+
+Linux is often used or supported on many embedded systems. This is supported by both the vendors and other reverse engineering / repurposing communities. Use these communities as a resources for discovering the internals of your target devices. This is usually more related to software analysis, but often you can find observational notes and experiments done by community members, saving you time and effort. Some examples of projects to check out include:
+
+- [Linux](https://www.kernel.org/) - and all its drivers, device trees (new 3.11+ kernels), and board implementations (older 2.6-3.10 kernels)
+- [OpenWRT](https://openwrt.org/) - Linux distro builder that targets embedded systems.
+- [DD-WRT](https://dd-wrt.com/) - Linux distro builder that targets embedded systems.
+- [PolarCloud's Tomato](http://www.polarcloud.com/tomato) - Replacement firmware that supported Broadcom chips.
