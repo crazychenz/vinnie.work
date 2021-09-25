@@ -9,7 +9,7 @@ More organized than a log of findings, this corner of vinnie.work aims _to infor
 
 - [Embedded System Analysis](./EmbeddedSystemsAnalysis/overview) - Some ramblings on my process for performing embedded systems analysis from primarily my software engineering back ground.
 
-- [Visual Studio Code Tips](./VisualStudioCode/Overview) - I use visual studio code for almost everything I write now, from informal notes, to formal documentation, configs, and of course code. With all my weird use cases I've jotted down a bunch of things I've learned here.
+<!-- - [Visual Studio Code Tips](./VisualStudioCode/Overview) - I use visual studio code for almost everything I write now, from informal notes, to formal documentation, configs, and of course code. With all my weird use cases I've jotted down a bunch of things I've learned here. -->
 
 <!-- # Outline
 

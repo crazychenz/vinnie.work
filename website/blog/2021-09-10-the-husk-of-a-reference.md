@@ -12,7 +12,7 @@ For a while now I've had an unused _Notes_ section stubbed out where I wanted to
 
 I've found that by not shoving the two different pieces of information into their respective buckets just enables me to conflate the two into a blog article. Therefore I've now actually started to put the information that is purely "to inform" in the new [Inform](/docs/Inform) area of this site. Note: There is no plan to remove/move any of the existing blog articles. If anything, there may be some material copied.
 
-At this moment, the _Inform_ section really is just a husk of what I want to start putting over there. I've started with two major topics that I want to get from my head to the keyboard: [Embedded Systems Analysis](/docs/EmbeddedSystemsAnalysis/overview) and [Visual Studio Code Tips](/docs/VisualStudioCode/Overview).
+At this moment, the _Inform_ section really is just a husk of what I want to start putting over there. I've started with two major topics that I want to get from my head to the keyboard: [Embedded Systems Analysis](/docs/EmbeddedSystemsAnalysis/overview) and _Visual Studio Code Tips_.
 
 The _Embedded Systems Analysis_ has a well thought out outline and so I've stubbed out all the pages, although about 80% of them are empty except for their titles. The plan is to get most of that all filled in by the end of October.
 
