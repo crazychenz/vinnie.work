@@ -2,7 +2,8 @@
 
 pushd website
 
-../run.sh yarn build
+yarn
+yarn build
 if [ $? -ne 0 ]; then
   echo "Failed to build the site."
   exit 1
