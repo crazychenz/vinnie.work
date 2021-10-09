@@ -13,7 +13,7 @@ The material has been organized in an order that I would consider when performin
 
 2. **Initial Visual Analysis** - The initial physical inspection of a device includes gathering as much detail as possible about the device. All information is gathered without providing any power to the device.
 
-3. **Initial Software Analysis** - After a full profile of the physical aspects of the device have been performed, the next I like to do is check the runtime behavior of the device. Many times we can accomplish our goals without actually having to pop a cover or do deeper hardware analysis (i.e. "Just because you have a hammer, not everything is a nail.").
+3. **Overt Behavioral Analysis** - After a _good enough_ profile of the _visual_ physical aspects of the device have been performed, the next thing I like to do is check the runtime behavior of the device. Many times we can accomplish our goals without actually having to pop a cover or do deeper hardware analysis (i.e. "Just because you have a hammer, not everything is a nail.").
 
 4. **Hardware Analysis** - If you've exhausted your resources up until now, perhaps a deeper look at the hardware is in order. Memory extraction, IO analysis, and low level system control via JTAG are the name of the game here.
 

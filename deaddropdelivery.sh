@@ -11,5 +11,5 @@ fi
 
 popd
 
-echo "Successfully Compeleted."
+echo "Successfully Completed."
 exit 0
