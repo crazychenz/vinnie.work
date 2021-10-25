@@ -11,7 +11,7 @@ This document is not yet written.
 
 ## Overview
 
-Some systems provide a management port or serial access that is out side the influence of the network. The reason we want to connect to a serial port is so we can:
+Some systems provide a management port or serial access that is out side the influence of the network. The reason we want to connect to a serial port is so we can potentially:
 
 <!-- TODO: Consider describing the concept of a console. -->
 
@@ -31,7 +31,7 @@ A common looking interface for these serial ports are DB9 connectors that suppor
 
 ### Screen (Linux)
 
-[Screen](https://www.gnu.org/software/screen/) is probably the best all in one solution that you could use for Serial Communications. I don't often use it because it can conflict with my `tmux` configuration in weird way, but if you aren't a power linux shell user this is likely a good place for you to start. `screen` has the ability to save your session if you lose your network connection or accidentally close a terminal window. Screen is also transfer sessions from one connection to another if you wanted to move from say a laptop to another machine (given the UART connection remains stable).
+[Screen](https://www.gnu.org/software/screen/) is probably the best all in one solution that you could use for Serial Communications. I don't often use it because it can conflict with my `tmux` configuration in weird ways, but if you aren't a power linux shell user this is likely a good place for you to start. `screen` has the ability to save your session if you lose your network connection or accidentally close a terminal window. Screen can also transfer sessions from one connection to another if you wanted to move from say a laptop to another machine (given the UART connection remains stable).
 
 <!-- TODO: Show some screen basics -->
 

@@ -11,9 +11,14 @@ This document is not yet written.
 
 ## Overview
 
-This section is called runtime analysis, not because we intend to not plug anything into the device. Its more of a way to understand what the behavior of the device is with as much of the environment under our control as possible. If you have a development workstation or laptop plugged into the device with a network cable or UART console connection, no other part of the development workstation or the device should be plugged into the internet or other networks.
+This section is isolated runtime analysis, not because we intend to not plug anything into the device. Its more of a way to understand what the behavior of the device is with as much of the environment under our control as possible. If you have a development workstation or laptop plugged into the device with a network cable or UART console connection, no other part of the development workstation or the device should be plugged into the internet or other networks.
 
-There are several reasons for this, the first being that devices that we do not yet understand could call back to their vendor's for purposes of licensing or awareness of the network its plugged into (i.e. violating privacy). Devices can advertise their existence and readiness to serve to the whole network or internet, depending on the configuration of the device. I've experienced many junior engineers not properly isolating systems correctly when they plug their device into a internal LAN, resulting in the device serving DHCP to the entire network. This rookie mistake can prevent other systems performing work for other projects from receiving a network relevant DHCP lease (i.e. prevent other users from getting access to the network).
+There are several reasons for this:
+
+- Devices that we do not yet understand, could call back to their vendor's servers for purposes of licensing or awareness of the network its plugged into. (For some, this is a violation of privacy, for others is a convenience provided by the vendor.)
+- Devices can advertise their existence and readiness to serve to the whole network or internet, depending on the configuration of the device. I've experienced many junior engineers not properly isolating systems correctly when they plug their device into a internal LAN, resulting in the device serving DHCP to the entire network. This rookie mistake can prevent other systems performing work for other projects from receiving a network relevant DHCP lease (i.e. prevent other users from getting access to the network).
+
+While outside the scope of this material, using a managed switch with [VLANs](https://en.wikipedia.org/wiki/Virtual_LAN) configured is a nice way to initially isolate network traffic between a device and a development workstation without having to setup an entirely new network environment for the single device.
 
 Take away: Isolate your device until you fully understand the impact on the network and its general behavior.
 
@@ -52,26 +57,70 @@ Whether you know if you can connect or not, its useful to watch for potential ne
 
 If we're now at the point where we know our device has an IP and what our device calls out to when it powers on, we'll want to know what other kinds of things it responds to. Due to the nature of TCP, this can be as simple as looking for any ports that respond to a SYN with a SYN/ACK. This task is performed by `nmap`. Nmap is quite a few other scanning mechanisms that each have their own pros and cons, but the one I've usually gotten the most mileage from is the TCP port scanning:
 
-<!-- TODO: Show nmap port scans. -->
-
-## User Interfaces
-
-Once you've identified the relevant ports exposed by the device, you should identify relevant tools that you can use to inspect the applications running on those ports. During this step it can be helpful to understand the intended behavior and user experience for the device. It also is a good place to start taking notes on inputs of the device (e.g. firmware update fields, _potentially_ un-sanitized user input fields). If you can login to a command line prompt, is it restricted or a _real_ shell? If you have a _shell_ is it as a user or root? What other user's exist in `/etc/passwd`?
-
-Initially, accessing the various port could be as simple as a web browser or `curl` for ports 80 or 443. Sometimes using Chrome or Firefox developer tools can illuminate interfaces that aren't obvious from the rendered view. For port 161 or 162 you can use snmpget or snmpwalk (given you know the credentials). For ftp (port 21), ssh (port 22), telnet (port 23), you can use your favorite client to try to connect without credentials, with default credentials, or whatever credentials you may have.
-
-<!-- TODO: Show example of curl. -->
-
-<!-- TODO: Show example of SNMP walk. -->
-
-<!-- TODO: Show example of Chrome developer tools. -->
-
-<!-- TODO: Show example of restricted shell. -->
-
-<!-- TODO: Show example of root shell. -->
-
-Take away: Now that you have a _surface_ to work on, be resourceful in determining ways to work with that surface.
+![nmap port scan](./IsolatedRuntimeAnalysis/nmap-portscan.png)
 
 ## Wireshark
 
-<!-- TODO: Show some wireshark usage. -->
+![wireshark tcp packet selected](./IsolatedRuntimeAnalysis/ws-packet-selected.png)
+
+## Restricted User Functionality
+
+Once you have a good
+
+## Peripherals To Consider
+
+RJ45 Ethernet for Twisted Pair CAT5e/6 cabling has taken the world by storm, but it is by no means the only access port on target devices. If there are ports that look like they transfer electrons or light on the device under analysis, its part of the the attack surface for initial access. Below I've listed some of the more common areas of port access that I've seen.
+
+TODO: Show the RJ45 ethernet port.
+
+### Universal Serial Bus (USB)
+
+Universal Serial Bus (USB) requires no introduction. This protocol has been designed as a one size fits all serial bus for a large swath of end user peripherals. Many engineers have experienced thinking of the USB ecosystem from the "user of the peripheral" perspective. On the other hand, embedded systems are often found in those very same peripherals and require understanding the USB ecosystem from the "provider or the peripheral" perspective. To put it another way:
+
+- USB Hosts (typically has USB-A, USB-C) - These are the computers, laptops, netbooks, smart chargers that we plug our USB gadgets into (e.g. portable disk drives, printers, phones).
+- USB Gadgets (typically has USB-B, USB-Mini, USB-Micro, USB-C) - These are the peripherals that we plug into computers, laptops, netbooks, or smart chargers.
+
+On The Go (OTG) enabled devices are able to switch between USB host mode and USB gadget mode. For example, an Android phone can have a keyboard or audio equipment plugged into the USB port in USB host more. In USB gadget mode, the Android phone can become a storage device itself. OTG adapters typically convert a USB-micro to USB-A female.
+
+![usb ports](./IsolatedRuntimeAnalysis/USB-2-3-Types.png)
+
+### Serial Console
+
+The low level details of serial are mentioned later on, but suffice to say that serial ports are often used for logging, management, and maintenance of devices. They typically include functionality that allows end users to render their equipment inoperable, therefore, serial connections are often considered for trained personnel only.
+
+Serial connections can run only nearly any two or three wired connections. I've often seen 3.5" audio jacks used as serial connections on A/V equipment. Before TI graphing calculators used USB connections, they used 2.5" audio jack connections.
+
+TODO: Show the TI adapter. Show A/V equipment console connection.
+
+The most common over serial connections are referred to as DB9 or specially crimped RJ45/RJ11 connections. Older systems (from the 20th century) would use parallel ports (DB25) for serial connections as well.
+
+![db9 port](./IsolatedRuntimeAnalysis/db9.jpg)
+
+![db25 port](./IsolatedRuntimeAnalysis/parallel-port.jpg)
+
+![cisco serial cable](./IsolatedRuntimeAnalysis/cisco-serial2.png)
+
+Note: USB, Firewire, Lightning, and other general purpose serial interfaces will also support serial console interfaces, depending on the vendor's implementation.
+
+### Storage
+
+While mostly associated with more beefy machines, some smaller embedded systems are known to have storage ports (e.g. e-SATA, SCSI). It also goes without saying that USB mass storage is often an option.
+
+![esata port](./IsolatedRuntimeAnalysis/eSata.jpg)
+
+When a device automatically mounts storage, it may also automatically run code from such a drive. It could be run when inserted or during a boot up sequence. Regardless, don't discount storage peripherals as part of the isolated runtime analysis.
+
+### Misc
+
+Did you know HDMI has ethernet?
+
+> HDMI you may already know as High Definition Multimedia Interface. HEC is the
+> HDMI Ethernet Channel, and enables HDMI connected devices to access the internet
+> without each of them requiring separate Ethernet cables.
+
+![HDMI pinout](./IsolatedRuntimeAnalysis/hdmi-hec-pinout.jpg)
+
+## Resources
+
+- [XKCD Pinouts](https://galigio.org/2020/06/08/pinouts/)
+- [HDMI HEC Pinout](https://www.flickr.com/photos/jmarcd2/8091356838)

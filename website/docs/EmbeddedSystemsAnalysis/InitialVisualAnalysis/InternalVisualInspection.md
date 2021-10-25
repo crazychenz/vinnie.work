@@ -76,7 +76,7 @@ When simple eye sight doesn't work and you don't have a nice lab scope, I've fou
 
 ### Stickers
 
-At times you may find that an IC has a sticker or "holographic" certification image and whatnot. Always capture what you can from these, but kow that they sometimes hide details about the chip. Carefully peeling away the stickers can reveal identifiers that lead to datasheets and other relevant information. **Note:** Using any kind of adhesive remover is likely to remove painted markings from the chip.
+At times you may find that an IC has a sticker or "holographic" certification image and whatnot. Always capture what you can from these, but know that they sometimes hide details about the chip. Carefully peeling away the stickers can reveal identifiers that lead to datasheets and other relevant information. **Note:** Using any kind of adhesive remover is likely to remove painted markings from the chip.
 
 ![Chip with sticker](./Visual_Inspection/BIOS-with-sticker.jpg)
 
@@ -84,7 +84,7 @@ At times you may find that an IC has a sticker or "holographic" certification im
 
 ### Epoxy Blobs
 
-At times I've opened a device to find a bunch of traces going to a hill of epoxy. This is likely some IC that has been obscured. Extracting information from such a device is outside the scope of non-invasive visual inspection, but I would still recommend capturing that it exists. You may be able to determine its purpose and ID via software during the software analysis phase.
+At times I've opened a device to find a bunch of traces going to a *hill* of epoxy. This is likely some IC that has been obscured or an IC that has been adhered to the board without packaging to save costs. Extracting information from such a device is outside the scope of non-invasive visual inspection, but I would still recommend capturing that it exists. You may be able to determine its purpose and ID via software during the software analysis phase.
 
 ![Epoxied IC Without Package](./Visual_Inspection/pcb-epoxy-ic.jpg)
 
@@ -104,7 +104,7 @@ Sometimes not having the exact datasheet can be acceptable. Manufacturers will s
 
 When googling, its often wise to use search syntax to limit the types of results that show up.
 
-- Use site specific qualifiers, for example if you know you can trust datasheetpdf.com, perhaps use `site:datasheetpdf.com` in your google query. You can also negate untrustworthy sites by dropping a hypen in front of the entry, `-site:alldatasheetarchive.com`.
+- Use site specific qualifiers, for example if you know you can trust datasheetpdf.com, perhaps use `site:datasheetpdf.com` in your google query. You can also negate untrustworthy sites by prepending a hypen in front of the entry, `-site:alldatasheetarchive.com`.
 
 - Use file type qualifiers. More often than not, datasheets are presented as a PDF and therefore you can add `filetype:pdf` to your google queries so that only PDF files that google has crawled will show up. This also has the additional benefit of allowing you to grab a cached version of the file if the site is unavailable for what ever reason.
 
