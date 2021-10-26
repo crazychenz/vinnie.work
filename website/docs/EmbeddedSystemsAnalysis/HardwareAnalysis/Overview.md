@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Hardware Analysis - Overview
+title: Overview
 ---
 
 :::danger Incomplete

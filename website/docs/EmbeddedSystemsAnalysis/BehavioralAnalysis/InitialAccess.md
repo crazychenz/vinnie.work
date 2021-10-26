@@ -1,6 +1,6 @@
 ---
-sidebar_position: 4
-title: Device Access
+sidebar_position: 30
+title: Initial Access
 ---
 
 :::danger Incomplete
@@ -8,6 +8,8 @@ title: Device Access
 This document is not yet written.
 
 :::
+
+Assuming you've got a 
 
 ## User Interfaces
 
@@ -40,3 +42,15 @@ Some systems provide a management port or serial access that is out side the inf
 A common looking interface for these serial ports are DB9 connectors that support full UART protocol. Other connections that I've personally seen include RJ11 connectors, RJ45 connectors, and even 3.5" headphone jack connectors.
 
 <!-- TODO: Show serial connector pictures. -->
+
+## Resources
+
+https://u-boot.readthedocs.io/en/v2021.04/index.html
+https://mediawiki.compulab.com/w/index.php?title=U-Boot:_Quick_reference
+https://variwiki.com/index.php?title=U-Boot_features
+http://software-dl.ti.com/processor-sdk-linux/esd/docs/06_03_00_106/AM335X/linux/Foundational_Components_U-Boot.html
+http://www.denx.de/wiki/U-Boot/WebHome
+https://a-delacruz.github.io/ubuntu/rpi3-setup-64bit-uboot.html
+https://stackoverflow.com/questions/64014958/cant-get-u-boot-running-on-raspberry-pi-4b-what-are-the-absolute-necessities
+https://andrei.gherzan.ro/linux/uboot-on-rpi/
+https://www.linaro.org/downloads/
