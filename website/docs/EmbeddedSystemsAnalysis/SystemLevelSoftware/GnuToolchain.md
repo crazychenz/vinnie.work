@@ -218,6 +218,8 @@ To review, in the above operations, we walked through preprocessing source code,
 
 When you don't tell `gcc` to stop at a particular state, it implicitly will run through the linker phase. This phase is where a single ELF file is generated from an *entry point* and all of the symbols from the various object files. When putting object files on the command line, `gcc` treats them with some order sensitivity, therefore its advisable to list object files topologically from left to right (i.e. put the entry point object file or source file first and follow that with recursively dependent input files.) For example, if you have:
 
+<!-- TODO: Consider using a graphviz with .dot notation. -->
+
 - main.o - Depends on giant.o.
 - giant.o - Depends on fum.o.
 
@@ -257,7 +259,7 @@ The `*UND*` means that the symbol is undefined. Now lets link our `giant.o` with
   aarch64-buildroot-linux-musl-gcc -c giant.c
   ```
   
-3. Link `main.o` with `giant.o`. I've disabled all optimizations to prevent the compiler from eliminating the `fee()`, `fie()`, and `foe()` calls.:
+3. Link `main.o` with `giant.o`. I've disabled all optimizations (`-O0`) to prevent the compiler from eliminating the `fee()`, `fie()`, and `foe()` calls.:
   
   ```sh
   aarch64-buildroot-linux-musl-gcc -O0 -o main main.o giant.o
@@ -308,6 +310,105 @@ gcc -o main main.o -L/path/to/libs -lgiant
 ## The Generic Commands
 
 <!-- TODO: Describe cpp, cc, as, ld. -->
+
+## The Info Pages
+
+One of the most valuable *offline* resources for details about how to use the GNU toolchain is the gcc info pages. If you don't have the info pages for gcc installed, it'll automatically fall back to the man page (significantly less useful). Try running `info gcc` from the command line.
+
+If you see something like the following, you'll want to install the gcc documentation:
+
+```text
+GCC(1)                                           GNU                                          GCC(1)
+
+NAME
+       gcc - GNU project C and C++ compiler
+
+SYNOPSIS
+       gcc [-c|-S|-E] [-std=standard]
+           [-g] [-pg] [-Olevel]
+           [-Wwarn...] [-Wpedantic]
+           [-Idir...] [-Ldir...]
+           [-Dmacro[=defn]...] [-Umacro]
+           [-foption...] [-mmachine-option...]
+           [-o outfile] [@file] infile...
+
+       Only the most useful options are listed here; see below for the remainder.  g++ accepts
+       mostly the same options as gcc.
+
+DESCRIPTION
+       When you invoke GCC, it normally does preprocessing, compilation, assembly and linking.  The
+       "overall options" allow you to stop this process at an intermediate stage.  For example, the
+       -c option says not to run the linker.  Then the output consists of object files output by the
+       assembler.
+```
+
+In Ubuntu, you can install the documentation with the following command. Note: The assembler and linker documentation is provided by the `binutils-doc` package.:
+
+```sh
+apt-get install gcc-doc cpp-doc binutils-doc
+```
+
+After the correct info pages have been installed, you'll see something like:
+
+```text
+Next: G++ and GCC,  Up: (dir)
+
+Introduction
+************
+
+This manual documents how to use the GNU compilers, as well as their
+features and incompatibilities, and how to report bugs.  It corresponds
+to the compilers (Ubuntu 9.3.0-17ubuntu1~20.04) version 9.3.0.  The
+internals of the GNU compilers, including how to port them to new
+targets and some information about how to write front ends for new
+languages, are documented in a separate manual.  *Note Introduction:
+(x86_64-linux-gnu-gccint-9)Top.
+```
+
+Access the preprocessor documentation with:
+
+```sh
+info cpp
+```
+
+Access the compiler documentation with:
+
+```sh
+info gcc
+```
+
+Access the assembler documentation with:
+
+```sh
+info as
+```
+
+Access the linker documentation with:
+
+```sh
+info ld
+```
+
+### Info Pages Usage
+
+If you aren't familiar with info pages, they are basically terminal based hyper link documentation. You should be able to navigate with the arrow keys and `Enter` on links (things that are underlined).
+
+Some good to know hot keys are:
+
+- Space - Scroll Forward
+- Delete/Backspace - Scroll Backward
+- `n` - Next Node
+- `p` - Prev Node
+- `u` - Up A Node
+- `l` - Go Back
+- `t` - Top Node (i.e. Go Home)
+- `<` - First Node At Current Level
+- `>` - Last Node At Current Level
+- `g` - Goto Node (w/ tab completion)
+- `/` - Regex Search
+- `}` - Search Next
+- `{` - Search Previous
+- `q` - Quit
 
 ## Resources
 
