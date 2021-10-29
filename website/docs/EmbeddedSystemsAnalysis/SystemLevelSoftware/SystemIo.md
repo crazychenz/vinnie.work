@@ -132,7 +132,7 @@ For example, if we wanted to break down the address space of the watchdog contro
 This table lists offsets that are implicitly from the base address of the WDT device. Lets review:
 
 - The WDT base address is: `0xfffffd40`
-- The WDT Status Register offset is `0x00`
+- The WDT Status Register offset is `0x08`
 
 Therefore, the WDT base address plus the status register offset is the absolute address of the WDT status register.
 

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Application - Overview
+title: Overview
 ---
 
 :::danger Incomplete

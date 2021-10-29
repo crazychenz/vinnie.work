@@ -73,9 +73,11 @@ Synopsis:
     file.
 ```
 
-Notice the `[prefix]` before the `gcc` command. When running `gcc` by itself you are using what is known as the *host* compiler. If you intend to build for another target (with GNU), you need the cross-compiler prefix. Also worth mentioned, you can have cross-compilers that build for the same target as the host. The difference is that you can keep a consistent toolchain API and reproduce the exact same binary if targeting something like x86. In contrast, you may get different binaries from a *host* compilation from host to host or from distribution to distribution. In the following examples, I'll use the buildroot toolchain built in the [Build A Toolchain](./BuildingAToolchain.md) lab.
+Notice the `[prefix]` before the `gcc` command. When running `gcc` by itself you are using what is known as the *host* compiler. If you intend to build for another target (with GNU), you need the cross-compiler prefix. Also worth mentioning, you can have cross-compilers that build for the same target as the host. The difference is that you can keep a consistent toolchain API and reproduce the exact same binary if targeting something like x86. In contrast, you may get different binaries from a *host* compilation from host to host or from distribution to distribution. In the following examples, I'll use the buildroot toolchain built in the [Build A Toolchain](./BuildingAToolchain.md) lab.
 
-`gcc` can be instructed to halt at each of the build steps mentioned in the build process. Let's walk through what this looks like in a simple example.
+`gcc` can be instructed to halt at each of the build steps mentioned in the build process. Let's walk through what this looks like in a simple example. 
+
+Given:
 
 **giant.h**:
 

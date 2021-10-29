@@ -11,6 +11,8 @@ This document is not yet written.
 
 ## Overview
 
+![process firmware](./process-step4.png)
+
 - Analysis
   - Unpacking via sasquatch, binwalk, hex editors, file, etc. (1 hours)
   - IVT / EVT
