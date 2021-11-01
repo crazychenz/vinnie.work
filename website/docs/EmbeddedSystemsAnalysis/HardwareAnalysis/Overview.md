@@ -15,19 +15,25 @@ This document is not yet written.
 
 Total time ~ 1.5 days.
 
-- Practical EE - EE baseline.
-  - Voltage ... need to express reference voltage (15mins)
-  - Multimeter (15mins)
+- What is a digital signal?
+  - What is voltage?
+  - Reference Ground
+    - Multimeter
+  - Dirty Power
+  - Digital Signals
+  - Clock Signals
+
+- Serial Access
+  - UART, RS232/TTL
+  - Find UART, manually measure baud rate.
+  - Uboot, more logging and information.
+
+- Practical EE
   - Schematics - Analog Circuits (e.g. source, switch, load, drain) (15mins)
   - Prototyping (e.g. schematic -> breadboard) (60 mins)
   - Datasheets - Determine packaging, resets, inputs, voltage, current, temperature, timing (30mins)
-
-  - Digital Primer
-    - active high / active low, edge triggered / level triggered .... could be moved to SystemIO? (5mins)
-    - thresholds / bouncing (5mins)
-    - digital signal reality (5mins)
-    - Pull Ups / Pull Downs  ... useful for white wiring (15mins)
-    - Controlling LED ... useful for debugging (15min)
+  - Pull Ups / Pull Downs  ... useful for white wiring (15mins)
+  - Controlling LED ... useful for debugging (15min)
 
 - Analyzing Logical Circuits
   - Logical Components (30mins)
@@ -50,14 +56,8 @@ Total time ~ 1.5 days.
       - Flash, NVRAM
     - Addressing Breakdown - chip select, rows/depth, columns/width
     - Calculating Memory Layouts
-
-- Serial Access (60mins)
-  - UART, RS232/TTL
-  - Find UART, manually measure baud rate.
-  - Uboot, more logging and information.
-
-- SPI/I2C Analysis (2 hours) ??  ... does one *really* need to know I2C? (60mins)
-  - In Circuit Analysis / Extraction
+    - SPI (60mins)
+      - In Circuit Analysis / Extraction  
 
 - JTAG Access - More System Info via IDCODEs, Analyze Kernel/Booter, Memory Access (NOR/NAND) (120 mins)
   - WatchDog Timers
@@ -66,6 +66,3 @@ Total time ~ 1.5 days.
     - More info at [Stackoverflow](https://raspberrypi.stackexchange.com/questions/108080/watchdog-on-the-rpi4)
   - JTAGulator / BlueTag
   - OpenOCD / FTDI MiniModule (Pico?)
-
-
-

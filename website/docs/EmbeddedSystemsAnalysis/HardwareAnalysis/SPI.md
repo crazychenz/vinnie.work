@@ -1,6 +1,6 @@
 ---
-sidebar_position: 8
-title: OpenOCD
+sidebar_position: 7.1
+title: "SPI: Serial Peripheral Interface"
 ---
 
 :::danger Incomplete
