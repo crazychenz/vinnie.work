@@ -70,6 +70,9 @@ In the above screenshot, channel `D5` is the Rx pin of the UART. When we measure
 
 <!-- TODO: Show some fruits of serial access labor. -->
 
+## Serial Terminal
+## Booter Output
+
 ## Resources
 
 https://en.wikipedia.org/wiki/RS-232

@@ -8,3 +8,7 @@ title: "SPI: Serial Peripheral Interface"
 This document is not yet written.
 
 :::
+
+## Resources
+
+https://www.rapid7.com/resources/wbw-memory-extraction-from-spi-flash-devices/

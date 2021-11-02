@@ -22,107 +22,92 @@ This document is not yet written.
     - Block diagrams (for architecture) (15mins)
 ```
 
+When studying datasheets to understand digital logic, there are often logical schematics that describe the actual design of the logic of the circuits. In a previous section, we looked at the SN54LS164 Serial To Parallel Converter. Its schematic was:
 
-<!-- ! Everything below is scratch and should be re-thought. -->
+![picture of logic schematic for sn54ls164](./DigitalLogic/sn54ls164-digital-logic-horiz.png)
 
-## Digital Logic
+## Symbols
 
-Yada yada yada - We could talk truth tables and states and laws of X, but really we need to know logic symbols, how they work and how to interpret them from datahseet diagrams.
+Digital logic symbols represent one or some combination of boolean logic. Here are some common examples:
 
+![logic symbols](./PracticalEE/logical-511x195.png)
 
-## Flip Flops
+So for example, if you wanted a signal to perform `(A and B) or C`, you may do something like:
 
-- What is a flip flop? Component that stores a bit. (Comment on difference between a latch and a flip flop?)
+![A And B or C](./DigitalLogic/AAndBOrC.png)
 
-- Active high vs active low
+In contrast to software, you must not think of each of these operations as being broken down an performed in steps. They are combinatorial, meaning that all of the boolean logic is performed instantaneously. 
 
-- Level triggered vs edge triggered (page 34)
-
-## Clock
-
-discrete steps of time (not wall clock!)
-
-there can be multiple clocks in a single system, labeled clock domains
-
-## RAM  / Memory
-
-- A RAM cell will produce data when asked, and only when asked.
-
-- DRAM - (leaks) Grid of capacitors that require periodic recharging. Smaller footprint but lots of control logic.
-- SRAM - (stable) Grid of flip flops. No recharge but uses more transitors and has larger footprint.
-
-### Addressing Memory (page 37-38)
-
-- Show demux with chip select, row and column.
-
-## Logic Types
+<!-- ## Logic Types
 
 Combinatorial Logic - All in parallel, no sense of time.
-Sequential Logic - Processed based on state and time. State means the system "remembers" something.
+Sequential Logic - Processed based on state and time. State means the system "remembers" something. -->
 
 
-## Concept Of A Bus
+When a small bubble is placed in front of one of the symbols, the result becomes inverted. For example, you can do something like `~(A and B) or C` with:
 
-- Serial vs Parallel
+![Not A And B or C](./DigitalLogic/NotAAndBOrC.png)
+
+### Truth Tables
+
+To table out the input and outputs of a logic diagram, you can use a truth table. The following truth table represents our `~(A and B) or C` diagram.
+
+| A | B | C | D |
+| - | - | - | - |
+| F | F | F | T |
+| F | F | T | T |
+| F | T | F | F |
+| F | T | T | F |
+| T | F | F | F |
+| T | F | T | F |
+| T | T | F | F |
+| T | T | T | F |
+
+Note: An issue with using truth tables for everything is that they can very quickly become exponentially large.
+
+### More Ways Than One
+
+One nice thing about boolean logic is that you can refactor the equations so that they become more efficient. You can also refactor to get the same output with completely different operators. For example, you can replace an AND gate with two NAND gates.
+
+An interesting property of boolean logic is DeMorgan's Law:
+
+```text
+a' or b' = (a and b)'
+a' and b' = (a or b)'
+```
+
+As an exercise:
+
+- Make an AND with a NAND. Answer: `(ab)''`
+- Make an OR gate from a NAND. Answer: `((aa)'(bb)')'`
+- Make an AND with a NOR. Answer: `(a+a)'+(b+b)')'`
+- Make an OR with a NOR. Answer: `(a+b)''`
+- Make an XOR with AND/OR/NOT, then convert all to NAND gates. Answer: `((a'b)'(ab')')'`
+
+<!-- TODO: Mention that there can be multiple inputs per gate. -->
+
+## Multiplexing
+
+One thing that is done often with digital boolean logic are multiplexers. This is a way to use a control signal to indicate which data signals to allow through the gates. The following is an example of a multiplexer symbol you might see in a schematic:
+
+![multiplexer symbol](./DigitalLogic/multiplexer.png)
+
+Inside that yellow trapezoid is a series of gates that allow either signal `A` or `B` to pass through to `Z` depending on the value of `S0`. Keep in mind, the above multiplexer is about as simple as they come, the multiplexer can be implemented to accept as many input signals, output signals, or control/select signals as the application requires. The key take away is that when we see a trapezoid in your diagrams, its a multiplexer and you should be able to identify its inputs (long side), its outputs (short side) and its control signals (slanted side, usually top side)
+
+## Bus Indicators
+
+When communicating over serial, we have many single bits transmitted all in turn over the same transmission wire. When communicating in parallel, we're putting each bit of a value on an array of wires at the same time. This means that for a 32bit machine, we could have 32 wires going into a component (e.g. multiplexer). To prevent from making such a schematic diagram unreadable we often simplify the schematic with bus notation. Here are some examples:
+
+![bus notation](./DigitalLogic/busnotation.png)
+
+<!-- TODO: Discuss uses of a bus. -->
+
+### Common Bus Use Cases
 
 - Peripheral Bus - CPU to peripherals.
 - System Bus - CPU to memory.
 - Local Bus - Peripherals connected to memory.
 
-- Expressing Bus Expansion (page 29)
+<!-- TODO: As an exercise, identify some of the buses on a board from visual inspection. -->
 
-- Identify components with bus connections from picture (front and back?)
-
-## Block Diagrams
-
-
-
-## State Machines
-
-<!-- TODO: Cover state machines with JTAG. -->
-
-Designing software as a state machine?
-
-## Design Memory Architecture
-
-Boot code
-Main executable
-File Storage
-Working Memory
-
-### Properties
-Depth - number of storage locations
-Width - size of each storage location = number of data lines out
-N = number of address lines = Depth = 2^N where N = log2(depth)
-
-Example:
-
-Depth = 1024
-N = log2(1024) = 10
-Width = 8
-Size = 1024 x 8 = 8192 bits = 1024 bytes = 1kB
-
-### Pin Outs
-
-ROM:
-
-A0 - A9 - Address lines
-D0 - D7 - Data lines
-CS - Chip Select
-OE - Output Enable
-
-RAM:
-
-A0-A9
-D0-D7
-CS - Chip select
-R/W~ - Read / Write
-
-### Memory Mapping
-
-Decoder Circuitry (MMU)
-
-Memory Mapping (page 47)
-
-Memory Ghosting
-
+https://en.wikipedia.org/wiki/Multiplexer
