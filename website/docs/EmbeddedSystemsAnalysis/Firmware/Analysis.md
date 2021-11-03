@@ -1,6 +1,6 @@
 ---
-sidebar_position: 2
-title: Analysis
+sidebar_position: 4
+title: 🔍 Analysis
 ---
 
 :::danger Incomplete

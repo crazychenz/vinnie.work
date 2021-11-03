@@ -1,6 +1,6 @@
 ---
 sidebar_position: 41
-title: "Lab: Building A Toolchain"
+title: '🛠️ Lab: Building A Toolchain'
 ---
 
 :::danger Incomplete
@@ -37,7 +37,7 @@ In exceptional situations you may find the desire to build cross compilers for m
 
 When working with GNU cross compilers, it is rare for the cross-compilation toolchain to be the only toolchain on the system. Therefore, to distinguish between the different GNU toolchains, each toolchain is usually prefixed with a set of terms to indicate its intended target. For example, when building a toolchain from buildroot (like we'll do in the following sections), you'll find that tools like g++, gcc, and ld are prefixed with the string `aarch64-buildroot-linux-musl-`. Note: These terms (roughly) match the key attributes mentioned above.
 
-It is important to know these prefixes for several reasons. 
+It is important to know these prefixes for several reasons.
 
 - The first is that if you just use the standard `gcc` command, you may find yourself loading `x86` binary code into a system that **is not** `x86`. This often leads to many contorted faces while figuring out where things went wrong and where to begin troubleshooting.
 
@@ -64,7 +64,7 @@ sudo apt-get install build-essential libncurses-dev libssl-dev
 
 # Download, extract, and initialize buildroot for configuration.
 wget https://buildroot.org/downloads/buildroot-2021.08.1.tar.bz2
-tar -xf buildroot-2021.08.1.tar.bz2 
+tar -xf buildroot-2021.08.1.tar.bz2
 cd buildroot-2021.08.1/
 make defconfig
 make menuconfig
@@ -89,7 +89,7 @@ Notice _all_ options.
     Floating point strategy (FP-ARMv8)  --->
 ```
 
-**Toolchain** *Options:*
+**Toolchain** _Options:_
 
 Notice the `Host GDB Options` section.
 
@@ -124,7 +124,7 @@ Notice the `Host GDB Options` section.
 ()  Target linker options
 ```
 
-*Linux* **Kernel** *Options:*
+_Linux_ **Kernel** _Options:_
 
 Notice the `Kernel configuration` option.
 
@@ -181,7 +181,7 @@ Notice the `Enable compiler cache` option. We enable this so that when we want t
 
 _Building buildroot can take hours_, but take care to check in about every 15 minutes because you never know when some compiler error or warning will pop up and halt the whole build process. It's also worth noting that this build will likely take up over 12 GiB of hard disk space. We're only going to build the toolchain. For my setup, this took ~4 minutes to build with all packages pre-downloaded and ~4.5GB of space.
 
-For those that are stuck behind enterprise firewalls or on isolated networks, you can run `make source` at this point to download all of the packages needed for the build. Once you have the packages downloaded, simply copy the `.config` and `dl` folder to transfer media for an *offline* build.
+For those that are stuck behind enterprise firewalls or on isolated networks, you can run `make source` at this point to download all of the packages needed for the build. Once you have the packages downloaded, simply copy the `.config` and `dl` folder to transfer media for an _offline_ build.
 
 Assuming all packages have been downloaded and the `.config` is accurate, build a toolchain by running (Note: While optional, the `-j8` cut my build time in half.):
 

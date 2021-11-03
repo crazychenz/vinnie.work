@@ -1,6 +1,6 @@
 ---
 sidebar_position: 30
-title: Initial Access
+title: 🔓 Initial Access
 ---
 
 :::danger Incomplete
@@ -9,7 +9,7 @@ This document is not yet written.
 
 :::
 
-Assuming you've got a 
+Assuming you've got a
 
 ## User Interfaces
 

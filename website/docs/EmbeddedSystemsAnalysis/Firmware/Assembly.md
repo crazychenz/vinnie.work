@@ -1,6 +1,6 @@
 ---
-sidebar_position: 3
-title: Assembly
+sidebar_position: 5
+title: 📐 Assembly
 ---
 
 :::danger Incomplete

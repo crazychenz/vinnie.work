@@ -1,6 +1,6 @@
 ---
 sidebar_position: 20
-title: Isolated Runtime Analysis
+title: 🏃 Isolated Runtime Analysis
 ---
 
 :::danger Incomplete

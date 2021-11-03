@@ -1,6 +1,6 @@
 ---
 sidebar_position: 8
-title: "JTAG: IEEE 1149.1-1990"
+title: '🏷️ JTAG: IEEE 1149.1-1990'
 ---
 
 :::danger Incomplete

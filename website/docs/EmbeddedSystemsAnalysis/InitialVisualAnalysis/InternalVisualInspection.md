@@ -1,6 +1,6 @@
 ---
 sidebar_position: 5
-title: Internal Visual Inspection
+title: 🔬 Internal Visual Inspection
 ---
 
 ## Overview
@@ -84,7 +84,7 @@ At times you may find that an IC has a sticker or "holographic" certification im
 
 ### Epoxy Blobs
 
-At times I've opened a device to find a bunch of traces going to a *hill* of epoxy. This is likely some IC that has been obscured or an IC that has been adhered to the board without packaging to save costs. Extracting information from such a device is outside the scope of non-invasive visual inspection, but I would still recommend capturing that it exists. You may be able to determine its purpose and ID via software during the software analysis phase.
+At times I've opened a device to find a bunch of traces going to a _hill_ of epoxy. This is likely some IC that has been obscured or an IC that has been adhered to the board without packaging to save costs. Extracting information from such a device is outside the scope of non-invasive visual inspection, but I would still recommend capturing that it exists. You may be able to determine its purpose and ID via software during the software analysis phase.
 
 ![Epoxied IC Without Package](./Visual_Inspection/pcb-epoxy-ic.jpg)
 

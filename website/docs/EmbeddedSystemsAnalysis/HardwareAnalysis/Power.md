@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Power
+title: 🔌 Power 🔋
 ---
 
 :::danger Incomplete
@@ -11,7 +11,7 @@ This document is not yet written.
 
 ## What is voltage?
 
-Before we jump into *What is a digital signal?*, lets review *What is voltage?* Conceptually, voltage is a pressure that drives electrons/current through a circuit. The amount of current being pushed through the circuit is measured as the amperage or amps. Often in digital circuits the amperage is measured in milliamps or mA.
+Before we jump into _What is a digital signal?_, lets review _What is voltage?_ Conceptually, voltage is a pressure that drives electrons/current through a circuit. The amount of current being pushed through the circuit is measured as the amperage or amps. Often in digital circuits the amperage is measured in milliamps or mA.
 
 There are two primary voltage types:
 
@@ -23,7 +23,7 @@ There are two primary voltage types:
 
 <!-- TODO: This paragraph needs help talking about "potential difference" and "reference ground". -->
 
-Voltage is also referred to as the *potential difference*. It is the difference of electrical potential between two points in a circuit (i.e. the difference between the voltage source and its ground). In other words, the voltage that a component is processing is the difference between its input voltage and ground pins.
+Voltage is also referred to as the _potential difference_. It is the difference of electrical potential between two points in a circuit (i.e. the difference between the voltage source and its ground). In other words, the voltage that a component is processing is the difference between its input voltage and ground pins.
 
 Printed circuit boards (PCBs) are composed of multiple layers. One of these layers is a ground layer so that components on the board only need to connect a via to this layer to establish a connection with ground.
 
@@ -42,7 +42,7 @@ Multimeters can measure a variety of things:
 - AC Voltage - Alternating current moves in waves. Its commonly used for delivering current over long distances due to its efficiency. The wall outlet is AC.
 - DC Voltage - Direct current is constant and is used extensively in digital circuits.
 - Ohms (i.e. resistance) - You can use measure resistance with this function. It can be handy for checking continuity within a circuit or measuring a resistor when I don't want to look up the ohms from the markings on the components.
-- Continuity - Typically makes an audible *beep* when resistance is zero across the leads. Note: Its often safer to measure resistance manually to determine continuity. This is because you could be connected higher voltages to disconnected circuits and inadvertently overdrive a component.
+- Continuity - Typically makes an audible _beep_ when resistance is zero across the leads. Note: Its often safer to measure resistance manually to determine continuity. This is because you could be connected higher voltages to disconnected circuits and inadvertently overdrive a component.
 
 The multimeter typically has 3 connections. By convention the black lead is used as the negative or ground. The lead labeled V or with an Ω (omega/ohm symbol) and usually colored red is used for the positive lines for measuring voltages and resistance.
 
@@ -52,7 +52,7 @@ If you want to measure the current of a circuit, the circuit itself must go thro
 
 ## Dirty Power
 
-Nearly all digital circuits use DC. Digital products that source AC power usually convert the AC to DC with a power supply that does a *good enough* job at keeping voltage levels constant. What I mean by *good enough* is that while digital circuits aim for clean constant voltage levels, they live in an analog world where nothing is perfect. Therefore the voltage levels in a DC circuit usually output a non-zero amount of noise or ripple with them. Cheap wall warts can generate whats known as *dirty power*. This dirty power is a power source that has a large amount of noise and ripple.
+Nearly all digital circuits use DC. Digital products that source AC power usually convert the AC to DC with a power supply that does a _good enough_ job at keeping voltage levels constant. What I mean by _good enough_ is that while digital circuits aim for clean constant voltage levels, they live in an analog world where nothing is perfect. Therefore the voltage levels in a DC circuit usually output a non-zero amount of noise or ripple with them. Cheap wall warts can generate whats known as _dirty power_. This dirty power is a power source that has a large amount of noise and ripple.
 
 From Ken Shirriff's blog, here are two images of different 5v USB chargers:
 
@@ -64,6 +64,6 @@ From Ken Shirriff's blog, here are two images of different 5v USB chargers:
 
   ![iphone bad power](./DigitalSignals/iphone-bad.png)
 
-Notice that the first has what we might interpret as *clean power* and yet it still shows noise on the line. In contrast, the other has very *dirty power*. While both of these USB chargers exists in identical cases, they are in fact completely different designs and have completely different manufacturing properties. The latter could actually be considered a safety hazard.
+Notice that the first has what we might interpret as _clean power_ and yet it still shows noise on the line. In contrast, the other has very _dirty power_. While both of these USB chargers exists in identical cases, they are in fact completely different designs and have completely different manufacturing properties. The latter could actually be considered a safety hazard.
 
 <!-- TODO: Explain effects of dirty power. -->

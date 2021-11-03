@@ -1,6 +1,6 @@
 ---
 sidebar_position: 50
-title: System IO
+title: 🇮🇴 System IO
 ---
 
 :::danger Incomplete
@@ -12,6 +12,7 @@ This document is not yet written.
 ## Objectives To Describe
 
 - Review what we know:
+
   - We have an understanding of our target device's behavior.
   - We have a toolchain to create tools for our target device.
 
@@ -33,7 +34,7 @@ To explain system IO and physical memory, I find its best to describe it from th
 
 ![memory management diagram](./SystemIo/mmu-diagram.png)
 
-In the above image you've got 2 programs loaded into memory, Program A and Program B. They are both loaded into virtual memory. These programs *think* they are alone within the entire address space. In reality, the data loaded at the addresses from the program's perspective are loaded into completely different addresses in the actual memory circuitry. This is accomplished through a component referred to as the memory management unit (MMU). Note: I will refer to memory managed memory as virtual memory, other documentation may refer to it as protected memory.
+In the above image you've got 2 programs loaded into memory, Program A and Program B. They are both loaded into virtual memory. These programs _think_ they are alone within the entire address space. In reality, the data loaded at the addresses from the program's perspective are loaded into completely different addresses in the actual memory circuitry. This is accomplished through a component referred to as the memory management unit (MMU). Note: I will refer to memory managed memory as virtual memory, other documentation may refer to it as protected memory.
 
 The memory management unit is exposed to the CPU on one side and all of the components mapped into physical memory on the other. When the CPU (i.e. program) wants to access any component associated with a physical memory address, it goes through the MMU to access it. At this point, its worth noting that volatile memory that is used by the program for the stack and heap runs in RAM. **RAM is a component.** It just so happens that its so ubiquitous for the operation of software that we don't often think of RAM as a peripheral that is mapped into our address space.
 
@@ -69,7 +70,7 @@ When calling `mmap()`, you provide:
 - The file descriptor of `/dev/mem` (`fd`).
 - The base address of the physical address (`offset`, `0x1000` aligned)
 
-On success, `mmap()` returns a base address (or *volatile* pointer) that maps to the requested physical memory base address and all accesses must occur within the size of the request. Accessing memory outside of current MMU mapped memory will cause a *page fault*. This manifests as a segmentation fault in user space.
+On success, `mmap()` returns a base address (or _volatile_ pointer) that maps to the requested physical memory base address and all accesses must occur within the size of the request. Accessing memory outside of current MMU mapped memory will cause a _page fault_. This manifests as a segmentation fault in user space.
 
 Notice in the diagram above that Program A and Program B are running from the same memory addresses in virtual memory. This is because when the kernel switches between the programs, it also switches the page table loaded into the MMU.
 
@@ -106,14 +107,14 @@ int main()
   {
     printf("%08x [%02d] : %08x\n", (uint32_t)(base + i), i, base[i]);
   }
-  
+
   return 0;
 }
 ```
 
 ## Memory Map
 
-Now that we know that we can map physical memory into virtual address space and physical memory points to peripherals and components in the system: *What are all the physical memory addresses that point to components or peripherals?* This question is answered by the system's memory map.
+Now that we know that we can map physical memory into virtual address space and physical memory points to peripherals and components in the system: _What are all the physical memory addresses that point to components or peripherals?_ This question is answered by the system's memory map.
 
 In many cases you don't get a memory map. You'll often be required to reverse engineer the memory map by looking at existing drivers in harvested firmware. You can sometimes fire up a customer kernel or boot loader and have it scan for peripherals to locate unused address space. This depends on knowing the base addresses of the bus interfaces.
 
@@ -154,6 +155,13 @@ The base address is: `0x7e204000`. Therefore the `CLK` register address would be
 
 <!-- TODO: Describe block diagrams in hardware analysis. -->
 
+## Interrupts
+
+<!-- TODO: Write this out. -->
+
+From software: SWI, opcodes, illegal operations.
+From hardware: Serial ports, interrupt inputs, reset, power on reset, watchdog.
+
 ## IO Ports
 
 For those folks that are familiar with Intel architectures may have experience with something called IO Ports. Less common in modern Intel, the x86 architecture originally intended to separate system IO from standard memory access. Therefore, IO ports were how software would communicate with the x86 IO bus.
@@ -164,7 +172,7 @@ On linux, this bus is accessed from user space via the `/dev/port` device file. 
 mknod -m 660 /dev/port c 1 4
 ```
 
-You can see a list of IO Ports as defined by *Wim Osterholt*: [XT, AT, and PS/2 I/O port addresses](./SystemIo/intel-io-port-list.txt)
+You can see a list of IO Ports as defined by _Wim Osterholt_: [XT, AT, and PS/2 I/O port addresses](./SystemIo/intel-io-port-list.txt)
 
 ## Takeaways
 

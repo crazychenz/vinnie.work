@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Prereq: Disassembly
+# ⚒️ Prereq: Disassembly
 
 ## Consider Approach and Risks
 

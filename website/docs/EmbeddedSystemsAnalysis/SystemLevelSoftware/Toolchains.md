@@ -1,6 +1,6 @@
 ---
 sidebar_position: 40
-title: Toolchains
+title: 🧰 Toolchains
 ---
 
 :::danger Incomplete
@@ -17,11 +17,11 @@ In practice, a toolchain is a set of associated tools for the building of softwa
 
 ## Common Toolchains
 
-*Note:* Before we begin to go over the various toolchains, I'll preface by saying that I intend to use the GNU toolchain as the primary tool for examples. From time to time I may show differences between GNU and Clang/LLVM.
+_Note:_ Before we begin to go over the various toolchains, I'll preface by saying that I intend to use the GNU toolchain as the primary tool for examples. From time to time I may show differences between GNU and Clang/LLVM.
 
 ### GNU - The Gold Standard?
 
-Everything I am about to discuss is based on my knowledge of how to build images with the GNU toolchain. While commonly associated with *nix systems, a GNU toolchain exist for nearly every system. In Windows its mingw or cygwin, and in Mac OS X it can be installed with `homebrew`. This gives all developers with different platforms the ability to construct firmware and tools to their heart's desire.
+Everything I am about to discuss is based on my knowledge of how to build images with the GNU toolchain. While commonly associated with \*nix systems, a GNU toolchain exist for nearly every system. In Windows its mingw or cygwin, and in Mac OS X it can be installed with `homebrew`. This gives all developers with different platforms the ability to construct firmware and tools to their heart's desire.
 
 The GNU Compiler Collection has been completely free and released since 1987 and its functionality has become the defacto gold standard for nearly all POSIX compilers. Even LLVM/Clang (which we'll talk about in a moment) was built incrementally so that any functionality it doesn't provide falls back to an appropriate GNU toolchain.
 
@@ -29,7 +29,7 @@ The GNU Compiler Collection has been completely free and released since 1987 and
 
 Microsoft has always provided their own toolchains for their environment. These toolchains provide user space functionality similar to GNU toolchain user space functionality. I highly recommend using the right tool for the job and therefore Visual Studio and MSVC is likely to be the best tool to construct a purely Windows product.
 
-That said, MSVC has some hard limitations in regards to firmware and low level applications... *It can't do it.* The bottom line is that MSVC doesn't allow you to link your code so it assumes its running at address zero. For this functionality you are required to use another toolchain (e.g. LLVM). *Luckily, Visual Studio treats LLVM as a first class citizen.*
+That said, MSVC has some hard limitations in regards to firmware and low level applications... _It can't do it._ The bottom line is that MSVC doesn't allow you to link your code so it assumes its running at address zero. For this functionality you are required to use another toolchain (e.g. LLVM). _Luckily, Visual Studio treats LLVM as a first class citizen._
 
 ### LLVM (Clang and LLD)
 
@@ -41,19 +41,19 @@ LLVM is the low level virtual machine that is a language agnostic framework for 
 
 So the million dollar question: **What is the difference between GNU and LLVM?**
 
-* GNU is the gold standard for toolchains and LLVM/Clang *still* depends on it in some edge cases.
+- GNU is the gold standard for toolchains and LLVM/Clang _still_ depends on it in some edge cases.
 
-* LLVM's language agnostic architecture is able to support building for multiple architectures out of the box. In contrast, you usually need a new GNU compiler installation for each processor family.
+- LLVM's language agnostic architecture is able to support building for multiple architectures out of the box. In contrast, you usually need a new GNU compiler installation for each processor family.
 
-* GNU has grown organically since the late 80s, in contrast LLVM has taken advantage of the opportunity to use GNU lessons learned to create a completely language agnostic *low level virtual machine* that simplifies optimization for all supported languages and architectures.
+- GNU has grown organically since the late 80s, in contrast LLVM has taken advantage of the opportunity to use GNU lessons learned to create a completely language agnostic _low level virtual machine_ that simplifies optimization for all supported languages and architectures.
 
-* *Note:* Both (modern) GNU and LLVM used Single Static Assignment (SSA). Many sites advertise SSA as the difference between GNU and Clang. *This is untrue.*
+- _Note:_ Both (modern) GNU and LLVM used Single Static Assignment (SSA). Many sites advertise SSA as the difference between GNU and Clang. _This is untrue._
 
 ### Other Notable Mentions
 
-* [Zig CC](https://andrewkelley.me/post/zig-cc-powerful-drop-in-replacement-gcc-clang.html) - Zig is a new systems level language with complete C-ABI compatibility. It comes with a LLVM based C compiler that is able to build standard C code for multiple platforms.
+- [Zig CC](https://andrewkelley.me/post/zig-cc-powerful-drop-in-replacement-gcc-clang.html) - Zig is a new systems level language with complete C-ABI compatibility. It comes with a LLVM based C compiler that is able to build standard C code for multiple platforms.
 
-* [Keystone (The Ultimate Assembler)](https://www.keystone-engine.org/) - Keystone is a lightweight multi-platform, multi-architecture assembler framework. (Based on LLVM).
+- [Keystone (The Ultimate Assembler)](https://www.keystone-engine.org/) - Keystone is a lightweight multi-platform, multi-architecture assembler framework. (Based on LLVM).
 
 ## Key Attributes
 
@@ -65,11 +65,11 @@ The first and most important thing to know about a system you plan to work on is
 
 Here are some architectural definitions and specifications:
 
-* [ARMv8-A](https://developer.arm.com/documentation/den0024/a/) - Developed and Licensed by Arm Holdings
-* [MIPS](https://www.mips.com/products/) - Developed by MIPS Technologies
-* [AVR](https://www.microchip.com/design-centers/8-bit/avr-mcus) - Developed by Atmel
-* [x86/64](https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.tml#combined) - Developed by Intel
-* PowerPC - Developed by Apple, IBM, and Motorola, the PowerPC. [PowerOpen Standards](https://www.sourceware.org/pub/binutils/ppc-docs/ppc-poweropen/) | [PowerPC Spec](http://ps-2.kev009.com/solinno.co.uk/7043-140/files/docs/PReP/srp1_101.pdf)
+- [ARMv8-A](https://developer.arm.com/documentation/den0024/a/) - Developed and Licensed by Arm Holdings
+- [MIPS](https://www.mips.com/products/) - Developed by MIPS Technologies
+- [AVR](https://www.microchip.com/design-centers/8-bit/avr-mcus) - Developed by Atmel
+- [x86/64](https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.tml#combined) - Developed by Intel
+- PowerPC - Developed by Apple, IBM, and Motorola, the PowerPC. [PowerOpen Standards](https://www.sourceware.org/pub/binutils/ppc-docs/ppc-poweropen/) | [PowerPC Spec](http://ps-2.kev009.com/solinno.co.uk/7043-140/files/docs/PReP/srp1_101.pdf)
 
 Common architectures (e.g. x86, arm, arm64, ppc, mips, and avr) all have different variants that each come with their own feature sets and constraints. These are usually described in great detail in the _technical specifications and guides_ distributed by the manufacturer of the part. One example of this is the micro controller unit (MCU) by Broadcom called the [BCM2711](https://datasheets.raspberrypi.org/bcm2711/bcm2711-peripherals.pdf). The BCM2711 is an ARMv8-A, but its also a 64 bit multi core system with a specific set of built in peripherals and a register memory map for utilizing all the peripherals within the SoC chip.
 
@@ -79,7 +79,7 @@ A concept new to aspiring embedded systems developers is the idea of no operatin
 
 ### EABI (Embedded Application Binary Interface)
 
-The *embedded application binary interface* (EABI) is a set of standards about how software binaries are structured and formatted. This standard allows the interoperability of different compilers, assemblers, and linkers from different languages on embedded systems. EABI is **not** required to do embedded systems development, but its a nice attribute of what ever compiler tool suite you use so you know you are meeting some minimal conventions.
+The _embedded application binary interface_ (EABI) is a set of standards about how software binaries are structured and formatted. This standard allows the interoperability of different compilers, assemblers, and linkers from different languages on embedded systems. EABI is **not** required to do embedded systems development, but its a nice attribute of what ever compiler tool suite you use so you know you are meeting some minimal conventions.
 
 You'll often find that pre-built and packaged cross-compilers from major Linux distribution package management systems have the term `eabi` in their package names and binary prefixes.
 
@@ -99,4 +99,4 @@ Embedded systems can be built from scratch, but this is really only something we
 - [OpenWrt/LEDE](https://openwrt.org/) | [DD-WRT](https://dd-wrt.com/)
 - [Buildroot](https://buildroot.org/) | [Busybox](https://busybox.net/)
 
-Note: If you have an abundance of time and curiosity, a *fun* exercise is to run through the [Linux From Scratch](http://www.linuxfromscratch.org/) (LFS) process to build a complete buildroot like environment manually.
+Note: If you have an abundance of time and curiosity, a _fun_ exercise is to run through the [Linux From Scratch](http://www.linuxfromscratch.org/) (LFS) process to build a complete buildroot like environment manually.
