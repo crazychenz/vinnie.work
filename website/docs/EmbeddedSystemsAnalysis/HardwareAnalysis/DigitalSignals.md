@@ -9,19 +9,19 @@ This document is not yet written.
 
 :::
 
-Ok, so *What is a digital signal?*. A digital signal is a signal that is usually represented by a high value or low value for a given amount of time. Here is a conceptual view of what a digital signal could look like. The vertical axis is the voltage and the horizontal axis is the time.:
+Ok, so _What is a digital signal?_. A digital signal is a signal that is usually represented by a high value or low value for a given amount of time. Here is a conceptual view of what a digital signal could look like. The vertical axis is the voltage and the horizontal axis is the time.:
 
 ![digital signal with noise](./DigitalSignals/digital-signal-noise-512x315.png)
 
-Because of the noise in the voltage level there is usually defined thresholds that determine what is considered *high* and what is considered *low*. Note: I refer to the values as high/low and **not** 1/0. We'll explain why in a moment.
+Because of the noise in the voltage level there is usually defined thresholds that determine what is considered _high_ and what is considered _low_. Note: I refer to the values as high/low and **not** 1/0. We'll explain why in a moment.
 
 ![ttl levels](./DigitalSignals/ttl-levels.png)
 
 Shown above, the high level of this TTL input signal is one where the voltage is greater than 2V and less than 5V. The low value of this TTL input signal is one where the voltage level is greater than zero and less than 8V. Note: The low value isn't always aligned with zero. Sometimes it can be negative and the high value is zero or sometime both are higher/lower than zero on the vertical axis.
 
-Naturally, many engineers will assume that a high value is equal to a logical `1` and a low value is equal to a logical `0`. Keep in mind that the state of a signal can be logically *interpreted* differently for different components and their configurations. These interpretations can be arbitrary so you should consult the component data sheet to know which is which. The takeaway is that when left with experimentation, do not assume logical `1` is > logical `0` in terms of voltage.
+Naturally, many engineers will assume that a high value is equal to a logical `1` and a low value is equal to a logical `0`. Keep in mind that the state of a signal can be logically _interpreted_ differently for different components and their configurations. These interpretations can be arbitrary so you should consult the component data sheet to know which is which. The takeaway is that when left with experimentation, do not assume logical `1` is > logical `0` in terms of voltage.
 
-Let's take a look at a *digital timing diagram*:
+Let's take a look at a _digital timing diagram_:
 
 ![digital signal](./DigitalSignals/digital-signal-512x227.png)
 
@@ -44,11 +44,12 @@ In the above example, the clock's falling edge is when the data level value is r
 
 ## Active High / Active Low / Pull Up / Pull Down
 
-Whether a signal is active high or active low is determined by *how* it is activated. In other words, an active low signal will be pulled high when not activated. This means that to activate this signal it should be connected to ground to pull it low. In contrast, an active high pin has a low value and to activate it, it should be pulled high.
+Whether a signal is active high or active low is determined by _how_ it is activated. In other words, an active low signal will be pulled high when not activated. This means that to activate this signal it should be connected to ground to pull it low. In contrast, an active high pin has a low value and to activate it, it should be pulled high.
 
 <!-- TODO: Mention line over PIN name means pin is active low. -->
 
 <!-- TODO: This paragraph sucks as written. Should all this wait until we dig into schematics? -->
+
 The automatic bias of these signals is usually performed by what is referred to as a pull up or pull down resistor. A pull up resistor allows a voltage bias into the signal but not enough to prevent the signal to be pulled down when connected to ground. A pull down resistor is the exact opposite. A pull down adds a resistor from the signal to ground to bias the signal low, but not enough to cause the signal to be kept low if connected to a voltage supply.
 
 Signals that have no bias up or down are considered floating. This means that they may float in and out of the threshold. The value of such a signal is considered undefined.
@@ -71,7 +72,7 @@ Once again, datasheets are our friends. We previously discussed datasheet discov
 
 Let's take a moment to study an example datasheet of a component:
 
-[SN74LS164 Datasheet](/docs/EmbeddedSystemsAnalysis/Datasheets/sn54ls164-sp.pdf)
+[SN74LS164 Datasheet](./PracticalEE/sn54ls164-sp.pdf)
 
 - What does it do?
   - What does the 8-bit serial to parallel converter do?

@@ -104,7 +104,7 @@ Some ARM terminology to understand:
 
 <!-- Instructions with "Ra" parameter are registers to be used with _accumulator_. -->
 
-The specific encoding rules for each instruction can be seen in the [ARM Instruction Set Reference](/docs/EmbeddedSystemsAnalysis/Datasheets/armv5tej-architecture-reference-manual.pdf). As an example, lets walk through determining how to encode an ADD instruction.
+The specific encoding rules for each instruction can be seen in the [ARM Instruction Set Reference](./ARM926EJ-S/armv5tej-architecture-reference-manual.pdf). As an example, lets walk through determining how to encode an ADD instruction.
 
 Page A4-6 (p156), of the reference contains the description for the ADD instruction.
 
