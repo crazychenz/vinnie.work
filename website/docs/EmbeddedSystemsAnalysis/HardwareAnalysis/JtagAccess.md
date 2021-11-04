@@ -67,6 +67,7 @@ The way the states transition is dependent on the value of TMS on the rising edg
 An interesting trait of this state machine is how simple it is to reset (i.e. return to `TEST LOGIC RESET`). To reset, all you have to do is pull TMS high and pulse TCK 5 times. In otherwords, sending five `1`s over TMS will always return the state to `TEST LOGIC RESET`, no matter what the current state is.
 
 <!-- TODO: Walk the class through this on the board. -->
+<!-- TODO: Consider using the Godot Jtagsim -->
 
 ### Input / Output
 
