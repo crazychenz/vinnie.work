@@ -75,7 +75,7 @@ From the reference manual:
 
 ### Encoding
 
-The encoding for A64 instructions is very different than A32. For starters, the `cond` bits in front of every instruction are now gone. Typically, conditions are now only used on branching operations. As before, you should be able to use the reference manual ([relevant pages for ADD (shifted register)](./a64-adds-instruction.pdf)) to determine the encoding of various instructions. The following show the relevant data for `ADD x0, x1, x2 ; x0 = x1 + x2`.
+The encoding for A64 instructions is very different than A32. For starters, the `cond` bits in front of every instruction are now gone. Typically, conditions are now only used on branching operations. As before, you should be able to use the reference manual ([relevant pages for ADD (shifted register)](./CortexA72/a64-adds-instruction.pdf)) to determine the encoding of various instructions. The following show the relevant data for `ADD x0, x1, x2 ; x0 = x1 + x2`.
 
 - The encoding pattern:
 
@@ -313,6 +313,8 @@ Exceptions:
 - Reset vector is no longer part of the exception vector table. The reset address is _implementation defined_ and defined by the hardware input RVBARADDR and can be read by RVBAR_EL3 register. Boot code is executed from this address.
 
   -->
+
+<!-- TODO: Do the lab to build EVT binary and spin. -->
 
 ## Resources
 

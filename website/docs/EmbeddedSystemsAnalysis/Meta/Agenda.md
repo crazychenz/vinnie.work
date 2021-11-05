@@ -1,6 +1,6 @@
 ---
-sidebar_position: 1.1
-title: Schedule
+sidebar_position: 2
+title: Agenda
 ---
 
 :::danger Incomplete

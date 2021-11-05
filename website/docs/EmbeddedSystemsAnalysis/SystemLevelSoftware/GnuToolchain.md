@@ -51,7 +51,7 @@ The following list is, roughly, the process that developer maintained C/C++ sour
 
 3. Assembler (`as`) - Converts assembly code into architecture specific machine code. While `as` is the generic binary name for an assembler in the POSIX environment, the GNU variant of this is `gas`. Some may ask: _Isn't assembler itself architecture specific?_ Yes, assembler is typically arch family specific, but from processor model/version to model/version there may be slight differences in the instruction encoding. Also, in ARM there is a level of abstraction at the assembler level called pseudo assembly language. A disassembler does not reconstruct this abstraction layer (AFAIK).
 
-4. Linker (`ld`) - Combine separate object (`.o`) files and computes relative offsets. When building C files, each time the compiler converts code into an object file, this is called a compilation unit. In a typical project, you may find you have 100s or 1000s of compilation units. The linker is responsible for combining all of the relevant compilation units to make a single executable ELF file.
+4. Linker (`ld`) - Combine separate object (`.o`) files and computes relative offsets. When building C files, each time the compiler converts code into an object file, this is called a compilation unit (or translation unit). In a typical project, you may find you have 100s or 1000s of compilation units. The linker is responsible for combining all of the relevant compilation units to make a single executable ELF file.
 
 <!-- 5. Locator (`ld`) - Map file offsets to run-time addresses when building non-dynamic binary. The locator phase is often overlooked because its not required if you're building for a dynamic binary. Locating is useful if you're code can not be dynamically relocated (i.e. position dependent) and all offsets must be calculated from some absolute base address (e.g. boot code). -->
 
@@ -417,3 +417,22 @@ Some good to know hot keys are:
 https://stackoverflow.com/questions/12573816/what-is-an-undefined-reference-unresolved-external-symbol-error-and-how-do-i-fix
 http://www.cs.cornell.edu/courses/cs3410/2013sp/lecture/15-linkers2-w.pdf
 https://docs.oracle.com/cd/E19683-01/816-1386/chapter7-1/index.html
+
+<!-- Linker:
+
+- Reads all inputs
+- Identifies symbols
+- Applies relocations
+
+Linker can discard unused sections: -Wl,--gc-sections (KEEP() overrides this)
+Compiler flags: -ffunction-sections,-fdata-sections
+- Prevents optimizations between functions within a section.
+
+what does a linker do? MAGIC!
+
+object files are also elf files
+
+linkers don't analyze sections, more sections gives linker more flexibility
+`objdump --reloc -dC hello.o`
+
+-->
