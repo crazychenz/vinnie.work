@@ -9,7 +9,7 @@ This document is not yet written.
 
 :::
 
-## Student Kit (~$205 * Count)
+## Student Kit (~$265 * Count)
 
 - Multi-meter (~$30) [Pocket Autoranging Digital Multimeter](https://www.adafruit.com/product/850), [Digital Multimeter 9205B+](https://www.adafruit.com/product/2034)
 - 24MHz Logic Analyzer (~$25) [USB Logic Analyzer - 24MHz/8-Channel](https://www.sparkfun.com/products/15033)
@@ -20,6 +20,7 @@ This document is not yet written.
 - USB-A to USB-Mini (For FT2232H) ($5) [Digi-Key 3021009-06](https://www.digikey.com/en/products/detail/qualtek/3021009-06/1531292)
 - RaspberryPi 4 w/ SD-Card & Power ($100) [CanaKit Pi4 Kit](https://www.canakit.com/raspberry-pi-4-starter-kit.html)
 - SMT Test Hooks for connecting to pins (~$4) [Basic Multi-Color Micro SMT Test Hooks 6pk](https://www.adafruit.com/product/4322)
+- RaspberryPi 4 User Interface & Case (~$60) [Geekworm for Raspberry Pi 4, 2.4 inch 240x320 Touch LCD High PPI TFT Screen with Cooling Fan + Aluminum CNC Case Compatible with Raspberry Pi 4 Model B](https://www.amazon.com/gp/product/B085T2NHPH)
 
 ## Breadboard Components (~$17 * Count)
 
