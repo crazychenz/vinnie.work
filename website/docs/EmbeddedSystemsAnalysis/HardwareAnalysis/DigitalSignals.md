@@ -19,7 +19,9 @@ Because of the noise in the voltage level there is usually defined thresholds th
 
 Shown above, the high level of this TTL input signal is one where the voltage is greater than 2V and less than 5V. The low value of this TTL input signal is one where the voltage level is greater than zero and less than 8V. Note: The low value isn't always aligned with zero. Sometimes it can be negative and the high value is zero or sometime both are higher/lower than zero on the vertical axis.
 
-Naturally, many engineers will assume that a high value is equal to a logical `1` and a low value is equal to a logical `0`. Keep in mind that the state of a signal can be logically _interpreted_ differently for different components and their configurations. These interpretations can be arbitrary so you should consult the component data sheet to know which is which. The takeaway is that when left with experimentation, do not assume logical `1` is > logical `0` in terms of voltage.
+<!-- TODO: Consider removing the following paragraph? -->
+
+Naturally, many engineers will assume that a high value is equal to a logical `1` and a low value is equal to a logical `0`. Keep in mind that the state of a signal can be logically _interpreted_ differently for different components and their configurations. These interpretations can be arbitrary so you should consult the component data sheet to know which is which. The takeaway is that when left with experimentation, do not assume logical `1` is > logical `0` in terms of voltage. Note: For the remainder of this material, we'll assume that a logical `1` is high voltage and a logical `0` is zero voltage.
 
 Let's take a look at a _digital timing diagram_:
 
@@ -34,7 +36,9 @@ Pictured in the above diagram are the levels and edges of a signal. The levels a
 
 ## Clock Signals
 
-A clock signal is a digital pulse that, when combined with a digital data signal, indicates when a component should measure or read the state of the data signal. Usually the clock signal is periodic based on a regular time interval, but this doesn't have to be the case. Just like digital signals, clock signals are usually defined by high levels, low levels, rising edges, falling edges, and relevant thresholds therein.
+<!-- TODO: Consider re-defining a clock signal agnostic of the data signal? -->
+
+Clock signals are a sort of digital heart pulse. Clock signals can be used for data sampling, or triggering a regular action. When clock signals are combined with digital data signals, the clock signal can indicate when a component should measure or read the state of the data signal. Just like digital signals, clock signals are usually defined by high levels, low levels, rising edges, falling edges, and relevant thresholds therein. Usually the clock signal is periodic based on a regular time interval (or fixed period), but this doesn't have to be the case. Sometimes clock signals can follow irregular periods, allowing software to bit bang protocols across them.
 
 ![clock signal](./DigitalSignals/clock-signal.png)
 
@@ -44,15 +48,18 @@ In the above example, the clock's falling edge is when the data level value is r
 
 ## Active High / Active Low / Pull Up / Pull Down
 
+<!-- ! TODO: Consider rewrite. -->
+<!-- TODO: Use "on" and "off" instead of activating. -->
+
 Whether a signal is active high or active low is determined by _how_ it is activated. In other words, an active low signal will be pulled high when not activated. This means that to activate this signal it should be connected to ground to pull it low. In contrast, an active high pin has a low value and to activate it, it should be pulled high.
 
 <!-- TODO: Mention line over PIN name means pin is active low. -->
 
 <!-- TODO: This paragraph sucks as written. Should all this wait until we dig into schematics? -->
 
-The automatic bias of these signals is usually performed by what is referred to as a pull up or pull down resistor. A pull up resistor allows a voltage bias into the signal but not enough to prevent the signal to be pulled down when connected to ground. A pull down resistor is the exact opposite. A pull down adds a resistor from the signal to ground to bias the signal low, but not enough to cause the signal to be kept low if connected to a voltage supply.
+<!-- The automatic bias of these signals is usually performed by what is referred to as a pull up or pull down resistor. A pull up resistor allows a voltage bias into the signal but not enough to prevent the signal to be pulled down when connected to ground. A pull down resistor is the exact opposite. A pull down adds a resistor from the signal to ground to bias the signal low, but not enough to cause the signal to be kept low if connected to a voltage supply.
 
-Signals that have no bias up or down are considered floating. This means that they may float in and out of the threshold. The value of such a signal is considered undefined.
+Signals that have no bias up or down are considered floating. This means that they may float in and out of the threshold. The value of such a signal is considered undefined. -->
 
 <!-- TODO: Consider mentioning bouncing? -->
 
@@ -86,5 +93,5 @@ Let's take a moment to study an example datasheet of a component:
 
 ## Resources
 
-http://www.righto.com/2012/10/a-dozen-usb-chargers-in-lab-apple-is.html
-https://www.nutsvolts.com/magazine/article/July2015_Bogatin
+- http://www.righto.com/2012/10/a-dozen-usb-chargers-in-lab-apple-is.html
+- https://www.nutsvolts.com/magazine/article/July2015_Bogatin

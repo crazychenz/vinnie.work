@@ -6,13 +6,19 @@ sidebar_position: 4
 
 ## Consider Approach and Risks
 
-Before proceeding, this is a good time to consider your goals for the target device. Before potentially damaging the device during disassembly, you may be able to accomplish your objectives with a low risk software analysis technique.
+Before proceeding, this is a good time to consider your goals for the target device and what kinds of risk can you take during its analysis.
 
-If my goals are merely to grab a single file off the device for analysis, I may skip any disassembly and simply attempt to grab the one file. On the other hand, if I intend to modify the firmware and flash the result back onto the board, I'll take the extra risk associated with disassembly and internal visual inspection. I know that if I muck up writing to the flash memory I'll have to be prepared to restore the device from that bricked state.
+A simple example is to consider whether you even need to do a thorough teardown of the target device. Sometimes you may be able to accomplish your objectives with a low risk software analysis technique. If our goals are to grab a single file off the device for analysis, we may skip any disassembly and simply attempt to grab the one file.
+
+Other times you may want to consider being more or less destructive. Many times it can be advantageous to acquire several devices of the same model with the intention that one will be irreversibly destroyed. This sacrificial device is where you can learn as much as required (structurally) about the device so that you can strategize the disassembly of the other devices or simply learn what you need and move on. If we intend to extract firmware from a flash chip and we have devices to spare, we can take the extra risk associated with breaking the one device.
+
+Also, if we do muck up writing to the flash memory (Via software), we may have to face the reality that we'll need to recover using hardware centric techniques.
 
 In summary, the analysis process going forward has risks and you should prescriptively apply the approach and risks you take based on the project's objectives. This is no one size fits all process.
 
 With that out of the way, on to disassembly!
+
+<!-- TODO: Define a tear down. -->
 
 ## What Holds It Together
 

@@ -16,7 +16,7 @@ Assuming you've successfully removed (reversibly or through more aggressive mean
 
 ### Layers and Vias
 
-Printed circuit boards are the circuits that are soldered together on a circuit board (typically thought of as the green board). Visually these circuit boards have 2 layers; one that we consider the _top_ and one we consider the _bottom_. To canonical-ize top from bottom, I usually consider the side that generates the most heat the top. (But this isn't always true in bad designs!) Typically, the top of the chip is where the majority of the discrete components and ICs will be located.
+Printed circuit boards (PCB) are the boards that hold together components that are interconnected with a conductive material (e.g. copper). The PCB is classically a green color, but can be coated with any color during the fabrication process. Visually these circuit boards have 2 layers; one that we consider the _top_ and one we consider the _bottom_. To canonical-ize top from bottom, I usually consider the side that generates the most heat as the top. (But this isn't always true in bad designs!) Typically, the top of the board is where the majority of the discrete components and ICs will be located, although on more populated boards you'll find many passive components on the underside as well.
 
 While you visually only see the two mentioned layers, a PCB can be many layers. Below is a cross cut model of how a multi-layer PCB is organized [Source](https://www.pcbpower.com/blog-detail/important-considerations-while-designing-a-multi-layer-board):
 
@@ -40,21 +40,25 @@ TODO: Show various examples of silk screen information.
 
 In many PCB designs, the power rail or the ground rail will be an entire inside layer of the PCB. This can drastically simplify the board layout because power and ground are a _via_ away. Knowing which is which is key to follow up hardware analysis. There are some obvious visual queues that allow us to identify, first, ground and then perhaps power.
 
-Ground is the most important thing in a circuit. Its where electrons comes from (in DC circuits), the [ground reference is how we measure the voltage](<https://en.wikipedia.org/wiki/Ground_(electricity)>), and ground has other electrical noise related properties.
+Ground is the most important thing in a circuit. Its where electrons comes from, the [ground reference is how we measure the voltage](<https://en.wikipedia.org/wiki/Ground_(electricity)>), and ground has other electrical noise related properties.
 
-To locate ground, you can usually start with large surface area traces on a PCB (e.g. ground traces are usually wider). You can sometimes confirm these are ground by looking at any screws or other fasteners. Screws are almost always grounded and therefore the screw hole is lined with an exposed trace that leads to ground traces.
+To locate ground you can usually start with any screws or other fasteners. Screws are almost always grounded and therefore the screw hole is lined with an exposed trace that leads to ground traces.
 
 ![Board with shielding removed](./Visual_Inspection/board-mobile-hardware-mother-board-with-can.jpg)
 
 [Source](https://www.pxfuel.com/en/free-photo-oyxuu)
 
-Another method for finding ground is by looking at shield or cans around radio circuitry. These shields or cans are always grounded to absorb electrical magnetic interference (EMI) that could interfere with the quality of the radio circuitry.
+Another method for finding ground is by looking at shields or cans around radio circuitry. These shields or cans are always grounded to absorb electrical magnetic interference (EMI) that could interfere with the quality of the radio circuitry.
 
 ![Cell phone with shielded radios](./Visual_Inspection/cyber-security-technology-digital-data-information-phone-with-can.jpg)
 
 [Source](https://www.pxfuel.com/en/free-photo-xoumq)
 
-Also, you can knowledge about any cabling pin outs to surmise the ground by tracing from the cable ground pin to the ground plane or a ground trace. For example, if there is an DB9-RS232 connection on the device, you can find ground by tracing pin 5 (or the outer metal housing) of the DB9 connector:
+<!-- TODO: This next paragraph needs work. -->
+
+Many boards that have wireless capabilities will have a large ground plane on their surface. These boards will literally fill any empty space with a conductive material connected to ground. _Note:_ Although not suggested in devices you are being gentile with, in a pinch you can scratch away some of the (green) protective coating to get access to the ground plane. While these _planes_ can be tempting to assume ground, its often that board designers will make fat traces or planes for the power rail (i.e. the opposite of ground) as well. In PCBs that have more than 2 layers, there is usually an entire layer in the PCB dedicated to ground, which can lead to only ground vias being visible.
+
+Using knowledge about any cabling pin outs to surmise the ground by tracing from the cable ground pin to the ground plane or a ground trace. For example, if there is an DB9-RS232 connection on the device, you can find ground by tracing pin 5 (or the outer metal housing) of the DB9 connector:
 
 ![DB9 RS232 Pinout](./Visual_Inspection/db9-rs232-pinout.jpg)
 
@@ -63,6 +67,9 @@ Also, you can knowledge about any cabling pin outs to surmise the ground by trac
 ## IC Identification
 
 While you are attempting to ascertain as much information about the board based on the traces and silk screen, you also should catalog as many of the integrated circuits (IC) as you can from the board. Once I've captured the IC model numbers, I basically begin the long process of rolling the dice on whether I can find datasheets for them.
+
+<!-- TODO: Talk about multiple lines (e.g. model/when-where), parsing the identifiers (e.g. model, series, specifics), and using manufacturer logos. -->
+<!-- TODO: When looking for a datasheet, know the purpose of the IC and know the part number. -->
 
 ### Capturing Those Tiny Things
 

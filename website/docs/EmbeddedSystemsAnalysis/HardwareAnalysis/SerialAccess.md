@@ -17,11 +17,11 @@ When accessing a headless system (i.e. a system not intended for normal human in
 
 ### RS232 to USB
 
-You may sometimes here folks refer to serial connections as RS232 and throw in terms like DTE (i.e. terminal) and DCE (i.e. modem). RS232 ports are often exposed to the end user. When connecting from a modern PC to a RS232 port, you'll often need a RS232 to USB adapter. When plugging in this adapter it'll often show up as a new COMx port on Windows or a /dev/ttyUSBx port in Linux.
+You may sometimes hear folks refer to serial connections as RS232 and throw in terms like DTE (i.e. terminal) and DCE (i.e. modem). RS232 ports are often exposed to the end user. When connecting from a modern PC to a RS232 port, you'll often need a RS232 to USB adapter. When plugging in this adapter it'll often show up as a new COMx port on Windows or a /dev/ttyUSBx port in Linux.
 
 ![picture of rs232 to USB](./SerialAccess/rs232-to-usb-small.jpg)
 
-While you may find an old RS232/Modem setup in some legacy cases, generally RS232 is connected without a modem by using something called a *null modem*. This is typically a DB9 cable where the transmit and receive lines have been swapped on one end. This type of cable is also referred to as a *cross over cable*. You'll then connect this cable from the RS232 adapter to the target device.
+While you may find an old RS232/Modem setup in some legacy cases, generally RS232 is connected without a modem by using something called a _null modem_. This is typically a DB9 cable where the transmit and receive lines have been swapped on one end. This type of cable is also referred to as a _cross over cable_. You'll then connect this cable from the RS232 adapter to the target device.
 
 ![picture of null modem](./SerialAccess/null-modem.jpg)
 
@@ -52,7 +52,7 @@ A cheap and slow way to find the UART is to first ensure that the pins to the po
 
 ### Baud via Logic Analyzer
 
-A more systematic approach is to use a logic analyzer. A logic analyzer is a device that takes samples of a number of connected data lines at a given frequency. Using the logic analyzer and a piece of software called PulseView (by sigrok), we can estimate the actual baud rate based on observations made by the logic analyzer. 
+A more systematic approach is to use a logic analyzer. A logic analyzer is a device that takes samples of a number of connected data lines at a given frequency. Using the logic analyzer and a piece of software called PulseView (by sigrok), we can estimate the actual baud rate based on observations made by the logic analyzer.
 
 ![picture of 24mhz logic analyzer](./SerialAccess/usb-24mhz-logic-analyzer.jpg)
 
@@ -71,6 +71,7 @@ In the above screenshot, channel `D5` is the Rx pin of the UART. When we measure
 <!-- TODO: Show some fruits of serial access labor. -->
 
 ## Serial Terminal
+
 ## Booter Output
 
 ## Resources

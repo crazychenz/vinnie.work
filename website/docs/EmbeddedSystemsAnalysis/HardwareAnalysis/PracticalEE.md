@@ -34,9 +34,11 @@ Schematics are made up of interconnected symbols that are standardized by bodies
 
   ![power symbols](./PracticalEE/power-512x162.png)
 
-- **Logical** - Represent boolean operations (e.g. AND, OR, NOR).
+<!-- TODO: Consider moving these somewhere else? -->
 
-  ![logic symbols](./PracticalEE/logical-511x195.png)
+<!-- - **Logical** - Represent boolean operations (e.g. AND, OR, NOR).
+
+  ![logic symbols](./PracticalEE/logical-511x195.png) -->
 
 All of these components are interconnected with traces or lines. Dots at the intersection of these lines represent a connection. Intersecting lines without a dot are not connected.
 
@@ -77,15 +79,17 @@ More information available in FCC database. -->
 
 ## Pull Ups / Pull Downs
 
-Previously we discussed active high signals and active low signals. To recap, an active high signal is one that is activated by pulling it high. An active low signal is one that is activated by pulling it low. Whether a signal is pulled high or low can be defined in a schematic by "pull ups" or "pull downs".
+<!-- TODO: Use "on" and "off" instead of activating. -->
+
+Previously we discussed active high signals and active low signals. To recap, an active high signal is one that is _on_ when its _high_. An active low signal is one that is _on_ when its _low_. Whether a signal is biased high or low can be defined in a schematic by "pull ups" or "pull downs".
 
 <!-- Attrib: Word for word from old ATNO4272. -->
 
-Logic circuits will often take input from the physical world via some physical device such as a switch. We must ensure that whatever device we are reading from always maintains a steady state. That is, it always should output a logical zero or one. If it does not than we refer to the input as floating and we cannot know what the logical state of the input will be.
+Logic circuits will often take input from the physical world via some input such as a switch. The circuit designer must ensure that whatever device is being read from always maintains a steady state. That is, it always should output a logical zero or one. If it does not than we refer to the input as floating and we cannot know what the logical state of the input will be.
 
 <!-- Attrib: Word for word from old ATNO4272. -->
 
-To prevent a signal from floating we can tie the signal to a desired steady state. In the following schematic, we have inserted a high-value resistor between the inputs and a voltage called a pull-up resistor (because they pull the input up to a known value.) When the switch is open, the resistors will ensure that the input is high. A small current will flow through the resistor to the input to ensure it maintains a high state. The resistor is used to limit the current flow to just enough to maintain the input high.
+To prevent a signal from floating, the circuit designer can tie the signal to a desired steady state. In the following schematic, we have inserted a resistor between the inputs and a voltage called a pull-up resistor (because they pull the input up to a known value.) When the switch is open, the resistors will ensure that the input is high. A small current will flow through the resistor to the input to ensure it maintains a high state.
 
 ![pullup with high signal](./PracticalEE/pullup-high.png)
 
@@ -114,10 +118,10 @@ Often we want to power some small load, such as an LED from the output pin of a 
 
 <!-- Attrib: Word for word from old ATNO4272. -->
 
-Remember that an LED is a diode and only allows current to flow in one direction. Be sure to get polarity of the LED correct in your circuit or it will not light or can burn out. The resistor in this circuit is important to prevent damage to the LED. The LED has a maximum current it can handle before it burns out.
+Remember that an LED is a diode and only allows current to flow in one direction. Be sure to get polarity (or direction) of the LED correct in your circuit or it will not light up. The resistor in this circuit is important to prevent damage to the LED. The LED has a maximum current it can handle before it burns out. The amount of current pushed through the LED will also effect the brightness of the LED (lower the resistance, the brighter the light).
 
 ## Resources
 
-[Wikipedia: Electronic Symbol](https://en.wikipedia.org/wiki/Electronic_symbol)
-[Circuit Symbols for all Electronic Components](http://www.talkingelectronics.com/CctSymbols/Circuit_Symbols.html)
-[Wikipedia: IC Power Supply Pin](https://en.wikipedia.org/wiki/IC_power-supply_pin)
+- [Wikipedia: Electronic Symbol](https://en.wikipedia.org/wiki/Electronic_symbol)
+- [Circuit Symbols for all Electronic Components](http://www.talkingelectronics.com/CctSymbols/Circuit_Symbols.html)
+- [Wikipedia: IC Power Supply Pin](https://en.wikipedia.org/wiki/IC_power-supply_pin)
