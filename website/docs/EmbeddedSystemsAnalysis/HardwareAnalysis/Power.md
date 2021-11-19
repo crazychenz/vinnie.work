@@ -25,9 +25,27 @@ There are two primary ways that electrons flow:
 
 ## What is resistance?
 
-<!-- TODO: Talk about resistance here. -->
+To sum up resistance succinctly as possible:
 
-**TODO**: Talk about resistance here.
+- The opposition to current flow in an electrical circuit (i.e. the lasso in the above image.)
+- Resistance is measures in Ohms and symbolized by the greek "omega" symbol: Ω
+- All materials resist current flow to some degree (i.e. all material contribute to resistance).
+
+**Note:** You should never measure the resistance of an operating circuit.
+
+## Ohms Law
+
+Ohms Law describes the mathematical relationship between current, voltage, and resistance. It is common to determine the resistance of an operating circuit using only voltage and current measurements.
+
+Ohms Law can be expressed as:
+
+```text
+Voltage (volts) = Current (amps) * Resistance (ohms)
+Current (amps) = Voltage (volts) / Resistance (ohms)
+Resistance (ohms) = Voltage (volts) / Current (amps)
+```
+
+You may also see voltage referred to as `E` or `V`, current as `I` or `A`, and resistance as `R` or `Ω`.
 
 ## Reference Ground
 
@@ -85,3 +103,7 @@ From Ken Shirriff's blog, here are two images of different 5v USB chargers:
 Notice that the first has what we might interpret as _clean power_ and yet it still shows noise on the line. In contrast, the other has very _dirty power_. While both of these USB chargers exists in identical cases, they are in fact completely different designs and have completely different manufacturing properties. The latter could actually be considered a safety hazard.
 
 <!-- TODO: Explain effects of dirty power. -->
+
+## Resources
+
+[Fluke: What is resistance?](https://www.fluke.com/en-us/learn/blog/electrical/what-is-resistance)

@@ -47,6 +47,14 @@ This document is not yet written.
 - FTDI to USB-C ($20) [FTDI Serial TTL-232 USB Type C Cable - 5V Power / 3.3V Logic](https://www.adafruit.com/product/4364)
 - USB to UART (Tx, Rx, PWR, GND) ($10) [USB to TTL Serial Cable - Debug / Console Cable for Raspberry Pi](https://www.adafruit.com/product/954)
 
+- $699 [Logic Pro 8 from saleae.com for Analog Sampling](https://www.saleae.com/?gclid=CjwKCAiAs92MBhAXEiwAXTi259C7sha7WZrT8hfQ29YYDzMHdTVm3h0BSVzMPWz9ESFfdJTwKiRhKhoCFbsQAvD_BwE)
+- $399 [Digilent Analog OScope and Logic An from adafruit](https://www.adafruit.com/product/4652)
+- [DangerousPrototypes](http://dangerousprototypes.com/)
+  - ~$50 [Open Bench Logic Sniffer](http://dangerousprototypes.com/docs/Open_Bench_Logic_Sniffer)
+  - ~$30 [BusPirate](http://dangerousprototypes.com/docs/Bus_Pirate)
+  - ~$30 [LogicPirate](http://dangerousprototypes.com/docs/Logic_Pirate)
+- ~$189 [JTAGulator](https://www.parallax.com/product/jtagulator/)
+
 ## Instructor Only (~$245)
 
 - ~~SDCard Reader~~ (Comes with each RPi4 Kit)

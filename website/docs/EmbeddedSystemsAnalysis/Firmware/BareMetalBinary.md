@@ -481,6 +481,10 @@ LTO takes intermediate representation from compiler, lays out the output, passes
 
 -->
 
+## Tools
+
+objcopy, dd
+
 ## Resources
 
 [AArch64 exception table](https://developer.arm.com/documentation/den0024/a/CHDEEDDC)
