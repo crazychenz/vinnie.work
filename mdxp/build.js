@@ -45,16 +45,18 @@ function process_command(cmd)
 
 function build_onepage()
 {
-    var retcode = -1;
     const cmd = spawn(YARN, ["cross-env", `DECK=${argv.deck}`, "MDXP_MODE=onepage", "webpack", "--stats-children", "--mode", "production"])
-    retcode = process_command(cmd);
-
-    if (retcode == 0) {
-        const rm = spawn(YARN, ["rimraf", `dist/${argv.deck}/onepage/*.js`, `dist/${argv.deck}/onepage/*.css`])
-        return process_command(rm);
-    }
-
-    return retcode;
+    cmd.stdout.on("data", data => { console.log(`${data}`); });
+    cmd.stderr.on("data", data => { console.log(`${data}`); });
+    cmd.on('error', (error) => { console.log(`${error.message}`); });
+    cmd.on("close", code => { 
+        console.log(`child process exited with code ${code}`); 
+        if (code == 0) {
+            const rm = spawn(YARN, ["rimraf", `dist/${argv.deck}/onepage/*.js`, `dist/${argv.deck}/onepage/*.css`])
+            return process_command(rm);
+        }
+        return code;
+    });
 }
 
 function build_web()
