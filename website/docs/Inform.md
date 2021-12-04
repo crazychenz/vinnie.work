@@ -7,6 +7,8 @@ More organized than a log of findings, this corner of vinnie.work aims _to infor
 
 ## Areas
 
+- [Tools & Use Cases](./ToolCases/Overview)
+
 - [Embedded System Analysis](./EmbeddedSystemsAnalysis/overview) - Some ramblings on my process for performing embedded systems analysis from primarily my software engineering back ground.
 
 - [System Deets](./Systems/overview) - Summarized and distilled system specific information.
