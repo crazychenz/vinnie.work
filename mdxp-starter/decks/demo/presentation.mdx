@@ -1,0 +1,177 @@
+import {Counter} from './counter.jsx'
+
+<BlankLayout sx={{variant: 'gradient.dark', color: 'MDXPGray6'}}>
+<Block sx={{variant: 'text.subtitle', '& p': {my: '10%'}}}>
+<Step styles={{
+  before:   {opacity: 0},
+  current:  {opacity: 1, transition:  'opacity 0.3s ease-in 0.3s'},
+  after:    {opacity: 0, transition: 'opacity 0.2s ease-out'},
+}}>
+
+<Step styles={{
+  before:   {opacity: 0},
+  current:  {opacity: 1, transition: 'opacity 0.3s ease-in'},
+  after:    {transition: 'opacity 0.2s ease-out 0.3s'}
+}}>
+
+Tired of your Static Slides
+
+Need Data Driven Charts in your Pitches
+
+Want Dynamic Behaviour in your Presentations
+
+</Step>
+
+<Place sx={{fontSize: 'xxlarge', width: '100%'}}>
+
+Web Based Slides too complicated ?
+
+</Place>
+
+</Step>
+</Block>
+
+<Popup>
+
+Use the left and right arrow keys to navigate through this slide deck.  
+On touch devices, you can tap the left and right hand side of the slides.  
+Press `ALT+H` for more keybindings.
+
+</Popup>
+<AutoStepper start="1" end="-2" time="1000" />
+
+</BlankLayout>
+
+---
+
+<MDXPTitleLayout subtitle="Web Slides Made Easy" />
+
+---
+
+# MDX Presenterer
+
+<Grid
+  gridTemplateColumns={["15% auto 10% 5%", "20% auto 10% 10%", "15% auto 10% 5%"]}
+  gridTemplateRows="100%"
+  gridTemplateAreas=". main logos ."
+>
+
+<Step styles={{
+  before: {opacity: 0},
+  after:  {opacity: 1, transition: 'all 0.2s ease-out'}
+}}
+as='Flex' gridArea="main" flexFlow="column nowrap" justifyContent="space-evenly" height="100%"
+sx={{'& p': {textAlign: 'left', m: 0, lineHeight: 'small', minHeight: '5%'}}}
+>
+
+__Write__ in Markdown
+
+__Use__ React Components
+
+__Create__ a Consistent Look with Theme-UI
+
+__Build__ a Set of Master Slides with our Layout System
+
+__Present__ on any Computer with a Browser
+
+__Integrate__ in your Website
+
+</Step>
+
+<Step styles={{
+  base:     {height: '5%', transition: 'all 0.2s ease-in-out'},
+  before:   {opacity: 0},
+  after:    {opacity: 1},
+  current:  {transform: 'scale(1.7)'},
+}}
+as='Flex' gridArea="logos" flexFlow="column nowrap" justifyContent="space-evenly" height="100%"
+>
+
+![write](./assets/write.svg)
+
+![react](./assets/react.svg)
+
+![theming](./assets/theme.svg)
+
+![layout](./assets/layout.svg)
+
+![present](./assets/present.svg)
+
+![website](./assets/website.svg)
+
+</Step>
+</Grid>
+
+<Note>
+
+- MDXP also supports notes!
+- Never ever forget what you were meant to say.
+
+</Note>
+
+---
+
+<MDXPSideLayout showSlideNum={false} split={3}>
+
+## Example
+
+Let's build a React component.  
+While this example only shows a very basic component,
+you can use any React component you want.
+
+MDXP also exposes a few hooks for you to use in order to get
+more information about the state of the slide deck.
+
+<Card bg='MDXPGray5'>
+
+```jsx file=./counter-simplified.jsx
+
+```
+
+</Card>
+</MDXPSideLayout>
+
+---
+
+<MDXPSideLayout showSlideNum={false} split={3}>
+
+## Example
+
+Using your components inside of your slides is super easy!
+
+Just import it inside of your MDX file and
+use it like you would use it inside of a regular React JSX file.
+
+<Card bg='MDXPGray5' sx={{mb: 3}}>
+
+```md
+import {Counter} from './counter.jsx'
+
+# SLIDE 1
+This is a slide, written in MDX
+
+<Counter />
+
+---
+```
+
+</Card>
+
+<Card bg="white" sx={{width: '65%'}}>
+<SlideInSlide>
+
+# Slide 1
+This is a slide, written in MDX
+
+<Counter />
+
+</SlideInSlide>
+</Card>
+
+</MDXPSideLayout>
+
+---
+
+<MDXPCtaLayout />
+
+---
