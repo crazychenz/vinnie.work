@@ -5,6 +5,7 @@ node_modules-old
 _env
 *DS_Store
 .env*
+*.gz
 
 .vscode
 
