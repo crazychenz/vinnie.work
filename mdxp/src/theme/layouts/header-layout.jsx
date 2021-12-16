@@ -24,7 +24,7 @@ const MDXPHeaderLayout = ({children, showSlideNum = true, sx = {}}) => {
     >
       {children}
       <Place bottom="0" sx={{width: '100%', zIndex: 1}}>
-        <Logo
+        {/* <Logo
           sx={{
             height: [t => t.fontSizes.large, t => t.fontSizes.small, t => t.fontSizes.large, t => t.fontSizes.large],
             position: 'absolute',
@@ -35,7 +35,7 @@ const MDXPHeaderLayout = ({children, showSlideNum = true, sx = {}}) => {
               fill: 'MDXPYellow'
             }
           }}
-        />
+        /> */}
 
         {showSlideNum && (
           <div
