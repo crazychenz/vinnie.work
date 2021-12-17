@@ -9,11 +9,10 @@ import themeComponents from 'theme/theme-components.js';
 import MDXConcat from 'components/MDXConcat.jsx'
 
 import './index.css';
-import InitialVisualAnalysis from './InitialVisualAnalysis.mdx';
-import ExternalAnalysis from './ExternalAnalysis.mdx';
-import HandlingHardware from './HandlingHardware.mdx';
-import Disassembly from './Disassembly.mdx';
-import InternalVisualInspection from './InternalVisualInspection.mdx';
+import SystemLevelSoftware from './SystemLevelSoftware.mdx';
+import Toolchains from './Toolchains.mdx';
+import GnuToolchain from './GnuToolchain.mdx';
+import SystemIO from './SystemIO.mdx';
 
 
 function EntryPoint(props) {
@@ -32,11 +31,10 @@ function EntryPoint(props) {
         keyboardTarget={window}
       >
         <MDXConcat>
-          <InitialVisualAnalysis />
-          <ExternalAnalysis />
-          <HandlingHardware />
-          <Disassembly />
-          <InternalVisualInspection />
+          <SystemLevelSoftware />
+          <Toolchains />
+          <GnuToolchain />
+          <SystemIO />
         </MDXConcat>
       </Deck>
     </Zoom>

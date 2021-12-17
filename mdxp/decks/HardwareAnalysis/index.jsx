@@ -9,11 +9,18 @@ import themeComponents from 'theme/theme-components.js';
 import MDXConcat from 'components/MDXConcat.jsx'
 
 import './index.css';
-import InitialVisualAnalysis from './InitialVisualAnalysis.mdx';
-import ExternalAnalysis from './ExternalAnalysis.mdx';
-import HandlingHardware from './HandlingHardware.mdx';
-import Disassembly from './Disassembly.mdx';
-import InternalVisualInspection from './InternalVisualInspection.mdx';
+import HardwareAnalysis from './HardwareAnalysis.mdx';
+import Power from './Power.mdx';
+import DigitalSignals from './DigitalSignals.mdx';
+import SerialAccess from './SerialAccess.mdx';
+import PracticalEE from './PracticalEE.mdx';
+import DigitalLogic from './DigitalLogic.mdx';
+import I2C from './I2C.mdx';
+import Memories from './Memories.mdx';
+import PinConfiguration from './PinConfiguration.mdx';
+import SPI from './SPI.mdx';
+import JTAG from './JTAG.mdx';
+import OpenOCD from './OpenOCD.mdx';
 
 
 function EntryPoint(props) {
@@ -32,11 +39,18 @@ function EntryPoint(props) {
         keyboardTarget={window}
       >
         <MDXConcat>
-          <InitialVisualAnalysis />
-          <ExternalAnalysis />
-          <HandlingHardware />
-          <Disassembly />
-          <InternalVisualInspection />
+          <HardwareAnalysis />
+          <Power />
+          <DigitalSignals />
+          <SerialAccess />
+          <PracticalEE />
+          <DigitalLogic />
+          <I2C />
+          <Memories />
+          <PinConfiguration />
+          <SPI />
+          <JTAG />
+          <OpenOCD />
         </MDXConcat>
       </Deck>
     </Zoom>

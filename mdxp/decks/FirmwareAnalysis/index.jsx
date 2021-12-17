@@ -9,11 +9,14 @@ import themeComponents from 'theme/theme-components.js';
 import MDXConcat from 'components/MDXConcat.jsx'
 
 import './index.css';
-import InitialVisualAnalysis from './InitialVisualAnalysis.mdx';
-import ExternalAnalysis from './ExternalAnalysis.mdx';
-import HandlingHardware from './HandlingHardware.mdx';
-import Disassembly from './Disassembly.mdx';
-import InternalVisualInspection from './InternalVisualInspection.mdx';
+import FirmwareAnalysis from './FirmwareAnalysis.mdx';
+import MCUArchitectures from './MCUArchitectures.mdx';
+import ARM926EJS from './ARM926EJS.mdx';
+import ARMCortexA72 from './ARMCortexA72.mdx';
+import BareMetalBinary from './BareMetalBinary.mdx';
+import Analysis from './Analysis.mdx';
+import Integration from './Integration.mdx';
+import ARMv5TEJBoot from './ARMv5TEJBoot.mdx';
 
 
 function EntryPoint(props) {
@@ -32,11 +35,14 @@ function EntryPoint(props) {
         keyboardTarget={window}
       >
         <MDXConcat>
-          <InitialVisualAnalysis />
-          <ExternalAnalysis />
-          <HandlingHardware />
-          <Disassembly />
-          <InternalVisualInspection />
+          <FirmwareAnalysis />
+          <MCUArchitectures />
+          <ARM926EJS />
+          <ARMCortexA72 />
+          <BareMetalBinary />
+          <Analysis />
+          <Integration />
+          <ARMv5TEJBoot />
         </MDXConcat>
       </Deck>
     </Zoom>
