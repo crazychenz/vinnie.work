@@ -1,0 +1,67 @@
+
+## Toolchains
+
+<Block sx={{width:"70%"}}>
+
+Wikipedia:
+
+> In software, a toolchain is a set of programming tools that is used to 
+> perform a complex software development task or to create a software 
+> product, which is typically another computer program or a set of related 
+> programs.
+
+</Block>
+
+---
+
+## Common Toolchains
+
+- GNU - The Gold Standard?
+- Visual Studio (and MSVC)
+- LLVM (Clang and LLD)
+
+---
+
+## Comparing GNU and Clang
+
+- LLVM/Clang *still* depends on GNU for edge cases.
+- LLVM can build for many architectures from a single install
+- GNU usually requires a new install for each architecture family.
+- GNU has been evolving organically since the 1980s.
+- LLVM has had the opportunity to start from scratch.
+- Both LLVM and GNU use "Single Static Assignment".
+  - Many sites dispute this, referencing older GNU implementations.
+
+---
+
+## Other Notable Mentions
+
+<Block sx={{width:"70%"}}>
+
+- [Zig CC](https://andrewkelley.me/post/zig-cc-powerful-drop-in-replacement-gcc-clang.html) - New systems level language that comes with a condensed LLVM C
+  compiler that is completely C-ABI compatible.
+
+- [Keystone](https://www.keystone-engine.org/) - The Ultimate Assembler (Based on LLVM)
+
+</Block>
+
+---
+
+## Key Attributes
+
+- Architecture (e.g. 
+  [ARMv8-A](https://developer.arm.com/documentation/den0024/a/),
+  [MIPS](https://www.mips.com/products/), 
+  [AVR](https://www.microchip.com/design-centers/8-bit/avr-mcus), 
+  [x86/64](https://software.intel.com/content/www/us/en/develop/articles/intel-sdm.tml#combined), 
+  PowerPC)
+- None OS - Makes no assumptions about operating system.
+- [EABI (Embedded Application Binary Interface)](https://en.wikipedia.org/wiki/Application_binary_interface#:~:text=An%20embedded%2Dapplication%20binary%20interface,with%20an%20embedded%20operating%20system.) - 
+  Binary structure and format.
+- Libc - The Standard C Library (e.g. [`glibc`](https://www.gnu.org/s/libc/), [`uclibc`](https://www.uclibc.org/), [`musl`](https://www.musl-libc.org/)).
+  - Typically uses kernel headers to make assumptions about OS.
+- Build Environment - 
+  [Yocto](https://www.yoctoproject.org/), 
+  [OpenWrt/LEDE](https://openwrt.org/), 
+  [DD-WRT](https://dd-wrt.com/), 
+  [Buildroot](https://buildroot.org/)/[Busybox](https://busybox.net/)
