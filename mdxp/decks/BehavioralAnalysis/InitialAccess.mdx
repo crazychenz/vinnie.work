@@ -1,0 +1,45 @@
+
+## Initial Access
+
+- End User Interfaces / Attack Surface
+- Root Access
+- End User Serial Port (UART)
+
+---
+
+## End User Interfaces
+
+Understand the *attack surface*.
+
+- Web Browser
+- `curl` / `wget`
+- `snmpget` / `snmpwalk`
+- System users?
+- Restricted or Standard Shells?
+
+---
+
+## Root Access
+
+<Block sx={{width:"70%"}}>
+
+- Can you get *root* access to the system (e.g. enable SSH or telnet)?
+- Can you get access to the system through unconventional means?
+  - Jail break tools?
+  - CVE Proof Of Concept?
+  - Un-sanitized user input fields?
+
+Remember, we attempting to find the easiest way to get at all the nitty 
+gritty details of the system's internals. If we don't need to crack the box
+the achieve this, then that can be a win.
+
+</Block>
+
+---
+
+## End User Serial Port (UART)
+
+- Observe boot messages
+- Control boot loaders
+- *Console* access
+
