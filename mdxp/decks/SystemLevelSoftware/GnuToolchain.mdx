@@ -7,12 +7,12 @@ Source -> Preprocessor -> Compilation -> Assembling -> Linking
 
 ---
 
-## ELF Review
+## ELF Overview
 
 - ELF - Executable and Linkable Format
 - Conceptually similar to PE or COFF.
-- Segments in memory.
-- Sections on disk.
+- Segments (defined by program headers) are in memory.
+- Sections are on disk.
   - `.bss` - Uninitialized data. (0 bytes on disk.)
   - `.data` - Initialized data.
   - `.relaNAME` - (Unlinked) Relocation information (e.g. .rela.text).
@@ -22,28 +22,51 @@ Source -> Preprocessor -> Compilation -> Assembling -> Linking
 
 ---
 
-## Build Process (for C/C++)
+## ELF Overview
+
+![sections versus segments&&width="90%"](./assets/sections-segments-horiz.jpg)
+
+<Card bg='MDXPGray5' sx={{mt: 20, width: "70%"}}>
+
+```text
+readelf -h /path/to/elf   # Read ELF headers
+readelf -S /path/to/elf   # Read ELF section metadata
+readelf -l /path/to/elf   # Read ELF program headers
+```
+
+</Card>
+
+---
+
+## Build Process (for C)
+
+<Card bg='MDXPGray5' sx={{width: "90%"}}>
+
+```text
+Source -> Preprocessor -> Compilation -> Assembling -> Linking
+```
+
+</Card>
 
 <Block sx={{width:"90%"}}>
 
-1. Preprocessor (`cpp`) - Converts human readable/maintained C code to pure 
-   C code. Includes things like `#include`, `#define`, and `#ifdef`.
-2. Compiler (`cc`) - Converts pure CNU-C source into assembly language. 
-   `gcc` is a variant of `cc` that includes GNE extensions to the C language.
-3. Assembler (`as`) - Converts assembler instructions into architecture
-   specific machine code. *Note:* Assembler instruction isn't always 
-   consistent within an architecture. Their behavior can change from model to
-   model.
-4. Linker (`ld`) - Combines seperate *translation units* (e.g. `.o` object 
-   files) by computing and applying relative offsets. Just remember,
-   linkers only see translation units, not code or symbols. Linkers rely
-   on the meta data in sections like .rela.text to perform the linking.
+1. **Preprocessor** (`cpp`) - Human readable/maintained C code to pure C.
+2. **Compiler** (`cc`) - Converts C source into assembler instructions.   
+3. **Assembler** (`as`) - Converts assembler instructions into architecture
+   specific machine code.
+4. **Linker** (`ld`) - Combines *translation units* into usable ELF files.
 
 </Block>
 
 <Note>
 
 - TODO: Feels like a wall of text.
+- CPP Includes things like `#include`, `#define`, and `#ifdef`.
+- `gcc` is a variant of `cc` that includes GNE extensions to the C language.
+- Assembler instruction isn't always consistent within an architecture. 
+  Their behavior can change from model to model.
+- Linkers only see translation units, not code or symbols. Linkers rely 
+  on the meta data in sections like .rela.text to perform the linking.
 
 </Note>
 
@@ -103,7 +126,15 @@ You can halt GCC at each of the build phases to inspect the output.
     style={{gridColumnStart: 2, gridRowStart: 1}}
     sx={{p: {textAlign: "left", alignItems: "start", justifyContent: "start"}}}>
 
-Given:
+Given `giant.h`:
+
+</Block>
+
+<Block 
+    style={{gridColumnStart: 4, gridRowStart: 1}}
+    sx={{p: {textAlign: "left", alignItems: "start", justifyContent: "start"}}}>
+
+Given `main.c`:
 
 </Block>
 
