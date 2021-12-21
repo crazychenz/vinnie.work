@@ -1,6 +1,6 @@
 ---
-sidebar_position: 6
-title: 'I2C: Inter-Integrated Circuit'
+sidebar_position: 3.1
+title: '(LAB) I2C: Inter-Integrated Circuit'
 ---
 
 :::danger Incomplete

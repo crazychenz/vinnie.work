@@ -24,8 +24,8 @@ This document is not yet written.
     <tr>
       <td>0900</td>
       {/*- mon -*/}<td>Intro & Safety</td>
-      {/*- tue -*/}<td rowspan="2">Mapped Memory</td>
-      {/*- wed -*/}<td rowspan="2">Digital Logic</td>
+      {/*- tue -*/}<td rowspan="2">System IO & Lab</td>
+      {/*- wed -*/}<td rowspan="2">JTAG</td>
       {/*- thu -*/}<td rowspan="3">MCUs and ARMs</td>
       {/*- fri -*/}<td rowspan="3">Firmware</td>
     </tr>
@@ -40,8 +40,8 @@ This document is not yet written.
     <tr>
       <td>1100</td>
       {/*- mon -*/}
-      {/*- tue -*/}<td>Power & Digital Signals</td>
-      {/*- wed -*/}<td>Memories</td>
+      {/*- tue -*/}<td>Power, TTL, & Signals</td>
+      {/*- wed -*/}<td>OpenOCD & Lab</td>
       {/*- thu -*/}
       {/*- fri -*/}
     </tr>
@@ -56,16 +56,16 @@ This document is not yet written.
     <tr>
       <td>1300</td>
       {/*- mon -*/}<td>Behavioral Analysis</td>
-      {/*- tue -*/}<td>Serial Access</td>
-      {/*- wed -*/}<td>System IO</td>
+      {/*- tue -*/}<td>I2C</td>
+      {/*- wed -*/}<td rowspan="2">Practical EE</td>
       {/*- thu -*/}<td rowspan="2">MCUs and ARMs</td>
       {/*- fri -*/}<td rowspan="3">Firmware</td>
     </tr>
     <tr>
       <td>1400</td>
       {/*- mon -*/}<td rowspan="3">Toolchains</td>
-      {/*- tue -*/}<td rowspan="2">Practical EE</td>
-      {/*- wed -*/}<td>SPI Extraction</td>
+      {/*- tue -*/}<td rowspan="2">Memories & Digital Logic</td>
+      {/*- wed -*/}
       {/*- thu -*/}
       {/*- fri -*/}
     </tr>
@@ -73,17 +73,17 @@ This document is not yet written.
       <td>1500</td>
       {/*- mon -*/}
       {/*- tue -*/}
-      {/*- wed -*/}<td rowspan="2">JTAG</td>
+      {/*- wed -*/}<td rowspan="2">SPI & Lab</td>
       {/*- thu -*/}<td rowspan="2">Bare Metal Binary</td>
       {/*- fri -*/}
     </tr>
     <tr>
       <td>1600</td>
       {/*- mon -*/}
-      {/*- tue -*/}<td>I2C Lab</td>
+      {/*- tue -*/}<td>Pin Config & Lab</td>
       {/*- wed -*/}
       {/*- thu -*/}
-      {/*- fri -*/}<td>Project Into</td>
+      {/*- fri -*/}<td>Project Intro</td>
     </tr>
   </tbody>
 </table>

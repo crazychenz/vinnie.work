@@ -1,6 +1,6 @@
 ---
-sidebar_position: 8.1
-title: '🏷️ OpenOCD with RaspberryPi 4'
+sidebar_position: 6.1
+title: '🏷️ (LAB) OpenOCD with RaspberryPi 4'
 ---
 
 :::danger Incomplete

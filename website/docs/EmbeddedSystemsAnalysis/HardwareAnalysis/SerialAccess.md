@@ -1,6 +1,6 @@
 ---
-sidebar_position: 3
-title: Serial Access
+sidebar_position: 2.1
+title: "TTL: Serial Access"
 ---
 
 :::danger Incomplete

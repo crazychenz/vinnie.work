@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2.1
+sidebar_position: 3
 title: Digital Signals
 ---
 
@@ -9,11 +9,13 @@ This document is not yet written.
 
 :::
 
+## Overview
+
 Ok, so _What is a digital signal?_. A digital signal is a signal that is usually represented by a high value or low value for a given amount of time. Here is a conceptual view of what a digital signal could look like. The vertical axis is the voltage and the horizontal axis is the time.:
 
 ![digital signal with noise](./DigitalSignals/digital-signal-noise-512x315.png)
 
-Because of the noise in the voltage level there is usually defined thresholds that determine what is considered _high_ and what is considered _low_. Note: I refer to the values as high/low and **not** 1/0. We'll explain why in a moment.
+Because of the noise in the voltage level there is usually defined thresholds that determine what is considered _high_ and what is considered _low_. Note: I refer to the values as high/low and **not** 1/0. *We'll explain why in a moment.*
 
 ![ttl levels](./DigitalSignals/ttl-levels.png)
 
@@ -21,7 +23,11 @@ Shown above, the high level of this TTL input signal is one where the voltage is
 
 <!-- TODO: Consider removing the following paragraph? -->
 
-Naturally, many engineers will assume that a high value is equal to a logical `1` and a low value is equal to a logical `0`. Keep in mind that the state of a signal can be logically _interpreted_ differently for different components and their configurations. These interpretations can be arbitrary so you should consult the component data sheet to know which is which. The takeaway is that when left with experimentation, do not assume logical `1` is > logical `0` in terms of voltage. Note: For the remainder of this material, we'll assume that a logical `1` is high voltage and a logical `0` is zero voltage.
+Naturally, many engineers will assume that a high value is equal to a logical `1` and a low value is equal to a logical `0`. Keep in mind that the state of a signal can be logically _interpreted_ differently for different components and their configurations. These interpretations can be arbitrary so you should consult the component data sheet to know which is which. The takeaway is that when left with experimentation, do not assume logical `1` is > logical `0` in terms of voltage. 
+
+**Note:** For the remainder of this material, we'll assume that a logical `1` is high voltage and a logical `0` is zero voltage.
+
+## Timing Diagrams
 
 Let's take a look at a _digital timing diagram_:
 
@@ -46,12 +52,32 @@ In the above example, the clock's falling edge is when the data level value is r
 
 <!-- TODO: Note there can be multiple clocks in a single system, labeled clock domains -->
 
-## Active High / Active Low / Pull Up / Pull Down
+## Active High / Active Low
 
 <!-- ! TODO: Consider rewrite. -->
-<!-- TODO: Use "on" and "off" instead of activating. -->
 
-Whether a signal is active high or active low is determined by _how_ it is activated. In other words, an active low signal will be pulled high when not activated. This means that to activate this signal it should be connected to ground to pull it low. In contrast, an active high pin has a low value and to activate it, it should be pulled high.
+Whether a signal is "on" or "off" is defined by its state and whether its "active high" or "active low". In words, when a signal is "active high" and its logic level is 1, the signal is considered "on". In contrast, when a signal is "active low" and the logic level is 0, the signal is considered "on". Here is a table to provide a visual representation:
+
+| Activation  | Logic | Voltage | State |
+|-------------|-------|---------|-------|
+| Active High | 0     | low     | off   |
+| Active High | 1     | high    | on    |
+| Active Low  | 0     | low     | on    |
+| Active Low  | 1     | high    | off   |
+
+<!-- Whether a signal is active high or active low is determined by _how_ it is activated. In other words, an active low signal will be high when not activated. This means that to activate this signal it should be connected to ground to drain it to a low voltage. In contrast, an active high pin has a low voltage value and to activate it, it should be changed to a high voltage. -->
+
+In schematics or diagrams with PIN names, pins that are active low are usually indicated with special annotations. [Wikipedia](https://en.wikipedia.org/wiki/Logic_level) states these as:
+
+<!-- Overline: ̅ -->
+
+> The conventions commonly used are:
+>
+> - a bar above (Q̅)
+> - a leading slash (/Q)
+> - a lower-case n prefix or suffix (nQ or Q_n)
+> - a trailing # (Q#), or
+> - an "_B" or "_L" suffix (Q_B or Q_L).
 
 <!-- TODO: Mention line over PIN name means pin is active low. -->
 
@@ -75,7 +101,7 @@ Once again, datasheets are our friends. We previously discussed datasheet discov
 
 - **Digital Logic** - As a subset of the electrical properties, in a decent datasheet, you'll find extensive descriptions of the digital logic parameters and functionality to operator the circuit. This includes things like logic level values, timing diagrams, inputs/outputs.
 
-### SN74LS164
+### LAB: SN74LS164
 
 Let's take a moment to study an example datasheet of a component:
 

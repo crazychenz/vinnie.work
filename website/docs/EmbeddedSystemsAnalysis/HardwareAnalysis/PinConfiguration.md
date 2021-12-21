@@ -1,6 +1,6 @@
 ---
-sidebar_position: 7.1
-title: 📍 Pin Configuration
+sidebar_position: 5.1
+title: "📍 LAB: Pin Configuration"
 ---
 
 :::danger Incomplete

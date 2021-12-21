@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7.1
-title: '🐱‍👤 SPI: Serial Peripheral Interface'
+title: '🐱‍👤 (LAB) SPI: Serial Peripheral Interface'
 ---
 
 :::danger Incomplete
