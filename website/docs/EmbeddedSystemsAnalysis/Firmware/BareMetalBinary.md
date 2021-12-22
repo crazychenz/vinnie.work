@@ -429,7 +429,7 @@ For more information on linker scripts, take a look at `info ld`.
 
 ### VMA and LMA
 
-One aspect of Linker Scripts that isn't apparently obvious is the Virtual Memory Address vs the Logical Memory Address. When object code is assigned fix-ups, the linker we _usually_ resolve them with virtual addresses that are conventional because it can assume that the virtual address can be mapped (i.e. it assumes it has access to most of the address space.) In embedded bare metal environments (like the linux kernel), this is not the case.
+One aspect of Linker Scripts that isn't apparently obvious is the Virtual Memory Address vs the Logical Memory Address. When object code is assigned fix-ups, the linker will _usually_ resolve them with virtual addresses that are conventional because it can assume that the virtual address can be mapped (i.e. it assumes it has access to most of the address space.) In embedded bare metal environments (like the linux kernel or a boot loader), this is not the case.
 
 For a bare metal execution environment, you must instruct the linker to use specific addresses. Assume that you have a binary in ROM at address 0x0. For the binary to execute, it needs to copy its `.data` to RAM (at address 0x08004000) so it can read/write to the data. The linker needs to know what the address of the data should be at the time of execution so that all fix-ups are resolved with the correct `.data` base address.
 
@@ -450,7 +450,7 @@ SECTIONS {
 }
 ```
 
-The above script marks the end of the `.text` section with `_e_text` and continues on to write `.data` into the file. When the linker performs the actual resolutions, it now assumes that anything in `.data` will be located explicitly from base address `0x08004000` (instead of any old address the linker thinks is best).
+The above script marks the end of the `.text` section with `_e_text` and continues on to write `.data` into the file. When the linker performs the actual resolutions, it now assumes that anything in `.data` will be located explicitly from base address `0x08004000` (instead of any ole address the linker thinks is best).
 
 <!-- TODO: Show the animation. -->
 

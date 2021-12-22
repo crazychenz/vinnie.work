@@ -15,7 +15,9 @@ This document is not yet written.
 
 Total time ~ 1.5 days.
 
-- What is a digital signal?
+
+
+<!-- - What is a digital signal?
   - What is voltage?
   - Reference Ground
     - Multimeter
@@ -65,4 +67,4 @@ Total time ~ 1.5 days.
     - Turn on from config.txt with: `dtparam=watchdog=on`
     - More info at [Stackoverflow](https://raspberrypi.stackexchange.com/questions/108080/watchdog-on-the-rpi4)
   - JTAGulator / BlueTag
-  - OpenOCD / FTDI MiniModule (Pico?)
+  - OpenOCD / FTDI MiniModule (Pico?) -->

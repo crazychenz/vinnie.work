@@ -11,26 +11,26 @@ This document is not yet written.
 
 ## Overview
 
-Up to this point we've been observing the target device and its properties to gain access. This access could be for more analysis, but often the real end goal is some persistent effect. This could be a mended binary for a broken game or other bug, a new feature for some business application, or simple an adjustment in some options that there is no user interface for. To accomplish this you'll want to capture and modify the firmware of the device.
+Up to this point we've been observing the target device and its properties to gain access. This access could be for more analysis, but often the real end goal is some persistent effect. This could be a mended binary for a broken game or other bug, a new feature for some business application, or simply an adjustment in some options that there is no user interface for. To accomplish this you'll want to capture and modify the firmware of the device.
 
-Target devices can have multiple firmware image spread across multiple chips. For example, a cell phone device might have the main micro controller firmware and a base-band firmware. This material focuses on a target devices with a single firmware image, but these same tools and techniques could be used on platforms with multiple firmware as well.
+Target devices can have multiple firmware images spread across multiple chips. For example, a cell phone device might have the main micro controller firmware and a base-band firmware. This material focuses on a target devices with a single firmware image, but these same tools and techniques could be used on platforms with multiple firmware images as well.
 
 ## Identification
 
 Assuming you've downloaded the target device firmware using something like system level access (i.e. root access to download the /dev/mtd devices) or in-circuit extraction (i.e. reading a SPI chip directly), you should now have some sort of opaque binary.
 
-There are quite a few tool to help identify a file and its contents. The first two that I always use are `file`, and `binwalk`.
+There are quite a few tools to help identify a file and its contents. The first two that I always use are `file`, and `binwalk`.
 
 ### `file`
 
-`file` was originally developed by AT&T Bell Labs. Its part of the SysV standard and therefore its everywhere. Its primary role is to identify file types based on the files content. It does this through the use of an array of what are called magic numbers. They are basically very simply signatures that can be used very quickly to identify the file type.
+`file` was originally developed by AT&T Bell Labs. Its part of the SysV standard and therefore its everywhere. Its primary role is to identify file types based on the file's content. It does this through the use of an array of what are called magic numbers. They are basically very simple signatures that can be used very quickly to identify the file type.
 
 For example:
 
 - `1fh 8bh` @ 0h - GZIP
 - `75h 73h 74h 61h 72h` ("ustar") @ 101h - TAR
 - `4dh 5ah` ("MZ") @ 0h - PE File (i.e. Microsoft Executable)
-- `23h 21h` ("#!") @ Shell Script
+- `23h 21h` ("#!") @ 0h - Shell Script
 
 File also has some other rudimentary parsing capabilities to give more context to the files it identifies. Some examples:
 
@@ -119,7 +119,7 @@ Its at this point that you can continue with your analysis to determine how to r
 
 ## Unpacking Overview
 
-We've already talked a bit about unpacking with regards to `binwalk` recursive extraction process. While this is a great start, you really need to understand what all is getting unpacked so that nothing is lost or forgotten in the assembly process. There are a few common image formats that you should ceptually understand and know how to use (With tools) to jump into firmware unpacking:
+We've already talked a bit about unpacking with regards to `binwalk` recursive extraction process. While this is a great start, you really need to understand what all is getting unpacked so that nothing is lost or forgotten in the assembly process. There are a few common image formats that you should conceptually understand and know how to use (With tools) to jump into firmware unpacking:
 
 ## Boot Images
 
@@ -191,8 +191,8 @@ Embedded systems that don't have a need to support writable root file systems or
 For some of the file systems, if you have the module support in your developer workstation, you can often mount them for analysis purposes.
 
 ```sh
-mkdir mountpt
-sudo mount -o loop,ro rt10n.squashfs /mountpt
+mkdir ~/mountpt
+sudo mount -o loop,ro rt10n.squashfs ~/mountpt
 ```
 
 ### Qemu Image Utility
@@ -214,7 +214,7 @@ Whether you are working with boot images, file system images, or actual executab
 
 - echo/printf - `echo` and `printf` are the tools you'll want to be familiar with to inject arbitrary input into a file or device without having to create a file to `cat` with. For example, echoing 4 bytes to replace and instruction is easier than having to create the file with only four bytes.
 
-- grep - Your king of text searching in *nix systems, this tool can also be used for analyzing /proc and /sys file system attributes. One handy trick I like is using grep to display `/proc` file contents. For example, to show udp attributes you can run something like: `grep -H . /proc/sys/net/ipv4/udp*` which returns:
+- grep - Your king of text searching in \*nix systems, this tool can also be used for analyzing /proc and /sys file system attributes. One handy trick I like is using grep to display `/proc` file contents. For example, to show udp attributes you can run something like: `grep -H . /proc/sys/net/ipv4/udp*` which returns:
 
 ```text
 udp_early_demux:1
@@ -227,7 +227,7 @@ udp_wmem_min:4096
 ### ELF Files
 
 - objdump - Nearly everything I would ever need for parsing ELF files can be obtained from `objdump`. It parses ELF headers, it disassembles, and it can associate source with assembly if built with debug symbols. It shows dynamic and static symbols and can handle many other ELF conventions.
-- readelf - This is a more simply tool than `objdump` but provides some nicely formatted output for reading ELF headers and sections.
+- readelf - This is a more simple tool than `objdump` but provides some nicely formatted output for reading ELF headers and sections.
 - nm - This is the binary used if all you want is a list of symbols in an ELF file. The advantage of `nm` over `objdump` is that the output is easily parsable. You could parse `nm` output in a couple lines of python or even bash shell script.
 - ar - "The archiver" is the tool that is used to generate static libraries. It actually is just an archive utility like tar. The primary difference is that tar is designed for streaming to tape whereas `ar` is not.
 
@@ -259,7 +259,7 @@ Instead, you can consider using emulation technology:
 
 - [Renode](https://renode.io/) - Renode took a different take on emulation from qemu. Instead of building the system descriptions directly into the product, `renode` allows the user to define the system in a set of flat description files. This creates quite a flexible system for working with unknown or uncommon embedded systems.
 
-- [Unicorn Engine](https://www.unicorn-engine.org/) - Unicorn engine doesn't have any system definitions or peripherals. It specializes in emulating only the CPUs. The makes it a key component in a whole number of other useful products. Check out the [Unicorn Showcase](https://www.unicorn-engine.org/showcase/) for more information.
+- [Unicorn Engine](https://www.unicorn-engine.org/) - Unicorn engine doesn't have any system definitions or peripherals. It specializes in emulating only the CPUs. This makes it a key component in a whole number of other useful products. Check out the [Unicorn Showcase](https://www.unicorn-engine.org/showcase/) for more information.
 
 ### Virtual Machines
 

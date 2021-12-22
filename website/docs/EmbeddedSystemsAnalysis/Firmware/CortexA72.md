@@ -28,7 +28,7 @@ In 32 bit ARM, "general" purpose registers were referred to with an `r` and ther
 
 ![a64 registers](./CortexA72/a64-gpr-xwregoverlay.png)
 
-The standard general purpose 64 bit registers now start with an `x` (x0-x30). The 32 bit aliases for these registers start with a `w` (w0-w30). In ARMv8a, the stack pointer (`SP`) and program counter (`PC`) are given their own specific registers (they no longer have a GPR aliases). The CSPR register is now gone. The query the system state you should use `NZCV` for condition flags.
+The standard general purpose 64 bit registers now start with an `x` (x0-x30). The 32 bit aliases for these registers start with a `w` (w0-w30). In ARMv8a, the stack pointer (`SP`) and program counter (`PC`) are given their own specific registers (they no longer have a GPR aliases). The CSPR register is now gone. To query the system state you should use `NZCV` for condition flags.
 
 ### Register Conventions
 
@@ -147,7 +147,7 @@ Disassembly of section .text:
 
 ### Branching
 
-When branching to an address, its expressed as a relative offset within a 128 MiB offset from the current position. The actual value given to the branch instruction is 4 byte aligned (instruction aligned), so in reality its within a 24-bit instruction offset. This is valuable because sometimes you want to update an address in a running debugger or JTAG session from its current address.
+When branching to an address, its expressed as a relative offset within a 128 MiB offset from the current position. The actual value given to the branch instruction is 4 byte aligned (instruction aligned), so in reality its within a 26-bit instruction offset. This is valuable because sometimes you want to update an address in a running debugger or JTAG session from its current address.
 
 The encoding for an unconditional branch in A64:
 
