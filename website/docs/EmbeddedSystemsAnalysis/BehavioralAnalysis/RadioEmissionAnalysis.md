@@ -65,7 +65,7 @@ Some major advantages of a professional spectrum analyzer over a hobbyist versio
 - Significantly faster spectrum sweep times.
 - Many other analytical and measurement features.
 
-<!-- TODO: Consider discussing antennas and mention how directional antennas on a specan can locate frequency sources. -->
+<!-- TODO: Consider discussing antennas and mention how directional antennas on a spec-an can help locate frequency sources. -->
 
 ## RF Shielded Enclosures
 
