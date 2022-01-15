@@ -52,3 +52,9 @@ A common looking interface for these serial ports are DB9 connectors that suppor
 - https://stackoverflow.com/questions/64014958/cant-get-u-boot-running-on-raspberry-pi-4b-what-are-the-absolute-necessities
 - https://andrei.gherzan.ro/linux/uboot-on-rpi/
 - https://www.linaro.org/downloads/
+
+<details><summary>Instructor Notes</summary>
+
+- No Lab ... Unrestricted Access via UART/JTAG later in course.
+
+</details>

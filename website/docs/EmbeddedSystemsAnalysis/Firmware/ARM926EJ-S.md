@@ -292,6 +292,16 @@ Notice that instead of restoring LR, its value is restored into PC. This allows 
 
 As an exercise, using a C compiler, determine what the calling convention is for handling parameter passing for different numbers of parameters. What happens when there are 1, 2, 3, 4, or 5 parameters? How is the return value handled?
 
+<details><summary>Calling Convention Lab Questions</summary>
+
+- Examine the output of objdump and see how variables are passed into a function.
+- Increase the number of parameters passed into a function and determine what the maximum number of parameters that can be passed before the mechanism for passing the parameters changes.
+- Determine how the return value is given back to the calling convention.
+- Extra: How are values larger than 32bits returned to a calling function?
+- Extra: How does ARM calling convention differ from other architectures?
+
+</details>
+
 <!-- TODO: Do calling convention lab to determine when r0-r3 are used as parameters and how other parameters are handled. -->
 
 ## Pipelines
@@ -329,7 +339,59 @@ Signed 24 bit immediate = (Absolute_Destination_Addr - Absolute_Branch_Addr - 8)
 
 If you want to branch and link, set L=1, otherwise L=0.
 
-<!-- TODO: Branch exercise. -->
+<details><summary>Arm Branch Exercise</summary>
+
+You need to calculate the binary for some branch instructions.
+
+Given the address of the branch instruction and the destination address of the jump, hand assemble the following branch instructions:
+
+Address of branch: `0x00000000`
+Address of Destination: `0x00000000`
+Condition: `AL`
+Link: `No`
+Answer:
+
+```text
+    AL + B +  link(No) + OFFSET
+    1110 101  0          1111 1111 1111 1111 1111 1110
+0x  E    A               F    F    F    F    F    E
+```
+
+Address of branch: `0xdeadbeef`
+Address of Destination: `0xbadcafe4`
+Condition: `LT`
+Link: `Yes`
+Answer:
+
+```text
+    Can't directly jump, the displacement is > 24 bits.              
+```
+
+Address of branch: `0x08250624`
+Address of Destination: `0x08088284`
+Condition: `EQ`
+Link: `No`
+Answer:
+
+```text
+    EQ + B +  link(No) + OFFSET
+    0000 101  0          1111 1000 1101 1111 0001 0110
+0x  0    A               F    8    D    F    1    6
+```
+
+Address of branch: `0x000f00f0`
+Address of Destination: `0x00000000`
+Condition: `NE`
+Link: `Yes`
+Answer:
+
+```text
+    NE + B +  link(Yes) + OFFSET
+    0001 101  1           1111 1100 0011 1111 1100 0010
+0x  1    B                F    C    3    F    C    2
+```
+
+</details>
 
 Note: To simply return from a branch and link you can simply: `MOV PC, LR`.
 

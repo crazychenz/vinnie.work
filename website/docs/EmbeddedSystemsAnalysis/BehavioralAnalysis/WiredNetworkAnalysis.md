@@ -317,3 +317,14 @@ Did you know HDMI has ethernet?
 - [A tcpdump Tutorial with Examples — 50 Ways to Isolate Traffic](https://danielmiessler.com/study/tcpdump/)
 - [XKCD Pinouts](https://galigio.org/2020/06/08/pinouts/)
 - [HDMI HEC Pinout](https://www.flickr.com/photos/jmarcd2/8091356838)
+
+<details><summary>Instructor Notes</summary>
+
+- TODO: Networking Lab:
+  - Connect laptop to device.
+  - Perform packet capture. (tcpdump or wireshark)
+  - Observe power on behavior.
+  - Determine IP address.
+  - Perform port scan of IP address.
+
+</details>

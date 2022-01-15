@@ -9,6 +9,8 @@ This document is not yet written.
 
 :::
 
+## Overview
+
 Note default access credentials.
 Explore all menus and document menu trees.
 Document observed behavior of system compared to documented behaviors.
@@ -18,3 +20,11 @@ For extra efforts, you can try different versions of vendor firmware. How differ
 
 Are there other boot modes of the device (e.g. recover mode)? ... rinse and repeat.
 Are there other access modes of the device (e.g. admin)? ... rinse and repeat.
+
+## Resources
+
+<details><summary>Instructor Notes</summary>
+
+- No Lab
+
+</details>
