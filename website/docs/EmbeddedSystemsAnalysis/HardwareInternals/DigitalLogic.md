@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 6
 title: Digital Logic
 ---
 
@@ -58,7 +58,7 @@ When studying datasheets to understand digital logic, there are often entire log
 
 Digital logic schematics are developed from a collection of symbols that represent one or some combination of boolean logic. Here are some common examples:
 
-![logic symbols](./PracticalEE/logical-511x195.png)
+![logic symbols](./DigitalLogic/logical-511x195.png)
 
 So for example, if you wanted a signal to perform `(A and B) or C`, you may do something like:
 
@@ -117,4 +117,4 @@ Flip-flops and latches both store a bit of information, but the key difference b
 
 Here is a simple visualization that shows the difference between a latch and a flip flop:
 
-![flipflop vs latch](./Memory/flipflop-latch.png)
+![flipflop vs latch](./DigitalLogic/flipflop-latch.png)

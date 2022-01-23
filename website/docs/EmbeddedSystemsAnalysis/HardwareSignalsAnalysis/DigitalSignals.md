@@ -91,6 +91,8 @@ Signals that have no bias up or down are considered floating. This means that th
 
 ## Datasheets
 
+<!-- TODO: This whole section needs to be better thought out and moved to its own page. -->
+
 Once again, datasheets are our friends. We previously discussed datasheet discovery in [Internal Visual Inspection](/docs/EmbeddedSystemsAnalysis/InitialVisualAnalysis/InternalVisualInspection#datasheets). When you begin to dig deeper into the analysis of your target device, you'll also dig deeper into the datasheet content. There are several areas of datasheets that should be considered:
 
 - **Mechanical** - This is where the physical attributes of a part are described. This information is valuable for identifying exact part numbers for a particular package type. Its also valuable for those who are actually building circuits (e.g. finding a functionally equivalent chip that'll work in a bread board.)

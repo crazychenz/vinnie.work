@@ -25,6 +25,8 @@ While you may find an old RS232/Modem setup in some legacy cases, generally RS23
 
 ![picture of null modem](./SerialAccess/null-modem.jpg)
 
+<!-- TODO: Example of setting up RS232. -->
+
 ### TTL to USB
 
 When connecting to TTL serial interfaces internally, you'll want to get yourself a TTL to USB adapter.
@@ -50,32 +52,8 @@ Internal TTL/UART connections may be on the board but not populated or labeled. 
 
 A cheap and slow way to find the UART is to first ensure that the pins to the potential UART don't exceed the expected voltage of the UART to USB adapter. Once the lines are deemed safe, you simply start guessing which one is Rx. For each connection that you assume is Rx and is outputting data, you'll need to guess the baud rate. I would try, from left to right: 115200, 9600, and 38400. All of these should be connected with 8-N-1 (8 bits, no parity, 1 stop bit) and use software flow control.
 
-### Baud via Logic Analyzer
-
-A more systematic approach is to use a logic analyzer. A logic analyzer is a device that takes samples of a number of connected data lines at a given frequency. Using the logic analyzer and a piece of software called PulseView (by sigrok), we can estimate the actual baud rate based on observations made by the logic analyzer.
-
-![picture of 24mhz logic analyzer](./SerialAccess/usb-24mhz-logic-analyzer.jpg)
-
-The gist is that given the microseconds (us) of a single bit as X:
-
-```text
-baud = (1/X) * 1000000
-```
-
-To get the most accurate readings, you'll want to really crank up the sample rate. At 8Mhz you can almost measure 115200 baud rate.
-
-![pulseview screenshot](./SerialAccess/pulseview.png)
-
-In the above screenshot, channel `D5` is the Rx pin of the UART. When we measure the timing of a single bit, it's measure in at 8.75 us. Plugging this into our equation, we get `(1/8.75) * 1000000` or 114285 baud. If we attempt to use this baud rate, it'll work for a little bit, but it'll eventually drift off the clock cycle and lose bits. Either way, it gives us a good indication of where to start.
-
-<!-- TODO: Show some fruits of serial access labor. -->
-
-## Serial Terminal
-
-## Booter Output
-
 ## Resources
 
-https://en.wikipedia.org/wiki/RS-232
-https://en.wikipedia.org/wiki/Null_modem
-https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic
+- https://en.wikipedia.org/wiki/RS-232
+- https://en.wikipedia.org/wiki/Null_modem
+- https://en.wikipedia.org/wiki/Transistor%E2%80%93transistor_logic

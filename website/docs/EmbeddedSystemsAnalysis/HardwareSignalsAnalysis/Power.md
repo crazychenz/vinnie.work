@@ -84,7 +84,11 @@ If you want to measure the current of a circuit, the circuit itself must go thro
 
 **Caution:** Probing a live circuit is very risky. You can very easily cause a short that may damage or degrade the circuit.
 
-## Dirty Power
+## Misc Info
+
+<details><summary>Click to read informaiton on dirty power.</summary><br />
+
+### Dirty Power
 
 <!-- TODO: Consider expressing why this matters for analysis, or get rid of it. -->
 
@@ -103,6 +107,8 @@ From Ken Shirriff's blog, here are two images of different 5v USB chargers:
 Notice that the first has what we might interpret as _clean power_ and yet it still shows noise on the line. In contrast, the other has very _dirty power_. While both of these USB chargers exists in identical cases, they are in fact completely different designs and have completely different manufacturing properties. The latter could actually be considered a safety hazard.
 
 <!-- TODO: Explain effects of dirty power. -->
+
+</details>
 
 ## Resources
 

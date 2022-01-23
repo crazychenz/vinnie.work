@@ -1,4 +1,4 @@
-label: 'Application'
-position: 100 # float position is supported
+label: 'Hardware Signals Analysis'
+position: 8 # float position is supported
 #collapsible: true # make the category collapsible
 #collapsed: false # keep the category open by default

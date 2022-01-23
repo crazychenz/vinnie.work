@@ -9,6 +9,8 @@ This document is not yet written.
 
 :::
 
+<!-- TODO: Need to define various terminology: magnitude, decibels. Consider describing decibel log curve. -->
+
 Radio Frequency (RF) Analysis is a complex topic, but worth mentioning even though we don't intend to include any labs for it in this Embedded Systems Analysis material. The general idea is that when we're powering on any unknown device, it could not only be using any wired connection to communicate with the outside world, it can also be using wireless signals.
 
 Many of the smart home devices that control our lights, HVAC, doors, and cameras are controlled over a standard IoT protocol defined by 802.15.4.  Standard Wifi protocols are defined by the 802.11 standard. These are just two examples of local short distance protocols. For longer distance communications, a device could include a SIM card and call home over a 3G, 4G, or 5G cell phone connection. It could also use more proprietary protocols to attempt to discover similar products over short, medium, or long distances.

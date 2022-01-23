@@ -1,6 +1,6 @@
 ---
-sidebar_position: 3.1
-title: '(LAB) I2C: Inter-Integrated Circuit'
+sidebar_position: 4
+title: 'I2C: Inter-Integrated Circuit'
 ---
 
 :::danger Incomplete
@@ -15,7 +15,7 @@ This document is not yet written.
 `/etc/udev/rules.d`
 `SUBSYSTEM=="i2c-dev", MODE="0666"`
 
-I2C:
+## I2C Primer
 
 TWI is the same thing.
 SMBus is a stricter subset used in PCs: Power management, fan control, sensing battery level, and so forth.
@@ -36,6 +36,10 @@ SDA Bits are sampled when SCL is high.
 
 First 9 bits are peripheral address + R/W bit + ACK bit.
 Next 9 bits are data + ACK bit. Repeat until STOP condition.
+
+## I2C Lab
+
+
 
 ## Resources
 

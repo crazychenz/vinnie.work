@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7.1
+sidebar_position: 8.1
 title: '🐱‍👤 (LAB) SPI: Serial Peripheral Interface'
 ---
 
