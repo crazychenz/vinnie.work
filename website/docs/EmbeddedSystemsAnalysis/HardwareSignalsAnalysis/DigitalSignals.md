@@ -107,7 +107,7 @@ Once again, datasheets are our friends. We previously discussed datasheet discov
 
 Let's take a moment to study an example datasheet of a component:
 
-[SN74LS164 Datasheet](./PracticalEE/sn54ls164-sp.pdf)
+[SN74LS164 Datasheet](./DigitalSignals/sn54ls164-sp.pdf)
 
 - What does it do?
   - What does the 8-bit serial to parallel converter do?
