@@ -31,7 +31,7 @@ Docker builds are managed with a tool suite known as buildkit. Its dangerous to 
 
 Ok, so there are several terms to understand before I delve into my microscopic experience with this tool:
 
-- `docker context` - This is a definition of a docker registry host or endpoint (like K8S) that can accept builds or pushes of images.
+- `docker context` - This is a definition of a docker runtime host or endpoint (like K8S).
 - `docker buildx` - This is the explicit sub-command call to use buildkit. `docker build` will also implicitly call buildkit nowadays.
 - `docker buildx create` - Creation in buildkit means _create a new builder object_. The primary purpose of a builder object is to have a reference to a thing that stores buildkit configuration, and the build cache. Having a cache is a primary benefit of Docker because when you rebuild an image you don't want it built from scratch every single time.
 - `docker buildx build` - Build an image with a given _builder_ (as defined with `docker buildx create`).
@@ -306,7 +306,14 @@ To retrieve the tags for a given image (e.g. `crazychenz/swiss-knife`):
 curl -X GET http://localhost:5000/v2/crazychenz/swiss-knife/tags/list
 ```
 
-Note: In practice, I've more commonly dealt with private remote registries through services like Artifactory.
+In practice, I've more commonly dealt with private remote registries through services like JFrog's Artifactory. For those that aren't interested in licensing Artifactory, there is a docker image that'll host a registry browser on Docker Hub:
+
+```text
+docker pull klausmeyer/docker-registry-browser
+docker run --rm --network host --name registry-browser -p 8080:8080 klausmeyer/docker-registry-browser
+```
+
+Since we used a docker volume for our registry, we'll need to monitor the size of that over time. This is accomplished by running `docker system df -v` and locating the docker volume name in the listing.
 
 ## Conclusion
 
