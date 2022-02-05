@@ -1,7 +1,7 @@
 ---
 slug: 2022-01-28-why-so-hard-buildkit
 title: 'Why so hard?: Docker Buildkit'
-draft: false
+draft: true
 ---
 
 I talked about my first experience with build kit in [Why So Hard?: BuildKit to Local Repository](/blog/2021-11-04-why-so-hard-buildkit-to-local-registry). In short, Docker has decided to abandon a subset of their customer base in favor of what they believe is a more scalable and lucrative market space. It feels like a bait and switch. While I disagree with their decision and direction, their market share is undisputable and its likely that my peers will continue to use the service and therefore I believe its time for me to stop ignoring the future of Docker.
