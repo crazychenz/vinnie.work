@@ -15,3 +15,7 @@ For those interested, these are my chosen key values at this point in my life:
 ![My Key Values](2020-10-07-keyvalues/keyvalues.png)
 
 In addition to listing company values with their explanation of how they satisfy particular values, you can subscribe to the site for great interview questions to ask.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

@@ -292,3 +292,7 @@ Its worth nothing that the entire process didn't require any sudo commands (exce
 ## Note To Self
 
 When I get time to adjust this ... In hindsight, it makes more sense to build the minsys folder first and then keep all built objects there. For example, first build minsys and then make sure it contains the kernel `Image`, the non-volatile `disk.ext3`, and the volatile `initramfs.cpio.gz`. It will also contain the `build_rootfs.sh`, `build_initramfs.sh`, `rootfs`, `sysroot` folders and scripts. Then from this single directory we can execute our fakeroot and qemu commands without any directory traversal. We should also be able to generate all of this from a single `docker build` command.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

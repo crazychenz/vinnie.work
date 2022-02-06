@@ -179,3 +179,7 @@ I don't currently have access to an I2C logical analyzer so this'll have to wait
 ## Conclusion
 
 I've now get a TFT diplay and button input working for the Raspberry Pi. Now I just need to code up an applicance looking application.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

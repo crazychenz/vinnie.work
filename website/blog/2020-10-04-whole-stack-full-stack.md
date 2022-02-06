@@ -82,3 +82,7 @@ The whole stack would, _at a minimum_, include:
 That is a 10000 foot view of what I think of as the whole stack _just for a static website_. What we think of as the whole stack can get increasingly complicated once the system gets increasingly larger in size or complexity. Suffice to say, a full stack isn't the whole stack but the parts of the stack that often need tailoring for a solution (and often only involving web applications.)
 
 It is my view that a Senior Software Engineer is someone who is capable of working with teams of engineers, developers, and users with a diverse set of skills covering the whole stack, but no stead fast requirement to have a significant depth of knowledge within any of the parts of the whole stack.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

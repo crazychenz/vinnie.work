@@ -23,3 +23,7 @@ Here is a picture of the M.2 mounting job:
 ![m dot 2 mounting](./2021-12-01-motherboard-jerry-rigging/motherboard.jpg)
 
 In the end, I was just tickled how well this ridiculous fix worked out.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

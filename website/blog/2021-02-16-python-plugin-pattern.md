@@ -311,3 +311,7 @@ Using `pip` and `setuptools`, while a little more noisey, is a much better way t
 Always use virtualenv to prevent namespace collision, version collision, and to encapsulate your environment for easy exportation to end users for offline installs or testing.
 
 I also wanted to mention that python has some other official recommendations for [plugin patterns](https://packaging.python.org/guides/creating-and-discovering-plugins/).
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

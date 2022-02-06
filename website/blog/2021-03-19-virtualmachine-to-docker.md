@@ -114,3 +114,7 @@ Take aways:
 - Virtual disks can be converted to raw disk dumps without a hypervisor.
 - `losetup` and `partx` can be used to automatically setup loopback LVM.
 - docker/containerization is still one of my favorite tools
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

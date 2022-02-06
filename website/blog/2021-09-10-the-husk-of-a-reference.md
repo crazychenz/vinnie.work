@@ -17,3 +17,7 @@ At this moment, the _Inform_ section really is just a husk of what I want to sta
 The _Embedded Systems Analysis_ has a well thought out outline and so I've stubbed out all the pages, although about 80% of them are empty except for their titles. The plan is to get most of that all filled in by the end of October.
 
 As for the _Visual Studio Code Tips_, this really is in a "playing with it as I go" sort of situation. Ultimately I could see it becoming more of a "How I Work / My Work Flows" kind of writing. Either way, I intend to populate that as I repeat my typical VSCode related workflows.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

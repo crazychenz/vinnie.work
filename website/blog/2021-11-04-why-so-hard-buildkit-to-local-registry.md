@@ -36,3 +36,7 @@ cat Dockerfile | docker build -t myimage ${*} --load --use myimage-builder -f - 
 ## Conclusion
 
 I applaud docker and its progress, but this lack of legacy user experience is quite aggravating. I was hoping that the docker CLI would remain stable for many years. Alas, like many other products I now have to remain aware of the differences between the docker CLI conventions for the sake of my users.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

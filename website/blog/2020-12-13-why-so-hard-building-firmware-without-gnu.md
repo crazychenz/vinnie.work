@@ -294,3 +294,7 @@ Idx Name          Size     VMA              LMA              Type
 GNU is still the "gold standard", but with improvements to LLVM happening all the time, its on its way to becoming a truely embraced replacement for MSVC and GNU in my eyes. While MSVC is far behind in the firmware support game, LLVM is making strides to catchup. While understanding the lineage and general interface of commonly used GNU toolchain binaries, I believe that now is a perfect time to really focus on teaching LLVM to aspiring embedded systems developers because its a tool they can take with them to all environments without having to worry to much about the intricacies of how to install it (unlike GNU).
 
 Still though, I wonder how we're at LLVM 11 (latest release as of Dec 2020) and it still doesn't support a _stable_ build that is capable of linking firmware images. I suspect this is because it wasn't until recently that LLVM started their LLD project as a replacement for GNU ld instead of falling back to GNU ld. Note: When you specify a target that clang doesn't support, it attempts to find a GNU toolchain that can satisfy the requirement as a fallback. This has been a nice feature to have while LLVM transitions and matures into a fully functioning product.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

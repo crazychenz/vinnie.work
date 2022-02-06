@@ -108,3 +108,7 @@ Since originally writing this article, I've also found several other interesting
 - [Docusaurus](https://docusaurus.io/) - Documentation (in contrast to blog) focused markdown site generator.
 - [Gitbook](https://www.gitbook.com/) - An inbrowser WYSIWYG editor based on markdown.
 - [Gitalk](https://gitalk.github.io/) - Component design that allows using github issue API as a comment database.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

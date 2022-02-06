@@ -568,3 +568,7 @@ In conclusion, CMake is very capable of managing our embedded development needs.
 Even though CMake doesn't explictly support multiple toolchain builds or relative paths for containerized builds, with good conventions and the extensibility of CMake, we were easily able to workaround the limitations without using any tools external to CMake itself (e.g. shell scripts or Python).
 
 More experimentation needs to be done to see how the multiple toolchain builds and containerized builds impact the potential sharing capabilites of the build results with new and more intesting products. For example, could we build a library within a docker container and consumer the library from within another docker container without breaking any dependency trees? I'm also curious about the integration of `autoconf` with CMake and what facilites CMake may have to obsolete `autoconf` itself.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

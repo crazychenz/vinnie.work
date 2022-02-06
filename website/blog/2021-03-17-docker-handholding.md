@@ -92,3 +92,7 @@ Also, there are a whole slew of other checks that you may want to expect users t
 - Are supplemental local caching docker containers running? (e.g. apt-cacher-ng)
 
 These checks can go on and on, but this general pattern of check and suggest seems clean, idempotent, and unobtrusive.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

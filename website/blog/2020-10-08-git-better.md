@@ -284,3 +284,7 @@ git pull --all
 ## Conclusion
 
 I haven't yet covered renaming master to something else or various workflows I would like to discover because those are in the next post. This post was getting long as it is. In any case, there you go ... Nerd Fonts for the presentation win, oh-my-posh and powerline for the controller win, and GitLens to use Git more effectively in VSCode. ... This is the second version of this post, hopefully I don't learn to much more and feel inclined to re-write it again. :)
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

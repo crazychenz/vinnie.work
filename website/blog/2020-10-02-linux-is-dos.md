@@ -27,3 +27,7 @@ My personal hunch is that Microsoft will eventually get a majority of what peopl
 
 1. Raymond, Eric - [Last phase of the desktop wars?](Last phase of the desktop wars?)
 2. Wikipedia - [Windows 3.0](https://en.wikipedia.org/wiki/Windows_3.0)
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

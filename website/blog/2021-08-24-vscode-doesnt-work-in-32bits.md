@@ -49,3 +49,7 @@ sudo update-grub
 Once that was all done I rebooted the VM, fired up my modern 1.59 VSCode with RemoteSSH and everything installed and worked as expected.
 
 It is also worth mentioning that some other tools that I was using required Java 11+. I was able to successfully install Oracle's JDK 16 (compressed archive) without issue.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

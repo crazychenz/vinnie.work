@@ -79,3 +79,7 @@ The idea here is to prevent leads from ever having to give specific direction an
 Marquet has mentioned that he's enforced this in times of emergency as well as in more calm situations. But it really depends on allowing the workforce to master their skills and have the ability to act in situations instead of depending on a process and analysis paralysis.
 
 _A fire fighter isn't going to wait until a fire chief arrives to point the hose at the flame. They simply point the hose at the flame with an understanding of the ramifications when they do._
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

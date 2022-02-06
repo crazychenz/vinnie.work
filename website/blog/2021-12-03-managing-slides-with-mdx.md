@@ -127,3 +127,7 @@ For more details on the implementation specifics, feel free to browse the `mdxp`
 - [Sam Larsen-Disney - Presentations](https://sld.codes/presentations)
 - [MDX Deck Demo](https://mdx-deck.jxnblk.com/)
 - [MDXP Demo](https://0phoff.github.io/MDXP/examples/demo/#/normal/0/1)
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

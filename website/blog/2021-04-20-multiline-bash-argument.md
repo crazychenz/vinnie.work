@@ -86,3 +86,7 @@ eval $(echo "'"${LITERAL_VAR}"'")
 ```
 
 _Caution: This technique is not impervious to command injection so don't consider it safe for end user input. (i.e. only use it for canned commands)._
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

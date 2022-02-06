@@ -276,3 +276,7 @@ Hopefully you now have a JTAG environment setup from a host to the Raspberry Pi 
 - Connected to the OpenOCD gdbserver from the host.
 
 In future articles, I plan to talk about bare metal development and debugging on the Raspberry Pi 4 using a custom runtime environment and the buildroot environment.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

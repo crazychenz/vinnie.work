@@ -351,3 +351,7 @@ Once everything is done building, you'll need to rerun `build_rootfs.sh` to get 
 ## Conclusion
 
 In conclusion, we've installed dropbear as a SSHd service that allows for easy file transfers via `scp`, ssh tunneling, and interactive ssh shell access. We've installed gdbserver and strace for inspection of application behavior and state. And finally, we've installed tcpdump for inspection of network behavior and state. This concludes my "Simple Busybox System".
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

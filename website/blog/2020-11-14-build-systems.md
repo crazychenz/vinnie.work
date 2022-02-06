@@ -92,3 +92,7 @@ Although not a build system, Conan is a worth while mention. Instead of focusing
 ## Conclusion
 
 The conclusion I'm attempting to come to is that SCons and CMake are both good solutions for bare metal training. But because of the nature of how CMake is built to be used from many different types of environments and IDEs, it may be a more ideal approach for embedded systems development. For decades, hardware development seems to have favored Windows for many shops and tools. This means that sometimes its just more convienent to not be on a purely \*nix system. CMake eliminates the decision process here by provided a (mostly) platform independent way of describing our projects that are translated into the tools we intend to use.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

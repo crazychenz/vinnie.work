@@ -77,3 +77,7 @@ dseditgroup -o edit -n /Local/Default -u vinnie -p -a staff -t group com.apple.a
 Now ... I'm happy that I found out the right command to get SSH to work on OSX and I hope to never have to learn yet another way to get this to work, but why is it _this_ way? I am all for increasing security, but at the **cost of usability**? I figured there would be an option in the Security section of the System Preferences to all me to add users to these groups. But alas I found none. I only own the Mac Mini so I can run XCode builds of applications I generally support on other platforms. I personally can't stand OSX and iOS and this is just another notch on the list or reasons not to associate with these products.
 
 When I think about it, another technology in Linux that drove folks to a similar madness was SELinux. SELinux in spirit was a great advancement in Linux kernel security, but it still to this day has a usability problem that has led to more inferior products like AppArmor. At least in the case of SELinux there was a permissive mode ... I doubt Apple would consider such things as useful.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

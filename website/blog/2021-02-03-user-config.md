@@ -173,3 +173,7 @@ PS1="$PS1\n$COLOR_LIGHT_YELLOW\w$COLOR_RESET\$ "
 
 - Swap panes in tmux with `Ctrl+b` then `{` or `}` to swap active pane up or down.
 - Kill a single pane with `Ctrl+b` then `x`. You may need to confirm with `y` then `Enter`.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

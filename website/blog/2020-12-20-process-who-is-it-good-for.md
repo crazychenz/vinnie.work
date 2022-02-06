@@ -83,3 +83,7 @@ What I would recommend is that organizations provide guidance on what could be c
 In conclusion, process can be a great way to capture the culture of an organization to efficiently brings new folks on board and help existing folks communicate with their peers more effectively. In contrast, you are more likely to find parasitic processes in the wild that have unjustified or outdated ritualistic parts that increase cost and decrease the value of the organization as a whole.
 
 If the organizations leadership and management doesn't see parasitic process as a problem, it won't be worth an engineers time to contibute to solving the issue. Instead you must either assimilate to the process or find the door.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

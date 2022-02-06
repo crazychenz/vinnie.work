@@ -331,3 +331,7 @@ Now that wasn't so hard, was it? You only needed to create an extra builder obje
 - [Cannot build from local image with buildctl (OCI Worker)](https://github.com/moby/buildkit/issues/1142)
 - [buildx with network=none generates entitlement error](https://github.com/docker/buildx/issues/524)
 - [Incorrectly documented --driver docker docs](https://docs.docker.com/engine/reference/commandline/buildx_create/) -->
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

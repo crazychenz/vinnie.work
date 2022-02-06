@@ -42,3 +42,8 @@ In my particular case, I had to break many conventions that I had been using to 
 So if everything requires a docker container to build and Jenkins itself is running from a docker container, Jenkins (from a container) needs the ability to invoke and direct another container to build the files it checked out in its namespace. The general solution to this is to build a Jenkins docker image that layers a docker-compose client into the container and when the container is run, it has `/var/run/docker.sock` mapped into it from the host. This of course assumes that the `dockerd` daemon is already running.
 
 Another issue with having an external container build the code for Jenkins is that the source code is checked out by Jenkins in the Jenkins container. Using bound volume mounts are possible but messy because I must pass the Jenkins home directory path to the build scripts so they can delta them against the `WORKSPACE` environment variable to get the host path of the data. This is compounded by the fact that the host path needs to also be mapped back into whatever path the external container has the source code mapped into. My simple solution for this was to just mount the Jenkins home directory in a docker volume and mount it in the same location in both (or all relevant) containers. This way there is no file path translation that has to occur. **Note:** This feels fragile, but it works.
+
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

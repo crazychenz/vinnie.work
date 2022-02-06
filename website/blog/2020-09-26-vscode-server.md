@@ -132,3 +132,7 @@ With NGINX as the entry point, we can secure the service several different ways.
 ### In Conclusion
 
 I'm going to give this setup a go and see how things work out. I believe this to be a superior solution to everything else I've tried because it doesn't require any remote desktop forwarding (VNC, RDP, XWindow) that seems to never work with 4K and the code editor is running under the same host as the code itself.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

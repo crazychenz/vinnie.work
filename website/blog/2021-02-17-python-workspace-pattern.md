@@ -431,3 +431,7 @@ With workspace activation you can plug in all kinds of goodies to simplify life 
 ## Conclusion
 
 I find using workspace patterns incredibly useful and productive when managing any more than a single project on a single host (which is always the case). The script mentioned in the article is focused on Python projects, but I've used this very same pattern with make based projects and npm based projects.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

@@ -297,3 +297,7 @@ If everything went off without an error, you can login to the OpenFaaS service b
 - [Github moby/buildkit Dockerfile](https://github.com/moby/buildkit/blob/master/Dockerfile)
 - [Github moby/buildkit](https://github.com/moby/buildkit)
 - [A private CA buildkit workaround](https://github.com/docker/buildx/issues/80#issuecomment-533844117)
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

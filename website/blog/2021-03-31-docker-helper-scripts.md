@@ -129,3 +129,7 @@ $ HOME_VOLMAP='' ./run.sh
 ## Conclusion
 
 At first glance, this seems overly simple and not worth writing about, but I've not seen any example like this before and it works wonders for my workflow. Having the home directory mapping allows me to isolate credentials and caching directory from my host home directory while increasing the performance of specific projects. Also, having the ability to run a default command or a set of parameters outside the definition in the Dockerfile is very useful for development, debug, and troubleshooting of systems that could otherwise become more manual then they need to be.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

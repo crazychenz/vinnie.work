@@ -63,3 +63,7 @@ VM "desktop-ubuntu-dev" has been successfully started.
 ```
 
 Woo hoo! Back to work...
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

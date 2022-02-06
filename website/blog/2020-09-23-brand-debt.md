@@ -53,3 +53,7 @@ A lot of the article was a bit to vague for me to tangibly apply to my situation
 ```
 
 Now the trick will be to stay within the brand and not redefine the brand whenever it suits me. :)
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

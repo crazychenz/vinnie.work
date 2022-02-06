@@ -280,3 +280,7 @@ This will return the machine type that the binary has been built to run on. (Not
 In follow up articles, we'll use this buildroot toolchain with qemu and a real Raspberry Pi to perform bare metal development and standard kernel/userspace development.
 
 To conclude, we've covered key attributes of an embedded system, the configuration of buildroot, and a trivial example of using the buildroot tools with toolchain prefixing.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

@@ -127,3 +127,7 @@ The last nugget of wisdom that has stuck with me is Conway's Law. (Conway, Melvi
 > Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure.
 
 The general idea here is that you should expect products to be modularized in a way that matches the organizational chart for the business. Another way to put it is that, in my opinion, the organizational chart (or relevant information systems) should be organized to meet the needs of the product (and therefore the customers) and not the needs of the organization (irrespective of the product).
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

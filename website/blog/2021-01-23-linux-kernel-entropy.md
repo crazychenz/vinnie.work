@@ -63,3 +63,7 @@ For more information I did a tiny bit of research on the subject.
 ## Conclusion
 
 In conclusion, the kernel prioritizes its entropy above security dependent functionality. This is due to Linux's prominance in the world of information security making it a primary target for hunting for security issues. Luckily, we can automate away some of this headache in our simulated environments with something as simple as `ping`. Also, we're using a stripped down tool like dropbear. I would hope that more full featured tools like OpenSSH and more modern kernel would have a better messaging system and lower latency in generating entropy on behalf of the user.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

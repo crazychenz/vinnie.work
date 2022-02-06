@@ -156,3 +156,7 @@ The way I see it, keep the authentication endpoint super simple and isolated fro
 In conclusion, the security surrounding Google's OAuth (and likely others) is no trivial matter. You need to understand all of the IT associated with it and pre-plan before attempting to use it. Its not one of these throw it together piece by piece, sprint by sprint sort of ordeals. It requires a plan and execution on the whole plan.
 
 I'm just happy that now I feel over the hump and actually have a plan to proceed where I'd felt helpless and overwhelmed for months.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

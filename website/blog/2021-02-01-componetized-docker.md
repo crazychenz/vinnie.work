@@ -179,7 +179,6 @@ Ultimately it would be nice to have a proper templating and incude support in th
 
 Right, so there we are. A simple convention that allows for the modularlization of Dockerfiles to reuse those little bits of Dockerfile fragments that should not have to be memorized but just referenced.
 
+## Comments
 
-
-
-
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

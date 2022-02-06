@@ -111,3 +111,7 @@ Mastery is not about telling someone to do some training, its about allowing the
 Purpose is not about telling someone how their piece might contribute to the bigger picture. Its about telling the worker how the bigger picture depends on their piece. Strategic development, where we develop our own requirements, spits in the face of purpose. We can often sell it initially, but in the end it makes folks feel betrayed and empty due to the unused product and loss opportunity for the feeling of accomplishment.
 
 Autonomy is not about allowing the worker to do whatever they want. Its about letting the worker do things differently than their peers to increase productivity and value output. Having an over bearing process that isn't prescriptive to the needs of the workers eliminates autonomy. Also, as a team lead, not allowing teams to develop their own cultural way of doing things internally goes against having autonomy as an intrinsic motivator.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>

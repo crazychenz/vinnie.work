@@ -98,3 +98,7 @@ So this is great, a transition strategy for my site and search engine results.
 So far I actually have no real results beyond my local testing and initial deployment. This is the first article that I'm writing for the new system. I hope to soon start filling out the notes section as well. There is a `tips and tricks` markdown file I've been kicking around for awhile that I don't know what to do with.
 
 All in all, I have some big plans for Docusaurus outside of my little blog site and hope that it continues to improve. The next things to try out are the Google Analytics plugins and possibly a [Gitalk](https://github.com/gitalk/gitalk) plugin for _free-ish_ comment integration.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
