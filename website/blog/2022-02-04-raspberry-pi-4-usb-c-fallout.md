@@ -87,3 +87,7 @@ Finally, the Raspberry Pi should be able to be powered with PoE (Power over Ethe
 ## Conclusion
 
 If you've got a RPi4 with a USB-C port that's fallen off in these hard times, go ahead and grab a breakout board and solder it to the underside (via the test points) of the RPi4 to keep things moving. At least until RPi's are able to come back in stock.
+
+## Comments
+
+<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
