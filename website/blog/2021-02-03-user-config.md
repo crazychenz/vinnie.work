@@ -1,7 +1,7 @@
 ---
 slug: 2021-02-03-user-config
 title: "Put Simply: User Configurations"
-date: "2021-02-03T12:00:00.000Z"
+#date: "2021-02-03T12:00:00.000Z"
 description: |
   Always tweaking and refining various configurations. Thinking I just need to leave them in a spot without fan fare. Here we go...
 ---

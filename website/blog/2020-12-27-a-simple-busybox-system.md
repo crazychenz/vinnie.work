@@ -1,7 +1,7 @@
 ---
 slug: 2020-12-27-a-simple-busybox-system
 title: "A More Simple Busybox Rootfs"
-date: "2020-12-27T12:00:00.000Z"
+#date: "2020-12-27T12:00:00.000Z"
 description: |
   A simple process for building a bootable system from only a kernel, a minimal libc, and busybox. This process really cuts out any fat the would otherwise be included in a processes like buildroot or openwrt.
 ---

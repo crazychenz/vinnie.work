@@ -1,7 +1,7 @@
 ---
 slug: 2021-02-16-python-plugin-pattern
 title: "A Python Plugin Pattern"
-date: "2021-02-16T12:00:00.000Z"
+#date: "2021-02-16T12:00:00.000Z"
 description: |
   Python has many different plugin patterns that can be used for adding extensibility to your python applications and frameworks. This article explains my preferred method for adding plugins.
 ---

@@ -1,7 +1,7 @@
 ---
 slug: 2020-10-08-git-better
 title: "Git Better"
-date: "2020-10-08T12:00:00.000Z"
+#date: "2020-10-08T12:00:00.000Z"
 description: |
   A more thoughtful setup of git for modern setups.
 ---

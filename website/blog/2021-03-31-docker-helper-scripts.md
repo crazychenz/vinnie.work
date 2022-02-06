@@ -1,7 +1,7 @@
 ---
 slug: 2021-03-31-docker-helper-scripts
 title: "Docker Run Helper Script"
-date: "2021-03-31T12:00:00.000Z"
+#date: "2021-03-31T12:00:00.000Z"
 description: |
   As a docker user, I've written a bunch of helper scripts to simplify my most common use cases. The `run.sh` script is the most commonly used script that I write for all images. As I've evolved this script, I've learned a few patterns that are commonly useful across projects.
 ---

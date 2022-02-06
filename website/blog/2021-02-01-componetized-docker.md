@@ -1,7 +1,7 @@
 ---
 slug: 2021-02-01-componetized-docker
 title: "Componentized Docker"
-date: "2021-02-01T12:00:00.000Z"
+#date: "2021-02-01T12:00:00.000Z"
 description: |
   Tired of constantly copy/pasting, losing, and re-implementing Dockerfile manutia and various configurations for container setup, I decided that componentizing the build is something that needs to be done.
 ---

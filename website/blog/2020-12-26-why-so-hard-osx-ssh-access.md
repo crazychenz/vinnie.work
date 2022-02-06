@@ -1,7 +1,7 @@
 ---
 slug: 2020-12-26-why-so-hard-osx-ssh-access
 title: "Why so hard?: Access OSX over SSH with non-admin account."
-date: "2020-12-26T12:00:00.000Z"
+#date: "2020-12-26T12:00:00.000Z"
 description: |
   A small adventure in troubleshooting Mac OS X in regards to allowing non-admin accounts access to SSH services on the host.
 ---

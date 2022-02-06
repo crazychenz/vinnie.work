@@ -1,7 +1,7 @@
 ---
 slug: 2020-10-02-linux-is-dos
 title: "Linux Is DOS: Windows returns to its roots."
-date: "2020-10-02T12:00:00.000Z"
+#date: "2020-10-02T12:00:00.000Z"
 description: |
   Windows is going back to an operating environment or platform
   instead of a bare metal operating system.

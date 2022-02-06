@@ -1,7 +1,7 @@
 ---
 slug: 2021-01-08-low-level-debuggers
 title: "Low Level Visualization via Debuggers"
-date: "2021-01-08T12:00:00.000Z"
+#date: "2021-01-08T12:00:00.000Z"
 description: |
   When teaching new comers, its paramount that students get a complete visual representation of what is happening when software is running. As developers and engineers, we can intuitively see the patterns and expected states of what we're working with over time, thereby allowing us to find paths of less arduous ways to achieve our goals. But to get to that point we should start with an unfiltered pleathra of information to gleen what is important to fill the knowledge gap.
 ---

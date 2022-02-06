@@ -1,7 +1,7 @@
 ---
 slug: 2020-11-26-volume-mount-home
 title: "Use Case: Running Application Containers With Different Credentials per Project"
-date: "2020-11-26T12:00:00.000Z"
+#date: "2020-11-26T12:00:00.000Z"
 description: |
   Its a common pattern to store user authentication tokens in a user's home directory. These services don't always allow users to have multiple logins simulataneously. Setup docker environments to contain all of the CLI environments to to use project specific authentication tokens and project specfic "global" package versions.
 ---

@@ -1,7 +1,7 @@
 ---
 slug: 2020-10-04-whole-stack-full-stack
 title: "The Full Stack isn't the Whole Stack."
-date: "2020-10-04T12:00:00.000Z"
+#date: "2020-10-04T12:00:00.000Z"
 description: |
   My exploration into understanding the modern term "full stack"
   and my previous expectations of the whole stack.

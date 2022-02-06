@@ -1,7 +1,7 @@
 ---
 slug: 2020-11-08-embedded-primer-buildroot
 title: Embedded Systems and Cross Compilation Primer
-date: "2020-11-08T12:00:00.000Z"
+#date: "2020-11-08T12:00:00.000Z"
 description: |
   A primer for getting started with embedded systems development. Covers key attributes to getting started with learning an embedded system platform and an example of building a buildroot cross compiled environment for Aarch64.
 ---

@@ -1,7 +1,7 @@
 ---
 slug: 2020-11-06-baremetal-rpi4-setup
 title: "Bare Metal on Raspberry Pi 4: Getting Started"
-date: "2020-11-06T12:00:00.000Z"
+#date: "2020-11-06T12:00:00.000Z"
 description: |
   A guide for setting up Raspberry Pi 4 and OpenOCD for JTAG access and
   bare metal development or debugging.

@@ -1,7 +1,7 @@
 ---
 slug: 2020-09-23-brand-debt
 title: "Name Debt? Brand Debt!"
-date: "2020-09-23T12:00:00.000Z"
+#date: "2020-09-23T12:00:00.000Z"
 description: "What is name debt? What is brand debt?"
 ---
 

@@ -1,7 +1,7 @@
 ---
 slug: 2020-10-07-keyvalues
 title: "Key Values"
-date: "2020-10-07T12:00:00.000Z"
+#date: "2020-10-07T12:00:00.000Z"
 description: |
   A different way to look for software shops.
 ---

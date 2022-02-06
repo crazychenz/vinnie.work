@@ -1,7 +1,7 @@
 ---
 slug: 2021-03-17-docker-handholding
 title: "Docker: Automating the over-the-shoulder Docker setup help."
-date: "2021-03-17T12:00:00.000Z"
+#date: "2021-03-17T12:00:00.000Z"
 description: |
   Tired of having to install or troubleshoot docker installations for peers that haven't become familiar with the installation and setup procedure for Docker? I've started a simple check-and-suggest script that will hand hold developers through the setup of docker on Ubuntu systems.
 ---

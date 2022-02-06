@@ -1,7 +1,7 @@
 ---
 slug: 2020-11-25-remote-start-vm
 title: "Use Case: You're Away From Home And Your Windows VM Host Reboots"
-date: "2020-11-25T12:00:00.000Z"
+#date: "2020-11-25T12:00:00.000Z"
 description: |
   Unfortunately, between Microsoft Updates happening more often now, and other things that potentially can cause my PC to reboot itself, I'll wake up to find that I have no connection to the VM I planned to work from.
 ---

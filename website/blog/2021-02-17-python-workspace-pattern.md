@@ -1,7 +1,7 @@
 ---
 slug: 2021-02-17-python-workspace-pattern
 title: "A Python Workspace Pattern"
-date: "2021-02-17T12:00:00.000Z"
+#date: "2021-02-17T12:00:00.000Z"
 description: |
   When working with python applications there are many different contexts and use cases for managing the state of the application. This article covers one pattern that I've used with great success.
 ---

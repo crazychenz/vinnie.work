@@ -1,7 +1,7 @@
 ---
 slug: 2020-10-12-python-wheel-manylinux
 title: "Controlling Python Wheel Compatibility"
-date: "2020-10-12T12:00:00.000Z"
+#date: "2020-10-12T12:00:00.000Z"
 description: |
   Building a pre-packaged python environment for deployment to remote python services.
 ---

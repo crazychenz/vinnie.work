@@ -1,7 +1,7 @@
 ---
 slug: 2021-03-19-virtualmachine-to-docker
 title: "Virtual Machine To Docker"
-date: "2021-03-19T12:00:00.000Z"
+#date: "2021-03-19T12:00:00.000Z"
 description: |
   I was recently tasked at work with making some routine enhancements to an internal project that was built with toolchains that had been organized into Virtual Machines that I had to fire up. With my recent adoption of Docker as a mainline tool in my everyday work flow, I asked myself: *Why the heck am I using a hypervisor for a straight forward toolchain VM?*
 ---

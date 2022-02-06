@@ -1,7 +1,7 @@
 ---
 slug: 2021-04-20-multiline-bash-argument
 title: "Why So Hard?: Multi-line bash argument."
-date: "2021-04-20T12:00:00.000Z"
+#date: "2021-04-20T12:00:00.000Z"
 description: |
   When attempting to logically perform bash variable expansion in an expression similar to `'$VAR'` I found myself stumped for longer than I expected attempting to work around this limitation. This is my pitfalls and solutions to this problem.
 ---

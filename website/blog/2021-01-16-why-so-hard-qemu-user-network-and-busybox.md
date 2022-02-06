@@ -1,7 +1,7 @@
 ---
 slug: 2021-01-16-why-so-hard-qemu-user-network-and-busybox
 title: "Why so hard?: QEmu User Networking and Dropbox"
-date: "2021-01-16T12:00:00.000Z"
+#date: "2021-01-16T12:00:00.000Z"
 description: |
   In a follow up to [A More Simple Busybox System](https://www.vinnie.work/20201227-a-simple-busybox-system/), fleshing out the capabilities of a "simple" rootfs. All without requiring use of sudo or root permissions.
 ---

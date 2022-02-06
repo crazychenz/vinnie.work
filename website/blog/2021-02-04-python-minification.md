@@ -1,7 +1,7 @@
 ---
 slug: 2021-02-04-python-minification
 title: "Python Minification"
-date: "2021-02-04T12:00:00.000Z"
+#date: "2021-02-04T12:00:00.000Z"
 description: |
   Python obfuscation and compression?
 ---

@@ -1,7 +1,7 @@
 ---
 slug: 2020-09-26-vscode-server
 title: VSCode In The Browser
-date: "2020-09-26T12:00:00.000Z"
+#date: "2020-09-26T12:00:00.000Z"
 description: "My VSCode In The Browser"
 ---
 

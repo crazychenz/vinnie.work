@@ -1,7 +1,7 @@
 ---
 slug: 2020-10-27-terminal-mirroring
 title: "Terminal Collaboration"
-date: "2020-10-27T12:00:00.000Z"
+#date: "2020-10-27T12:00:00.000Z"
 description: |
     Quick and elegant (read-only) terminal sharing for collaboration
     and demonstrations.

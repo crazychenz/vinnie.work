@@ -1,7 +1,7 @@
 ---
 slug: 2020-11-07-i-intend-to
 title: "I intend to ... : Avoid asking for permission."
-date: "2020-11-07T12:00:00.000Z"
+#date: "2020-11-07T12:00:00.000Z"
 description: |
   Takeaways from interviews of the author David Marquet from the book titled Turn The Ship Around! and the phrase "I intend to ...".
 ---

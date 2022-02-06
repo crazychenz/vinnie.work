@@ -1,7 +1,7 @@
 ---
 slug: 2020-12-20-process-who-is-it-good-for
 title: "Process: Who is it good for?"
-date: "2020-12-20T12:00:00.000Z"
+#date: "2020-12-20T12:00:00.000Z"
 description: |
   For years now I've always found _process_ to be a facinating area of software engineering. But please don't misunderstand my meaning ... most processes in my experience not only feel painful to the individual contributors but also seem wastful to the overall organization.
 ---

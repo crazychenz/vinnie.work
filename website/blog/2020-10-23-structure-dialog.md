@@ -1,7 +1,7 @@
 ---
 slug: 2020-10-23-structure-dialog
 title: "Structured Dialog"
-date: "2020-10-23T12:00:00.000Z"
+#date: "2020-10-23T12:00:00.000Z"
 description: |
     Some take away nuggets of wisdom on Agile methodologies and structured dialog.
 ---

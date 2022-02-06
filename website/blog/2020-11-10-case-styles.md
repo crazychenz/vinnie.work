@@ -1,7 +1,7 @@
 ---
 slug: 2020-11-10-case-styles
 title: Case Styles
-date: "2020-11-10T12:00:00.000Z"
+#date: "2020-11-10T12:00:00.000Z"
 description: |
   Various case styles, their names, and descriptions.
 ---

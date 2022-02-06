@@ -1,7 +1,7 @@
 ---
 slug: 2021-04-19-shellscipt-gethostbyname
 title: "Versatile networking shell scripts with gethostbyname() and ip_route_addr()."
-date: "2021-04-19T12:00:00.000Z"
+#date: "2021-04-19T12:00:00.000Z"
 description: |
   Snippets of `gethostbyname()` and `ip_route_addr()` that can be used in shell scripts in make networking shell scripts more versatile by removing false network assumptions (e.g. Myth: Everything is always behind a default gateway.)
 ---

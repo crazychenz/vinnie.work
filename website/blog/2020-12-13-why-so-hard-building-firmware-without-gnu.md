@@ -1,7 +1,7 @@
 ---
 slug: 2020-12-13-why-so-hard-building-firmware-without-gnu
 title: "Why so hard?: Building Firmware Images without GNU"
-date: "2020-12-13T12:00:00.000Z"
+#date: "2020-12-13T12:00:00.000Z"
 description: |
   Building firmware images from non-GNU toolchains is taking
   a lot more energy than I ever expected it to.

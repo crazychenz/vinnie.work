@@ -1,7 +1,7 @@
 ---
 slug: 2021-02-28-openid-rubegoldberg
 title: "Rube Goldberg Machines: OpenID Authentication Process"
-date: "2021-02-26T12:00:00.000Z"
+#date: "2021-02-26T12:00:00.000Z"
 description: |
   I decided to learn applicable OAuth and OpenID process this past weekend. What I ended up with feels like a strong security mechanism hidden behind a rube goldberg machine of limitations and constraints. 
 ---

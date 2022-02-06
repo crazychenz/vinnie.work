@@ -1,7 +1,7 @@
 ---
 slug: 2020-11-09-autohotkeys-music-control
 title: AutoHotkeys Music Control
-date: "2020-11-09T12:00:00.000Z"
+#date: "2020-11-09T12:00:00.000Z"
 description: |
   A simple mapping of unused Apple Keyboard function keys for media control in Windows.
 ---

@@ -1,7 +1,7 @@
 ---
 slug: 2020-11-24-why-so-hard-tmux-copy-paste
 title: "Why so hard?: Remote Tmux Copy/Paste"
-date: "2020-11-24T12:00:00.000Z"
+#date: "2020-11-24T12:00:00.000Z"
 description: |
   An adventure into how to enable the ability to copy paste from a
   remote Linux machine to a local Windows machine from Tmux internal

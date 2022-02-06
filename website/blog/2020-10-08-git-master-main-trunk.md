@@ -1,7 +1,7 @@
 ---
 slug: 2020-10-08-git-master-main-trunk
 title: "Git master, main, or trunk?"
-date: "2020-10-09T12:00:00.000Z"
+#date: "2020-10-09T12:00:00.000Z"
 description: |
   What is the context of Git's master semantics? What would be better?
 ---

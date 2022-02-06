@@ -1,7 +1,7 @@
 ---
 slug: 2020-10-22-vscode-c-debug
 title: "Remote Containerized Debugging with VSCode C/C++"
-date: "2020-10-22T12:00:00.000Z"
+#date: "2020-10-22T12:00:00.000Z"
 description: |
     A bit about developing in VSCode and debugging with gdb remotely 
     while using docker containers from docker containers.
