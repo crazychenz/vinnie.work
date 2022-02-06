@@ -1,18 +1,16 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Test42</title>
     <script>
       var remark_config={
         site_id:"vinnie.work",
         host:"https://comments.vinnie.work/comments",
-        url:window.location.href,
+        url:parent.location.href,
       };
       !function(e,t){for(var d=t.head||t.body,o=0;o<e.length;o++){var n=t.createElement("script"),m="noModule"in n,a=m?".mjs":".js";m&&(n.type="module"),n.async=!0,n.defer=!0,n.src=remark_config.host+"/web/"+e[o]+a,d.appendChild(n)}}(remark_config.components||["embed"],document)
     </script>
   </head>
   <body>
-    <h2>Comments</h2>
     <div id="remark42"></div>
   </body>
 </html>

@@ -70,13 +70,13 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Vincent Agriesti.`,
     },
   },
-  scripts: [
+  /*scripts: [
     {
-      src: '/remark42.js',
-      //async: true,
-      //defer: true,
+      src: 'http://desktopvm.vinnie.work:3000/remark42.js',
+      async: true,
+      defer: true,
     },
-  ],
+  ],*/
   presets: [
     [
       '@docusaurus/preset-classic',
