@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Visual Studio Code Tips
+title: Workflow & Techniques Overview
 ---
 
 :::danger Incomplete

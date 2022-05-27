@@ -13,6 +13,10 @@ More organized than a log of findings, this corner of vinnie.work aims _to infor
 
 - [System Deets](./Systems/overview) - Summarized and distilled system specific information.
 
+- [Workflows & Techniques](./WorkflowAndTechniques/Overview)
+
+- [Third Party](./ThirdParty/overview) - An open source _organization_ I maintain.
+
 <!-- - [Visual Studio Code Tips](./VisualStudioCode/Overview) - I use visual studio code for almost everything I write now, from informal notes, to formal documentation, configs, and of course code. With all my weird use cases I've jotted down a bunch of things I've learned here. -->
 
 <!-- # Outline
