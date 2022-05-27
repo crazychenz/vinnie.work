@@ -20,6 +20,7 @@ module.exports = {
       items: [
         { to: '/blog', label: 'Blog', position: 'left' },
         { type: 'doc', docId: 'Inform', label: 'Inform', position: 'left' },
+        { type: 'doc', docId: 'Stream', label: 'Stream', position: 'left' },
         { to: '/about', label: 'About', position: 'left' },
         //{ href: "https://github.com/", label: "GitHub", position: "left" },
       ],

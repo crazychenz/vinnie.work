@@ -3,6 +3,106 @@ sidebar_position: 50
 title: Stream
 ---
 
+## 2022-05-27
+
+- [Portable Process Substitution](https://unix.stackexchange.com/questions/309547/what-is-the-portable-posix-way-to-achieve-process-substitution)
+- Docusaurus Styling
+  - [Theo Chu's Doc's](https://theochu.com/docusaurus/styling/)
+  - [Docusaurus Styling & Layout Docs](https://docusaurus.io/docs/styling-layout)
+
+## 2022-05-26
+
+- [Environment variables of a running process on Unix?](https://serverfault.com/questions/66363/environment-variables-of-a-running-process-on-unix)
+- ``echo -ne "VAR=val1 VAR2=val2" | (eval `cat`;exec ./printsecret SECRET)``
+- Wipe node environment values or configuration values in memory after use
+  - [libsys](https://github.com/streamich/libsys) - Execute syscalls from node.
+  - [change /proc/PID/environ after process start](https://unix.stackexchange.com/questions/302948/change-proc-pid-environ-after-process-start) - Explains using `prctl()` to clear `/proc/self/environ`.
+  - [OpenSSL Secure Heap in Node](https://github.com/nodejs/node/pull/36779)
+  - [OpenSSL Secure Heap node Issue](https://github.com/nodejs/node/issues/30956)
+    - ... not a good idea at the moment (but possible!)
+
+- SSH key encryption with OpenSSL
+  - [Encrypt and decrypt a file using SSH keys](https://www.bjornjohansen.com/encrypt-file-using-ssh-key)
+
+  - Encrypt
+  
+      ```
+      openssl rand 32 | \
+        tee >(openssl rsautl -encrypt -oaep -pubin -inkey <(ssh-keygen -e -f ~/.ssh/id_rsa.pub -m PKCS8) -out secret.key | \
+        openssl enc -aes-256-cbc -base64 -in data.txt -out data.txt.enc -pass stdin
+      ```
+
+  - Decrypt
+
+      ```
+      openssl rsautl -decrypt -oaep -inkey ~/.ssh/id_rsa -in secret.key | \
+        openssl enc -d -aes-256-cbc -base64 -in data.txt.enc -out data.txt.dec -pass stdin
+      ```
+  
+  - Decrypt remotely and execute.
+
+      ```
+      (ssh -T -q user@127.0.0.1 cat /path/to/key) | \
+        openssl rsautl -decrypt -oaep -inkey ~/.ssh/id_rsa | \
+        openssl enc -d -aes-256-cbc -base64 -in data.txt.enc -pass stdin | \
+        (eval `cat`;exec ./printsecret ANOTHER)
+      ```
+
+## 2022-05-25
+
+- Use `setlocale(LC_ALL, "")` to inherit locale from env. ISO requires that all C programs default to `C` locale.
+- You **can not** use `:` in a path used in `$PATH`. You can not escape ':' in a meaningful way within $PATH.
+  - [How to escape colon (:) in $PATH on UNIX?](https://stackoverflow.com/questions/14661373/how-to-escape-colon-in-path-on-unix)
+  - [The POSIX portable file name character set](https://www.ibm.com/docs/en/zos/2.3.0?topic=locales-posix-portable-file-name-character-set)
+- Detecting unicode is not standardized.
+  - [Is there a way to check whether a string contains unicode characters in C++](https://stackoverflow.com/questions/27522421/is-there-a-way-to-check-whether-a-string-contains-unicode-characters-in-c)
+- You can not use printf and wprintf in same STDOUT without hackery. This is because of FILE* settings. Note: Can be read with fwide().
+  - [printf and wprintf in single C code](https://stackoverflow.com/questions/8681623/printf-and-wprintf-in-single-c-code)
+
+## 2022-05-24
+
+- Multi-call Pattern for Containers
+  
+    ```sh
+    : ${TOP_WORKSPACE_DIRECTORY:-"$(pwd)"}
+    docker run -ti --rm \
+      -w /workspace/$(realpath --relative-to=${TOP_WORKSPACE_DIRECTORY} $(pwd)) \
+      -v $(realpath ${TOP_WORKSPACE_DIRECTORY}):/workspace \
+      container_name $(basename $0) "$@"
+    ```
+- [EMUX](https://github.com/therealsaumil/emux) - Similar to firmadyne without the emphasis on scalability.
+- [cppreference - mblen](https://en.cppreference.com/w/c/string/multibyte/mblen) - Location of decent `strlen_mb` implementation.
+    <details><summary>Code</summary>
+
+    ```c
+    #include <string.h>
+    #include <stdlib.h>
+    #include <locale.h>
+    #include <stdio.h>
+    
+    // the number of characters in a multibyte string is the sum of mblen()'s
+    // note: the simpler approach is mbstowcs(NULL, str, sz)
+    size_t strlen_mb(const char* ptr)
+    {
+        size_t result = 0;
+        const char* end = ptr + strlen(ptr);
+        mblen(NULL, 0); // reset the conversion state
+        while(ptr < end) {
+            int next = mblen(ptr, end - ptr);
+            if(next == -1) {
+              perror("strlen_mb");
+              break;
+            }
+            ptr += next;
+            ++result;
+        }
+        return result;
+    }
+    ```
+
+    </details>
+
+
 ## 2022-05-20
  
 - Google Drive mount for Linux
