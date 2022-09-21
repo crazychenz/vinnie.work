@@ -1,5 +1,11 @@
-/** @type {import('@docusaurus/types').DocusaurusConfig} */
-module.exports = {
+// @ts-check
+// Note: type annotations allow type checking and IDEs autocompletion
+
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+
+/** @type {import('@docusaurus/types').Config} */
+const config = {
   title: 'Vinnie dot Work',
   tagline: '',
   url: 'https://www.vinnie.work',
@@ -7,70 +13,87 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
+
+  // GitHub pages deployment config.
   organizationName: 'crazychenz', // Usually your GitHub org/user name.
   projectName: 'vinnie.work', // Usually your repo name.
-  themeConfig: {
-    hideableSidebar: true,
-    navbar: {
-      title: 'Vinnie dot Work',
-      logo: {
-        alt: 'Vinnie dot Work Site Logo',
-        src: 'img/profile.png',
-      },
-      items: [
-        { to: '/blog', label: 'Blog', position: 'left' },
-        { type: 'doc', docId: 'Inform', label: 'Inform', position: 'left' },
-        { type: 'doc', docId: 'Stream', label: 'Stream', position: 'left' },
-        { to: '/about', label: 'About', position: 'left' },
-        //{ href: "https://github.com/", label: "GitHub", position: "left" },
-      ],
-    },
-    footer: {
-      style: 'dark',
-      links: [
-        // {
-        //   title: 'Docs',
-        //   items: [
-        //     {
-        //       label: 'Tutorial',
-        //       to: '/docs/intro',
-        //     },
-        //   ],
-        // },
-        // {
-        //   title: 'Community',
-        //   items: [
-        //     {
-        //       label: 'Stack Overflow',
-        //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-        //     },
-        //     {
-        //       label: 'Discord',
-        //       href: 'https://discordapp.com/invite/docusaurus',
-        //     },
-        //     {
-        //       label: 'Twitter',
-        //       href: 'https://twitter.com/docusaurus',
-        //     },
-        //   ],
-        // },
-        // {
-        //   title: 'More',
-        //   items: [
-        //     {
-        //       label: 'Blog',
-        //       to: '/blog',
-        //     },
-        //     {
-        //       label: 'GitHub',
-        //       href: 'https://github.com/facebook/docusaurus',
-        //     },
-        //   ],
-        // },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Vincent Agriesti.`,
-    },
+
+  // Even if you don't use internalization, you can use this field to set useful
+  // metadata like html lang. For example, if your site is Chinese, you may want
+  // to replace "en" with "zh-Hans".
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
   },
+
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      //hideableSidebar: true,
+      navbar: {
+        title: 'Vinnie dot Work',
+        logo: {
+          alt: 'Vinnie dot Work Site Logo',
+          src: 'img/profile.png',
+        },
+        items: [
+          { to: '/blog', label: 'Blog', position: 'left' },
+          { type: 'doc', docId: 'Inform', label: 'Inform', position: 'left' },
+          { type: 'doc', docId: 'Stream', label: 'Stream', position: 'left' },
+          { to: '/about', label: 'About', position: 'left' },
+          //{ href: "https://github.com/", label: "GitHub", position: "left" },
+        ],
+      },
+      footer: {
+        style: 'dark',
+        links: [
+          // {
+          //   title: 'Docs',
+          //   items: [
+          //     {
+          //       label: 'Tutorial',
+          //       to: '/docs/intro',
+          //     },
+          //   ],
+          // },
+          // {
+          //   title: 'Community',
+          //   items: [
+          //     {
+          //       label: 'Stack Overflow',
+          //       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+          //     },
+          //     {
+          //       label: 'Discord',
+          //       href: 'https://discordapp.com/invite/docusaurus',
+          //     },
+          //     {
+          //       label: 'Twitter',
+          //       href: 'https://twitter.com/docusaurus',
+          //     },
+          //   ],
+          // },
+          // {
+          //   title: 'More',
+          //   items: [
+          //     {
+          //       label: 'Blog',
+          //       to: '/blog',
+          //     },
+          //     {
+          //       label: 'GitHub',
+          //       href: 'https://github.com/facebook/docusaurus',
+          //     },
+          //   ],
+          // },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Vincent Agriesti.`,
+      },
+      prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+      },
+    }),
   /*scripts: [
     {
       src: 'http://desktopvm.vinnie.work:3000/remark42.js',
@@ -80,11 +103,11 @@ module.exports = {
   ],*/
   presets: [
     [
-      '@docusaurus/preset-classic',
-      {
+      'classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
           editUrl: 'https://github.com/crazychenz/vinnie.work/edit/trunk/website/',
         },
         blog: {
@@ -179,7 +202,7 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      },
+      }),
     ],
   ],
   plugins: [
@@ -196,3 +219,5 @@ module.exports = {
     // ],
   ],
 };
+
+module.exports = config;
