@@ -218,10 +218,14 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-        googleAnalytics: {
-          trackingID: 'UA-2749090-4',
+        gtag: {
+          trackingID: 'G-VGJV95VJGY',
           anonymizeIP: true,
         },
+        //googleAnalytics: {
+        //  trackingID: 'UA-2749090-4',
+        //  anonymizeIP: true,
+        //},
         sitemap: {
           changefreq: 'weekly',
           priority: 0.5,
