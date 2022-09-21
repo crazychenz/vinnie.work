@@ -1,6 +1,6 @@
 ---
 slug: 2020-11-24-why-so-hard-tmux-copy-paste
-title: "Why so hard?: Remote Tmux Copy/Paste"
+title: 'Why so hard?: Remote Tmux Copy/Paste'
 #date: "2020-11-24T12:00:00.000Z"
 description: |
   An adventure into how to enable the ability to copy paste from a
@@ -162,4 +162,4 @@ Earlier in this article I mentioned that I reverse engineered a tmux plugin to l
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

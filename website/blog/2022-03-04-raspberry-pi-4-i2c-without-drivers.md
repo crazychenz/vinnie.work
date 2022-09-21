@@ -26,7 +26,7 @@ The BCM2711 has 6 different I2C busses that can be controlled and used by the us
 
 ### GPIO Configuration
 
-To setup the I2C1 pins for peripheral usage, you need to configure the GPIO registers for _Alternate Function 0_ and enable the internal pull up resistor. 
+To setup the I2C1 pins for peripheral usage, you need to configure the GPIO registers for _Alternate Function 0_ and enable the internal pull up resistor.
 
 ### BSC Configuration
 
@@ -86,27 +86,27 @@ Without going into how I2C digital signals work, we need to perform 3 operations
 
 - Write to register on MCP23017 to configure ports (1 byte for register addr `0x01`, 1 byte for register value `0x00`).
 
-   ```c
-   i2cset(i2cc, 0x20, 0x01, 0x00);
-   ```
+  ```c
+  i2cset(i2cc, 0x20, 0x01, 0x00);
+  ```
 
-   ![pulseview of gpio config](./2022-03-04-raspberry-pi-4-i2c-without-drivers/set-outputs-good.png)
+  ![pulseview of gpio config](./2022-03-04-raspberry-pi-4-i2c-without-drivers/set-outputs-good.png)
 
 - Write to register on MCP23017 to configure challenge parameters (1 byte for register addr, 1 byte for register value).
 
-   ```c
-   i2cset(i2cc, 0x20, 0x13, p1 << 4 | p2);
-   ```
+  ```c
+  i2cset(i2cc, 0x20, 0x13, p1 << 4 | p2);
+  ```
 
-   ![pulseview of params](./2022-03-04-raspberry-pi-4-i2c-without-drivers/set-params-good.png)
+  ![pulseview of params](./2022-03-04-raspberry-pi-4-i2c-without-drivers/set-params-good.png)
 
 - Write to register on MCP23017 to read port value (1 byte for register addr), then read value returned from MCP23017 port (1 byte for register value).
 
-   ```c
-   i2cget(i2cc, 0x20, 0x12);
-   ```
+  ```c
+  i2cget(i2cc, 0x20, 0x12);
+  ```
 
-   ![pulseview of result](./2022-03-04-raspberry-pi-4-i2c-without-drivers/read-xor-good.png)
+  ![pulseview of result](./2022-03-04-raspberry-pi-4-i2c-without-drivers/read-xor-good.png)
 
 ## The Whole Thing in C
 
@@ -419,6 +419,4 @@ setexpr result *0xfe804010 \& 0x000000FF ; print v1
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
-
-
+<Comments />

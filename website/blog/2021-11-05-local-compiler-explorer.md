@@ -56,4 +56,4 @@ Start with: `make EXTRA_ARGS="--host 0.0.0.0 --language c"`
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

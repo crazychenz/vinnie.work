@@ -182,4 +182,5 @@ I've now get a TFT diplay and button input working for the Raspberry Pi. Now I j
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

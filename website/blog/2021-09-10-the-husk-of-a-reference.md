@@ -20,4 +20,4 @@ As for the _Visual Studio Code Tips_, this really is in a "playing with it as I 
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

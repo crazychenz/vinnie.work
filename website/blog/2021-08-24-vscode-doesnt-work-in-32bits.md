@@ -52,4 +52,4 @@ It is also worth mentioning that some other tools that I was using required Java
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

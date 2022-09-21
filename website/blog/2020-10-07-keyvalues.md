@@ -1,6 +1,6 @@
 ---
 slug: 2020-10-07-keyvalues
-title: "Key Values"
+title: 'Key Values'
 #date: "2020-10-07T12:00:00.000Z"
 description: |
   A different way to look for software shops.
@@ -18,4 +18,4 @@ In addition to listing company values with their explanation of how they satisfy
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

@@ -2,7 +2,7 @@
 slug: 2020-09-26-vscode-server
 title: VSCode In The Browser
 #date: "2020-09-26T12:00:00.000Z"
-description: "My VSCode In The Browser"
+description: 'My VSCode In The Browser'
 ---
 
 ## Code Server
@@ -135,4 +135,4 @@ I'm going to give this setup a go and see how things work out. I believe this to
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

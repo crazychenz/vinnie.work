@@ -1,6 +1,6 @@
 ---
 slug: 2021-03-19-virtualmachine-to-docker
-title: "Virtual Machine To Docker"
+title: 'Virtual Machine To Docker'
 #date: "2021-03-19T12:00:00.000Z"
 description: |
   I was recently tasked at work with making some routine enhancements to an internal project that was built with toolchains that had been organized into Virtual Machines that I had to fire up. With my recent adoption of Docker as a mainline tool in my everyday work flow, I asked myself: *Why the heck am I using a hypervisor for a straight forward toolchain VM?*
@@ -8,7 +8,7 @@ description: |
 
 ## Background
 
-I was recently tasked at work with making some routine enhancements to an internal project. This project was a cross platform application that needed to be built for many different architectures. Some of the toolchains were so vendor specific that the toolchains were specially installed into Virtual Machines that I had to fire up to build the code for the target platform. 
+I was recently tasked at work with making some routine enhancements to an internal project. This project was a cross platform application that needed to be built for many different architectures. Some of the toolchains were so vendor specific that the toolchains were specially installed into Virtual Machines that I had to fire up to build the code for the target platform.
 
 <!--truncate-->
 
@@ -30,7 +30,7 @@ The OVA is an Open Virtual Appliance (i.e. a virtual machine with all the disks 
 tar -xvf MyVirtualMachine.ova
 ```
 
-At a minimum you should end up with an Open Virtualization Format (OVF) file and a Virtual Machine Dist (VMDK) file. At this point you *could* use any number of hypervisors to mount the vmdk and possibly extract the data that way. I don't like this because booting a kernel will populate a number of paths, devices, and special files that I don't want to clutter my docker image.
+At a minimum you should end up with an Open Virtualization Format (OVF) file and a Virtual Machine Dist (VMDK) file. At this point you _could_ use any number of hypervisors to mount the vmdk and possibly extract the data that way. I don't like this because booting a kernel will populate a number of paths, devices, and special files that I don't want to clutter my docker image.
 
 Instead of using a hypervisor, I used a tool called, `qemu-img`. This tool has the capability to convert between disk types like qcow2, vbox, and vmdk. The conversion that I really wanted though was a `raw` format. This converts the virtual disk image into a format that looks like it was extracted directly from `/dev/sda` with `dd` (i.e. a raw dump of the hard disk). Note: This can be disk space intensive because the modern virtualized disk images are compressed while the raw dumps are not. For example, a 5 GiB vmdk could easily expand into a 64 GiB file! To convert from a vmdk (MyDisk.vmdk) to a raw dump file (MyDisk.raw), run the following:
 
@@ -117,4 +117,4 @@ Take aways:
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

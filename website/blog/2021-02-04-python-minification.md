@@ -1,6 +1,6 @@
 ---
 slug: 2021-02-04-python-minification
-title: "Python Minification"
+title: 'Python Minification'
 #date: "2021-02-04T12:00:00.000Z"
 description: |
   Python obfuscation and compression?
@@ -153,4 +153,4 @@ Its also worth noting that if you had intended on saving space with the compress
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

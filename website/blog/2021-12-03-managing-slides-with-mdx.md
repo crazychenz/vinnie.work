@@ -10,9 +10,9 @@ To go along with the Embedded Systems Analysis material I've been developing, I 
 
 There are two options for presentations that I was willing to entertain:
 
-- A Godot based presenter - Godot is a game engine that is very simple to use. While capable of running games, it also has the potential to be an incredibly powerful cross platform presenter tool as well. The output can be built to run on iOS, Android, Windows, Linux, and HTML5. *I did go this route for a few days, but then ultimately came to the conclusion that a javascript solution was likely less effort.* That said, Godot remains a very useful tool for interactive elements that can be embedded into slides.
+- A Godot based presenter - Godot is a game engine that is very simple to use. While capable of running games, it also has the potential to be an incredibly powerful cross platform presenter tool as well. The output can be built to run on iOS, Android, Windows, Linux, and HTML5. _I did go this route for a few days, but then ultimately came to the conclusion that a javascript solution was likely less effort._ That said, Godot remains a very useful tool for interactive elements that can be embedded into slides.
 
-- A Javascript based presenter - With tools like Markdown, JSX, Webpack, and React there is bound to be some ready made slide presenter tools and libraries on the net. Sure enough there are quite a few. Scott Spence has a nice write up on some of the tools he took a look at in his [Making Presentations with MDX](https://scottspence.com/posts/making-mdx-presentations) article. 
+- A Javascript based presenter - With tools like Markdown, JSX, Webpack, and React there is bound to be some ready made slide presenter tools and libraries on the net. Sure enough there are quite a few. Scott Spence has a nice write up on some of the tools he took a look at in his [Making Presentations with MDX](https://scottspence.com/posts/making-mdx-presentations) article.
 
 ## MDX Background
 
@@ -29,7 +29,7 @@ From the demos that I browsed on the net, the following two libraries are the to
 
 ### mdx-deck
 
-Based on the amazing work done by Sam Larsen-Disney ([sld.codes](https://sld.codes/)), I thought for sure whatever he did would be good enough for my needs. I hunted down the [code for his website](https://github.com/slarsendisney/personal-site) on github. Now, its Dec 2021 and the latest LTS node is v16. Turns out that a lot of the tools that are used these days just aren't ready for the *current* generation of node. 
+Based on the amazing work done by Sam Larsen-Disney ([sld.codes](https://sld.codes/)), I thought for sure whatever he did would be good enough for my needs. I hunted down the [code for his website](https://github.com/slarsendisney/personal-site) on github. Now, its Dec 2021 and the latest LTS node is v16. Turns out that a lot of the tools that are used these days just aren't ready for the _current_ generation of node.
 
 After a bunch of build issues with Sam's personal site code, I stepped back to build a `mdx-deck` from scratch. There are several ways to accomplish this.
 
@@ -44,7 +44,7 @@ I'm sure in 2019, all of these options were great and worked flawlessly. But as 
 
 MDXP appears to be another great flavor of mdx-deck, but due to the authors experience with conference constraints, had made a design decision to develop single HTML presentations. This eliminates the need to have a server running on a conference laptop (something often required when using Javascript presentations with Chrome.)
 
-I may have missed this feature from `mdx-deck`, but MDXP has a presenter mode that allows a presenter to open a slide with a preview of the next slide and notes for the current slide. The way this presenter mode works is that if you have say, a chrome window with presenter mode and a chrome window with *normal* mode... when you switch slides on one, it automatically synchs the others. Therefore, you can full screen a Chrome window for audience viewing and keep a presenter tab available for your private presenter monitor.
+I may have missed this feature from `mdx-deck`, but MDXP has a presenter mode that allows a presenter to open a slide with a preview of the next slide and notes for the current slide. The way this presenter mode works is that if you have say, a chrome window with presenter mode and a chrome window with _normal_ mode... when you switch slides on one, it automatically synchs the others. Therefore, you can full screen a Chrome window for audience viewing and keep a presenter tab available for your private presenter monitor.
 
 MDXP also has seemed to falling out of maintenance, but this time only by ~14 months. I basically grabbed the [demo code](https://github.com/0phoff/MDXP/tree/master/examples/demo) and was able to build it, albeit with a gazillion warnings.
 
@@ -70,27 +70,27 @@ webpack-dev-server from      ^3.11.0 to ^4
 webpackbar from              ^4.0.0  to ^5
 ```
 
-This in turn lead me to removing the `@svgr/webpack` and all references to SVGs in the presentations. I don't use SVGs often so this didn't phase me, but I would like to re-integrate SVG support eventually. *The issue had to do with the way webpack saw some of the SVGs as being exported as default multiple times.*
+This in turn lead me to removing the `@svgr/webpack` and all references to SVGs in the presentations. I don't use SVGs often so this didn't phase me, but I would like to re-integrate SVG support eventually. _The issue had to do with the way webpack saw some of the SVGs as being exported as default multiple times._
 
 I also had to patch the webpack.config.js so that at line ~175:
 
 ```javascript
-  node: {
-    fs: 'empty'
-  }
+node: {
+  fs: 'empty';
+}
 ```
 
 was replaced with:
 
 ```javascript
-  resolve: {
-    fallback: {
-      fs: false
-    }
+resolve: {
+  fallback: {
+    fs: false;
   }
+}
 ```
 
-I also attempted to upgrade the remark packages, but there were way to many errors for me to deal with at this time. *That'll likely be a part 2 to this effort if revisited.*
+I also attempted to upgrade the remark packages, but there were way to many errors for me to deal with at this time. _That'll likely be a part 2 to this effort if revisited._
 
 ### Supporting Multiple Presentations
 
@@ -98,15 +98,15 @@ Unless you're using a gatsby integration, both the `mdx-deck` project and the MD
 
 In the multi-presentation design I used:
 
-- I created a top-level `decks` folder (outside of the `src`) folder. Within, there are folders named for the deck files they hold, (e.g. `index.html`, `index.css`, `index.jsx`, and `mdx` files). 
+- I created a top-level `decks` folder (outside of the `src`) folder. Within, there are folders named for the deck files they hold, (e.g. `index.html`, `index.css`, `index.jsx`, and `mdx` files).
 
-- Of course, *reusable* react components and layouts are kept in the `src` folder. 
+- Of course, _reusable_ react components and layouts are kept in the `src` folder.
 
 - The `dist` or output folder now also has folder named after the `decks` folder name. Within this folder you'll find outputs for `onepage`, `web`, and `pdf`.
 
 - The way I selected a deck is through a cross-env environment variable that was then loaded by `webpack.config.js` (similar to the way the original author passed their arguments).
 
-Originally the way the builds were occurring in MDXP had a long string of commands being run as `package.json` scripts. To better parameterize the `deck` selection, I created a [`build.js`](https://github.com/crazychenz/vinnie.work/blob/4fc6282aa24b72201fd9215a7921c1c898ed4ef2/mdxp/build.js) script that ran the same commands, but now with my `deck` option and argument parsing with `yargs`. This script could be written without the need for `spawn`, but I'm really just trying to get a *thing* done, not attempting to maintain a library at the moment. Note: `build.js` assumes you are using `yarn`.
+Originally the way the builds were occurring in MDXP had a long string of commands being run as `package.json` scripts. To better parameterize the `deck` selection, I created a [`build.js`](https://github.com/crazychenz/vinnie.work/blob/4fc6282aa24b72201fd9215a7921c1c898ed4ef2/mdxp/build.js) script that ran the same commands, but now with my `deck` option and argument parsing with `yargs`. This script could be written without the need for `spawn`, but I'm really just trying to get a _thing_ done, not attempting to maintain a library at the moment. Note: `build.js` assumes you are using `yarn`.
 
 Now when I build with, for example `yarn build:onepage --deck test-deck`, it'll source my presentation from `./decks/test-deck/` and output the results into `./dist/test-deck/onepage/`.
 
@@ -130,4 +130,4 @@ For more details on the implementation specifics, feel free to browse the `mdxp`
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

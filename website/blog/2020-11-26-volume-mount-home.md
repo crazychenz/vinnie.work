@@ -146,4 +146,5 @@ To round everything up, in this article we've mentioned:
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

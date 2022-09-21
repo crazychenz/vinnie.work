@@ -571,4 +571,5 @@ More experimentation needs to be done to see how the multiple toolchain builds a
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

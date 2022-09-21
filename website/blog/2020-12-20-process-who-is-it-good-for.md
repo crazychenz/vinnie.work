@@ -86,4 +86,5 @@ If the organizations leadership and management doesn't see parasitic process as 
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

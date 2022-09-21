@@ -66,4 +66,5 @@ In conclusion, the kernel prioritizes its entropy above security dependent funct
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

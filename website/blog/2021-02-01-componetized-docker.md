@@ -181,4 +181,5 @@ Right, so there we are. A simple convention that allows for the modularlization 
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

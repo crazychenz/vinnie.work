@@ -314,4 +314,5 @@ I also wanted to mention that python has some other official recommendations for
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

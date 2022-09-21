@@ -1,10 +1,10 @@
 ---
 slug: 2020-10-27-terminal-mirroring
-title: "Terminal Collaboration"
+title: 'Terminal Collaboration'
 #date: "2020-10-27T12:00:00.000Z"
 description: |
-    Quick and elegant (read-only) terminal sharing for collaboration
-    and demonstrations.
+  Quick and elegant (read-only) terminal sharing for collaboration
+  and demonstrations.
 ---
 
 ## Overview
@@ -38,7 +38,7 @@ tmux -S /shared-sockets/session attach
 tmux -S /shared-sockets/session attach -r
 ```
 
-Even though there is an option for readonly, its the *otheruser* that gets to choose whether the session will be read-only or not, not the host. Also, if you opt to allow the other user to participate, it can get tricky without some out-of-band coordination because it'll be similar to having two users on the same computer using their own keyboard and mice on the same monitor. (i.e. you can't chat with each other in the terminal window.)
+Even though there is an option for readonly, its the _otheruser_ that gets to choose whether the session will be read-only or not, not the host. Also, if you opt to allow the other user to participate, it can get tricky without some out-of-band coordination because it'll be similar to having two users on the same computer using their own keyboard and mice on the same monitor. (i.e. you can't chat with each other in the terminal window.)
 
 ## Simple and Secure
 
@@ -61,11 +61,11 @@ Beautiful, simple, portable, and effective!
 
 ## References
 
-* [What are other ways to share a tmux session between two users?
-](https://unix.stackexchange.com/questions/2523/what-are-other-ways-to-share-a-tmux-session-between-two-users)
+- [What are other ways to share a tmux session between two users?
+  ](https://unix.stackexchange.com/questions/2523/what-are-other-ways-to-share-a-tmux-session-between-two-users)
 
-* [The Tao Of tmux](https://leanpub.com/the-tao-of-tmux/read)
+- [The Tao Of tmux](https://leanpub.com/the-tao-of-tmux/read)
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

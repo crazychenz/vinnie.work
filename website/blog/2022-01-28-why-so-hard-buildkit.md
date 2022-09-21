@@ -334,4 +334,5 @@ Now that wasn't so hard, was it? You only needed to create an extra builder obje
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

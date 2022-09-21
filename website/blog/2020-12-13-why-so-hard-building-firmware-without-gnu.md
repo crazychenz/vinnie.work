@@ -297,4 +297,5 @@ Still though, I wonder how we're at LLVM 11 (latest release as of Dec 2020) and 
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

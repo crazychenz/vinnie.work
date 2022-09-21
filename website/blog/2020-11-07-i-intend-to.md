@@ -82,4 +82,5 @@ _A fire fighter isn't going to wait until a fire chief arrives to point the hose
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

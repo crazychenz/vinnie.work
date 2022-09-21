@@ -56,4 +56,5 @@ Now the trick will be to stay within the brand and not redefine the brand whenev
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

@@ -85,4 +85,4 @@ It is my view that a Senior Software Engineer is someone who is capable of worki
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

@@ -4,7 +4,7 @@ title: 'Raspberry Pi USB-C Fallout'
 draft: false
 ---
 
-As part of the Embedded Systems Analysis material development I was recently doing some work with a Raspberry Pi I had sitting on my desk. I noticed that the USB-C power connection had fallen out of the device. Naturally I got under my desk to fetch the squirrel-y cable and plug it back in. I got the cable all the way to the RaspberryPi before I realized that the connector that was supposed to be attached to the RPi was still on the cable. _The whole USB-C assembly had cleanly popped of the RPi4.
+As part of the Embedded Systems Analysis material development I was recently doing some work with a Raspberry Pi I had sitting on my desk. I noticed that the USB-C power connection had fallen out of the device. Naturally I got under my desk to fetch the squirrel-y cable and plug it back in. I got the cable all the way to the RaspberryPi before I realized that the connector that was supposed to be attached to the RPi was still on the cable. \_The whole USB-C assembly had cleanly popped of the RPi4.
 
 <!-- truncate -->
 
@@ -90,4 +90,4 @@ If you've got a RPi4 with a USB-C port that's fallen off in these hard times, go
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

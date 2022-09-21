@@ -1,6 +1,6 @@
 ---
 slug: 2020-10-02-linux-is-dos
-title: "Linux Is DOS: Windows returns to its roots."
+title: 'Linux Is DOS: Windows returns to its roots.'
 #date: "2020-10-02T12:00:00.000Z"
 description: |
   Windows is going back to an operating environment or platform
@@ -30,4 +30,4 @@ My personal hunch is that Microsoft will eventually get a majority of what peopl
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

@@ -1,9 +1,9 @@
 ---
 slug: 2021-02-28-openid-rubegoldberg
-title: "Rube Goldberg Machines: OpenID Authentication Process"
+title: 'Rube Goldberg Machines: OpenID Authentication Process'
 #date: "2021-02-26T12:00:00.000Z"
 description: |
-  I decided to learn applicable OAuth and OpenID process this past weekend. What I ended up with feels like a strong security mechanism hidden behind a rube goldberg machine of limitations and constraints. 
+  I decided to learn applicable OAuth and OpenID process this past weekend. What I ended up with feels like a strong security mechanism hidden behind a rube goldberg machine of limitations and constraints.
 ---
 
 Before I being, I want to clarify that this is by no means a how to article. This is merely a cautionary tale about what you have to look forward to if you decide to implement security code that interfaces with corporations like Google and Facebook. Its not bad, its just not easy and something that you aren't likely to be able to stumble through like so many other technologies on the internet these days.
@@ -15,6 +15,7 @@ Before I being, I want to clarify that this is by no means a how to article. Thi
 To start off with, I have made zero attempt at reading the OpenID or OAuth standards documentation. I'm just a naiive noobie application developer that wants to use goliaths like Google, Facebook, and Twitter to become authentication providers for my app. With that said, I wanted to describe my new experience with gathering the components and generating the flow that I works with my app architecture and existing technology.
 
 The assumptions for this application are:
+
 - Everything is implemented in Javascript (ES7).
 - HTTP (e.g. REST) endpoints are deployed as serverless functions.
 - The end user application is based on React Native.
@@ -25,17 +26,20 @@ The assumptions for this application are:
 ## Things I Used
 
 A developer workstation with:
+
 - Android Emulator (w/ Expo Client Installed)
 - Code Editor (i.e. Visual Studio Code)
 - Terminal (i.e. Windows Terminal)
 
 Serverless project with:
+
 - Jose for JWT processing.
 - Node ~v14
 - Esm module for modern ES7 semantics.
 - Tedious for SQL database access.
 
 Accounts for:
+
 - DNS Server (i.e. GoDaddy)
 - Serverless Provider (i.e. Azure Functions)
 - Authentication Provider (i.e. Google API)
@@ -45,17 +49,18 @@ Accounts for:
 
 [Using OAuth 2.0 for Web Server Applications](https://developers.google.com/identity/protocols/oauth2/web-server)
 
-This link is what I used as my road map to getting access tokens issued from Google. I emphasis *roadmap* because it assumes you know everything it doesn't bother to mention (i.e. it is not a tutorial).
+This link is what I used as my road map to getting access tokens issued from Google. I emphasis _roadmap_ because it assumes you know everything it doesn't bother to mention (i.e. it is not a tutorial).
 
 [Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://auth0.com/docs/flows/authorization-code-flow-with-proof-key-for-code-exchange-pkce)
 
-Although this article from auth0 is covering PKCE, it has a sequence diagram for OpenID flow that I thought was clean and straight forward. (And yet, it doesn't show the *whole picture*).
+Although this article from auth0 is covering PKCE, it has a sequence diagram for OpenID flow that I thought was clean and straight forward. (And yet, it doesn't show the _whole picture_).
 
 ## The Fundamentals
 
 Applications that want to authenticate with OAuth are not responsible for proxy-ing the end user credentials. Instead, the applications are responsible for referring the end user to the authentication provider (i.e. Google) to request secrets from the end user.
 
 The referral that is sent includes a number of pieces of information, but fundamentally there is:
+
 - The authentication provider. (Google)
 - The client referrer. (The App Itself)
 - The URL to callback to after authentication. This is usually a URL to an App or a backend web server.
@@ -67,23 +72,25 @@ Simple, no?
 ## The Reality
 
 Before you can make your first request to Google, you'll need to register your "client". This basically means that you need to:
+
 - Know the type of flow you intend to use with your client.
 - Know the callback URLs you plan to provide.
 - Know the source domains of the referral.
 - Verify ownership of referral domain.
 - Configure consent screen URLs to your Privacy Policies and Terms of Service for your application.
 
-In summary, before you can even begin to build and test a client authentication with a client identity, you need to pretty much have a complete architectural design with implementation specific details. *Tangent: Are security constraints forcing waterfall methodologies?*
+In summary, before you can even begin to build and test a client authentication with a client identity, you need to pretty much have a complete architectural design with implementation specific details. _Tangent: Are security constraints forcing waterfall methodologies?_
 
 ### Google API Registration
 
 In any case, I did the following:
+
 - Verified ownership of my `myapp.app` domain by inserting a TXT entry given by Google in the name server.
 - Added a `auth.myapp.app` subdomain to verified domains.
 - Chose `Web Application` authentication flow.
 - Configured consent screen with fake URLs:
-  * Privacy Policy: `https://auth.myapp.app/privacy-policy`
-  * Terms Of Service: `https://auth.myapp.app/tos`
+  - Privacy Policy: `https://auth.myapp.app/privacy-policy`
+  - Terms Of Service: `https://auth.myapp.app/tos`
 - Added redirect_uri (i.e. callback) URL: `https://auth.myapp.app/` - This is the root path into a subdomain to be specifically provisioned for authentication related functionality.
 - Added source URL: `https://myapp.azurewebsites.net/` - This is a typical looking endpoint for an Azure Function App.
 - Registered for `email` scope since this is going to be the primary means by which the application will associate users with their accounts.
@@ -102,14 +109,14 @@ React Native provides the ['fetch()'](https://reactnative.dev/docs/network) call
 
 With these components, I initially designed everything so that we'd use the web browser to authenticate the user via Google and then Google would callback to to my application with the relevant credentials. Turns out there are a few problems with this:
 
-* If you wanted to send the Google response back to your application, it needs to use a deep link registered to your application when your application is installed. Since I am using Expo, my application isn't installed and therefore must use the custom scheme URL: `exp://localexpohost:19000`.
-* If you attempt to use a custom scheme for your redirect_uri, Google calls foul because you said you were using a `Web Application`. All web applications should be using `https://` as their callback scheme. 
-* If you request a token from Google, the data is send after the `#` token in the callback request. This means that all of that data is sent directly to the client and the webserver of the callback never sees the data.
+- If you wanted to send the Google response back to your application, it needs to use a deep link registered to your application when your application is installed. Since I am using Expo, my application isn't installed and therefore must use the custom scheme URL: `exp://localexpohost:19000`.
+- If you attempt to use a custom scheme for your redirect_uri, Google calls foul because you said you were using a `Web Application`. All web applications should be using `https://` as their callback scheme.
+- If you request a token from Google, the data is send after the `#` token in the callback request. This means that all of that data is sent directly to the client and the webserver of the callback never sees the data.
 
 The way I solved all of these issues is with the following process:
 
 1. Kick off a new WebBrowser object with the initial OAuth URL request, but requesting a `code` instead of a `token`.
-2. Once the user authentications, the WebBrowser calls back to a specially crafted *trampoline* webpage (hosted on `https://auth.myapp.app/`) that redirects the WebBrowser object back into the application containing the authentication response data appended (with an implicit `dismiss` event for the WebBrowser object). Note: In the case of Expo, we simply use the `exp://localexpohost:19000` for our deep link and when we publish to APK we'll use our official `myapp://` or `https://android.myapp.app/` deep link prefixes.
+2. Once the user authentications, the WebBrowser calls back to a specially crafted _trampoline_ webpage (hosted on `https://auth.myapp.app/`) that redirects the WebBrowser object back into the application containing the authentication response data appended (with an implicit `dismiss` event for the WebBrowser object). Note: In the case of Expo, we simply use the `exp://localexpohost:19000` for our deep link and when we publish to APK we'll use our official `myapp://` or `https://android.myapp.app/` deep link prefixes.
 3. A registered `Linking` event listener sees the authentication response and once again forwards the authentication data to a serverless function endpoint that is responsible for finishing the remainder of the credential processing.
 
 A rudimentary example of the trampoline webpage is:
@@ -119,12 +126,10 @@ A rudimentary example of the trampoline webpage is:
   <head></head>
   <body>
     <script>
-      var a = document.createElement("a");
-      var linkText = document.createTextNode(
-        "Go Back To App ... " + window.location.search
-      );
+      var a = document.createElement('a');
+      var linkText = document.createTextNode('Go Back To App ... ' + window.location.search);
       a.appendChild(linkText);
-      a.href = "exp://localexpohost:19000/" + window.location.search;
+      a.href = 'exp://localexpohost:19000/' + window.location.search;
       document.body.appendChild(a);
     </script>
   </body>
@@ -159,4 +164,4 @@ I'm just happy that now I feel over the hump and actually have a plan to proceed
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

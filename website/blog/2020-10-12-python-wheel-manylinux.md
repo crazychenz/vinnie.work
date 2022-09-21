@@ -82,4 +82,5 @@ Allowing a pip user to specify tags is significantly more lightweight than downl
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

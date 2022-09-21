@@ -132,4 +132,5 @@ At first glance, this seems overly simple and not worth writing about, but I've 
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+

@@ -39,4 +39,4 @@ One last note ... apparently there are keyboard that have function keys up to F2
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

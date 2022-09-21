@@ -1,6 +1,6 @@
 ---
 slug: 2021-02-03-user-config
-title: "Put Simply: User Configurations"
+title: 'Put Simply: User Configurations'
 #date: "2021-02-03T12:00:00.000Z"
 description: |
   Always tweaking and refining various configurations. Thinking I just need to leave them in a spot without fan fare. Here we go...
@@ -176,4 +176,4 @@ PS1="$PS1\n$COLOR_LIGHT_YELLOW\w$COLOR_RESET\$ "
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

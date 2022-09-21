@@ -10,6 +10,8 @@ Ever find yourself attempting to look up some esoteric part datasheet or source 
 
 Often you can just drop the PDF into Google Translate and all will be well enough. But if you want more control, more fine grained translating, or just less tracking of your behavor in google, you can do it via Python.
 
+<!-- truncate -->
+
 ## Dependencies
 
 Although there are a ton a projects that sort of already do PDF translating well enough, I wanted to understand the structure of the PDF a bit more and develop my own lower level script to translate the PDF for me. A self written script both separates me from licensing issues, connectively dependencies, and as mentioned before, allows me much greater control over the translation process for any given customer or client.
@@ -292,3 +294,7 @@ Rudamentary PDF translations are really simple! No excuse for BS PDF->text only 
 - [pypdftk](https://pypi.org/project/pypdftk/)
 - [PyMuPDF Github](https://github.com/pymupdf/PyMuPDF)
 - [googletrans pypi](https://pypi.org/project/googletrans/)
+
+## Comments
+
+<Comments />

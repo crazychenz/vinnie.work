@@ -39,4 +39,4 @@ I applaud docker and its progress, but this lack of legacy user experience is qu
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

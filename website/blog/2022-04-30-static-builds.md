@@ -18,8 +18,7 @@ Linux namespaces and containerization are a primary example of breaking an appli
 
 - Docker requires Linux v3.10 or higher. This means that if the application you'd like to run on an older system (for analysis/debug) is a 2.6 kernel, you'll be out of luck.
 
-- Some applications are executed with a command and arguments, do their thing, and return. Others will require reaching out to other sections of the system such as /usr/share, /etc/, /opt, /home, and whatever its configured to touch. Allowing this through containerization is possible but requires a clear understanding of the relationship between the tool, its container, and how to map the host environment into the container. **This is about as error prone as trusting a developer to malloc/free correctly.** 
-
+- Some applications are executed with a command and arguments, do their thing, and return. Others will require reaching out to other sections of the system such as /usr/share, /etc/, /opt, /home, and whatever its configured to touch. Allowing this through containerization is possible but requires a clear understanding of the relationship between the tool, its container, and how to map the host environment into the container. **This is about as error prone as trusting a developer to malloc/free correctly.**
 
 ## Upstream Packaging
 
@@ -43,7 +42,6 @@ Ok, so AppImage is the solution right? Not exactly.
 - [Snapcraft](https://snapcraft.io/)
 - [Zero Install](https://0install.net/)
 
-
 ## Static Libraries
 
 Albiet the most labor intensive, the best solution I've often found is to just build and link a given application statically. This eliminates the complexity of using funky `LD_*` environment variables and makes the binary more/less portable. So who not just do this everytime?
@@ -62,13 +60,13 @@ Static binaries are not infinitely portable.
 
 - When building a `libc` for Linux based systems, you must provide the linux kernel headers. This allows the `libc` to determine what functionality it needs to provide and/or emulate based on the kernel capabilities.
 
-- Linux kernel functionality is performed by making system calls. Each system call has a mapped number. Since Linux 2.6, the system call interface has largely remained backward compatible. That said, different major linux versions have different system call interfaces and your toolchain, libc, and application need to account for this. The versions that you need to consider include 2.2, 2.4, 2.6+. 
+- Linux kernel functionality is performed by making system calls. Each system call has a mapped number. Since Linux 2.6, the system call interface has largely remained backward compatible. That said, different major linux versions have different system call interfaces and your toolchain, libc, and application need to account for this. The versions that you need to consider include 2.2, 2.4, 2.6+.
 
 - While system calls are the primary method for interacting with a kernel, there are also now applications that communicate with the kernel via character devices (e.g. /dev), sockets (e.g. AF_NETLINK), and file systems (e.g. procfs). All of these are essentially kernel internals and therefore can change from kernel to kernel. If your application depends on any of these and can't be reconfigured without a toolchain, you might as well consider yourself tightly coupled to the distribution.
 
 ### Static Build Repositories
 
-- [static-get](https://github.com/minos-org/minos-static) - *Appears abandoned.* [Package Archive](http://s.minos.io/archive/)
+- [static-get](https://github.com/minos-org/minos-static) - _Appears abandoned._ [Package Archive](http://s.minos.io/archive/)
 - [Bifrost](https://github.com/jelaas/bifrost-build) - A predictable and repeatable building environment for Bifrost binaries.
 - [Morpheus](http://git.2f30.org/ports/) - A statically linked musl based Linux distro.
 - [Retro Linux-libre Software Distribution](https://github.com/dimkr/rlsd2) - A small, "live" operating system with GNU/Linux-libre.
@@ -82,3 +80,7 @@ I've been spending a huge amount of time playing with toolchains recently. This 
 - I'm aiming to get a 100% static build recipe of qemu user emulation for all supported architectures. This'll require a butt load of static library dependency builds. This is primarily what prompted be to brain dump everything above. Also, by having this in a recipe, I can easily add or reconfigure qemu machines to match existing system firmware images.
 
 - With static qemu emulation, I'm aiming to _portably_ containerize i386 systems. This should enable me to easily setup recipes for building linux-2.4, linux-2.2, and other ancient tools (e.g. gcc-2.95).
+
+## Comments
+
+<Comments />

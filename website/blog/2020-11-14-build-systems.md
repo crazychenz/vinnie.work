@@ -1,6 +1,6 @@
 ---
 slug: 2020-11-14-build-systems
-title: "Build Systems for Embedded Development: From 30000 feet."
+title: 'Build Systems for Embedded Development: From 30000 feet.'
 #date: "2020-11-14T12:00:00.000Z"
 description: |
   High level thoughts on build systems for doing bare metal embedded development.
@@ -95,4 +95,4 @@ The conclusion I'm attempting to come to is that SCons and CMake are both good s
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

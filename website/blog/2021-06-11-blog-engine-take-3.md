@@ -101,4 +101,4 @@ All in all, I have some big plans for Docusaurus outside of my little blog site 
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />

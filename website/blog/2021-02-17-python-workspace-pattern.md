@@ -434,4 +434,5 @@ I find using workspace patterns incredibly useful and productive when managing a
 
 ## Comments
 
-<iframe src="/comment-iframe.html" height="1024" width="100%" onLoad=""></iframe>
+<Comments />
+
