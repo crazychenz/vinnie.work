@@ -137,8 +137,6 @@ draft: false
 
 Even though Giscus has been a great option for a comment solution, it does lack a few things. For one it doesn't have a CAPTCHA to prevent advertizers or other annoying automated messaging. I can only hope that the required GitHub login makes that a non-issue.
 
-The other issue I've noticed that I'll have to troubleshoot another time is the fact that the colors of the comments dont seem to match the dark/light settings of the page they are within. Docusaurus has a dark/light switch and It'd be swell if the `@giscus/react` component could react to this setting.
-
 ## Resources
 
 - [Giscus App](https://giscus.app/)
