@@ -3,6 +3,25 @@ sidebar_position: 50
 title: Stream
 ---
 
+## 2022-10-14
+
+- Installed VirtualBox 7.
+
+  ```sh
+  sudo apt-get update
+  sudo apt-get install build-essential linux-headers-`uname -r`
+  # Insert VBox Additions Disc and Run the install
+  sudo usermod -aG vboxsf $USER
+  sudo shutdown -r now
+  ```
+
+- [VSCode: Open Local File In Remote Mode](https://github.com/microsoft/vscode/issues/136218)
+  - Note: There is no support for adding local folder in remote mode. Instead, when using local VM, setup shared folders and mount local remotely (if appropriate).
+
+- Many vendors have developer portals, for example: [DigiKey Developer Portal](https://developer.digikey.com/)
+
+
+
 ## 2022-08-28
 
 - [YouTube: God-Tier Developer Roadmap](https://www.youtube.com/watch?v=pEfrdAtAmqk)
