@@ -91,8 +91,10 @@ The `Comments` component is defined in `src/components/Comments/index.js` as:
 ```js
 import React from 'react';
 import Giscus from '@giscus/react';
+import { useColorMode } from '@docusaurus/theme-common';
 
 export default function Comments() {
+  const { colorMode } = useColorMode();
   return (
     <Giscus
       id="comments"
@@ -105,7 +107,7 @@ export default function Comments() {
       reactionsEnabled="1"
       emitMetadata="0"
       inputPosition="top"
-      theme="preferred_color_scheme"
+      theme={colorMode}
       lang="en"
       loading="lazy"
     />
