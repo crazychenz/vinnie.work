@@ -35,7 +35,7 @@ At a minimum you should end up with an Open Virtualization Format (OVF) file and
 Instead of using a hypervisor, I used a tool called, `qemu-img`. This tool has the capability to convert between disk types like qcow2, vbox, and vmdk. The conversion that I really wanted though was a `raw` format. This converts the virtual disk image into a format that looks like it was extracted directly from `/dev/sda` with `dd` (i.e. a raw dump of the hard disk). Note: This can be disk space intensive because the modern virtualized disk images are compressed while the raw dumps are not. For example, a 5 GiB vmdk could easily expand into a 64 GiB file! To convert from a vmdk (MyDisk.vmdk) to a raw dump file (MyDisk.raw), run the following:
 
 ```
-qemu-img -f vmdk MyDisk.vmdk -O raw MyDisk.raw
+qemu-img convert -f vmdk MyDisk.vmdk -O raw MyDisk.raw
 ```
 
 Depending on the disk size and your actual IO speed, this operation can take awhile. If you are a clock watcher like me, I advise opening a second terminal and running something like `watch ls -lh` to monitor the progress of the conversion. Also might be worth verifying that you can even perform the operation by checking out disk space with `df -h`.
