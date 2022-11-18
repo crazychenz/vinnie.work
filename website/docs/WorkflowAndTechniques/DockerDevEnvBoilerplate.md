@@ -175,14 +175,14 @@ There are typically a number of things I like to be made aware of when I am runn
 
 All of this is compressed into a single 2 line prompt that looks something like:
 
-<div style="background-color: #111">
-<span style="color: aqua; font-family: monospace;">user</span>
-<span style="color: darkgray; font-family: monospace;">@</span>
-<span style="color: lightgreen; font-family: monospace;">desktopvm</span>&nbsp;
-<span style="color: orchid; font-family: monospace;">[35dd92c7@xltr]</span>&nbsp;
-<span style="color: red; font-family: monospace;">(master)</span>&nbsp;
-<span style="color: darkgray; font-family: monospace;">2022-11-18-09:52:44</span><br />
-<span style="color: khaki; font-family: monospace;">/opt$&nbsp;_</span>
+<div style={{ backgroundColor: "#111" }}>
+<span style={{ color: "aqua", fontFamily: "monospace" }}>user</span>
+<span style={{ color: "darkgray", fontFamily: "monospace" }}>@</span>
+<span style={{ color: "lightgreen", fontFamily: "monospace" }}>desktopvm</span>&nbsp;
+<span style={{ color: "orchid", fontFamily: "monospace" }}>[35dd92c7@xltr]</span>&nbsp;
+<span style={{ color: "red", fontFamily: "monospace" }}>(master)</span>&nbsp;
+<span style={{ color: "darkgray", fontFamily: "monospace" }}>2022-11-18-09:52:44</span><br />
+<span style={{ color: "khaki", fontFamily: "monospace" }}>/opt$&nbsp;_</span>
 </div><br />
 
 Please see inline documentation/comments below for more information:
