@@ -3,6 +3,30 @@ sidebar_position: 50
 title: Stream
 ---
 
+## 2022-12-02
+
+- Capturing web traffic:
+
+  - Packet Capture
+    - tcpdump - Good for network package capture.
+    - _Takeaway_: Largely a bad way to capture traffic unless you are doing network level inspection.
+  - Proxy Capture
+    - mitmproxy - Good for web traffic and asset capture. Not good for viewing.
+      - `mitmproxy -w <path>` - To save flows to a file.
+      - `mitmproxy -r <path>` - To read flows from a file.
+      - Note: **You can not read AND write from command line.**
+      - Best flow is to write interactively in app and then otherwise use `-r` on the command line.
+    - _Takeaway_: Proxy capture can do a lot to capture assets and see inside the TLS session but it really comes down to offloading what a browser's developer tools would provide anyway.
+  - Browser Extension Capture
+    
+    - Save WE - Browser Extension that saves a site as single HTML for offline viewing.
+    - WebScrapBook - Browser Extensions that saves all tab assets for offline viewing.
+      - Lots of options and different ways to archive page.
+    - _Takeaway_: Capturing via extensions are probably the best option for archival purposes because you get the whole DOM to help assemble the various parts.
+    - _TODO_: Still looking for that extension that automatically captures all assets on the first download and then assembles an archive of the site for all sites I visit as a user.
+
+- [wttr.in](http://wttr.in) is a neat terminal weather site.
+
 ## 2022-10-14
 
 - Installed VirtualBox 7.
