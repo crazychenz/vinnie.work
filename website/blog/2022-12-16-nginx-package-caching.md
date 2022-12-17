@@ -1,6 +1,6 @@
 ---
-slug: 2022-12-16-conditional-nginx-caching
-title: 'Conditional Nginx Caching'
+slug: 2022-12-16-conditional-nginx-package-caching
+title: 'Conditional Nginx Package Caching'
 draft: false
 ---
 
