@@ -1,6 +1,6 @@
 ---
 slug: 2022-12-15-docker-localhost
-title: 'Accessing a Docker container's outer _localhost_.'
+title: 'Accessing a Docker container\'s outer _localhost_.'
 draft: false
 ---
 
