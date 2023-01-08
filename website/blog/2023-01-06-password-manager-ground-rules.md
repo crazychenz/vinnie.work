@@ -128,6 +128,8 @@ s3cmd put /backups/daily-$(( ((7 + $(date +%w)) - 1) % 7 )).tar.gz s3://bucket/y
 5 5 7 1,5,9 * /backups/yearly-backup.sh
 ```
 
+</details>
+
 ### True Two Factor Authentication (TFA)
 
 The point of two factor authentication is to challenge a user that they distinctly _have_ a thing and distinctly _know_ a thing. Usually the _have_ a thing is a certificate or token. Tokens usually provide one time passcodes that are hashed or timed. Password managers can store One Time Passcodes (OTP) secrets as well. Consider for a moment, if you store an OTP secret and an associated password or pin in the same password manager, you've just eliminated the **two factor** part of the authentication.
