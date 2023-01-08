@@ -86,7 +86,7 @@ Any packages that have a version or revision identifier within their name can be
 
 ## Different Expirations For Same Endpoint
 
-Naively, I was clipping along with all of this until I tried the following configuration:
+Naively, when I was clipping along with all of this, I tried the following configuration:
 
 ```conf
   location /cache/ {
@@ -215,7 +215,7 @@ echo 'registry = "http://dockerhost:9876/cache/try/yarn/"' > ~/.yarnrc
 
 Note: I'm currently using the HTTPS enabled `https://mirror.pulsant.com/` mirror which has a URI prefix `/sites/ubuntu-archive/`. The following is one method for configuring a Dockerfile to prioritize the cache service over the upstream service. In this example, we _prepend_ our `deb` entries before the upstream ones so that if we already have the package or lose internet we get the local cached version BUT if there are newer updates in the upstream servers, we'll get the package from upstream until our own metadata is upgraded (~ 1-7 days, depending on your nginx preferences). You can always opt to omit the `cat` command below and rely solely on the caching service.
 
-(I do believe this is a much cleaner and smart way to do this, but I haven't gotten that far yet.)
+(I do believe there is a much cleaner and smart way to do this, but I haven't gotten that far yet.)
 
 ```Dockerfile
 RUN echo '\n\
@@ -247,7 +247,7 @@ RUN mv /tmp/sources.list /etc/apt/sources.list
   curl -vv -O http://localhost/cache/try/debian/archive/...
   ```
 
-- Notice that our configuration listens on clear text HTTP. This was a deliberate decision to avoid certificate management. This is deemed OK within a network where you have 100% positive control. If you are on a network where the trust of any other use could come into question, HTTPS must be used to maintain a secure state.
+- Notice that our configuration listens on clear text HTTP. This was a deliberate decision to avoid certificate management. This is deemed OK within a network where you have 100% positive control. If you are on a network where the trust of any other user could come into question, HTTPS must be used to maintain a secure state.
 
 - **What about forward proxy caching like squid or Apache?** - Nginx does not come with this functionality built in. There are extensions that provide support, but unless you _have to_ use nginx, I would recommend using the best tool for the job, and nginx is not that.
 
@@ -257,10 +257,10 @@ While I have observed that this configuration does work and it does route as I e
 
 ## Resources
 
-[ngx_http_proxy_module](http://nginx.org/en/docs/http/ngx_http_proxy_module.html)
-[Guide To Caching](https://www.nginx.com/blog/nginx-caching-guide/)
-[Reverse Proxy With Caching](https://www.nginx.com/resources/wiki/start/topics/examples/reverseproxycachingexample/)
-[NGINX Content Caching](https://docs.nginx.com/nginx/admin-guide/content-cache/content-caching/)
+- [ngx_http_proxy_module](http://nginx.org/en/docs/http/ngx_http_proxy_module.html)
+- [Guide To Caching](https://www.nginx.com/blog/nginx-caching-guide/)
+- [Reverse Proxy With Caching](https://www.nginx.com/resources/wiki/start/topics/examples/reverseproxycachingexample/)
+- [NGINX Content Caching](https://docs.nginx.com/nginx/admin-guide/content-cache/content-caching/)
 
 ## Comments
 

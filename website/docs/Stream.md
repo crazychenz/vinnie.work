@@ -3,6 +3,95 @@ sidebar_position: 50
 title: Stream
 ---
 
+## 2023-01-08
+
+- Generate EC KeyPair with `node:crypto` and fetch key data from DER export:
+
+```javascript
+import { generateKeyPair, KeyObject } from "node:crypto";
+import asn from "asn1.js";
+
+generateKeyPair('ec', 
+  {
+    namedCurve: 'secp256k1',
+    publicKeyEncoding: { type: 'spki', format: 'der' },
+    privateKeyEncoding: { type: 'pkcs8', format: 'der' }
+  },
+  (err, publicKey, privateKey) => { // Callback function
+    if(err) {
+      console.log("Err is: ", err);
+      return;
+    }
+
+    // See https://github.com/crypto-browserify/parse-asn1/blob/master/asn1.js
+
+    var AlgorithmIdentifier = asn.define('AlgorithmIdentifier', function () {
+      this.seq().obj(
+        this.key('algorithm').objid(),
+        this.key('none').null_().optional(),
+        this.key('curve').objid().optional(),
+        this.key('params').seq().obj(
+          this.key('p').int(),
+          this.key('q').int(),
+          this.key('g').int()
+        ).optional()
+      )
+    })
+
+    var PrivateKeyInfo = asn.define('PrivateKeyInfo', function () {
+      this.seq().obj(
+        this.key('version').int(),
+        this.key('algorithm').use(AlgorithmIdentifier),
+        this.key('subjectPrivateKey').octstr()
+      )
+    })
+
+    var ECPrivateKey = asn.define('ECPrivateKey', function () {
+      this.seq().obj(
+        this.key('version').int(),
+        this.key('privateKey').octstr(),
+        this.key('parameters').optional().explicit(0).use(ECParameters),
+        this.key('publicKey').optional().explicit(1).bitstr()
+      )
+    });
+    
+    var ECParameters = asn.define('ECParameters', function () {
+      this.choice({
+        namedCurve: this.objid()
+      })
+    });
+
+    var privateKeyInfo = PrivateKeyInfo.decode(Buffer.from(privateKey.toString('hex'), "hex"), 'der');
+    var ecPrivateKey = ECPrivateKey.decode(privateKeyInfo.subjectPrivateKey, 'der');
+    
+    console.log(privateKeyInfo);
+    console.log(ecPrivateKey);
+    console.log(ecPrivateKey.privateKey.toString('hex'));
+    console.log(ecPrivateKey.publicKey.data.toString('hex'));
+  }
+);
+```
+
+- De-facto authoritative asn1 Javascript library: https://www.npmjs.com/package/asn1.js
+- Online ASN.1 decoder: https://lapo.it/asn1js
+- Simple-ish Re-Encryption Reference Implementation: https://github.com/yjjnls/recrypt-js
+- SO Explanation of Re-Encryption: https://crypto.stackexchange.com/questions/99617/how-proxy-re-encryption-works-layman-perspective
+- Safe Elliptic Curves: http://safecurves.cr.yp.to/
+- Available Curves in NodeJS: https://www.tutorialspoint.com/crypto-getcurves-method-in-node-js
+
+- List all methods in JavaScript object: https://flaviocopes.com/how-to-list-object-methods-javascript/
+
+```javascript
+const getMethods = (obj) => {
+  let properties = new Set()
+  let currentObj = obj
+  do {
+    Object.getOwnPropertyNames(currentObj).map(item => properties.add(item))
+  } while ((currentObj = Object.getPrototypeOf(currentObj)))
+  return [...properties.keys()].filter(item => typeof obj[item] === 'function')
+}
+```
+
 ## 2022-12-02
 
 - Capturing web traffic:
