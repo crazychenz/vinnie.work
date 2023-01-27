@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Workflow & Techniques Overview
+title: Env & Workflow Overview
 ---
 
 :::danger Incomplete
@@ -11,7 +11,7 @@ This document is not yet written.
 
 ## Overview
 
-This area is reserved for topics that involve explaining how I setup my workspace, what tools I use, and how everything gets wired up.
+_Env & Workflow_ are a collection of configurations and one-size-fits-most workflows that I preset my development environments with.
 
 <!-- - VSCode on 32bits?
 - VSCode RemoteSSH?

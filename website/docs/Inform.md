@@ -7,13 +7,15 @@ More organized than a log of findings, this corner of vinnie.work aims _to infor
 
 ## Areas
 
-- [Tools & Use Cases](./ToolCases/Overview)
+- [Collections](./Collections/Overview) - Collections of similar things.
+
+- [Problem Book](./ProblemBook/Overview) - Problem/use-case patterns that I've documented from various projects and tasks. Next time I ask: **What was that tool I used before?**, I'll hopefully be able to reference the tool or use case here.
 
 - [Embedded System Analysis](./EmbeddedSystemsAnalysis/overview) - Some ramblings on my process for performing embedded systems analysis from primarily my software engineering back ground.
 
 - [System Deets](./Systems/overview) - Summarized and distilled system specific information.
 
-- [Workflows & Techniques](./WorkflowAndTechniques/Overview)
+- [Workflows & Techniques](./EnvAndWorkflow/Overview)
 
 - [Third Party](./ThirdParty/overview) - An open source _organization_ I maintain.
 
