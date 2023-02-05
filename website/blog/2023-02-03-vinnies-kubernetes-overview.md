@@ -1,6 +1,6 @@
 ---
 slug: 2023-02-03-vinnies-kubernetes-overview
-title: 'Vinnie's Kubernetes Overview'
+title: Vinnie''s Kubernetes Overview
 draft: false
 ---
 
