@@ -2,7 +2,7 @@
 
 BUILD_VERSION=$(date +%Y%m%d-%H%M%S)
 
-./pack.sh build www-vinnie-work:${BUILD_VERSION} \
+./pack.sh build www-vinnie-work \
   --path website \
   --builder paketobuildpacks/builder:base \
   --env BP_NODE_RUN_SCRIPTS=build \
@@ -15,5 +15,7 @@ BUILD_VERSION=$(date +%Y%m%d-%H%M%S)
   --buildpack paketo-buildpacks/node-run-script \
   --buildpack paketo-buildpacks/nginx
 
-echo To run: docker run -e PORT=80 -p 3080:80 -ti --rm www-vinnie-work:${BUILD_VERSION}
+docker tag www-vinnie-work www-vinnie-work:${BUILD_VERSION}
+
+echo To run: docker run -e PORT=80 -p 3080:80 -ti --rm www-vinnie-work
 
