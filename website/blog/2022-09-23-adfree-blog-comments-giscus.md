@@ -146,10 +146,10 @@ Even though Giscus has been a great option for a comment solution, it does lack 
 
 Some examples in the wild that I took from to make all this work:
 
-- [Comp-Labs post MDX source with Giscus component](https://raw.githubusercontent.com/Comp-Labs/comp-labs-website/896afc72cb39ef5f5cf1f8d2a119e0d14be3dd65/blog/posts/implement-active-directory-in-windows-server-2022-4.mdx)
-- [Comp-Labs MDXComponents Source](https://github.com/Comp-Labs/comp-labs-website/blob/main/src/theme/MDXComponents.js)
-- [Comp-Labs Blog](https://complabs.in/blog/posts/install-macos-ventura-on-windows-using-virtualbox#comments)
-- [Comp-Labs Docusaurus Config](https://github.com/Comp-Labs/comp-labs-website/blob/main/docusaurus.config.js)
+- [Tech Fiddle post MDX source with Giscus component](https://raw.githubusercontent.com/Comp-Labs/comp-labs-website/896afc72cb39ef5f5cf1f8d2a119e0d14be3dd65/blog/posts/implement-active-directory-in-windows-server-2022-4.mdx)
+- [Tech Fiddle MDXComponents Source](https://github.com/Comp-Labs/comp-labs-website/blob/main/src/theme/MDXComponents.js)
+- [Tech Fiddle Blog](https://techfiddle.io/blog/posts/install-macos-ventura-on-windows-using-virtualbox#comments)
+- [Tech Fiddle Docusaurus Config](https://github.com/Comp-Labs/comp-labs-website/blob/main/docusaurus.config.js)
 
 ## Comments
 
