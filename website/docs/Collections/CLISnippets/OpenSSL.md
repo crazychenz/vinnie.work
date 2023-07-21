@@ -101,7 +101,7 @@ Assuming you wanted to create a root certificate for some servers and one of the
 1. Create Root CA certificate and key PEM files:
 
 ```sh
-openssl req -x509 -days 18250 \
+openssl req -x509 -days 18250  -nodes \
   -newkey rsa:4096 -keyout ca.key.pem \
   -out ca.cert.pem -extensions v3_ca
 ```
@@ -150,7 +150,7 @@ Equivalent command for all of the above would look like: `./adhoc-cert.py test.h
 - It automatically generates CA certificate and key if not provided or not already created.
 - It automatically generates the server certificate and key into a similar folder.
 - Provide `--dns` (i.e. FQDN) and/or `--ip` arguments to specify additional domain names for a single certificate/key pair.
-- You can use `--dns 'home.domain --dns '*.home.domain` to generate a wild card certificate for entire domain.
+- You can use `--dns home.domain --dns '*.home.domain'` to generate a wild card certificate for entire domain.
 - Developed and tested with `OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)`.
 
 <details><summary>adhoc-certs.py</summary>
