@@ -153,7 +153,9 @@ Equivalent command for all of the above would look like: `./adhoc-cert.py test.h
 - You can use `--dns home.domain --dns '*.home.domain'` to generate a wild card certificate for entire domain.
 - Developed and tested with `OpenSSL 3.0.2 15 Mar 2022 (Library: OpenSSL 3.0.2 15 Mar 2022)`.
 
-<details><summary>adhoc-certs.py</summary>
+<details>
+
+<summary>adhoc-certs.py</summary>
 
 ```python
 #!/usr/bin/env python3

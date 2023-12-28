@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.0"
+   width="400"
+   height="260"
+   id="svg2"
+   sodipodi:docname="schematic-symbols.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview145"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     showgrid="false"
+     inkscape:zoom="2.6192308"
+     inkscape:cx="427.41557"
+     inkscape:cy="129.04552"
+     inkscape:window-width="2880"
+     inkscape:window-height="1620"
+     inkscape:window-x="945"
+     inkscape:window-y="206"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs4" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Background"
+     style="display:inline">
+    <rect
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#1a1a1a"
+       id="rect37626"
+       width="290.92511"
+       height="95.066078"
+       x="50.778267"
+       y="9.7356834"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446" />
+    <rect
+       style="display:inline;fill:#ffffff;fill-rule:evenodd;stroke:#1a1a1a;stroke-width:1.34934"
+       id="rect37626-1"
+       width="364.26154"
+       height="138.24097"
+       x="437.32593"
+       y="3.4199014"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <rect
+       style="display:inline;fill:#ffffff;fill-rule:evenodd;stroke:#1a1a1a;stroke-width:1.14106"
+       id="rect37626-5"
+       width="338.508"
+       height="106.37876"
+       x="51.612396"
+       y="150.68727"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431" />
+    <rect
+       style="display:inline;fill:#ffffff;fill-rule:evenodd;stroke:#1a1a1a"
+       id="rect37626-9"
+       width="290.92511"
+       height="95.066078"
+       x="471.51248"
+       y="161.68869"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\traces-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Symbols"
+     style="display:inline">
+    <path
+       d="m 64.394715,39.750884 h 13.23829 v -10.0611 l 13.50306,10.32587 -13.50288,10.41406 v -10.63509"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path2221"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446" />
+    <path
+       d="M 92.113685,40.059754 H 104.39917"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path2223"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446" />
+    <rect
+       width="3.3595409"
+       height="18.139542"
+       ry="0"
+       x="88.500664"
+       y="30.835651"
+       style="fill:#000000;stroke:#000000;stroke-width:1.50915;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3195"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446" />
+    <path
+       d="m 64.504155,77.429794 h 15.52222 v -9.4368 18.69722"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path3197"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446" />
+    <path
+       d="M 103.62642,77.429794 H 88.104195 v -9.4368 18.69722"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path4168"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446" />
+    <path
+       d="m 204.35359,46.924529 h 9.78958 c 0,0 -5.0572,-11.112495 2.46944,-11.288884 6.96545,-0.163237 6.17361,11.377084 3.96875,11.377084 -2.20486,0 -2.11667,-11.288889 3.61597,-11.288889 5.73264,0 6.61458,11.288879 3.43958,11.288879 -3.17499,0 -1.94027,-11.28888 3.70417,-11.28888 5.64444,0 6.79097,11.28889 3.26319,11.28889 -3.52777,0 -1.5875,-11.28889 3.96875,-11.28889 5.55625,0 4.8507,11.28888 2.99861,11.28888 -1.85208,0 9.43681,-0.0882 9.43681,-0.0882"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path4176"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446" />
+    <path
+       d="m 203.35995,73.836349 h 14.08761 l 1.94923,-5.54191 3.18965,10.66816 3.54405,-10.80671 3.10105,10.66816 3.36685,-10.52961 3.36685,10.59889 1.86062,-5.19553 h 14.17621"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.77662;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+       id="path4178"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446" />
+    <path
+       d="m 63.357631,179.02977 h 17.109718 v -5.46805 11.11249"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path5149"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431" />
+    <path
+       d="M 105.32192,179.02977 H 87.357635 v -11.50353 23.23687"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path5151"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431" />
+    <path
+       d="m 91.783775,173.20767 h 6.35595"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path5153"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431" />
+    <path
+       d="m 94.961755,170.85757 v 4.7002"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path5155"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431" />
+    <path
+       d="m 217.81186,179.27151 c 11.17919,-17.82628 13.89846,19.94126 23.56695,0.60428"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path5157"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431" />
+    <path
+       d="m 246.53177,179.72472 a 16.93644,16.93644 0 1 1 -33.87288,0 16.93644,16.93644 0 1 1 33.87288,0 z"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+       id="path5159"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431" />
+    <path
+       d="m 626.21255,115.32605 h 16.46665 v -14.50273 l 24.05085,13.88577 -24.0381,13.97698 v -13.3441"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path5161"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 677.0393,114.75469 a 4.7229962,4.7229962 0 1 1 -9.44599,0 4.7229962,4.7229962 0 1 1 9.44599,0 z"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+       id="path5163"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="M 693.83217,114.75469 H 677.91392"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path5165"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 453.89811,106.90626 h 15.09033"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path5167"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 453.89811,119.90584 h 15.09033"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path5169"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 465.77247,100.63924 c 10.3076,12.94635 0,25.64531 0,25.64531"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path5171"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 471.13242,99.567249 c 30.67941,0 34.05631,13.853421 34.05631,13.853421 h 16.24478 -16.32724 c -4.39156,16.38954 -34.05631,13.77095 -34.05631,13.77095 14.18326,-13.85342 0.0825,-27.624371 0.0825,-27.624371 z"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path5173"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 638.46575,55.740259 c 30.67941,0 34.05631,13.85342 34.05631,13.85342 h -0.0825 c -4.39156,16.38954 -34.05631,13.77095 -34.05631,13.77095 14.18326,-13.85342 0.0825,-27.62437 0.0825,-27.62437 z"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6144"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 627.83782,63.703129 h 15.09033"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6146"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 627.83782,76.702709 h 15.09033"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6148"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 678.97436,69.761409 a 3.06985,3.06985 0 1 1 -6.1397,0 3.06985,3.06985 0 1 1 6.1397,0 z"
+       style="fill:none;stroke:#000000;stroke-width:1.82623;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+       id="path6150"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="M 695.42036,69.761399 H 679.50211"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6152"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 638.8567,13.668536 c 30.67941,0 34.05631,13.853423 34.05631,13.853423 h 16.24478 -16.32724 c -4.39156,16.38954 -34.05631,13.77095 -34.05631,13.77095 14.18326,-13.85342 0.0825,-27.624373 0.0825,-27.624373 z"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6154"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 628.14331,21.764229 h 15.09033"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6156"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 628.14331,34.763809 h 15.09033"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6158"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 508.88907,71.023035 a 3.06985,3.06985 0 1 1 -6.1397,0 3.06985,3.06985 0 1 1 6.1397,0 z"
+       style="fill:none;stroke:#000000;stroke-width:1.82623;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:5;stroke-dasharray:none;stroke-opacity:1"
+       id="path6160"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="M 525.33507,71.023021 H 509.41682"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6162"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 467.75327,57.999884 v 26.958591 c 46.14365,2.419361 47.2183,-29.550763 0,-26.958591 z"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6164"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 452.17361,64.394721 h 15.09033"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6166"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 452.17361,77.394301 h 15.09033"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6168"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="M 519.73449,28.698351 H 503.81624"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6170"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 468.15911,15.269371 v 26.95859 c 46.14365,2.41936 47.2183,-29.55076 0,-26.95859 z"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6172"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 452.17361,22.394721 h 15.09033"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6174"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <path
+       d="m 452.17361,35.394301 h 15.09033"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path6176"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672" />
+    <text
+       x="115.03375"
+       y="45.834126"
+       style="font-style:normal;font-weight:normal;font-size:15.2975px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6178"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446"><tspan
+         x="115.03375"
+         y="45.834126"
+         id="tspan6180">Diode</tspan></text>
+    <text
+       x="114.50835"
+       y="81.744469"
+       style="font-style:normal;font-weight:normal;font-size:15.5561px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6182"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446"><tspan
+         x="114.50835"
+         y="81.744469"
+         id="tspan6184">Capacitor</tspan></text>
+    <text
+       x="258.06195"
+       y="47.818985"
+       style="font-style:normal;font-weight:normal;font-size:15.5561px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6186"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446"><tspan
+         x="258.06195"
+         y="47.818985"
+         id="tspan6188">Inductor</tspan></text>
+    <text
+       x="258.06195"
+       y="79.636795"
+       style="font-style:normal;font-weight:normal;font-size:15.5561px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6190"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\passive-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446"><tspan
+         x="258.06195"
+         y="79.636795"
+         id="tspan6192">Resistor</tspan></text>
+    <text
+       x="259.68457"
+       y="237.49597"
+       style="font-style:normal;font-weight:normal;font-size:15.5561px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6190-8"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431"><tspan
+         x="259.68457"
+         y="237.49597"
+         id="tspan6192-0">Chassis Ground</tspan></text>
+    <text
+       x="120.33067"
+       y="238.25955"
+       style="font-style:normal;font-weight:normal;font-size:15.5561px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6190-9"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431"><tspan
+         x="120.33067"
+         y="238.25955"
+         id="tspan6192-4">Ground</tspan></text>
+    <text
+       x="114.50835"
+       y="177.97748"
+       style="font-style:normal;font-weight:normal;font-size:15.5561px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6194"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431"><tspan
+         x="114.50835"
+         y="177.97748"
+         id="tspan6196">DC voltage</tspan><tspan
+         x="114.50835"
+         y="197.42264"
+         id="tspan6198">source</tspan></text>
+    <text
+       x="259.97092"
+       y="177.81699"
+       style="font-style:normal;font-weight:normal;font-size:15.5561px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6200"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431"><tspan
+         x="259.97092"
+         y="177.81699"
+         id="tspan6202">AC voltage</tspan><tspan
+         x="259.97092"
+         y="197.26218"
+         id="tspan6204">source</tspan></text>
+    <text
+       x="539.37927"
+       y="30.209459"
+       style="font-style:normal;font-weight:normal;font-size:15.2975px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6206"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672"><tspan
+         x="539.37927"
+         y="30.209459"
+         id="tspan6208">And gate</tspan></text>
+    <text
+       x="538.07892"
+       y="75.809166"
+       style="font-style:normal;font-weight:normal;font-size:15.2975px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6210"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672"><tspan
+         x="538.07892"
+         y="75.809166"
+         id="tspan6212">Nand gate</tspan></text>
+    <text
+       x="714.32904"
+       y="31.941679"
+       style="font-style:normal;font-weight:normal;font-size:15.2975px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6214"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672"><tspan
+         x="714.32904"
+         y="31.941679"
+         id="tspan6216">Or gate</tspan></text>
+    <text
+       x="713.91168"
+       y="73.679962"
+       style="font-style:normal;font-weight:normal;font-size:15.2975px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6218"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672"><tspan
+         x="713.91168"
+         y="73.679962"
+         id="tspan6220">Nor gate</tspan></text>
+    <text
+       x="541.20441"
+       y="117.67339"
+       style="font-style:normal;font-weight:normal;font-size:15.2975px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6222"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672"><tspan
+         x="541.20441"
+         y="117.67339"
+         id="tspan6224">Xor gate</tspan></text>
+    <text
+       x="688.00085"
+       y="187.79619"
+       style="font-style:normal;font-weight:normal;font-size:15.2975px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6222-9"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\traces-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446"><tspan
+         x="688.00085"
+         y="187.79619"
+         id="tspan6224-2">Junction</tspan></text>
+    <text
+       x="526.50305"
+       y="190.08696"
+       style="font-style:normal;font-weight:normal;font-size:15.2975px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6222-8"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\traces-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446"><tspan
+         x="526.50305"
+         y="190.08696"
+         id="tspan6224-6">Connected</tspan></text>
+    <text
+       x="712.93939"
+       y="111.22022"
+       style="font-style:normal;font-weight:normal;font-size:15.2975px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6226"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\logical-511x195.png"
+       inkscape:export-xdpi="134.10672"
+       inkscape:export-ydpi="134.10672"><tspan
+         x="712.93939"
+         y="111.22022"
+         id="tspan6228">Inverter</tspan><tspan
+         x="712.93939"
+         y="130.34218"
+         id="tspan6232">(Not gate)</tspan></text>
+    <g
+       id="g4218"
+       transform="matrix(-2.9089574,0,0,3.0661657,1174.7244,-883.31363)"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431">
+      <path
+         inkscape:connector-curvature="0"
+         id="path8269-3-9"
+         d="m 378.43708,363.60502 h -8"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path8297-1-9"
+         d="m 380.43708,361.60502 h -12"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 376.43708,365.60502 h -4"
+         id="path8307-3-3"
+         inkscape:connector-curvature="0" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path8340-4-3"
+         d="m 374.43708,361.60502 v -4"
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       id="g4165"
+       transform="matrix(-2.3591396,0,0,2.3562502,1100.3401,-587.7594)"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\power-512x162.png"
+       inkscape:export-xdpi="144.6431"
+       inkscape:export-ydpi="144.6431">
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 368,344.3622 v -4"
+         id="path8340-4-3-6"
+         inkscape:connector-curvature="0" />
+      <g
+         id="g4161">
+        <path
+           inkscape:connector-curvature="0"
+           id="path7268"
+           d="m 368,344.3622 5,9"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path7268-4"
+           d="m 368,353.3622 -5,-9 h 10 l 5,9"
+           style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           sodipodi:nodetypes="cccc" />
+      </g>
+    </g>
+    <g
+       id="g11"
+       transform="matrix(1.1670338,0,0,1.2545277,479.16514,159.52873)"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\traces-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446">
+      <path
+         d="M 32,16 H 16 V 32 M 16,16 H 0"
+         style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         id="path3124" />
+      <circle
+         cx="16"
+         cy="16"
+         r="3"
+         fill="#000000"
+         stroke="#000000"
+         stroke-width="1"
+         id="circle4" />
+    </g>
+    <path
+       d="m 497.0741,211.72097 v 32 m -16,-16 h 32"
+       style="fill:none;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path3124-0"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\traces-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446" />
+    <g
+       id="g4182"
+       transform="matrix(1.9926579,0,0,2.0635619,640.58327,163.40029)"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\traces-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446">
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -0.01456,9.9854338 h 20"
+         id="path4140"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+      <g
+         transform="translate(2.4999999)"
+         id="g4174">
+        <g
+           id="g4162">
+          <path
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="M 9.98544,9.9854338 V 16.985434"
+             id="path4142"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="cc" />
+          <ellipse
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+             id="path4144"
+             cx="9.9854403"
+             cy="9.9854336"
+             rx="1.0000002"
+             ry="0.99999982" />
+        </g>
+        <g
+           id="g4158"
+           transform="rotate(180,4.9854401,4.9854336)">
+          <path
+             style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+             d="M 4.98544,6.985434 V -0.0145662"
+             id="path4142-8"
+             inkscape:connector-curvature="0"
+             sodipodi:nodetypes="cc" />
+          <ellipse
+             transform="scale(-1)"
+             style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+             id="path4144-8"
+             cx="-4.9854403"
+             cy="0.014566379"
+             rx="1.0000002"
+             ry="0.99999982" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g4155"
+       transform="matrix(1.3054332,0,0,1.8428953,642.10044,211.83877)"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\traces-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446">
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m -0.01456,9.9854338 h 20"
+         id="path4140-6"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 9.98544,2.9439087 v 5.0415251 c 2,0 2,4.0000002 0,4.0000002 v 5"
+         id="path4142-8-9"
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="cccc" />
+    </g>
+    <text
+       x="526.50305"
+       y="233.99297"
+       style="font-style:normal;font-weight:normal;font-size:15.2975px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6222-0"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\traces-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446"><tspan
+         x="526.50305"
+         y="233.99297"
+         id="tspan6224-9">Crossing</tspan></text>
+    <text
+       x="689.14624"
+       y="234.75655"
+       style="font-style:normal;font-weight:normal;font-size:15.2975px;font-family:'Bitstream Vera Sans';fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text6222-2"
+       xml:space="preserve"
+       inkscape:export-filename="C:\Users\Owner\Desktop\schematics\traces-511x168.png"
+       inkscape:export-xdpi="167.88446"
+       inkscape:export-ydpi="167.88446"><tspan
+         x="689.14624"
+         y="234.75655"
+         id="tspan6224-4">Crossing</tspan></text>
+  </g>
+</svg>

@@ -244,7 +244,7 @@ There is a ton of stuff defined here, so here is the breakdown:
 * pipeTransport - Defines path to debugger binary and process used to pipe debugger communication channel. In our case, this is our `docker run` command so we don't have lingering containers when we're done debugging.
 * sourceFileMap - This maps the container path to the VSCode path for source file mapping.
 * linux.MIMode - This is the machine interface mode and can be `lldb` or `gdb`. I tried to get `lldb` running for a long time without success. `lldb` is the default setting for `osx`.
-* inputs - These define the various ${input:VarName} variables that can be used in the launch configurations. If you look at pipeTransport.pipeArgs, there is a ${input:dockerImage} variable. The inputs at the bottom of the file define an enumerated list of docker images that can be selected to fill in this value. 
+* inputs - These define the various `${input:VarName}` variables that can be used in the launch configurations. If you look at pipeTransport.pipeArgs, there is a `${input:dockerImage}` variable. The inputs at the bottom of the file define an enumerated list of docker images that can be selected to fill in this value. 
 
 For more information, please refer to the [official documentation](https://code.visualstudio.com/docs/editor/debugging).
 

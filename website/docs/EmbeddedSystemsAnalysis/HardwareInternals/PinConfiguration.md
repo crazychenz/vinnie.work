@@ -20,7 +20,8 @@ Know the difference in R0-R16 registers vs memory mapped registers.
 
 What happens when you read a write only register?
 
-<details><summary>Atmel Pin Configuration Exercise</summary>
+<details>
+<summary>Atmel Pin Configuration Exercise</summary>
 
 Configure I/O lines 0-3 to have:
 

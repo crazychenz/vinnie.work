@@ -19,7 +19,9 @@ In this lab you'll be using a logic analyzer to measure and estimate the baud ra
 
 The *baud rate* of a signal is the number of times a signal can change state per second (i.e. the speed of the signal). Example: 1 baud is one signal pulse per second.
 
-<details><summary>Click to compare baud and bits per second (bps).</summary><br />
+<details>
+<summary>Click to compare baud and bits per second (bps).</summary>
+<br />
 
 :::note
 
@@ -35,7 +37,8 @@ In summary, baud does not always mean bits per second. That said, all of the ser
 
 :::
 
-</details><br />
+</details>
+<br />
 
 A logic analyzer is a device that takes samples of a number of connected data lines at a given frequency. These samples allow us to capture, visualize, and interpret digital signals. Using the logic analyzer and open source software called PulseView (by sigrok), we can estimate the actual baud rate based on observations made by the logic analyzer.
 
@@ -103,7 +106,9 @@ The logic analyzer that you are using will generally have ground (GND) pins and 
 1. Connect one of the Analyzer channel pins to the Raspberry Pi UART receive pin.
 2. Connect one of the Analyzer ground pins to a Raspberry Pi ground pin.
 
-<details><summary>Click to see an example setup.</summary><br />
+<details>
+<summary>Click to see an example setup.</summary>
+<br />
 
 Here is an example setup:
 
@@ -147,7 +152,8 @@ You should at this point be able to see the decoded data in the Decoder Output v
 - Does the output look like real *human readable* output?
 - If you do a longer capture, what happens to the output over time?
 
-<details><summary>Click to see video demonstration.</summary>
+<details>
+<summary>Click to see video demonstration.</summary>
 
 <ReactPlayer playing={false} controls url='/video/baud-uart-lab-html5.mp4' />
 
@@ -301,7 +307,9 @@ For example, you can setup the UART device in linux so that it'll output to STDO
 
 Then whenever you `echo` something to `/dev/ttyUSB1`, the response will pop up in the current terminal as if you just ran the command locally.
 
-<details><summary>See information about issues with `-bash: /dev/ttyUSB1: Permission denied`</summary><br />
+<details>
+<summary>See information about issues with `-bash: /dev/ttyUSB1: Permission denied`</summary>
+<br />
 
 Add yourself to `dialout` group or `sudo chmod 666 /dev/ttyUSB1`.
 
@@ -309,7 +317,9 @@ Add yourself to `dialout` group or `sudo chmod 666 /dev/ttyUSB1`.
 
 With a little linux foo, you can throw together a script that'll act as a lightweight (and very limited) terminal program (like screen/minicom).
 
-<details><summary>Click to see and example bash script.</summary><br />
+<details>
+<summary>Click to see and example bash script.</summary>
+<br />
 
 ```text
 #!/usr/bin/bash

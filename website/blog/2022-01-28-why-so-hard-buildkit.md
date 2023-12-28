@@ -155,7 +155,8 @@ ENV DOCKER_IMAGE_NAME=aarch64-dev
 RUN apt-get update && apt-get install -y build-essential
 ```
 
-<details><summary>Script examples for building and running containers for this use case.</summary>
+<details>
+<summary>Script examples for building and running containers for this use case.</summary>
 
 **build.sh**:
 

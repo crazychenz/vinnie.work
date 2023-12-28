@@ -292,7 +292,8 @@ Notice that instead of restoring LR, its value is restored into PC. This allows 
 
 As an exercise, using a C compiler, determine what the calling convention is for handling parameter passing for different numbers of parameters. What happens when there are 1, 2, 3, 4, or 5 parameters? How is the return value handled?
 
-<details><summary>Calling Convention Lab Questions</summary>
+<details>
+<summary>Calling Convention Lab Questions</summary>
 
 - Examine the output of objdump and see how variables are passed into a function.
 - Increase the number of parameters passed into a function and determine what the maximum number of parameters that can be passed before the mechanism for passing the parameters changes.
@@ -339,7 +340,8 @@ Signed 24 bit immediate = (Absolute_Destination_Addr - Absolute_Branch_Addr - 8)
 
 If you want to branch and link, set L=1, otherwise L=0.
 
-<details><summary>Arm Branch Exercise</summary>
+<details>
+<summary>Arm Branch Exercise</summary>
 
 You need to calculate the binary for some branch instructions.
 

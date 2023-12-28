@@ -86,7 +86,8 @@ Note: Enclosures are not full proof. They only decrease the decibel level of the
 - [FCC Radio Spectrum Allocation](https://www.fcc.gov/engineering-technology/policy-and-rules-division/general/radio-spectrum-allocation)
 - [Adjacent Channel vs Co-Channel Interference](https://serverfault.com/questions/471721/adjacent-channel-versus-co-channel-interference)
 
-<details><summary>Instructor Notes</summary>
+<details>
+<summary>Instructor Notes</summary>
 
 - No Lab, equipment costs too high.
 

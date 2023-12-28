@@ -63,7 +63,9 @@ The initial install should include a `traefik` IngressClass so you can setup a D
 
 As previously mentioned, `kubectl api-resources` and `kubectl explain` are your friends when attempting to discover or understand various yaml options. Below is an example Yaml configuration that include the Deployment, Service, and Ingress resources. The intention is to forward all requests from `http://myapp.paas.vinnie.work/myapp` to the test `nginx` container via the myapp Service and myapp Pod.
 
-<details><summary>The myapp Yaml</summary>
+<details>
+
+<summary>The myapp Yaml</summary>
 
 ```yaml
 apiVersion: apps/v1

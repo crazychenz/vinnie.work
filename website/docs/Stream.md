@@ -3,6 +3,19 @@ sidebar_position: 50
 title: Stream
 ---
 
+<!-- ## 2023-10-14
+
+- https://docs.pieces.app/installation-getting-started/what-am-i-installing
+- https://stackoverflow.com/questions/4565700/how-to-specify-the-private-ssh-key-to-use-when-executing-shell-command-on-git
+- https://github.com/go-gitea/gitea/issues/17165
+- https://www.drone.io/
+- https://docusaurus.io/feature-requests/p/api-documentation-swagger
+  - https://github.com/redocly/redoc
+  - https://github.com/rohit-gohri/redocusaurus
+  - https://swagger.io/resources/articles/documenting-apis-with-swagger/
+  - https://try.gitea.io/api/swagger#/activitypub/activitypubPerson 
+  - https://developer.hashicorp.com/nomad/tutorials/stateful-workloads/exec-users-host-volumes -->
+
 ## 2023-01-08
 
 - Generate EC KeyPair with `node:crypto` and fetch key data from DER export:
@@ -233,7 +246,8 @@ const getMethods = (obj) => {
 
 - [EMUX](https://github.com/therealsaumil/emux) - Similar to firmadyne without the emphasis on scalability.
 - [cppreference - mblen](https://en.cppreference.com/w/c/string/multibyte/mblen) - Location of decent `strlen_mb` implementation.
-    <details><summary>Code</summary>
+    <details>
+    <summary>Code</summary>
 
   ```c
   #include <string.h>

@@ -1,0 +1,1 @@
+https://elinux.org/images/0/0a/Embedded_Linux_Build_Systems.pdf

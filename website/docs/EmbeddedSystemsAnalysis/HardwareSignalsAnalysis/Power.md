@@ -86,7 +86,9 @@ If you want to measure the current of a circuit, the circuit itself must go thro
 
 ## Misc Info
 
-<details><summary>Click to read informaiton on dirty power.</summary><br />
+<details>
+<summary>Click to read informaiton on dirty power.</summary>
+<br />
 
 ### Dirty Power
 

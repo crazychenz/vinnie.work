@@ -23,7 +23,8 @@ Are there other access modes of the device (e.g. admin)? ... rinse and repeat.
 
 ## Resources
 
-<details><summary>Instructor Notes</summary>
+<details>
+<summary>Instructor Notes</summary>
 
 - No Lab
 

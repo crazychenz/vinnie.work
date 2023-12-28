@@ -103,7 +103,8 @@ Here is an example of a minimal deployment. Below you'll see:
 
 ![deploy yaml image](./2023-02-03-vinnies-kubernetes-overview/deploy-yaml.png)
 
-<details><summary>Deployment YAML</summary>
+<details>
+<summary>Deployment YAML</summary>
 
 ```yaml
 apiVersion: apps/v1
@@ -137,7 +138,8 @@ The following is an example of a Service that can be used to reference several P
 
 ![service yaml image](./2023-02-03-vinnies-kubernetes-overview/service-yaml.png)
 
-<details><summary>Service YAML</summary>
+<details>
+<summary>Service YAML</summary>
 
 ```yaml
 apiVersion: v1
@@ -189,7 +191,8 @@ Ingress definitions to me are a way to abstract reverse proxy rules from a web p
 
 ![ingress yaml image](./2023-02-03-vinnies-kubernetes-overview/ingress-yaml.png)
 
-<details><summary>Ingress YAML</summary>
+<details>
+<summary>Ingress YAML</summary>
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -226,7 +229,8 @@ When you need persistance for logs, a database, or a cache, you'll need to defin
 
 ![volume yaml image](./2023-02-03-vinnies-kubernetes-overview/volume-yaml.png)
 
-<details><summary>Volume YAML</summary>
+<details>
+<summary>Volume YAML</summary>
 
 ```yaml
 apiVersion: v1
@@ -266,7 +270,8 @@ You can always setup volumes as your configuration or you can use the ConfigMap 
 
 ![config yaml image](./2023-02-03-vinnies-kubernetes-overview/config-yaml.png)
 
-<details><summary>Configuration YAML</summary>
+<details>
+<summary>Configuration YAML</summary>
 
 ```yaml
 apiVersion: v1
@@ -315,7 +320,8 @@ You can always store secrets (certificates, keys, passwords, usernames) in a vol
 
 ![secret yaml image](./2023-02-03-vinnies-kubernetes-overview/secret-yaml.png)
 
-<details><summary>Secret YAML</summary>
+<details>
+<summary>Secret YAML</summary>
 
 ```yaml
 apiVersion: v1

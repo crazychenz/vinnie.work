@@ -26,7 +26,8 @@ Even with the efforts made by these individuals and groups, you'll still need to
 
 You can see some of the toolchain version coverage of X-Tools in the following dropdowns:
 
-<details><summary>ct-ng-1.25.0</summary><br />
+<details>
+<summary>ct-ng-1.25.0</summary><br />
 
 - Core
   - Linux: 5.16.9 thru 3.2.101
@@ -70,7 +71,8 @@ You can see some of the toolchain version coverage of X-Tools in the following d
 
 </details>
 
-<details><summary>ct-ng-1.24.0</summary><br />
+<details>
+<summary>ct-ng-1.24.0</summary><br />
 
 - Core
   - Linux: 4.20.8 thru 3.2.101
@@ -114,7 +116,8 @@ You can see some of the toolchain version coverage of X-Tools in the following d
 </details>
 
 
-<details><summary>ct-ng-1.19.0</summary><br />
+<details>
+<summary>ct-ng-1.19.0</summary><br />
 
 - Core
   - Linux: 3.10.2 thru 2.6.27.62
@@ -144,7 +147,8 @@ You can see some of the toolchain version coverage of X-Tools in the following d
 
 </details>
 
-<details><summary>kegel-ct-0.43</summary><br />
+<details>
+<summary>kegel-ct-0.43</summary><br />
 
 - Core
   - Linux: 2.6.15.4 thru 2.6.8 / 2.4.26 / historically 2.2.X

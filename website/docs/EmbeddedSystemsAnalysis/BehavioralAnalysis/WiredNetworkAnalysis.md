@@ -28,7 +28,8 @@ Take away: Isolate your device until you fully understand the impact on the netw
 
 In networking there is a lot of overloaded terms. For the sake of this discussion, a link is a hardware controlled connection between two ethernet nodes. Note: Firewalls typically have no control over whether a network device is linked to another, this functionality is controlled from the network interface itself. When you have physical access to the target device, the most straight forward way to determine if a device is linked is by looking at the LINK LED lights on both sides of the network connection. If they've successfully auto-negotiated the link, the LEDs will be lit. Auto-negotiation is the process that the network devices use (at a hardware level) to determine what speed (e.g. 10Mbps, 100Mbps, 1Gbps) they will be communicating at.
 
-<details><summary>Click to see LINK troubleshooting tips.</summary>
+<details>
+<summary>Click to see LINK troubleshooting tips.</summary>
 
 - Known good cable?
   - Cables should not be egregiously bent.
@@ -38,7 +39,8 @@ In networking there is a lot of overloaded terms. For the sake of this discussio
 - In some very old systems, you may be required to connect to a device through a switch or use what is called a cross over cable. A cross over cable switches the pins 1/3 with 2/6 on 10/100 connections. (Note: Nothing in this course is that old!)
 - Is the development interface (i.e. your laptop/desktop) side of the link UP? 
 
-  <details><summary>Click for more info.</summary>
+  <details>
+  <summary>Click for more info.</summary>
 
   You can do this physically by looking at a LINK LED indicator on the PC or if you are running linux you can check with `ifconfig` or `ip`.
 
@@ -91,7 +93,8 @@ When the ping doesn't work, I suggest having a good knowledge of network stacks.
 - Is there a firewall rule on the development host blocking me?
 - Can I `arping` the destination device?
 
-  <details><summary>Click for more information.</summary><br />
+  <details>
+  <summary>Click for more information.</summary><br />
   
   To install arping on ubuntu, run: `sudo apt-get install arping`. Note: `iputils-arping` doesn't support pinging MAC addresses and is generally less capable.
 
@@ -110,7 +113,8 @@ When the ping doesn't work, I suggest having a good knowledge of network stacks.
 
 - Is the target device in the `arp` table?
 
-  <details><summary>Click for more information.</summary>
+  <details>
+  <summary>Click for more information.</summary>
 
   ```text
   $ arp -n
@@ -126,7 +130,8 @@ When the ping doesn't work, I suggest having a good knowledge of network stacks.
 
 - Is there an IP `route` defined to access the target device?
 
-  <details><summary>Click for more information.</summary>
+  <details>
+  <summary>Click for more information.</summary>
 
   ```text
   $ route -n
@@ -147,7 +152,9 @@ Whether you know if you can connect or not, its useful to watch for potential ne
 
 To only see packets of interest (i.e. filtering packets), the user is required to provide `tcpdump` a _pcap filter_ that is then compiled by `tcpdump` into BPF (Berkeley Packet Filters). I've found that these two formats are commonly mixed up in conversation and documentation. Just remember that PCAP filters are human readable filter strings and BPF is the compiled assembly language that makes up the final filter code (internally). Usage of PCAP filters and BPF is outside of the scope of this course, but you can read on pcap filters via the man pages: `man pcap-filter`.
 
-<details><summary>See the difference in BPF instructions and PCAP filter.</summary><br />
+<details>
+<summary>See the difference in BPF instructions and PCAP filter.</summary>
+<br />
 
 Example of BPF code for PCAP filter `host 192.168.50.137`:
 
@@ -173,7 +180,8 @@ $ sudo tcpdump -p -ni wan -d "host 192.168.50.137"
 
 Here are some very simple examples of tcp usage:
 
-<details><summary>See tcpdump dump packet synopsis' for a given host.</summary>
+<details>
+<summary>See tcpdump dump packet synopsis' for a given host.</summary>
 
 ```text
 $ sudo tcpdump -i wan host 192.168.50.1
@@ -192,7 +200,8 @@ listening on wan, link-type EN10MB (Ethernet), capture size 262144 bytes
 
 </details><br />
 
-<details><summary>See tcpdump dump packets for host and ICMP (i.e. ping).</summary>
+<details>
+<summary>See tcpdump dump packets for host and ICMP (i.e. ping).</summary>
 
 ```text
 $ sudo tcpdump -i wan icmp and host 192.168.50.137
@@ -208,7 +217,8 @@ listening on wan, link-type EN10MB (Ethernet), capture size 262144 bytes
 
 </details><br />
 
-<details><summary>See tcpdump capture packets for a given host/port.</summary>
+<details>
+<summary>See tcpdump capture packets for a given host/port.</summary>
 
 ```text
 $ sudo tcpdump -i wan -w packet-dump.pcap icmp and host 192.168.50.137
@@ -252,7 +262,8 @@ RJ45 Ethernet for Twisted Pair CAT5e/6 cabling has taken the world by storm, but
 
 ![RJ45](./WiredNetworkAnalysis/1276px-CAT5e-RJ45-lowrez.jpg)
 
-<details><summary>Click to view RJ45 wiring diagrams.</summary>
+<details>
+<summary>Click to view RJ45 wiring diagrams.</summary>
 
 ![RJ45 wiring diagrams](./WiredNetworkAnalysis/rj45-wiring-diagrams.gif)
 
@@ -318,7 +329,8 @@ Did you know HDMI has ethernet?
 - [XKCD Pinouts](https://galigio.org/2020/06/08/pinouts/)
 - [HDMI HEC Pinout](https://www.flickr.com/photos/jmarcd2/8091356838)
 
-<details><summary>Instructor Notes</summary>
+<details>
+<summary>Instructor Notes</summary>
 
 - TODO: Networking Lab:
   - Connect laptop to device.

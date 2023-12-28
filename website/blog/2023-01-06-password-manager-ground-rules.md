@@ -67,7 +67,8 @@ When implementing this model, you setup a daily cron to backup the data. Then yo
 
 Subsequently, you can create a yearly backup that captures a single month's backup for the year for even longer term capturing of long lived entries.
 
-<details><summary>Daily Backup Script</summary>
+<details>
+<summary>Daily Backup Script</summary>
 
 ```sh
 #!/bin/sh
@@ -114,7 +115,8 @@ Then the yearly backup:
 s3cmd put /backups/daily-$(( ((7 + $(date +%w)) - 1) % 7 )).tar.gz s3://bucket/yearly-$(date +%Y).tar.gz
 ```
 
-<details><summary>Crontab</summary>
+<details>
+<summary>Crontab</summary>
 
 ```crontab
 # At 04:05

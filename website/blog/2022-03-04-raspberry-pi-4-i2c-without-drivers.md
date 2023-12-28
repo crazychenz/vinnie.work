@@ -110,7 +110,8 @@ Without going into how I2C digital signals work, we need to perform 3 operations
 
 ## The Whole Thing in C
 
-<details><summary>Click to see source.</summary><br />
+<details>
+<summary>Click to see source.</summary><br />
 
 ```c
 #include <stdio.h>

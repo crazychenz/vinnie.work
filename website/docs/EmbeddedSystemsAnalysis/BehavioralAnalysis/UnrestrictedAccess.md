@@ -53,7 +53,8 @@ A common looking interface for these serial ports are DB9 connectors that suppor
 - https://andrei.gherzan.ro/linux/uboot-on-rpi/
 - https://www.linaro.org/downloads/
 
-<details><summary>Instructor Notes</summary>
+<details>
+<summary>Instructor Notes</summary>
 
 - No Lab ... Unrestricted Access via UART/JTAG later in course.
 
