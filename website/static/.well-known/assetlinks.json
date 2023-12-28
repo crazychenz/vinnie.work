@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "work.vinnie.android.twa",
+      "sha256_cert_fingerprints": [
+        "B9:6D:05:C1:A6:2A:AC:B2:3F:15:96:BD:19:58:69:09:3A:0B:7A:B2:F2:CA:60:F3:95:3A:F5:5A:BD:88:8F:50"
+      ]
+    }
+  }
+]

@@ -18,5 +18,11 @@
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "description": "Vinnie's Blog"
+  "description": "Vinnie's Blog",
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://www.vinnie.work/manifest.json"
+    }
+  ]
 }
