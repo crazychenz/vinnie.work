@@ -1,6 +1,6 @@
 ---
-slug: 2023-06-02-k3s-coredns-issue
-title: 'K3S CoreDNS Issue'
+slug: 2023-09-15-infection-of-2fa
+title: 'Infection of 2FA'
 draft: false
 ---
 

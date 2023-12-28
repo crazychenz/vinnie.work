@@ -213,7 +213,7 @@ In a very simple example:
 
    1. Saves condition state into SPSR
    2. Sets the link register ELR_EL1 to the instruction following the system call.
-   3. PSTATE.{D, A, I, F} is set to 1
+   3. `PSTATE.{D, A, I, F}` is set to 1
    4. Synchronous exceptions set ESR_EL1 that indicates the reason for the exception.
    5. The code in the EVT is called.
 

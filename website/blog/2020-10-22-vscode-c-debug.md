@@ -147,8 +147,8 @@ This task essentially launches a short lived docker container that simply builds
 
 These tasks can be more dynamic using special [substitution variables provided by VSCode](https://code.visualstudio.com/docs/editor/variables-reference). Here are a list of the ones I've found most commonly used:
 
-* `${workspaceFolder}` - Top of the workspace. (${workspaceRoot} is deprecated).
-* `${file}` - Currently opened file path. (Nice for quick ${file}.o builds.)
+* `${workspaceFolder}` - Top of the workspace. (`${workspaceRoot}` is deprecated).
+* `${file}` - Currently opened file path. (Nice for quick `${file}.o` builds.)
 * `${env:ENVIRONMENT_VAR}` - Substitute in any environment variable.
 * `${input:userDefined}` - Enumerated list of options picked at task runtime.
 

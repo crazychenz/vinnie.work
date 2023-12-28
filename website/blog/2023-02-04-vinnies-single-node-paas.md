@@ -1,6 +1,6 @@
 ---
 slug: 2023-02-04-vinnies-single-node-paas
-title: Vinnie''s Single Node PaaS
+title: Vinnie's Single Node PaaS
 draft: false
 ---
 

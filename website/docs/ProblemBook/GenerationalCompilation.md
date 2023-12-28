@@ -92,7 +92,7 @@ A more lofty goal would be to setup completely static toolchains and environment
 
 
 
-
+```
 GCC_EXTRA_CONFIG="${GCC_EXTRA_CONFIG} --enable-static LDFLAGS=-static-libgcc"
 BINUTILS_EXTRA_CONFIG="${BINUTILS_EXTRA_CONFIG} LDFLAGS=-all-static"
 GLIBC_EXTRA_CONFIG="--enable-static-nss --disable-shared"
@@ -107,3 +107,4 @@ GLIBC_INSTALL_MAKE_FLAGS
 LIBIBERTY_MAKE_FLAGS
 GCC_BUILD_MAKE_FLAGS
 GCC_INSTALL_MAKE_FLAGS
+```
