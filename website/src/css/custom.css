@@ -30,3 +30,31 @@
   --ifm-color-primary-lightest: #4fddbf;*/
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+main > .container {
+  /* 
+    We disable this on the "normal" container, i.e. DocPage/Layout/Main.
+    We want ONLY for this, hence we base our selector on the parent, which is a DOM element: <main>.
+    We want to reuse this class in DocItem/Layout.
+   */
+  max-width: initial !important;
+}
+
+.responsiveColumnsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  /*height: 70vh;
+  flex-direction: column;
+  gap: 20px;*/
+  align-items: flex-start;
+}
+
+.responsiveColumnGroup {
+  flex: 1; /*calc(33% - 20px);*/
+  min-width: 350px;
+  max-width: 350px;
+  /*width: 400px;*/
+  margin: 8px;
+  /*background-color: #333333;*/
+  /*box-sizing: border-box;*/
+}

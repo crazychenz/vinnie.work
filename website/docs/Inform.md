@@ -7,17 +7,18 @@ More organized than a log of findings, this corner of vinnie.work aims _to infor
 
 ## Areas
 
-- [Collections](./Collections/Overview) - Collections of similar things.
+- [Problem Book](./ProblemBook/Overview) - Unsolved mysteries or problems with overly complex theoretical solutions.
 
-- [Problem Book](./ProblemBook/Overview) - Problem/use-case patterns that I've documented from various projects and tasks. Next time I ask: **What was that tool I used before?**, I'll hopefully be able to reference the tool or use case here.
+- [Embedded System Analysis](./EmbeddedSystemsAnalysis/Overview) - Ramblings on my process for embedded systems analysis for software developers.
 
-- [Embedded System Analysis](./EmbeddedSystemsAnalysis/overview) - Some ramblings on my process for performing embedded systems analysis from primarily my software engineering back ground.
+- [Collections](./Collections/Overview) - Collections of things.
+  <!-- - [System Deets](./Systems/overview) - Summarized and distilled system specific information.
+  - [Tools & Technique](./ToolsAndTechnique/Overview) - Tools and techniques agonistic of a specific issue.
+  - Other Misc Collections -->
 
-- [System Deets](./Systems/overview) - Summarized and distilled system specific information.
-
-- [Workflows & Techniques](./EnvAndWorkflow/Overview)
-
-- [Third Party](./ThirdParty/overview) - An open source _organization_ I maintain.
+<!-- - Going Away or Needs Overhaul
+  - [(Old) Problem Book](./ProblemBookOld/Overview) - Problem/use-case patterns that I've documented from various projects and tasks. Next time I ask: **What was that tool I used before?**, I'll hopefully be able to reference the tool or use case here.
+  - [(Old) Third Party](./ThirdParty/overview) - An open source _organization_ I maintain. -->
 
 <!-- - [Visual Studio Code Tips](./VisualStudioCode/Overview) - I use visual studio code for almost everything I write now, from informal notes, to formal documentation, configs, and of course code. With all my weird use cases I've jotted down a bunch of things I've learned here. -->
 

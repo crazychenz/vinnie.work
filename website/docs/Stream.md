@@ -3,6 +3,30 @@ sidebar_position: 50
 title: Stream
 ---
 
+## 2024-01-12
+
+Using rclone to copy files from Windows to Minio:
+
+- S3 doesn't use folders, only objects with keys that conventionally can resemble file paths. This means you can not create empty folders in Minio.
+- `rclone copy` will not delete files on destination missing from source (use for backups)
+- `rclone sync` may delete files on destination (use to keep two folders identical)
+- `rclone config` - On linux, stores the config in `~/.config/rclone/rclone.conf`
+
+  ```
+  [minio]
+  env_auth = false
+  type = s3
+  provider = Minio
+  access_key_id = - access_key -
+  secret_access_key = - access key secret -
+  endpoint = https://minio-endpoint.local.domain
+  acl = authenticated-read
+  ```
+- rclone commands:
+  - `rclone lsd <config>:<bucket>` - List buckets and contents: `rclone lsd minio:mybucket`
+  - `rclone `
+
+
 <!-- ## 2023-10-14
 
 - https://docs.pieces.app/installation-getting-started/what-am-i-installing
