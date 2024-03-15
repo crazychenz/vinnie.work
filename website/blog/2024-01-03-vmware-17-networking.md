@@ -1,6 +1,6 @@
 ---
 slug: 2024-01-03-vmware-17-networking
-title: 'Smallstep Product Skim'
+title: 'VMWare 17 Networking (on Windows 11)'
 draft: false
 ---
 
