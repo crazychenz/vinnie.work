@@ -6,6 +6,8 @@ draft: false
 
 ## Overview
 
+test
+
 Due to the metric driven corporations like Microsoft, Google, and Apple, two-factor authentication has become a sort of an infection. While most of the 1st world's population will benefit by the increased security of 2FA, it remains a fact that there are a significant number of folks that will be left behind due to the fact that they don't have smart phones or access to smart phones at the point of authentication.
 
 <!-- truncate -->
