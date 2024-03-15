@@ -279,6 +279,9 @@ WORKINGDIR='\[$COLOR_LIGHT_YELLOW\]\w'
 PROMPT_DELIM='\[$COLOR_RESET\]\$ '
 export PS1="$PS1\n$WORKINGDIR$PROMPT_DELIM"
 
+# All terminals append to a single history.
+export PROMPT_COMMAND='history -a'
+
 ```
 
 ### `append_groups.sh`
