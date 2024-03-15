@@ -1,7 +1,7 @@
 ---
 slug: 2024-03-15-auto-start
 title: 'Auto Start'
-draft: true
+draft: false
 ---
 
 Why is automatically starting a process so difficult and different from platform to platform? 

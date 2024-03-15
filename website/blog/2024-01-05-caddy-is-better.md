@@ -1,7 +1,7 @@
 ---
 slug: 2024-01-05-caddy-is-better
 title: 'Caddy Is Better?'
-draft: true
+draft: false
 ---
 
 ## Overview
@@ -67,27 +67,27 @@ One thing I did try was configure a second Caddy that ran as root user instead o
 
 (common_tls_opts) {
   dns digitalocean dop_v1_2eff4577abced9475de98173cdeaf309363bacedf713fae324109236deadbeef
-}                                                                                                                         
+}
 
-https://hostname.vinnie.work {                                                                                                 
+https://hostname.vinnie.work {
   # Include the common TLS options for automatic DNS-01 certificate renewal.
-  tls {                                                                                                                   
-    import common_tls_opts                                                                                                
-  }                                                                                                                       
+  tls {
+    import common_tls_opts
+  }
   # Do nothing service.
-  handle {                                                                                                                
-    abort                                                                                                                 
-  }                                                                                                                       
+  handle {
+    abort
+  }
 }
 
 # ... other host definitions here ...
 ```
 
-Don't do this. It is convoluted and not clear what is happening. Ideally, caddy should implement a subcommand that would renew the certificate of another running process. The certificate renewal invocation could run with elevated privileges and implicitly not listen or respond to any requests.
+**Don't do this.** It is convoluted and not clear what is happening. Ideally, caddy should implement a subcommand that would renew the certificate of another running process. The certificate renewal invocation could run with elevated privileges and implicitly not listen or respond to any requests.
 
 ### Caddy Certificate Renewal with Certbot
 
-Until Caddy implements something like the above, I'm sticking with my cron/certbot/webserver setup:
+Until Caddy implements something like the above, I'm sticking with my cron/certbot/webserver separation setup:
 
 Certbot Script: `/etc/periodic/monthly/renew-certs.sh`
 
@@ -105,9 +105,9 @@ certbot certonly --dns-digitalocean \
 
 # Permit caddy user to traverse relevant folders.
 chmod 755 /etc/letsencrypt/live
-chmod 755 /etc/letsencrypt/live/nas.vinnie.work
+chmod 755 /etc/letsencrypt/live/${FULL_HOSTNAME}
 chmod 755 /etc/letsencrypt/archive
-chmod 755 /etc/letsencrypt/archive/nas.vinnie.work
+chmod 755 /etc/letsencrypt/archive/${FULL_HOSTNAME}
 
 # Permit group members readability of relevant files.
 chmod 640 /etc/letsencrypt/live/${FULL_HOSTNAME}/privkey.pem
@@ -262,7 +262,7 @@ http://hostname.vinnie.work {
 
 ## Offline reverse proxy with offline CA certificate management
 
-The built-in CA into Caddy for localhost and offline HTTPS configuration is, IMO, the most valuable contribution that Caddy has brought to the field of web servers. I've written on several occasions how to mock CAs with a couple OpenSSL commands to get past this gap. Now that Caddy has set the example, I will certainly judge any web server or framework that doesn't include this critical functionality. If you think about it, most of the browser functionality requires a secure HTTPS context before it can be enable, the web server should build in support for this constraint. Caddy is the only self hosted option that I've ever seen implement this with an unprecedented level of care about the maintainer of the service.
+The built-in CA into Caddy for localhost and offline HTTPS configuration is, IMO, the most valuable contribution that Caddy has brought to the field of web servers. I've written on several occasions how to mock CAs with a few OpenSSL commands to get past this gap. Now that Caddy has set the example, I will certainly judge any web server or framework that doesn't include this critical functionality. If you think about it, most of the browser functionality requires a secure HTTPS context before it can be enable, the web server should build in support for this constraint. Caddy is the only self hosted option that I've ever seen implement this with an unprecedented level of care about the maintainer of the service.
 
 Suppose you have a Vaultwarden service that you need a certificate for... All you have to do is setup the reverse_proxy with `tls internal` and then everything else is taken care of. The one caveat is that you do have to dig a bit to pull out the CA root certificate to install into your browser, but when you're doing offline services, this kind of thing is standard operating procedure anyways.
 
@@ -275,9 +275,11 @@ https://passwords.local.domain {
 }
 ```
 
-## Workflow for git config controlled PaaS that has a non-K8S ingress.
+## Download
 
-TBD
+```
+https://caddyserver.com/download?package=github.com%2Fcaddy-dns%2Fcloudflare&package=github.com%2Fdunglas%2Fmercure%2Fcaddy&package=github.com%2Fdunglas%2Fvulcain%2Fcaddy&package=github.com%2Fcaddyserver%2Freplace-response&package=github.com%2Fmholt%2Fcaddy-webdav&package=github.com%2Fgreenpau%2Fcaddy-security&package=github.com%2Fcaddy-dns%2Fduckdns&package=github.com%2Fcaddyserver%2Ftransform-encoder&package=github.com%2Fgreenpau%2Fcaddy-trace&package=github.com%2Fabiosoft%2Fcaddy-exec&package=github.com%2Fdarkweak%2Fsouin%2Fplugins%2Fcaddy&package=github.com%2Fmholt%2Fcaddy-l4&package=github.com%2Fcaddy-dns%2Fdigitalocean&package=github.com%2Fcaddy-dns%2Fgodaddy&package=github.com%2Fggicci%2Fcaddy-jwt&package=github.com%2FWingLim%2Fcaddy-webhook&package=github.com%2Fsagikazarmark%2Fcaddy-fs-s3&package=github.com%2Fargami%2Fredir-dns&package=github.com%2Fyroc92%2Fpostgres-storage&package=github.com%2Finvzhi%2Fcaddy-docker-upstreams&package=github.com%2Fpberkel%2Fcaddy-storage-redis&package=github.com%2Fgreenpau%2Fcaddy-lambda
+```
 
 ## Comments
 
