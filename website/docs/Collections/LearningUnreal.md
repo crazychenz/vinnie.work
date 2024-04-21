@@ -22,3 +22,6 @@ A list of resources I've used to begin learning how to develop in Unreal 5. I am
 
 - [Gaea](https://quadspinner.com/) - Common Heighmap/Terrain Generator Tool
 - VoxelPlugin Free Legacy (1.2)
+
+- [Mixamo](https://www.mixamo.com/#/) - Animation Repo
+- [Mixamo Converter](https://terribilisstudio.fr/?section=MC) - Retarget Mixamo For Unreal Skeletons (pw:terribilis)
