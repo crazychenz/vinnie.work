@@ -29,7 +29,7 @@ pacman -S rsync
 And then you can:
 
 ```sh
-rsync -sav "agrie@desktop.vinnie.work:/c/Users/agrie/AppData/Local/Larian Studios/Baldur's Gate 3" .
+rsync -sav "user@host:/c/Users/user/AppData/Local/Larian Studios/Baldur's Gate 3" .
 ```
 
 ## Comments
