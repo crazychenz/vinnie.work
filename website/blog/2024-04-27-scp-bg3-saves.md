@@ -12,6 +12,26 @@ scp -Tr user@host:'"c:/Users/user/AppData/Local/Larian Studios/Baldur'"'"'s Gate
 
 The trick was to use `'"'"'` to escape the single quote (`'`) inside of a pair of single quotes (`'`).
 
+## Rsync On Windows
+
+To get rsync functionality in windows, I prefer to host it within a [Git For Windows _SDK_](https://github.com/git-for-windows/build-extra/releases) install. This prevents me from having to deal with WSL or a whole other cygwin for the one tool.
+
+Note: Git for Windows SDK is ~2.4GB to download (after the install begins).
+
+More information can be found in [this SO Question](https://stackoverflow.com/questions/32712133/package-management-in-git-for-windows-git-bash).
+
+Once you install _Git For Windows SDK_:
+
+```sh
+pacman -S rsync
+```
+
+And then you can:
+
+```sh
+rsync -sav "agrie@desktop.vinnie.work:/c/Users/agrie/AppData/Local/Larian Studios/Baldur's Gate 3" .
+```
+
 ## Comments
 
 <Comments />
