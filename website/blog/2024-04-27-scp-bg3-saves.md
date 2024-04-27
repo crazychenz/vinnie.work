@@ -1,6 +1,6 @@
 ---
 slug: 2024-04-27-scp-bg3-saves
-title: 'SCP Baulder\'s Gate 3 Saves'
+title: "SCP Baulder's Gate 3 Saves"
 draft: false
 ---
 
