@@ -1,15 +1,10 @@
 ---
-sidebar_position: 4
-title: Terminal Configurations
+title: Tmux Configurations
 ---
-
-## Overview
-
-I do about 80% of my job in various consoles, terminals, and shells. As such, I've developed a number of configurations that I carry around with me. I've listed some in various blog posts, but since I am constantly updating and tweaking, I wanted a more _living_ home for these.
 
 ## Tmux
 
-My #1 goto when I fire up any terminal that I plan to spend more than 30 mins on.
+Tmux is my #1 goto when I fire up any terminal that I plan to spend more than 30 mins on. It also happens to be the default terminal for my VSCode terminal.
 
 ### Standard Configuration
 

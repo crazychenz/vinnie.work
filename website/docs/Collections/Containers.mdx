@@ -1,0 +1,105 @@
+---
+sidebar_position: 2
+title: Container Collections
+full_width: true
+---
+
+import { CollectionContainer, CollectionGroup } from '../../src/components/Collections';
+
+## Overview
+
+_Container Collections_ is a bin to store lists of container _things_ I'm collecting, comparing, contrasting, or simply listing for future reference.
+
+<CollectionContainer>
+
+<CollectionGroup>
+
+## Container Terms
+
+- **OCI** - Open Container Initiative [[Wiki](https://en.wikipedia.org/wiki/Open_Container_Initiative)] [[Github](https://github.com/opencontainers)]
+  - **runc** - OCI reference implmentation container runtime
+- **CRE** - Container Runtime Engine - Parent process for containers and its namespaces.
+- [**Linux Namespaces**](https://en.wikipedia.org/wiki/Linux_namespaces) - Partitioning of resources in kernel. (Fundamental to containerization!)
+  - **Container** - A tree of processes that have been launched within a set of linux namespaces via the clone() syscall.
+- **Docker** - Container Orchestration
+- **Kubernetes** - Container Orchestration
+  - **CRI** - Container Runtime Interface [[Docs](https://kubernetes.io/docs/concepts/architecture/cri/)]
+  - **etcd** - key-value store
+  - **kubelet** - per node k8s management agent
+  - **pod** - scheduling unit in k8s ... also a single _network_ namespace
+
+</CollectionGroup>
+
+<CollectionGroup>
+
+## Container OS Distributions
+
+- CoreOS
+- Flatcar
+
+</CollectionGroup>
+
+<CollectionGroup>
+
+## Container Images
+
+- [X-Tools](/blog/2022-05-01-building-to-the-version-generation) - Images to build niche cross toolchains.
+  - [GitHub Repo](https://github.com/crazychenz/x-tools)
+
+</CollectionGroup>
+
+<CollectionGroup>
+
+## Runtimes
+
+- [CRI-O](https://cri-o.io/) [[GitHub](https://github.com/cri-o/cri-o)] - Lightweight container runtime
+- [containerd](https://containerd.io/) - Std K8S container runtime
+- [sysbox](https://github.com/nestybox/sysbox) - VM-ish container runtime
+- rkt
+
+</CollectionGroup>
+
+<CollectionGroup>
+
+## Kubernetes Providers
+
+- [Kubernetes](https://kubernetes.io/)
+- [K3s](https://k3s.io/)
+- [K0s](https://k0sproject.io/)
+- [Openshift/OKD.IO](https://www.okd.io/) [[Github](https://github.com/openshift)]
+
+</CollectionGroup>
+
+<CollectionGroup>
+
+## K8S Frameworks
+
+- [FluxCD](https://fluxcd.io/)
+- [ArgoCD](https://argo-cd.readthedocs.io/en/stable/)
+- [Helm](https://helm.sh/) - K8S Package Manager
+- [Karmada](https://karmada.io/) - Manage applications across multiple K8S clusters.
+- [KubeVirt](https://kubevirt.io/) - ?K8S managed virtualization?
+
+</CollectionGroup>
+
+<CollectionGroup>
+
+## Container Storage Interfaces (CSI)
+
+- [Longhorn](https://longhorn.io/)
+- [kadalu](https://github.com/kadalu/kadalu)
+
+</CollectionGroup>
+
+<CollectionGroup>
+
+## K8S Tools
+
+- [Krew](https://krew.sigs.k8s.io/) - kubectl plugin manager
+  - [Ketall](https://github.com/corneliusweig/ketall) - For real "get all" for kubectl.
+- [Kubespray] - Too to provision K8S across resources (i.e. nodes).
+
+
+</CollectionGroup>
+
+</CollectionContainer>
