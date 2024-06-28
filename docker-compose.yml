@@ -1,0 +1,51 @@
+# compose v2
+
+services:
+  author:
+    image: git.vinnie.work/vinnie.work/www:author
+    container_name: www-vinnie-work-devel
+    build:
+      context: website
+      dockerfile_inline: |
+        FROM node:20-alpine
+
+        WORKDIR /opt/workspace/website
+
+        # First copy only package-lock.json and package.json so we can keep
+        # node_modules in its own cache layer based on the package files.
+        COPY package*.json ./
+        RUN npm install
+
+        # Copy the rest of the source code to do the product build.
+        COPY . .
+
+        CMD ["npm", "run", "start", "--", "-h", "0.0.0.0"]
+    volumes:
+      - ./website/docs:/opt/workspace/website/docs
+      - ./website/blog:/opt/workspace/website/blog
+    ports: [ "3280:3000" ]
+  
+  # static:
+  #   image: git.vinnie.work/vinnie.work/www:stage
+  #   container_name: www-vinnie-work-static
+  #   build:
+  #     context: .
+  #     dockerfile_inline: |
+  #       FROM node:20-alpine as builder
+
+  #       WORKDIR /opt/workspace
+
+  #       # First copy only package-lock.json and package.json so we can keep
+  #       # node_modules in its own cache layer based on the package files.
+  #       RUN mkdir website
+  #       COPY ./website/package*.json ./website/
+  #       RUN cd website && npm install
+
+  #       # Copy the rest of the source code to do the product build.
+  #       COPY . .
+  #       RUN cd website && npm run build
+
+  #       FROM caddy:alpine
+  #       COPY --from=builder /opt/workspace/caddy/Caddyfile /etc/caddy/Caddyfile
+  #       COPY --from=builder /opt/workspace/website/build /srv
+  #   ports: [ "3280:80" ]
