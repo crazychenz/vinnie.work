@@ -56,8 +56,8 @@ android {
         applicationId "work.vinnie.android.twa"
         minSdkVersion 19
         targetSdkVersion 33
-        versionCode 1
-        versionName "1"
+        versionCode 5
+        versionName "5"
 
         // The name for the application
         resValue "string", "appName", twaManifest.name
