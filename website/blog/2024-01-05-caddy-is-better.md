@@ -44,7 +44,7 @@ Note: If it weren't for the VPN or inaccessibility of the servers, an HTTP chall
 
 ### Secondary Caddy for Certificate Renewal
 
-One thing I did try was configure a second Caddy that ran as root user instead of caddy user. This server bound to an arbitraily high localhost port and its only purpose was to renew certificates for the host names in the Caddyfile. When the certificate obtained event was triggers, a script could be run to copy or update the permissions of the certificate and key files. Once I got to this point, I felt that the only thing I was achieving was the removal of certbot and the cron entry. I'd also be messing with the Caddy paradigm of how the certificate files are stored and loaded.
+One thing I did try was configure a second Caddy that ran as root user instead of caddy user. This server bound to an arbitrarily high localhost port and its only purpose was to renew certificates for the host names in the Caddyfile. When the certificate obtained event was triggers, a script could be run to copy or update the permissions of the certificate and key files. Once I got to this point, I felt that the only thing I was achieving was the removal of certbot and the cron entry. I'd also be messing with the Caddy paradigm of how the certificate files are stored and loaded.
 
 ```
 {
