@@ -99,6 +99,10 @@ export EDITOR=vim
 export PROMPT_COMMAND='history -a'
 eval $(ssh-agent -s)
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+reload_vscode_ipc() {
+  export VSCODE_IPC_HOOK_CLI=$(ls -tr /run/user/$UID/vscode-ipc-* | tail -n 1)
+}; reload_vscode_ipc
 ```
 
 Creates and output similar to:
@@ -116,3 +120,4 @@ user@host (branch) 2024-06-28-03:12:54
 - `PROMPT_COMMAND='history -a'` - A more complete way to track bash command history.
 - `eval $(ssh-agent -s)` - Because ssh-agents make my life easier.
 - `myip` - Alias for quickly getting my external IP address.
+- `reload_vscode_ipc` - Permit vscode IPC (remote `code`) to work in `tmux` and `screen`.
