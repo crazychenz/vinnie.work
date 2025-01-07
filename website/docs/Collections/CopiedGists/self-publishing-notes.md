@@ -10,7 +10,6 @@ short url: [`caseywatts.com/selfpublish`](http://caseywatts.com/selfpublish)
 
 my book is out! an applied psychology / self-help book targeted at developers: [Debugging Your Brain](https://www.debuggingyourbrain.com)
 
----
 
 `Markdown` --> `PDF` (as a booklet!)
 
@@ -27,7 +26,7 @@ I'm working on a book, "Debugging Your Brain" which I plan to self-publish. I'm 
 ## Pandoc Setup
 pandoc is the main tool to convert markdown to other things.
 
-Here is their official page with installation instructions: <https://pandoc.org/installing.html#linux>
+[Here is their official page](https://pandoc.org/installing.html#linux) with installation instructions.
 
 ### My Linux Setup
 To install an older version just to get you running:
