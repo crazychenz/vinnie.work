@@ -223,7 +223,7 @@ Once complete, you'll have:
 - Stock `nvchad` feature set.
 - All the above base config for tmux.
 - Windows 1-indexed (better UX based on keyboard layout)
-- Shift+<Arrow> for window switch in tmux.
+- Shift+`<Arrow>` for window switch in tmux.
 - Navigate between tmux and neovim with `<C-[hjkl]>`.
 
 ## References
