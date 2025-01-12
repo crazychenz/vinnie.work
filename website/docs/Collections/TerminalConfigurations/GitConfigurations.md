@@ -74,3 +74,41 @@ I use vanilla git CLI for all my git repo interactions. That said, there are som
 One Git convention I think is worth mentioning is my `main` vs `deploy` branches. In larger team settings, its always best to develop new features or fixes in branches of their own with regular merging. Once its time to integrate, never integrate into a branch that will be deployed. Instead, integrate into a "stage" branch that can then be merged into the deployment branch.
 
 This all makes sense, but the primary use of this convention for _me_ is because I want to be able to merge, commit, and push into `main` without fear that I'm going to take down any systems. If you've structured your system such that developers fear pushing, you've set yourself up for lost effort!
+
+## LazyGit
+
+If you want to ease of browsing `git` repos without the burden of a proper GUI (e.g. VSCode), `lazygit` is a great option to consider.
+
+[Install from github](https://github.com/jesseduffield/lazygit/releases)
+
+Default themes are not very human friendly, see more themes at: [catppuccin/lazygit](https://github.com/catppuccin/lazygit)
+
+To load my preferred theme, add the following to `~/.config/lazygit/config.yml`:
+
+```yaml
+gui:
+  theme:
+    activeBorderColor:
+      - '#f9e2af'
+      - bold
+    inactiveBorderColor:
+      - '#a6adc8'
+    optionsTextColor:
+      - '#89b4fa'
+    selectedLineBgColor:
+      - '#313244'
+    cherryPickedCommitBgColor:
+      - '#45475a'
+    cherryPickedCommitFgColor:
+      - '#f9e2af'
+    unstagedChangesColor:
+      - '#f38ba8'
+    defaultFgColor:
+      - '#cdd6f4'
+    searchingActiveBorderColor:
+      - '#f9e2af'
+
+  authorColors:
+    '*': '#b4befe'
+```
+
