@@ -78,7 +78,7 @@ Then all I need to do is run `light.sh` or `dark.sh` to switch to the relevant t
 ```sh
 #!/bin/sh
 ln -sf ~/.tmux.conf.light ~/.tmux.conf
-tmux source-file ~/.tmux.conf
+tmux source ~/.tmux.conf
 ```
 
 **dark.sh**:
@@ -86,10 +86,10 @@ tmux source-file ~/.tmux.conf
 ```sh
 #!/bin/sh
 ln -sf ~/.tmux.conf.dark ~/.tmux.conf
-tmux source-file ~/.tmux.conf
+tmux source ~/.tmux.conf
 ```
 
-## Fancy Tmux & NeoVim Config
+## Fancy Tmux Config
 
 This is a configuration isn't a "works everywhere" thing. This is the config
 that you'll setup on a dedicated developer laptop or workstation.
@@ -114,7 +114,19 @@ that you'll setup on a dedicated developer laptop or workstation.
 Setup the following `~/.tmux.conf` with a plugin manager and several plugins.
 
 ```conf
-## List of plugins
+# Plugin Options
+set -g @catppuccin_flavor 'mocha' # latte, frappe, macchiato or mocha
+set -g @catppuccin_window_status_style "rounded"
+set -g status-right-length 100
+set -g status-left-length 100
+set -g status-left ""
+set -g status-right "#{E:@catppuccin_status_application}"
+set -agF status-right "#{E:@catppuccin_status_cpu}"
+set -ag status-right "#{E:@catppuccin_status_session}"
+set -ag status-right "#{E:@catppuccin_status_uptime}"
+set -agF status-right "#{E:@catppuccin_status_battery}"
+
+# List of plugins
 # See more at: https://github.com/tmux-plugins/tpm
 set -g @plugin 'tmux-plugins/tpm'
 # See more at: https://github.com/tmux-plugins/tmux-sensible
@@ -123,12 +135,9 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'christoomey/vim-tmux-navigator'
 # See more at: https://github.com/tmux-plugins/tmux-yank
 set -g @plugin 'tmux-plugins/tmux-yank'
-
-# Other examples:
-# set -g @plugin 'github_username/plugin_name'
-# set -g @plugin 'github_username/plugin_name#branch'
-# set -g @plugin 'git@github.com:user/plugin'
-# set -g @plugin 'git@bitbucket.com:user/plugin'
+set -g @plugin 'catppuccin/tmux#v2.1.2'
+set -g @plugin 'tmux-plugins/tmux-battery'
+set -g @plugin 'tmux-plugins/tmux-cpu'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
@@ -156,8 +165,11 @@ bind '"' split-window -v -c "#{pane_current_path}"
 bind % split-window -h -c "#{pane_current_path}"
 
 ## Baseline Minimal Config
+
 set -g mouse on
+# Enable 256 colors. (Sometimes preferred in containers).
 #set -g default-terminal "screen-256color"
+# Enable 24 bit color.
 set-option -sa terminal-overrides ",xterm*:Tc"
 set-option -g default-command bash
 
@@ -172,61 +184,4 @@ set -g pane-border-status 'bottom' # off|top|bottom
 
 Once you start tmux, run `<prefix>+I` to activate tpm and the plugins.
 
-### NeoVim (~v0.10) Config
 
-Add the following to `~/.config/nvim/lua/mappings.lua`:
-
-  ```lua
-  map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
-  map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>")
-  map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>")
-  map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>")
-  ```
-
-Add the following to `~/.config/nvim/lua/plugins/init.lua`:
-
-  ```lua
-  {
-    "christoomey/vim-tmux-navigator",
-    lazy = false,
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-      "TmuxNavigatorProcessList",
-    },
-    keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-    },
-  },
-  ```
-
-Add the following to `~/.config/nvim/init.lua`:
-
-  ```lua
-  # Allow tmux to control background color.
-  vim.cmd("hi Normal guibg=NONE")
-  ```
-
-Open/Restart `nvim` and run `Lazy sync` to install the plugin.
-
-### Features
-
-Once complete, you'll have:
-
-- Stock `nvchad` feature set.
-- All the above base config for tmux.
-- Windows 1-indexed (better UX based on keyboard layout)
-- Shift+`<Arrow>` for window switch in tmux.
-- Navigate between tmux and neovim with `<C-[hjkl]>`.
-
-## References
-
-- [Dreams of Code - Tmux Intro](https://www.youtube.com/watch?v=DzNmUNvnB04)
-- [Dreams of Code - NeoVim Intro](https://www.youtube.com/watch?v=Mtgo-nP_r8Y)
