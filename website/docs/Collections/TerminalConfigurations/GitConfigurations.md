@@ -112,3 +112,32 @@ gui:
     '*': '#b4befe'
 ```
 
+## Various Configs From Youtube
+
+[So You Think You Know Git?](https://www.youtube.com/watch?v=aolI_Rz0ZqY)
+
+- `git config --global alias.staash 'stash --all'`
+- `git config --global alias.bb !better-branch.sh`
+- Include if
+
+    ```ini
+    [includeIf "gitdir:~/projects/work/"]
+      path = ~/projects/work/.gitconfig
+    ```
+
+- `git blame -w -C -C -C path/to/file`
+- `git reflog`
+- `git diff --word-diff`
+- `git config --global rerere.enabled true` - redo previous fixes when re-doing rebases
+- `git config --global column.ui auto`
+- `git config --global branch.sort -committerdate`
+- `git push --force-with-lease`
+- `git config gpg.format ssh`
+- `git push --signed`
+- `git maintenance start`
+- `git config --global fetch.writeCommitGraph true`
+- `git config core.untrackedcache true`
+- `git config core.fsmonitor true`
+- `git clone --filter=blob:none`
+- `git clone --filter=tree:0`
+- `git sparse-checkout set dir1 dir2`
