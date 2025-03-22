@@ -112,6 +112,24 @@ return
 f19::Send {Media_Play_Pause}
 return
 
+MButton::
+    holdTime := 300 ; 1000ms = 1 second
+    MouseDownTime := A_TickCount
+    while GetKeyState("MButton", "P")
+    {
+        Sleep, 10
+    }
+
+    if (A_TickCount - MouseDownTime < holdTime)
+    {
+        Send, {MButton}
+    }
+    else
+    {
+        Send, {Enter}
+    }
+return
+
 ;{Media_Next}
 ;{Media_Prev}
 
