@@ -191,9 +191,11 @@ Warning:
 #define WB_FWRD KC_WWW_FORWARD
 
 #define GUI_TAB MT(MOD_LGUI, KC_TAB)
-#define CTL_ESC MT(MOD_LCTL, KC_ESC)
+#define CTL_ESC MT(MOD_LCTL, KC_ESC)aAtt
 #define ALT_LPR MT(MOD_LALT, KC_LPRN)
 #define ALT_RPR MT(MOD_RALT, KC_RPRN)
+#define SFT_LPR MT(MOD_LSFT, KC_LPRN)
+#define SFT_RPR MT(MOD_RSFT, KC_RPRN)
 #define CTL_DEL MT(MOD_RCTL, KC_DEL)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -203,13 +205,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CTL_ESC,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      ALT_LPR,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, ALT_RPR,
+      SFT_LPR,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, ALT_RPR,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           XXXXXXX,   TT(2),  KC_SPC,    RSFT_RT,   TT(1), XXXXXXX
                                       //`--------------------------'  `--------------------------'
+
   ),
 
-  // Symbol layer without auto shift
   /*[1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
@@ -222,7 +224,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),*/
 
-  // Symbol layer with auto shift
   [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
@@ -235,7 +236,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 
-  // Function and Nav Layer
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                      WB_BACK, KC_PGDN, KC_PGUP, WB_FWRD, KC_HOME, KC_INS,
@@ -248,7 +248,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 
-  // Mouse and Numpad Layer
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       _______, KC_BRIU, WH_LEFT,   MS_UP, WH_RGHT,   WH_UP,                       KC_NUM,   KC_P7,   KC_P8,   KC_P9, KC_PSLS, KC_BSPC,
@@ -257,11 +256,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PPLS,   KC_P1,   KC_P2,   KC_P3, KC_PMNS, KC_PDOT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX,TO(0), KC_MS_BTN1,   KC_MS_BTN2, TO(0), XXXXXXX
+                                          XXXXXXX,   TO(0), KC_MS_BTN1,   KC_MS_BTN2,    TO(0), XXXXXXX
                                       //`--------------------------'  `--------------------------'
   ),
 
-  // Unused at the moment, but VIA configurable as long as its here.
   [4] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
@@ -286,74 +284,103 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 #endif
 
 // Set up the RGB color change when layers change
+/*layer_state_t layer_state_set_user(layer_state_t state) {
+    switch (biton32(state)) {
+        case 0:  // Layer 0
+            rgblight_setrgb_range(127, 63, 127, 0, RGBLED_NUM);  // Pink
+            break;
+        case 1:  // Layer 1
+            rgblight_setrgb_range(0, 127, 127, 0, RGBLED_NUM);  // Cyan
+            break;
+        case 2:  // Layer 2
+            rgblight_setrgb_range(127, 63, 31, 0, RGBLED_NUM); // Orange
+            break;
+        case 3:
+            rgblight_setrgb_range(0, 127, 0, 0, RGBLED_NUM); // Green
+            break;
+        case 4:
+            rgblight_setrgb_range(127, 127, 0, 0, RGBLED_NUM);  // Yellow
+            break;
+
+        default: // Default: White
+            rgblight_setrgb_range(255, 255, 255, 0, RGBLED_NUM);  // White
+            break;
+    }
+    return state;
+}*/
+
 layer_state_t layer_state_set_user(layer_state_t state) {
     switch (biton32(state)) {
         case 0:  // Layer 0
             //rgb_matrix_set_color_all(127, 63, 127);  // Pink
-            rgb_matrix_set_color_all(15, 7, 15);  // Pink Less Bright
+            rgb_matrix_set_color_all(15, 7, 15);  // Pink
             break;
         case 1:  // Layer 1`
             //rgb_matrix_set_color_all(0, 127, 127);  // Cyan
-            rgb_matrix_set_color_all(0, 15, 15);  // Cyan Less Bright
+            rgb_matrix_set_color_all(0, 15, 15);  // Cyan
             break;
         case 2:  // Layer 2
             //rgb_matrix_set_color_all(127, 63, 31); // Orange
-            rgb_matrix_set_color_all(15, 7, 3); // Orange Less Bright
+            rgb_matrix_set_color_all(15, 7, 3); // Orange
             break;
         case 3:
             //rgb_matrix_set_color_all(0, 127, 0); // Green
-            rgb_matrix_set_color_all(0, 15, 0); // Green Less Bright
+            rgb_matrix_set_color_all(0, 15, 0); // Green
             break;
         case 4:
             //rgb_matrix_set_color_all(127, 127, 0);  // Yellow
-            rgb_matrix_set_color_all(15, 15, 0);  // Yellow Less Bright
+            rgb_matrix_set_color_all(15, 15, 0);  // Yellow
             break;
 
         default: // Default: White
-            rgb_matrix_set_color_all(31, 31, 31);  // White Less Bright
+            rgb_matrix_set_color_all(31, 31, 31);  // White
             break;
     }
-
+    
     return state;
 }
 
-// Set up the RGB color change when layers change
 bool rgb_matrix_indicators_user(void) {
     switch (biton32(layer_state)) {
         case 0:  // Layer 0
             //rgb_matrix_set_color_all(127, 63, 127);  // Pink
-            rgb_matrix_set_color_all(15, 7, 15);  // Pink Less Bright
+            rgb_matrix_set_color_all(15, 7, 15);  // Pink
             break;
         case 1:  // Layer 1`
             //rgb_matrix_set_color_all(0, 127, 127);  // Cyan
-            rgb_matrix_set_color_all(0, 15, 15);  // Cyan Less Bright
+            rgb_matrix_set_color_all(0, 15, 15);  // Cyan
             break;
         case 2:  // Layer 2
             //rgb_matrix_set_color_all(127, 63, 31); // Orange
-            rgb_matrix_set_color_all(15, 7, 3); // Orange Less Bright
+            rgb_matrix_set_color_all(15, 7, 3); // Orange
             break;
         case 3:
             //rgb_matrix_set_color_all(0, 127, 0); // Green
-            rgb_matrix_set_color_all(0, 15, 0); // Green Less Bright
+            rgb_matrix_set_color_all(0, 15, 0); // Green
             break;
         case 4:
             //rgb_matrix_set_color_all(127, 127, 0);  // Yellow
-            rgb_matrix_set_color_all(15, 15, 0);  // Yellow Less Bright
+            rgb_matrix_set_color_all(15, 15, 0);  // Yellow
             break;
 
         default: // Default: White
-            rgb_matrix_set_color_all(31, 31, 31);  // White Less Bright
+            rgb_matrix_set_color_all(31, 31, 31);  // White
             break;
     }
 
     return 1;
 }
 
-// Without this, ALT triggers even when not holding the ALT key. This code
-// manually implements the expected behavior.
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LALT_T(KC_LPRN):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_LPRN);
+                return false;
+            }
+            break;
+        case LSFT_T(KC_LPRN):
             if (record->tap.count && record->event.pressed) {
                 tap_code16(KC_LPRN);
                 return false;
@@ -365,9 +392,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;
             }
             break;
+        case RSFT_T(KC_RPRN):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_RPRN);
+                return false;
+            }
+            break;
     }
     return true;
 }
+
 ```
 
 ## My Layout
