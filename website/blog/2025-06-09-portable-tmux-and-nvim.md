@@ -1,6 +1,6 @@
 ---
 slug: 2025-06-09-portable-tmux-and-nvim
-title: "IPv4 Preferred Over IPv6"
+title: "Portable Tmux & Neovim"
 draft: false
 ---
 
