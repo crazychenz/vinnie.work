@@ -24,7 +24,7 @@ For example:
 
 Resolving this can be wildly different from platform to platform. From the available shell scripting languages, the launching conventions, to the security measures. I've lost too much time on this non-sense to not document some of the mechanisms I've discovered. Time to get things automatically started so I can stop worrying about missing services when my consumer machines decide to reboot for updates or power outages.
 
-<!-- [Auto-Start Conventions](/docs/Collections/ToolsAndTechnique/AutoStart) -->
+[Auto-Start Conventions](/docs/Collections/ToolsAndTechnique/AutoStart)
 
 Once you've got a script actually running when and how you want to, you can sanity check yourself by implementing some resource tests. In the case of running VMs with some cheap health checks (via ICMP), see the following sections.
 
