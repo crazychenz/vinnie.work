@@ -1,6 +1,5 @@
 # Dependencies
 /node_modules
-/gods_system_manual
 
 # Production
 /build

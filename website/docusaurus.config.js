@@ -4,13 +4,20 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import { themes as prismThemes } from 'prism-react-renderer';
+import {themes as prismThemes} from 'prism-react-renderer';
+
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Vinnie dot Work',
   tagline: '',
   favicon: 'img/favicon.ico',
+
+  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  future: {
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  },
 
   // Set the production url of your site here
   url: 'https://www.vinnie.work',
@@ -24,7 +31,6 @@ const config = {
   projectName: 'vinnie.work', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -33,22 +39,6 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
-  themes: [
-    [
-      require.resolve('@easyops-cn/docusaurus-search-local'),
-      {
-        indexPages: true,
-        //removeDefaultStemmer: false, // will change to true later
-        highlightSearchTermsOnTargetPage: true,
-        searchBarShortcutHint: true,
-        // `hashed` is recommended as long-term-cache of index file is possible.
-        hashed: true,
-        // For Docs using Chinese, The `language` is recommended to set to:
-        // language: ["en", "zh"],
-      },
-    ],
-  ],
 
   presets: [
     [
@@ -62,51 +52,23 @@ const config = {
           editUrl: 'https://github.com/crazychenz/vinnie.work/edit/trunk/website/',
         },
         blog: {
-          // Path to data on filesystem relative to site dir.
-          path: 'blog',
-
           showReadingTime: false,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: 'https://github.com/crazychenz/vinnie.work/edit/trunk/website/',
-
-          // From website-2.0
-          editLocalizedFiles: false,
-          blogTitle: 'Vinnie dot Work',
-          blogDescription: '',
-          blogSidebarCount: 100,
-          blogSidebarTitle: 'Articles',
-          routeBasePath: 'blog',
-          include: ['*.md', '*.mdx'],
-          postsPerPage: 10,
-          blogListComponent: '@theme/BlogListPage',
-          blogPostComponent: '@theme/BlogPostPage',
-          blogTagsListComponent: '@theme/BlogTagsListPage',
-          blogTagsPostsComponent: '@theme/BlogTagsPostsPage',
-          remarkPlugins: [
-            /* require('remark-math') */
-          ],
-          rehypePlugins: [],
-          beforeDefaultRemarkPlugins: [],
-          beforeDefaultRehypePlugins: [],
-          truncateMarker: /<!--\s*(truncate)\s*-->/,
+          // Useful options to enforce blogging best practices
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
+          blogSidebarTitle: 'All posts',
+          blogSidebarCount: 'ALL',
         },
         theme: {
           customCss: './src/css/custom.css',
-        },
-        gtag: {
-          trackingID: 'G-VGJV95VJGY',
-          anonymizeIP: true,
-        },
-        //googleAnalytics: {
-        //  trackingID: 'UA-2749090-4',
-        //  anonymizeIP: true,
-        //},
-        sitemap: {
-          changefreq: 'weekly',
-          priority: 0.5,
-          ignorePatterns: [],
-          filename: 'sitemap.xml',
         },
       }),
     ],
@@ -117,6 +79,9 @@ const config = {
     ({
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
+      colorMode: {
+        respectPrefersColorScheme: true,
+      },
       navbar: {
         title: 'Vinnie dot Work',
         logo: {
@@ -128,7 +93,18 @@ const config = {
           { type: 'doc', docId: 'Inform', label: 'Inform', position: 'left' },
           { type: 'doc', docId: 'Stream', label: 'Stream', position: 'left' },
           { to: '/about', label: 'About', position: 'left' },
-          //{ href: "https://github.com/", label: "GitHub", position: "left" },
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'tutorialSidebar',
+          //   position: 'left',
+          //   label: 'Tutorial',
+          // },
+          // {to: '/blog', label: 'Blog', position: 'left'},
+          // {
+          //   href: 'https://github.com/facebook/docusaurus',
+          //   label: 'GitHub',
+          //   position: 'right',
+          // },
         ],
       },
       footer: {
@@ -155,8 +131,8 @@ const config = {
           //       href: 'https://discordapp.com/invite/docusaurus',
           //     },
           //     {
-          //       label: 'Twitter',
-          //       href: 'https://twitter.com/docusaurus',
+          //       label: 'X',
+          //       href: 'https://x.com/docusaurus',
           //     },
           //   ],
           // },
@@ -181,64 +157,6 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
-
-  plugins: [
-    [
-      '@docusaurus/plugin-pwa',
-      {
-        debug: true,
-        offlineModeActivationStrategies: ['appInstalled', 'standalone', 'queryString'],
-        pwaHead: [
-          {
-            tagName: 'link',
-            rel: 'icon',
-            href: '/img/android-chrome-512x512.png',
-          },
-          {
-            tagName: 'link',
-            rel: 'manifest',
-            href: '/manifest.json', // your PWA manifest
-          },
-          {
-            tagName: 'meta',
-            name: 'theme-color',
-            content: 'rgb(37, 194, 160)',
-          },
-          {
-            tagName: 'meta',
-            name: 'apple-mobile-web-app-capable',
-            content: 'yes',
-          },
-          {
-            tagName: 'meta',
-            name: 'apple-mobile-web-app-status-bar-style',
-            content: '#000',
-          },
-          {
-            tagName: 'link',
-            rel: 'apple-touch-icon',
-            href: '/img/android-chrome-512x512.png',
-          },
-          /*{
-            tagName: 'link',
-            rel: 'mask-icon',
-            href: '/img/docusaurus.svg',
-            color: 'rgb(37, 194, 160)',
-          },*/
-          {
-            tagName: 'meta',
-            name: 'msapplication-TileImage',
-            content: '/img/android-chrome-512x512.png',
-          },
-          {
-            tagName: 'meta',
-            name: 'msapplication-TileColor',
-            content: '#000',
-          },
-        ],
-      },
-    ],
-  ],
 };
 
 export default config;

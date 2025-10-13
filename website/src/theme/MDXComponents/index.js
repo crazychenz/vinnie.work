@@ -6,6 +6,7 @@ import MDXPre from '@theme/MDXComponents/Pre';
 import MDXDetails from '@theme/MDXComponents/Details';
 import MDXHeading from '@theme/MDXComponents/Heading';
 import MDXUl from '@theme/MDXComponents/Ul';
+import MDXLi from '@theme/MDXComponents/Li';
 import MDXImg from '@theme/MDXComponents/Img';
 import Admonition from '@theme/Admonition';
 import Mermaid from '@theme/Mermaid';
@@ -13,12 +14,13 @@ import Comments from '@site/src/components/Comments';
 
 const MDXComponents = {
   Head,
-  details: MDXDetails,
+  details: MDXDetails, // For MD mode support, see https://github.com/facebook/docusaurus/issues/9092#issuecomment-1602902274
   Details: MDXDetails,
   code: MDXCode,
   a: MDXA,
   pre: MDXPre,
   ul: MDXUl,
+  li: MDXLi,
   img: MDXImg,
   h1: (props) => <MDXHeading as="h1" {...props} />,
   h2: (props) => <MDXHeading as="h2" {...props} />,
@@ -31,3 +33,5 @@ const MDXComponents = {
   Comments,
 };
 export default MDXComponents;
+
+
