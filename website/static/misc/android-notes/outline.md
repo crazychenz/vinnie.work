@@ -2,7 +2,7 @@ Glass down approach:
 
 - Application on device is doing something I want to inspect or change.
 
-- Application Overt Inspection:
+- (1) Application Overt Inspection:
   - Overt usage?
   - Permissions on system?
   - Permissions requested on install?
@@ -38,6 +38,10 @@ Glass down approach:
       - Can also discover, locate, and extract application via internet.
   - Root if desired.
     - Grab the sqlite databases that hold application information.
+
+
+- TODO: Figure out where to discuss SELinux?
+
 
 - Setup (emulator and analysis) environment
   - Setup openjdk-17
