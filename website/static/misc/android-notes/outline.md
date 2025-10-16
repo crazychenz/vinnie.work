@@ -14,7 +14,7 @@ Glass down approach:
     - If plugable, identify developer kits, documentation, dev accounts
     - Other Online Research
 
-- Device Inspection
+- (2) Device Inspection
   - Make/Model/Year
   - Android Versions
   - Vendor software versions
@@ -30,7 +30,7 @@ Glass down approach:
     - If there a undo root capability? (Usually no.)
     - How long until system images are unlockable from past versions.
 
-- ADB into device.
+- (3) ADB into device.
   - Collect ADB information on application:
     - Get the package name (from running application)
     - Get the installed package information.
@@ -41,6 +41,7 @@ Glass down approach:
 
 
 - TODO: Figure out where to discuss SELinux?
+- TODO: Frida without root?
 
 
 - Setup (emulator and analysis) environment
