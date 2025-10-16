@@ -35,5 +35,12 @@ RUN unzip /home/user/Downloads/commandlinetools-linux-${CLIONLY_VERSION}_latest.
 
 RUN yes | sdkmanager platform-tools emulator
 
+# Setup pipenv
+USER root
+RUN apt-get install -y python3 python3-pip pipenv
+USER user
+# No good in debian :(
+#RUN python3 -m pip install --user pipenv
 
+RUN PIPENV_VENV_IN_PROJECT=1 pipenv install
 

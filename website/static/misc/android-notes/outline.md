@@ -30,41 +30,50 @@ Glass down approach:
     - If there a undo root capability? (Usually no.)
     - How long until system images are unlockable from past versions.
 
-- (3) ADB into device.
-  - Collect ADB information on application:
-    - Get the package name (from running application)
+- (3) Setup ADB environment
+  - ADB overview
+  - env.sh
+    - TODO: pipenv
+  - Setup openjdk-17
+  - Setup commandline tools
+  - Install platform tools
+  - ADB into non-root device.
+    - Identify app process package name and PID
     - Get the installed package information.
+    - adb shell/push/pull
     - Discover, locate, and extract application APK.
       - Can also discover, locate, and extract application via internet.
-  - Root if desired.
+  
+  
+- TODO??: Root if desired.
     - Grab the sqlite databases that hold application information.
-
-
 - TODO: Figure out where to discuss SELinux?
 - TODO: Frida without root?
 
 
-- Setup (emulator and analysis) environment
-  - Setup openjdk-17
-  - Setup commandline tools
-  - Install platform tools, emulator, and other Google packages.
-  - Install target system image (e.g. x86_64 Android 13)
-  - Install scrcpy
-  - Install jadx
-  - Install pipenv: androguard, thirdparty tools, frida, fuzzyfinder, pure-python-adb-reborn, mitmproxy
+- (4) Setup (emulator and analysis) environment
+  - QEMU overview
+  - Isntall Emulator and System Image
+    - Install target system image (e.g. x86_64 Android 13)
+  - Create an AVD (avdmanager)
+  - Start Emulator
+    - Start emulator with kernel visibility.
+  - ADB to emulator
+  - Install and run scrcpy
+  - Rooting the Emulator
+    - Get root and /system read-write
 
-- Setup emulator:
-  - Start emulator with kernel visibility.
-  - Get root and /system read-write
-  - Force interpreter/debug modes
-  - Install application
-  - Install mitmproxy certificate
+  - TODO: Install application
+  
 
-- Inspect application traffic:
+- TODO: (5) Inspect application traffic:
+  - pipenv mitmproxy
   - Certificate injection
   - mitmproxy - VPN inspection, transparent capture
+  - TODO: Install mitmproxy certificate
 
-- Static APK Inspection
+
+- Static Analysis of APK
   - apktool - decompress and decode APK
   - Analyze Manifest
   - Analyze Smali code
@@ -78,6 +87,19 @@ Glass down approach:
     - APK parsing
     - dex internals
     - APK resources
+  
+  - TODO: Install jadx
+  - TODO: Install pipenv: androguard, thirdparty tools, frida, fuzzyfinder, pure-python-adb-reborn, mitmproxy
+
+
+- Altering APKs:
+  - Force interpreter/debug modes
+
+
+
+
+  
+
 
 - Dynamic Application Inspection
   - Understanding zygote, namespaces, code reuse
