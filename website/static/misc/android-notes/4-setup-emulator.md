@@ -39,7 +39,7 @@ yes | sdkmanager emulator
 Verify install with: `emulator -version`:
 
 ```
-(adbenv) $ emulator -version
+(adb-venv) $ emulator -version
 INFO         | Android emulator version 36.1.9.0 (build_id 13823996) (CL:N/A)
 INFO         | Graphics backend: gfxstream
 Android emulator version 36.1.9.0 (build_id 13823996) (CL:N/A)
@@ -108,7 +108,7 @@ I also asked ChatGPT to make me a chart:
 Based on the above information, I'm looking for a system image with the name `system-images;android-33` for architecture `x86_64`:
 
 ```
-(adbenv) $ sdkmanager --list | grep 'system-images;android-33' | grep 'x86_64'
+(adb-venv) $ sdkmanager --list | grep 'system-images;android-33' | grep 'x86_64'
   system-images;android-33;default;x86_64 | 2                 | Intel x86_64 Atom System Image   | syst
 em-images/android-33/default/x86_64
   system-images;android-33-ext4;google_apis_playstore;x86_64                      | 1                 |
@@ -150,7 +150,7 @@ As mentioned before, the `avdmanager` from `cmdline-tools` is used to generate a
 To create a default AVD based on the default Android SDK-33 system image for an x86_64:
 
 ```
-(adbenv) $ avdmanager create avd -n android13 -k "system-images;android-33;default;x86_64"
+(adb-venv) $ avdmanager create avd -n android13 -k "system-images;android-33;default;x86_64"
 Warning: Observed package id 'build-tools;35.0.0' in inconsistent location '/home/chenz/.android/build-tools/latest' (Expected '/home/chenz/.android/build-tools/35.0.0')
 Warning: Already observed package id 'build-tools;35.0.0' in '/home/chenz/.android/build-tools/35.0.0'. Skipping duplicate at '/home/chenz/.android/build-tools/latest'
 Warning: Observed package id 'ndk;29.0.14033849' in inconsistent location '/home/chenz/.android/ndk/latest' (Expected '/home/chenz/.android/ndk/29.0.14033849')
@@ -204,7 +204,7 @@ Great! We should now have an emulator running! I recommend that you disconnect a
 By default if you run `adb devices`, you'll likely now see the following (assuming the AVD/emulator is running):
 
 ```
-(adbenv) $ adb devices
+(adb-venv) $ adb devices
 List of devices attached
 emulator-5554   device
 

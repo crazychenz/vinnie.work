@@ -1,3 +1,4 @@
+<!-- 
 - Application Overt Inspection:
   - Overt usage?
   - Permissions on system?
@@ -9,7 +10,7 @@
     - Privacy Policies, Usage Policies, and associated resources.
     - If plugable, identify developer kits, documentation, dev accounts
     - Other Online Research
-
+ -->
 
 ## Preface
 

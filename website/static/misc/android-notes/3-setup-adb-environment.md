@@ -1,12 +1,13 @@
-<!-- - ADB into device.
+<!-- 
+- ADB into device.
   - Collect ADB information on application:
     - Get the package name (from running application)
     - Get the installed package information.
     - Discover, locate, and extract application APK.
       - Can also discover, locate, and extract application via internet.
   - Root if desired.
-    - Grab the sqlite databases that hold application information. -->
-
+    - Grab the sqlite databases that hold application information.
+ -->
 
 ## Android Debug Bridge (ADB)
 
@@ -41,27 +42,56 @@ For my purposes, I never use the full version of _Android Studio_. Instead, I'll
 
 As we go along, we'll be adding more tools. To make things easy, I've provided a script that enables the environment that I intend to end up with. Not having all of the referenced paths is harmless as we build up the toolbox, so we might as well have everything setup as soon as possible. This alieviates the need to continually update a non-repeatable environment or restarts shells and terminals.
 
-There are many ways to skin this cat (via .dotfiles, via .profile, vi other shell RC files). Because I work on many different projects across many different languages that use many different SDKs, I don't like to manage SDK folders in my general home dotfiles. Instead, my convention for managing a particular project is to have a script that launches a new shell with the settings I want. This way I'm avoiding unrepeatable environments and I can easily reset with a `exit; ./env.sh` type of behavior. Since the script I have is harmless before you have all the tool, I'll provide everything at once. If you follow along with subsequent procedures, everything should line up fine:
+There are many ways to skin this cat (via .dotfiles, via .profile, vi other shell RC files). Because I work on many different projects across many different languages that use many different SDKs, I don't like to manage SDK folders in my general home dotfiles. Instead, my convention for managing a particular project is to have a script that launches a new shell with the settings I want. This way I'm avoiding unrepeatable environments and I can easily reset with a `exit; ./env.sh` type of behavior. Since the script I have is harmless before you have all the tools, I'll provide everything at once. If you follow along with subsequent procedures, everything should line up fine. Note: There is a pre-requisite that you have `python3` and `python3-pip` already installed.
 
 `~/.android/env.sh`:
 
 ```sh
 #!/usr/bin/env bash
-export ANDROID_HOME=$(realpath ~)/.android/
-export JAVA_HOME=${ANDROID_HOME}/jdk-17.0.2/
+
+if [ -z "$(which python3)" ]; then
+  echo "Missing 'python3' from \$PATH."
+  echo "Suggestion: apt-get install python3"
+  exit 1
+fi
+
+if [ -z "$(which pip)" -a -z "$(which pip3)" ]; then
+  echo "Missing 'pip' from \$PATH."
+  echo "Suggestion: apt-get install python3-pip"
+  exit 1
+fi
+
+export ANDROID_HOME=${HOME}/.android/
+export JAVA_HOME=${ANDROID_HOME}jdk-17.0.2/
 export PATH=${JAVA_HOME}bin:$PATH
 export PATH=${ANDROID_HOME}cmdline-tools/latest/bin:$PATH
 export PATH=${ANDROID_HOME}platform-tools:$PATH
-export PATH=${ANDROID_HOME}build-tools/latest:$PATH
 export PATH=${ANDROID_HOME}emulator:$PATH
 export PATH=${ANDROID_HOME}scrcpy:$PATH
 export PATH=${ANDROID_HOME}jadx/bin:$PATH
 export PATH=${ANDROID_HOME}scripts:$PATH
-export PATH=${ANDROID_HOME}ndk/latest/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
-export PATH=${ANDROID_HOME}ndk/latest:$PATH
 
-export PS1_TAG="(adbenv) "
+# Version Specific
+#export PATH=${ANDROID_HOME}cmake/4.1.2/bin:$PATH
+#export PATH=${ANDROID_HOME}build-tools/latest:$PATH
+#export PATH=${ANDROID_HOME}ndk/latest/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
+#export PATH=${ANDROID_HOME}ndk/latest:$PATH
+
+export PS1_TAG="(adb-venv) "
 export PS1="${PS1_TAG}${PS1:-\$ }"
+
+if [ ! -f "$ANDROID_HOME/adb-venv" ]; then
+  python3 -m venv $ANDROID_HOME/adb-venv
+fi
+source $ANDROID_HOME/adb-venv/bin/activate
+
+pip show frida &>/dev/null || pip install frida-tools
+pip show frida-tools &>/dev/null || pip install frida-tools
+pip show pure-python-adb-reborn &>/dev/null || pip install pure-python-adb-reborn
+pip show androguard &>/dev/null || pip install androguard
+pip show pyaxml &>/dev/null || pip install pyaxml
+pip show fuzzyfinder &>/dev/null || pip install fuzzyfinder
+
 exec bash -i
 ```
 
@@ -69,7 +99,7 @@ After creating the file, ensure its executable: `chmod +x ~/.android/env.sh`
 
 To activate it, run: `~/.android/env.sh`
 
-You should now be left with a shell that resembles something like: `(adbenv) $ `.
+You should now be left with a shell that resembles something like: `(adb-venv) $ `.
 
 ## Setup Java
 
@@ -86,7 +116,7 @@ tar -xf ~/Downloads/openjdk-17.0.2_linux-x64_bin.tar.gz
 If you're using the `env.sh` that was previous used, you should now be able to verify the Java install by running `java --version`:
 
 ```sh
-$ java --version
+(adb-venv) $ java --version
 openjdk 17.0.2 2022-01-18
 OpenJDK Runtime Environment (build 17.0.2+8-86)
 OpenJDK 64-Bit Server VM (build 17.0.2+8-86, mixed mode, sharing)
@@ -147,7 +177,7 @@ Once the device USB debugging is all setup, you may receive device reconnection 
 Now you may run `adb devices` to see if your device is connected. The host can have multiple devices (or emulators) connected and you can specify what device to connect to with `adb -s <device-name>`. If there is only one device connected, you can omit the device selection and `adb` will implicitly select the only option.
 
 ```text
-(adbenv) $ adb devices
+(adb-venv) $ adb devices
 List of devices attached
 RFCNC34J1RT     device
 emulator-5554   device
@@ -160,14 +190,14 @@ To specify the device to connect to, do something like `adb -s RFCNC34J1RT shell
 Find the application in the running process list. For example, if we're looking for Reddit:
 
 ```sh
-(adbenv) $ adb shell "ps -A" | grep -i reddit
+(adb-venv) $ adb shell "ps -A" | grep -i reddit
 u0_a320      14081  1149 26127600 289564 0                  0 S com.reddit.frontpage
 ```
 
 In the above command, we ran the command `ps -A` to list all running processes. The output was returned to our shell and we used our **local** grep to find any instances of "reddit" (case-insensitive). If we run the following, the grep search happens on the device, not in our local system:
 
 ```sh
-(adbenv) $ adb shell "ps -A | grep -i reddit"
+(adb-venv) $ adb shell "ps -A | grep -i reddit"
 u0_a320      14081  1149 26127600 289564 0                  0 S com.reddit.frontpage
 ```
 
@@ -279,17 +309,10 @@ adb pull $APK_PATH $PKG_NAME.apk
 If successful, the APK of the target application running on the device should now exist on the developer host. The `com.reddit.frontpage.apk` in this case can now be unwrapped and decomposed into all of its bits for analysis and static reverse engineering. The nice thing here is that you know you have the exact binary that you were interfacing with on the device and not potentially some knock off or different version from a sketchy APK archive website.
 
 
-
-
-
-
+<!-- 
 
 ## Account Databases
 
 TODO: If rooted, grab extra databases?
 
-
-
-
-
-TODO: Fully automated download and install of tools.
+TODO: Fully automated download and install of tools. -->

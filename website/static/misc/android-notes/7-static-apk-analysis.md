@@ -38,6 +38,7 @@ An Android Package Kit (APK) is a ZIP file of resources distributed by the devel
 
 An APK's design principles were developed around supporting embedded system constraints (i.e. low memory, slow CPUs, battery operated). Therefore it has lots of awkward optimizations like XMLs in binary and the whole APK ZIP is ment to be _aligned_ on page boundaries to speed up references to objects in the file. 
 
+
 ## Extracting an APK
 
 TODO: Consider a convention for jar files!

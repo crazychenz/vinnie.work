@@ -1,3 +1,5 @@
+
+<!-- 
 - Device Inspection
   - Make/Model/Year
   - Android Versions
@@ -13,7 +15,7 @@
     - Is there a burn down for bootloader unlocking?
     - If there a undo root capability? (Usually no.)
     - How long until system images are unlockable from past versions.
-
+ -->
 
 
 
