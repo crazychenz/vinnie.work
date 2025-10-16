@@ -45,6 +45,17 @@ TODO: Consider a convention for jar files!
 
 The simplest way to extract and examine the innards of an APK is to use the `apktool`. `apktool` often can be installed with a local package manager (e.g. `apt install apktool`). For the latest release, check out the [APKtool Github releases page](https://github.com/iBotPeaches/Apktool/releases). The tool from github is a `jar` file. If you had `myspecial.apk` that you wanted to expand, you could do something like:
 
+
+```sh
+# Create a wrapper script
+cat > ~/bin/apktool << 'EOF'
+#!/bin/bash
+exec java -jar /path/to/apktool.jar "$@"
+EOF
+
+chmod +x ~/bin/apktool
+```
+
 ```sh
 java -jar apktool_2.12.1.jar d myspecial.apk
 ```
