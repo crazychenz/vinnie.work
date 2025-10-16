@@ -1,5 +1,7 @@
 FROM debian:13-slim
 
+ARG CLIONLY_VERSION
+
 RUN apt-get update && apt-get install -y curl sudo unzip
 
 RUN useradd -m -G sudo user
@@ -27,8 +29,8 @@ COPY openjdk-17.0.2_linux-x64_bin.tar.gz /home/user/Downloads
 RUN tar -xf /home/user/Downloads/openjdk-17.0.2_linux-x64_bin.tar.gz
 
 # Copy as root?
-COPY commandlinetools-linux-13114758_latest.zip /home/user/Downloads
-RUN unzip /home/user/Downloads/commandlinetools-linux-13114758_latest.zip \
+COPY commandlinetools-linux-${CLIONLY_VERSION}_latest.zip /home/user/Downloads
+RUN unzip /home/user/Downloads/commandlinetools-linux-${CLIONLY_VERSION}_latest.zip \
   && cd cmdline-tools && mkdir latest && mv * ./latest/ ; echo && cd ..
 
 RUN yes | sdkmanager platform-tools emulator

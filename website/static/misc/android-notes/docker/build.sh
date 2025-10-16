@@ -13,12 +13,13 @@ if [ ! -f "openjdk-17.0.2_linux-x64_bin.tar.gz" ]; then
   curl -LO ${OJDK_URL}
 fi
 
-if [ ! -f "commandlinetools-linux-13114758_latest.zip" ]; then
-  CLIONLY_URL="https://dl.google.com/android/repository/commandlinetools-linux-13114758_latest.zip"
+CLIONLY_VERSION=$(curl -s https://developer.android.com/studio | grep -oP 'commandlinetools-linux-\K[0-9]+' | sort -u)
+if [ ! -f "commandlinetools-linux-${CLIONLY_VERSION}_latest.zip" ]; then
+  CLIONLY_URL="https://dl.google.com/android/repository/commandlinetools-linux-${CLIONLY_VERSION}_latest.zip"
   curl -LO ${CLIONLY_URL}
 fi
 
 popd
 
-docker build -t android-dev -f Dockerfile context
+docker build -t android-dev --build-arg CLIONLY_VERSION=${CLIONLY_VERSION} -f Dockerfile context
 
