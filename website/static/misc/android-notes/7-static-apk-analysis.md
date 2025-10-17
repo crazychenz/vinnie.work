@@ -1,26 +1,3 @@
-<!-- 
-
-- Static APK Inspection
-  - apktool - decompress and decode APK
-  - Analyze Manifest
-  - Analyze Smali code
-  - Analyze native libraries
-    - Ghidra
-
-  - jadx
-  - jadx-gui
-
-  - Androguard programatically doing:
-    - APK parsing
-    - dex internals
-    - APK resources
-  
-- Static Analysis of APK
-  - TODO: Install jadx
-  - TODO: Install pipenv: androguard, thirdparty tools, frida, fuzzyfinder, pure-python-adb-reborn, mitmproxy
-
- -->
-
 
 
 ## APK Overview
@@ -304,36 +281,130 @@ To recap, we've extracted an APK with `unzip` but couldn't read anything. We ext
 
 ### JADX
 
-TODO: Describe JADX.
+Jadx (**J**ava **A**nd **D**alvik e**X**tractoR) is an APK extractor (like apktool), Java decompiler (like Ghidra is for C/C++), and Smali debugger (that lets you breakpoint and single step code); all wrapped into a single package. It also comes with a graphical interface for resource and code browsing.
 
 ### Install JADX
 
-Download and install from https://github.com/skylot/jadx/releases
-Install with ~/.android conventions.
+You can find JADX available as a zip file download on the [skylot/jadx Github Releases page](https://github.com/skylot/jadx/releases).
+
+At the time of this writing, jadx-1.5.3 is available and I've installed it with the following:
+
+```sh
+curl -L -o ~/Downloads/jadx-1.5.3.zip \
+  https://github.com/skylot/jadx/releases/download/v1.5.3/jadx-1.5.3.zip
+mkdir -p ${ANDROID_HOME}/jadx
+cd ${ANDROID_HOME}/jadx
+unzip ~/Downloads/jadx-1.5.3.zip
+```
+
+If you are using the `env.sh` I referenced before, JADX should now be avaulable in your `\$PATH`.
 
 ## JADX GUI
 
-TODO: Opening, and basic usage.
+To start the GUI, simple run `jadx-gui`. To run is deassociated from your terminal and shell, run something like `setsid jadx-gui &>/dev/null &`.
 
-Run, open file, select APK, click open.
+Once JADX is up and running, you'll need to tell it to "Open File". Select the APK that you want it to process and away it goes. If you check out the bottom left of the screen while its processing, you can watch a progress bar bounce around until its complete.
 
-It will attempt to deobfuscate and decompile.
+Once JADX has initially processed the APK, you can save the result in a JADX project file. There are other reasons to save the project file that we'll discuss in a moment.
 
-## jadx cli
+Along the left hand side, if you select "Source code" and then find a class you are interested in, like `com.example.hellojni.databinding.ActivityHelloJniBinding` (the one we used above), and click on it, it'll show you the Java decompilation for the Smali that it saw. Once you have the decompilation shown, you can click through different decompilation strategies along the bottom of the window. Code, Smali, Simple, and Fallback. These are very useful when you want to see code that is less inferred and more aligned with what the actual Smali code is doing beneath the source.
 
-TODO: We've gone full GUI, but lets go back down to CLI
+One of the things I'll do while going through code is find an area of interest based on some API usage or a string and then start to trace the calls through usage. If you Right Click on a label in the Java, you can then click on "Find Usage" or "Usage Tree Search".
+
+If you are looking at obfuscated code, as you work out what something is doing, JADX will allow you to refactor the name of something by right clicking and clicking "Rename". It'll rename the usage of that variable everywhere it tell its the same variable.
+
+Finally, using the "Navigation" menu and all of the searching capabilites are invaluable when hunting through the code to find collections of useful information while reverse engineering.
+
+Once you have some efforts put into refactoring or injecting comments, please don't forget to save the project and load that same project the next time you fire up JADX (presuming you are working on the same APK).
+
+### Un-decompiled Code
+
+## JADX CLI
+
+Aside from the GUI, JADX also has a command line interface. The interface behaves a lot like apktool, except it includes the deobfuscation and decompilation. Running the following will net you the decompilation of Kotlin/Java/Smali code to the greatest extent JADX can. Sometimes you just want to use your own code editor when browsing.
+
+```
+(adb-venv) $ cd ~/apks/hellojni
+(adb-venv) $ jadx -d hellojni-decompiled ./input/app-release.apk
+INFO  - loading ...
+INFO  - processing ...
+ERROR - finished with errors, count: 1
+```
+
+Once that command finishes, you'll be left with a pile of source code that you can analyze or integrate into an IDE for more powerful and flexible browsing.
 
 ## Programatically Extracting and Analyzing APKs
 
-TODO: Now that we've seen JADX cli, lets programatically see the low level parts of the APK with Androguard.
+Between apktool and JADX, it may feel like you have complete visibility of everything in the package. In fact, there is a level deeper you can decend. Androguard is a python package that parses out the entire APK into PYthon data structures. These data structures can then be programatically iterated over for more automated or granular tasks.
 
-Download and install Androguard
+The original `env.sh` script should have automatically installed Androguard in the python virtual environment. If it hasn't, you can install or upgrade the package with `pip install -U androguard`.
 
-<!-- - Androguard programatically doing:
-    - APK parsing
-    - dex internals
-    - APK resources -->
+For a REPL interface to start playing with, you can try something like:
 
+```sh
+(adb-venv) $ cd ~/apks/hellojni
+(adb-venv) $ androguard analyze ./input/app-release.apk
+>>> filename
+input/app-release-unsigned.apk
+>>> a
+<androguard.core.apk.APK object at 0x7ff7642b5400>
+>>> d
+[<androguard.core.dex.DEX object at 0x7ff7642b6a50>]
+>>> dx
+<analysis.Analysis VMs: 1, Classes: 7428, Methods: 61155, Strings: 61347>
+
+Androguard version 4.1.3 startedTip: Use `--theme`, or the `%colors` magic to change IPython's themes and colors.
+
+In [1]:
+```
+
+For API reference material you can use the [readthedocs for Androguard](https://androguard.readthedocs.io/en/latest/). I recommend checking out Androguard's [Getting Started documentation](https://androguard.readthedocs.io/en/latest/intro/gettingstarted.html). It has some quick snippets to show how you can fetch things like permissions, activities, package name, and SDK versions programatically. In reality, this is all in the AndroidManifest and can be retrieved with some XPath or XML Element Tree in python, but Androguard streamlines it!
+
+Some of the lower level tasks I like to perform with Androguard are iterations over all of the classes, methods, fields, and other strings that are embedded in the dex file. JADX and apktool parse and reference this material, but only in the context of the code that they are looking at. Perhaps you want an overview of all the classes and methods but don't care about their actual implementation. Also, combining these programatic lists with a fuzzyfinder can be a great quick way to get different capabilities of the software to pop out.
+
+### Excessive Logging
+
+One of the big things you'll notice when you start using Androguard in your python code is the amount of logging output it spits. You can mute it by including the following at the top of your code:
+
+```python
+from androguard import util
+util.set_log("CRITICAL")
+```
+
+### Missing Tasks
+
+In smali code there are references to type_ids (`type@XXXX`). For whatever reason these don't automatically get parsed out in the newer Androguard. Here is some code that may help with working arounding that limitation:
+
+```python
+#!/usr/bin/env python3
+
+import sys
+import struct
+from androguard.core import dex
+from androguard import util
+util.set_log("CRITICAL")
+
+type_ids = []
+
+# sys.argv[1] is a file path to the DEX file (NOT the APK)
+with open(sys.argv[1], "rb") as f:
+    data = f.read()
+
+    print("Parsing dex.")
+    d = dex.DEX(data)
+    print("Dex parsing done.")
+
+    # Parse out the type table since its missing from Androguard v4?
+    # Example: d.get_strings()[type_ids[0x1ede]]
+    type_ids_size = d.header.type_ids_size
+    type_ids_off  = d.header.type_ids_off
+    for i in range(type_ids_size):
+        offset = type_ids_off + i * 4
+        (descriptor_idx,) = struct.unpack_from("<I", data, offset)
+        type_ids.append(descriptor_idx)
+
+# Resolve `type@1ede` by using `d.get_strings()[type_ids[0x1ede]]`
+```
 
 
 
