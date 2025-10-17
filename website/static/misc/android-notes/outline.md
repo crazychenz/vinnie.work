@@ -72,6 +72,9 @@ Glass down approach:
   - mitmproxy - VPN inspection, transparent capture
   - TODO: Install mitmproxy certificate
 
+  - Understanding zygote, namespaces, code reuse
+    - _Consider_: Android 14+ certificate injection.
+
 
 - Static Analysis of APK
   - apktool - decompress and decode APK
@@ -102,9 +105,7 @@ Glass down approach:
 
 
 - Dynamic Application Inspection
-  - Understanding zygote, namespaces, code reuse
-    - _Consider_: Android 14+ certificate injection.
-
+  
   - Frida
     - Frida-Server
     - Frida-Client
