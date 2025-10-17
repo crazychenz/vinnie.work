@@ -151,10 +151,10 @@ To create a default AVD based on the default Android SDK-33 system image for an 
 
 ```
 (adb-venv) $ avdmanager create avd -n android13 -k "system-images;android-33;default;x86_64"
-Warning: Observed package id 'build-tools;35.0.0' in inconsistent location '/home/chenz/.android/build-tools/latest' (Expected '/home/chenz/.android/build-tools/35.0.0')
-Warning: Already observed package id 'build-tools;35.0.0' in '/home/chenz/.android/build-tools/35.0.0'. Skipping duplicate at '/home/chenz/.android/build-tools/latest'
-Warning: Observed package id 'ndk;29.0.14033849' in inconsistent location '/home/chenz/.android/ndk/latest' (Expected '/home/chenz/.android/ndk/29.0.14033849')
-Warning: Already observed package id 'ndk;29.0.14033849' in '/home/chenz/.android/ndk/29.0.14033849'. Skipping duplicate at '/home/chenz/.android/ndk/latest'
+Warning: Observed package id 'build-tools;35.0.0' in inconsistent location '/home/user/.android/build-tools/latest' (Expected '/home/user/.android/build-tools/35.0.0')
+Warning: Already observed package id 'build-tools;35.0.0' in '/home/user/.android/build-tools/35.0.0'. Skipping duplicate at '/home/user/.android/build-tools/latest'
+Warning: Observed package id 'ndk;29.0.14033849' in inconsistent location '/home/user/.android/ndk/latest' (Expected '/home/user/.android/ndk/29.0.14033849')
+Warning: Already observed package id 'ndk;29.0.14033849' in '/home/user/.android/ndk/29.0.14033849'. Skipping duplicate at '/home/user/.android/ndk/latest'
 [=======================================] 100% Fetch remote repository...
 Auto-selecting single ABI x86_64
 Do you wish to create a custom hardware profile? [no]

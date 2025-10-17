@@ -61,6 +61,17 @@ if [ -z "$(which pip)" -a -z "$(which pip3)" ]; then
   exit 1
 fi
 
+# Check for python3-venv (via ensurepip existance)
+python3 -c "import ensurepip" &>/dev/null
+if [ $? -ne 0 ]; then
+  echo "Missing 'venv' module in Python."
+  echo "Suggestion: apt-get install python3-venv"
+  exit 1
+fi
+
+# Make sure .android and .android/scripts exists
+ls ~/.android/scripts &>/dev/null || mkdir -p ~/.android/scripts
+
 export ANDROID_HOME=${HOME}/.android/
 export JAVA_HOME=${ANDROID_HOME}jdk-17.0.2/
 export PATH=${JAVA_HOME}bin:$PATH
@@ -72,7 +83,7 @@ export PATH=${ANDROID_HOME}jadx/bin:$PATH
 export PATH=${ANDROID_HOME}scripts:$PATH
 
 # Version Specific
-#export PATH=${ANDROID_HOME}cmake/4.1.2/bin:$PATH
+#export PATH=${ANDROID_HOME}cmake/latest/bin:$PATH
 #export PATH=${ANDROID_HOME}build-tools/latest:$PATH
 #export PATH=${ANDROID_HOME}ndk/latest/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
 #export PATH=${ANDROID_HOME}ndk/latest:$PATH
@@ -82,6 +93,10 @@ export PS1="${PS1_TAG}${PS1:-\$ }"
 
 if [ ! -f "$ANDROID_HOME/adb-venv" ]; then
   python3 -m venv $ANDROID_HOME/adb-venv
+  if [ $? -ne 0 ]; then
+    echo "Failed to create venv"
+    exit 1
+  fi
 fi
 source $ANDROID_HOME/adb-venv/bin/activate
 
