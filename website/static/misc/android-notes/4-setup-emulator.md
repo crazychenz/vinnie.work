@@ -236,7 +236,7 @@ Now that `scrcpy` has been installed, you can simply run it to get a window with
 setsid scrcpy >/dev/null 2>/dev/null &
 ```
 
-Of course this also hides any errors, so only do this after you have things working. Its also worth noting that anytime the Android Server or AVD reboots, `scrcpy` will close. Some `adb` commands will cause this to occur and you'll need to restart your `scrcpy`. I personally work around this by having a tmux pane dedicated to some of the GUI applications and then rerun commands from that shell's history. You could also write a easy script and drop it into the `$ANDROID_HOME/scripts` folder (which is already in the `$PATH`).
+Of course this also hides any errors, so only do this after you have things working. Its also worth noting that anytime the Android Server or AVD reboots, `scrcpy` will close. Some `adb` commands will cause this to occur and you'll need to restart your `scrcpy`. I personally work around this by having a tmux pane dedicated to some of the GUI applications and then rerun commands from that shell's history. You could also write a easy script and drop it into the `$ANDROID_HOME/misc-tools` folder (which is already in the `$PATH`).
 
 Since `scrcpy` is more slim in its interface, it has alot of command line options and keyboard shortcuts to perform similar tasks to the side toolbox from pure emulator GUI. See shortcuts below (copied from [`scrcpy` Github](https://github.com/Genymobile/scrcpy/blob/master/doc/shortcuts.md)).
 
