@@ -230,6 +230,7 @@ keytool -genkey -v -keystore ~/apks/keys/my-release-key.jks \
 Now sign the _unsigned_ APK with our new `my-key-alias` key in the keystore:
 
 ```sh
+cd ~/apks/hellojni
 apksigner sign --ks ~/apks/keys/my-release-key.jks --ks-key-alias my-key-alias \
   --ks-pass pass:password --key-pass pass:password \
   --out ./input/app-release.apk ./input/app-release-unsigned.apk

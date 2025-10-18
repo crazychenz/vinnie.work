@@ -80,16 +80,16 @@ A simple way to extract and examine the innards of an APK is to use the `apktool
 For the latest `apktool` release, check out the [APKtool Github releases page](https://github.com/iBotPeaches/Apktool/releases). The tool from github is a `jar` file. To neatly organize apktool into our `~/.android` environment, we'll use a sort of convention for our JAR tools. Run the following to download Apktool from Github, create a script (already in `\$PATH`) to execute the tool as a simple command, and then make the script executable:
 
 ```sh
-ls ~/.android/scripts &>/dev/null || mkdir -p ~/.android/scripts
+ls ${ANDROID_HOME}misc-tools &>/dev/null || mkdir -p ${ANDROID_HOME}misc-tools
 # Download from Github
-curl -L -o ${ANDROID_HOME}/scripts/apktool_2.12.1.jar \
+curl -L -o ${ANDROID_HOME}misc-tools/apktool_2.12.1.jar \
   https://github.com/iBotPeaches/Apktool/releases/download/v2.12.1/apktool_2.12.1.jar
 # Create a wrapper script
-cat > ${ANDROID_HOME}/scripts/apktool << 'EOF'
+cat > ${ANDROID_HOME}misc-tools/apktool << 'EOF'
 #!/bin/bash
-exec java -jar ${ANDROID_HOME}/scripts/apktool_2.12.1.jar "$@"
+exec java -jar ${ANDROID_HOME}misc-tools/apktool_2.12.1.jar "$@"
 EOF
-chmod +x ${ANDROID_HOME}/scripts/apktool
+chmod +x ${ANDROID_HOME}misc-tools/apktool
 ```
 
 ### Using apktool
