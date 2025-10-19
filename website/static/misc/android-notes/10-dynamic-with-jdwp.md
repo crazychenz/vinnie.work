@@ -92,9 +92,10 @@ Right, so to forward a JDWP port to a developer host accessible port, you need t
 - Get the application PID
 - Forward PID-port to developer TCP-port
 
-The first two can be done manually in the GUI. And sometimes that can be easier. But if you are starting the application hundreds of times, you want to automate as much of the process as possible. The following is a script that can be used to assist with auto starting 
+The first two can be done manually in the GUI. And sometimes that can be easier. But if you are starting the application hundreds or even dozens of times, you want to automate as much of the process as possible. The following is a script that can be used to assist with auto starting:
 
 ```sh
+#!/usr/bin/env bash
 # Target the application for debugging
 PKG=com.example.hellojni
 INTCAT=android.intent.category.LAUNCHER
@@ -110,3 +111,228 @@ PROC_PID=$(adb shell ps -A | grep $PKG | awk '{print $2}')
 adb forward tcp:8700 jdwp:$PROC_PID
 ```
 
+The above script does make some assumptions about the structure of the APK, but hopefully they are reasonable and will work for any of your setups. I usually drop the above script in the folder specific to the target apk. In this case I'd put it in `~/apks/hellojni/setup-debug.sh`. (Ensure its executable with `chmod +x ~/apks/hellojni/setup-debug.sh`.) 
+
+## Java Debugger (JDB)
+
+Attach to debugger, see program resume.
+
+```sh
+jdb -attach localhost:8700
+```
+
+Attach with debugger and keep app suspended.
+
+```sh
+cat <(echo "suspend") - | jdb -attach localhost:8700
+```
+
+See available commands:
+
+```
+> help
+```
+
+Set a break-point.
+
+```
+> stop at com.example.hellojni.HelloJni.onCreate
+Deferring breakpoint com.example.hellojni.HelloJni.onCreate.
+It will be set after the class is loaded.
+```
+
+TODO: Something about unloaded class breakpoints.
+
+resume - You can resume by a thread by ID (`resume 21574`), or omit thread-id to resume everything:
+
+```
+> resume
+All threads resumed.
+> Set deferred breakpoint com.example.hellojni.HelloJni.onCreate
+
+Breakpoint hit: "thread=main", com.example.hellojni.HelloJni.onCreate(), line=25 bci=0
+
+main[1]
+```
+
+thread=main
+line=25
+bci=0
+
+<!-- 
+`> stop at com.example.hellojni.HelloJni.stringFromJNI`
+
+```
+> Exception in thread "event-handler" com.sun.jdi.NativeMethodException: Cannot set breakpoints on native methods
+        at jdk.jdi/com.sun.tools.jdi.EventRequestManagerImpl.createBreakpointRequest(EventRequestManagerImpl.java:842)
+        at jdk.jdi/com.sun.tools.example.debug.tty.BreakpointSpec.resolveEventRequest(BreakpointSpec.java:85)
+        at jdk.jdi/com.sun.tools.example.debug.tty.EventRequestSpec.resolve(EventRequestSpec.java:73)
+        at jdk.jdi/com.sun.tools.example.debug.tty.EventRequestSpecList.resolve(EventRequestSpecList.java:68)
+        at jdk.jdi/com.sun.tools.example.debug.tty.EventHandler.classPrepareEvent(EventHandler.java:246)
+        at jdk.jdi/com.sun.tools.example.debug.tty.EventHandler.handleEvent(EventHandler.java:112)
+        at jdk.jdi/com.sun.tools.example.debug.tty.EventHandler.run(EventHandler.java:74)
+        at java.base/java.lang.Thread.run(Thread.java:833)
+```
+-->
+
+
+Get a list of threads in application. Note: Only VM threads are halted by jdb. Native threads keep going unless halted at the native level.
+
+```
+> threads
+Group system:
+  (java.lang.Thread)21574 Signal Catcher                     cond. waiting
+  (java.lang.Thread)21575 ADB-JDWP Connection Control Thread cond. waiting
+  (java.lang.Thread)21578 ReferenceQueueDaemon               cond. waiting
+  (java.lang.Thread)21579 FinalizerDaemon                    cond. waiting
+  (java.lang.Thread)21580 FinalizerWatchdogDaemon            cond. waiting
+  (java.lang.Thread)21581 Jit thread pool worker thread 0    running
+  (java.lang.Thread)21582 HeapTaskDaemon                     cond. waiting
+  (java.lang.Thread)21586 Profile Saver                      running
+Group main:
+  (java.lang.Thread)21573 main                               running (at breakpoint)
+  (java.lang.Thread)21576 binder:14381_1                     running
+  (java.lang.Thread)21577 binder:14381_2                     running
+  (java.lang.Thread)21583 binder:14381_3                     running
+  (java.lang.Thread)21767 RenderThread                       running
+```
+
+Set default thread
+
+```
+thread 21573
+```
+
+
+```
+main[1] locals
+Method arguments:
+Local variables:
+ = null
+```
+
+```
+main[1] list
+Source file not found: HelloJni.kt
+```
+
+```
+main[1] wherei
+  [1] com.example.hellojni.HelloJni.onCreate (HelloJni.kt:25), pc = 0
+  [2] android.app.Activity.performCreate (Activity.java:8,305), pc = 94
+  [3] android.app.Activity.performCreate (Activity.java:8,284), pc = 1
+  [4] android.app.Instrumentation.callActivityOnCreate (Instrumentation.java:1,417), pc = 3
+  [5] android.app.ActivityThread.performLaunchActivity (ActivityThread.java:3,626), pc = 446
+  [6] android.app.ActivityThread.handleLaunchActivity (ActivityThread.java:3,782), pc = 49
+  [7] android.app.servertransaction.LaunchActivityItem.execute (LaunchActivityItem.java:101), pc = 79
+  [8] android.app.servertransaction.TransactionExecutor.executeCallbacks (TransactionExecutor.java:135), pc = 77
+  [9] android.app.servertransaction.TransactionExecutor.execute (TransactionExecutor.java:95), pc = 76
+  [10] android.app.ActivityThread$H.handleMessage (ActivityThread.java:2,307), pc = 138
+  [11] android.os.Handler.dispatchMessage (Handler.java:106), pc = 19
+  [12] android.os.Looper.loopOnce (Looper.java:201), pc = 173
+  [13] android.os.Looper.loop (Looper.java:288), pc = 81
+  [14] android.app.ActivityThread.main (ActivityThread.java:7,872), pc = 101
+  [15] java.lang.reflect.Method.invoke (native method)
+  [16] com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run (RuntimeInit.java:548), pc = 11
+  [17] com.android.internal.os.ZygoteInit.main (ZygoteInit.java:936), pc = 312
+```
+
+See the instance id of the **this** object.
+
+```
+print this
+```
+
+See the fields of the **this** object.
+
+```
+dump this
+```
+
+Print all of the loaded classes (usually thousands).
+
+```
+classes
+```
+
+class <id>
+
+```
+main[1] class com.example.hellojni.HelloJni
+Class: com.example.hellojni.HelloJni
+extends: androidx.appcompat.app.AppCompatActivity
+nested: com.example.hellojni.HelloJni$Companion
+main[1]
+```
+
+methods <id>
+
+```
+main[1] methods com.example.hellojni.HelloJni
+** methods list **
+com.example.hellojni.HelloJni <clinit>()
+com.example.hellojni.HelloJni <init>()
+com.example.hellojni.HelloJni onCreate(android.os.Bundle)
+com.example.hellojni.HelloJni stringFromJNI()
+com.example.hellojni.HelloJni unimplementedStringFromJNI()
+androidx.appcompat.app.AppCompatActivity <init>()
+androidx.appcompat.app.AppCompatActivity <init>(int)
+androidx.appcompat.app.AppCompatActivity initDelegate()
+... over 1000 more lines of methods ...
+```
+
+fields <id>
+
+```
+main[1] fields com.example.hellojni.HelloJni
+** fields list **
+com.example.hellojni.HelloJni$Companion Companion
+java.lang.String DELEGATE_TAG (inherited from androidx.appcompat.app.AppCompatActivity)
+androidx.appcompat.app.AppCompatDelegate mDelegate (inherited from androidx.appcompat.app.AppCompatActivity)
+... over 300 more lines of fields ...
+```
+
+<!-- TODO: find working step -->
+
+step - line (a bunch of bytecode)
+stepi - instruction step
+
+
+Continue execution until next breakpoint.
+
+```
+cont
+```
+
+JDB is primitive, difficult to use, and is very limiting in its exposure to all that JDWP has to offer!
+
+## JADX Debugging
+
+<!-- TODO: Need lots of pictures (or maybe a video) here. -->
+
+Open JADX, select the APK or project that matches the APK.
+
+Click on the green bug logo or via the menu Tools -> Select a process to debug
+
+Click Launch App
+
+If "It's Debugging by other", "This process seemes like its being debugged, should we proceed?" Click OK.
+
+Jadx will automatically suspend the process. At this point you can set your own breakpoints by clicking to the left of the line. Note: You can only click on read bytecode lines.
+
+Click the play button and wait for the breakpoint to hit.
+
+Once the breakpoint has hit, you'll see:
+
+- Bottom Left - A thread backtrace.
+- Bottom Middle - A watch window of this object and local variables.
+- Bottom Right - Debugger Log and Android's Logcat
+
+You can step over, into, and out with the various arrow keys between the listing and the bottom panes.
+
+Issues:
+
+- Jadx Thread Stack is not interactable ... even through there is the ability to query and look at each of the frames individually!
+- Jadx Variable watch only sees what is available via the StackFrame values. JDWP does not expose the actual values in the vregs in Dalvik.
+- Jadx variables that are exposed do not provide any information of value. If I saw a object in a register, maybe I want to see its field values or any number of depth searching of that object instance tree.
+- Jadx logcat is a nice addition, but it needs a fuzzyfinder and I'd rather watch logcat in tmux anyway.
