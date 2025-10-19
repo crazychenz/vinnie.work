@@ -67,7 +67,7 @@ One of the reasons to inject Frida as early as possible to not only to catch ear
 
 A straight forward way to launch the Frida client is as follows. What we're doing here is telling Frida to connect to the server over the USB connection (`-U`) and to launch the package (or _file_) `com.example.hellojni`. Assuming the application is installed, the system has been rooted, and the frida-server is running, you'll see the following when starting Frida.
 
-```
+```text
 (adb-venv) $ frida -U -f com.example.hellojni
      ____
     / _  |   Frida 17.4.0 - A world-class dynamic instrumentation toolkit
@@ -142,7 +142,7 @@ frida -U -f com.example.hellojni -l open.js
 
 The output will look something like:
 
-```
+```text
 ...
 Spawned `com.example.hellojni`. Resuming main thread!
 [Android Emulator 5554::com.example.hellojni ]-> process opening file/proc/self/cmdline

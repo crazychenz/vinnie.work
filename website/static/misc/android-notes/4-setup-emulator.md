@@ -39,13 +39,13 @@ TODO: Write about ADB connect later.
 
 Enough about QEMU, lets install the Android "emulator" (i.e. Virtual Machine):
 
-```
+```text
 yes | sdkmanager emulator
 ```
 
 Verify install with: `emulator -version`:
 
-```
+```text
 (adb-venv) $ emulator -version
 INFO         | Android emulator version 36.1.9.0 (build_id 13823996) (CL:N/A)
 INFO         | Graphics backend: gfxstream
@@ -72,7 +72,6 @@ The tools in `sdkmanager` are referenced with the SDK version, **not** the Andro
 
 I also asked ChatGPT to make me a chart:
 
-```
 | Android Version  | API / SDK Level  | Codename / Notes       |
 |------------------|------------------|------------------------|
 | 16               | 36               | —                      |
@@ -110,11 +109,12 @@ I also asked ChatGPT to make me a chart:
 | 1.5              | 3                | Cupcake                |
 | 1.1              | 2                | —                      |
 | 1.0              | 1                | —                      |
-```
+
+: Android Version to SDK Mapping
 
 Based on the above information, I'm looking for a system image with the name `system-images;android-33` for architecture `x86_64`:
 
-```
+```text
 (adb-venv) $ sdkmanager --list | grep 'system-images;android-33' | grep 'x86_64'
   system-images;android-33;default;x86_64 | 2                 | Intel x86_64 Atom System Image   | syst
 em-images/android-33/default/x86_64
@@ -156,7 +156,7 @@ As mentioned before, the `avdmanager` from `cmdline-tools` is used to generate a
 
 To create a default AVD based on the default Android SDK-33 system image for an x86_64:
 
-```
+```text
 (adb-venv) $ avdmanager create avd -n android13 -k "system-images;android-33;default;x86_64"
 Warning: Observed package id 'build-tools;35.0.0' in inconsistent location '/home/user/.android/build-tools/latest' (Expected '/home/user/.android/build-tools/35.0.0')
 Warning: Already observed package id 'build-tools;35.0.0' in '/home/user/.android/build-tools/35.0.0'. Skipping duplicate at '/home/user/.android/build-tools/latest'
@@ -181,7 +181,7 @@ I often use this when I've made a mess of the environment and want to start over
 
 Now that we have created a emulator, lets fire it up. You can list available AVDs in the system from the `emulator` with something like: `emulator -list-avds`. We're using our `android13` AVD, so we can start the emulator with:
 
-```
+```sh
 emulator -avd android13
 ```
 
@@ -191,7 +191,7 @@ Personally, I never you use this interface unless I have to. It doesn't perform 
 
 Another thing that I don't like about running `emulator -avd android13` is that it doesn't provide the console output I want to see. When I'm working in a device, I want to know where the kernel is struggling, I want to see if I'm in a boot loop, I want to monitor device state changes, and I want to have a general understanding the the system is up and responsive (even if my application is locked up or halted).  To do this, I use a specific set of options with `emulator`:
 
-```
+```sh
 emulator -avd android13 -no-snapshot -writable-system -show-kernel -verbose -no-audio -no-window
 ```
 
@@ -210,7 +210,7 @@ Great! We should now have an emulator running! I recommend that you disconnect a
 
 By default if you run `adb devices`, you'll likely now see the following (assuming the AVD/emulator is running):
 
-```
+```text
 (adb-venv) $ adb devices
 List of devices attached
 emulator-5554   device
@@ -261,7 +261,7 @@ In the following list, <kbd>MOD</kbd> is the shortcut modifier. By default, it's
 It can be changed using `--shortcut-mod`. Possible keys are `lctrl`, `rctrl`,
 `lalt`, `ralt`, `lsuper` and `rsuper`. For example:
 
-```bash
+```sh
 # use RCtrl for shortcuts
 scrcpy --shortcut-mod=rctrl
 

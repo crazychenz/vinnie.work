@@ -5,6 +5,13 @@
 # sudo apt install texlive-xetex texlive-latex-extra librsvg2-bin
 # sudo apt install texlive-fonts-extra
 
+# adjustbox babel-german background bidi collectbox csquotes everypage filehook
+# footmisc footnotebackref framed fvextra letltxmacro ly1 mdframed mweights
+# needspace pagecolor sourcecodepro sourcesanspro titling ucharcat
+# unicode-math upquote xecjk xurl zref draftwatermark
+
+# tlmgr install soul adjustbox babel-german background bidi collectbox csquotes everypage filehook footmisc footnotebackref framed fvextra letltxmacro ly1 mdframed mweights needspace pagecolor sourcecodepro sourcesanspro titling ucharcat unicode-math upquote xecjk xurl zref draftwatermark
+
 # Optionally Install From Upstream
 # wget https://github.com/jgm/pandoc/releases/download/<version>/pandoc-<version>-1-amd64.deb
 # sudo dpkg -i pandoc-<version>-1-amd64.deb
@@ -27,9 +34,12 @@ CHAPTERS="1-initial-app-inspect.md
 13-additional-topics.md
 14-realistic-use-case.md"
 
+# --number-sections
+# --listings
+
 echo "Building PDF."
-pandoc metadata.yaml $CHAPTERS --pdf-engine=xelatex --template=book.tex -o book.pdf
+pandoc metadata.yaml $CHAPTERS --toc --pdf-engine=xelatex --template=template/eisvogel.tex -o book.pdf
 
 echo "Building EPUB."
-pandoc metadata.yaml $CHAPTERS -o book.epub
+pandoc metadata.yaml $CHAPTERS --toc -o book.epub
 

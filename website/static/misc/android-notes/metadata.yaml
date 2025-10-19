@@ -1,14 +1,27 @@
 ---
+book: true
+titlepage: true
+# titlepage-logo: path to image
+# titlepage-background: path to image
+# page-background: path to image
+# page-background-opacity: 0.2
+toc-own-page: true
+toc-depth: 5
+# list of figures
+lof: true
+# list of tables
+lot: true
+# code-block-font-size: \small
+code-block-font-size: \scriptsize
+watermark: Vinnie
 title: "Android Application Analysis"
-abstract: "Android Application Analysis"
+# abstract: "Android Application Analysis"
 author: Vinnie
-
 date: "2025"
 lang: en-US
 #cover-image: cover.jpg
 rights: © 2025 Vinnie
 publisher: vinnie.work
-
 # titlepage-logo: /absolute/path/to/logo.pdf
 #acknowledgements: "I would like to thank my dog."
 #declaration: "I declare that this book was composed by myself."

@@ -32,7 +32,7 @@ unzip ../input/app-release.apk
 
 The output should resemble:
 
-```
+```text
 (adb-venv) $ ls
 AndroidManifest.xml  classes.dex        kotlin                        lib       res
 assets               DebugProbesKt.bin  kotlin-tooling-metadata.json  META-INF  resources.arsc
@@ -40,7 +40,7 @@ assets               DebugProbesKt.bin  kotlin-tooling-metadata.json  META-INF  
 
 Lets take a peek at `AndroidManifest.xml` (using a hex dump):
 
-```
+```text
 (adb-venv) $ xxd -g 1 -l 64 AndroidManifest.xml
 00000000: 03 00 08 00 ec 13 00 00 01 00 1c 00 fc 0a 00 00  ................
 00000010: 3a 00 00 00 00 00 00 00 00 00 00 00 04 01 00 00  :...............
@@ -59,7 +59,7 @@ pyaxml -i AndroidManifest.xml -o AndroidManifest-decoded.xml axml2xml
 
 Now you can see the actual XML:
 
-```
+```text
 (adb-venv) $ head -n 5 AndroidManifest-decoded.xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:ve
 rsionName="1.0" android:compileSdkVersion="35" android:compileSdkVersionCodename="15" package="com.exam
@@ -107,7 +107,7 @@ apktool d -o ./hellojni-extracted ./input/app-release.apk
 
 The output may look something like:
 
-```
+```text
 (adb-venv) $ apktool d -o ./hellojni-extracted ./input/app-release.apk
 I: Using Apktool 2.12.1 on app-release.apk with 8 threads
 I: Baksmaling classes.dex...
@@ -124,7 +124,7 @@ I: Copying unknown files...
 
 Looking at the `hellojni-extracted` folder we see:
 
-```
+```text
 (adb-venv) $ ls hellojni-extracted/
 AndroidManifest.xml  apktool.yml  assets  lib  original  res  smali  unknown
 ```
@@ -187,7 +187,7 @@ As a quick run through of _some_ of the aspects of smali, I've grabbed a couple 
 - The `.implements` is the fully qualified name for the interface being implemented.
 - The `.field` lines show the accessibility, type, and name of the class variable members. For example:
 
-  ```
+  ```text
   For: .field public final helloTextview:Landroid/widget/TextView;
     accessibility: public final
     field name: helloTextview
@@ -327,7 +327,7 @@ Once you have some efforts put into refactoring or injecting comments, please do
 
 Aside from the GUI, JADX also has a command line interface. The interface behaves a lot like apktool, except it includes the deobfuscation and decompilation. Running the following will net you the decompilation of Kotlin/Java/Smali code to the greatest extent JADX can. Sometimes you just want to use your own code editor when browsing.
 
-```
+```text
 (adb-venv) $ cd ~/apks/hellojni
 (adb-venv) $ jadx -d hellojni-decompiled ./input/app-release.apk
 INFO  - loading ...

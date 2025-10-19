@@ -239,7 +239,7 @@ adb shell dumpsys package com.reddit.frontpage
 
 After running that command, you'll get a flood of information in a structure like:
 
-```
+```text
 Activity Resolver Table:
   ...
 Receiver Resolver Table:

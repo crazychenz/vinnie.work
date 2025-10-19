@@ -13,24 +13,24 @@ sidebar_position: 110
 
 ## Acquire AOSP Code
 
-```
+```sh
 sudo apt update
 sudo apt install git curl python3 unzip openjdk-11-jdk repo
 ```
 
-```
+```sh
 mkdir -p ~/bin
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 export PATH=~/bin:$PATH
 ```
 
-```
+```sh
 mkdir ~/aosp
 cd ~/aosp
 ```
 
-```
+```sh
 repo init -u https://android.googlesource.com/platform/manifest -b android-14.0.0_r1
 ```
 
@@ -39,7 +39,7 @@ Branches: https://android.googlesource.com/platform/manifest/+refs
 
 Get all the things. Idempotent (can be rerun if interrupted.)
 
-```
+```sh
 repo sync -c -j$(nproc)
 ```
 
@@ -49,19 +49,19 @@ Note: The last time I downloaded AOSP in this manner it was over 128 GB (gigabyt
 
 Optionally avoid downloading full history:
 
-```
+```sh
 repo sync -c -j$(nproc) --no-tags --depth=1
 ```
 
 Optionally only download for a single device:
 
-```
+```sh
 repo sync -c -j$(nproc) device/google/cheetah device/google/cheetah-kernel vendor/google -l
 ```
 
 To build, get all the submodules:
 
-```
+```sh
 repo sync --fetch-submodules
 ```
 
@@ -76,12 +76,12 @@ cs.android.com
 
 Setup build environment:
 
-```
+```sh
 source build/envsetup.sh
 ```
 
 Configure for build target:
-```
+```sh
 # See available targets:
 lunch
 
@@ -97,13 +97,13 @@ lunch aosp_arm-eng
 
 Start the make:
 
-```
+```sh
 m -j$(nproc)
 ```
 
 Emulator build should be in:
 
-```
+```text
 out/target/product/generic_x86_64/
 ```
 

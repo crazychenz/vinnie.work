@@ -28,13 +28,13 @@ I should start by saying I have a disdain for Gradle about as much as cats have 
 
 ChatGPT describes Grade as:
 
-```
+```text
 Gradle is a build automation tool—a system that automates compiling, testing, packaging, and deploying software. It’s most commonly used in Android development, but it’s also widely used for Java, Kotlin, Groovy, C/C++, and even Python or JavaScript projects.
 ```
 
 Wikipedia further adds: 
 
-```
+```text
 Gradle builds on the concepts of Apache Ant and Apache Maven, and introduces a Groovy- and Kotlin-based domain-specific language contrasted with the XML-based project configuration used by Maven.
 ```
 
@@ -82,7 +82,7 @@ In Gradle, you often can run `./gradlew tasks` to see a list of target build com
 
 We'll now give the build a go. Before you begin though, I'd like to highlight to simplicity of the code. The hello-jni code's only real behavior is to get a string from native land into Java/Kotlin land. Knowing that, I want you to observe and understand the overhead added in by the build system! Ok, let's try to build the hello-jni subproject in the NDK samples project:
 
-```
+```text
 (adb-venv) $ ./gradlew :hello-jni:app:assembleRelease
 Downloading https://services.gradle.org/distributions/gradle-8.13-bin.zip
 .............10%.............20%.............30%.............40%.............50%.............60%.......
@@ -164,14 +164,14 @@ sdkmanager "cmake;4.1.0"
 
 Before we being another build attempt, I want to highlight or reiterate the Gradle home directory caching:
 
-```
+```text
 (adb-venv) $ du -d 1 -h ~/.gradle/
 1.5G    /home/user/.gradle/
 ```
 
 Right, lets try the build again:
 
-```
+```text
 (adb-venv) $ ./gradlew :hello-jni:app:assembleRelease
 
 [Incubating] Problems report is available at: file:///home/user/apks/source-projects/ndk-samples/build
@@ -205,7 +205,7 @@ At this point, I'd like to point out that the APK is not signed. For our purpose
 
 For giggles, lets attempt to install the unsigned APK into our emulator. I'm going to verify the emulator is still running:
 
-```
+```text
 (adb-venv) $ adb devices
 List of devices attached
 emulator-5554   device
@@ -213,7 +213,7 @@ emulator-5554   device
 
 Now lets install the APK (from `~/apks/hellojni/input`):
 
-```
+```text
 (adb-venv) $ adb install -r ./input/app-release-unsigned.apk
 Performing Streamed Install
 adb: failed to install ./input/app-release-unsigned.apk: Failure [INSTALL_PARSE_FAILED_NO_CERTIFICATES:
@@ -243,7 +243,7 @@ apksigner sign --ks ~/apks/keys/my-release-key.jks --ks-key-alias my-key-alias \
 
 Again, try to install the APK to the emulator again:
 
-```
+```text
 (adb-venv) $ adb install -r ./input/app-release.apk
 Performing Incremental Install
 Serving...
@@ -258,7 +258,7 @@ At this point, you can open `scrcpy` and launch "HelloJni". You'll see a simple 
 
 We can also see the app is installed by listing installed 3rd party packages with: `adb shell pm list packages -3`.
 
-```
+```text
 (adb-venv) $ adb shell pm list packages -3
 package:com.example.hellojni
 ```

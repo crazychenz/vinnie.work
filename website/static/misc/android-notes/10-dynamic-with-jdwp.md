@@ -33,7 +33,7 @@ When running a process with a debugger, you can debug the process with something
 
 Oracle states JDWP as:
 
-```
+```text
 The Java Debug Wire Protocol (JDWP) is the protocol used for communication between a debugger and the Java virtual machine (VM) which it debugs (hereafter called the target VM).
 ```
 
@@ -133,13 +133,13 @@ cat <(echo "suspend") - | jdb -attach localhost:8700
 
 See available commands:
 
-```
+```text
 > help
 ```
 
 Set a break-point.
 
-```
+```text
 > stop at com.example.hellojni.HelloJni.onCreate
 Deferring breakpoint com.example.hellojni.HelloJni.onCreate.
 It will be set after the class is loaded.
@@ -149,7 +149,7 @@ TODO: Something about unloaded class breakpoints.
 
 resume - You can resume by a thread by ID (`resume 21574`), or omit thread-id to resume everything:
 
-```
+```text
 > resume
 All threads resumed.
 > Set deferred breakpoint com.example.hellojni.HelloJni.onCreate
@@ -182,7 +182,7 @@ bci=0
 
 Get a list of threads in application. Note: Only VM threads are halted by jdb. Native threads keep going unless halted at the native level.
 
-```
+```text
 > threads
 Group system:
   (java.lang.Thread)21574 Signal Catcher                     cond. waiting
@@ -203,24 +203,24 @@ Group main:
 
 Set default thread
 
-```
+```text
 thread 21573
 ```
 
 
-```
+```text
 main[1] locals
 Method arguments:
 Local variables:
  = null
 ```
 
-```
+```text
 main[1] list
 Source file not found: HelloJni.kt
 ```
 
-```
+```text
 main[1] wherei
   [1] com.example.hellojni.HelloJni.onCreate (HelloJni.kt:25), pc = 0
   [2] android.app.Activity.performCreate (Activity.java:8,305), pc = 94
@@ -243,25 +243,25 @@ main[1] wherei
 
 See the instance id of the **this** object.
 
-```
+```text
 print this
 ```
 
 See the fields of the **this** object.
 
-```
+```text
 dump this
 ```
 
 Print all of the loaded classes (usually thousands).
 
-```
+```text
 classes
 ```
 
 class <id>
 
-```
+```text
 main[1] class com.example.hellojni.HelloJni
 Class: com.example.hellojni.HelloJni
 extends: androidx.appcompat.app.AppCompatActivity
@@ -271,7 +271,7 @@ main[1]
 
 methods <id>
 
-```
+```text
 main[1] methods com.example.hellojni.HelloJni
 ** methods list **
 com.example.hellojni.HelloJni <clinit>()
@@ -287,7 +287,7 @@ androidx.appcompat.app.AppCompatActivity initDelegate()
 
 fields <id>
 
-```
+```text
 main[1] fields com.example.hellojni.HelloJni
 ** fields list **
 com.example.hellojni.HelloJni$Companion Companion
@@ -304,7 +304,7 @@ stepi - instruction step
 
 Continue execution until next breakpoint.
 
-```
+```text
 cont
 ```
 

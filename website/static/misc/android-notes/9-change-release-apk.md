@@ -112,7 +112,7 @@ Make it executable with `chmod +x ${ANDROID_HOME}misc-tools/make-debuggable`.
 
 An example run from `~/apks/hellojni` might look like:
 
-```
+```text
 (adb-venv) $ make-debuggable input/app-release-unsigned.apk output/app-release-dbg.apk ../keys/my-release-key.jks my-key-alias
 I: Using Apktool 2.12.1 on app-release-unsigned.apk with 6 threads
 I: Copying raw classes.dex file...
@@ -146,7 +146,7 @@ Note: It will asks you to enter a password for the keystore and maybe the key. I
 
 Once that is done, you'll find the output in `~/apks/hellojni/output/app-release-dbg.apk`. You can partially verify things by installing the APK over the existing installation:
 
-```
+```text
 (adb-venv) $ adb install -r output/app-release-dbg.apk
 Performing Incremental Install
 Serving...
