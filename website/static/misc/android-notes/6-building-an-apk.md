@@ -1,3 +1,8 @@
+---
+sidebar_position: 60
+---
+
+# Building An APK From Source
 
 <!-- 
 TODO: Need to move the `~/apks` workspace convention to earlier in materal.

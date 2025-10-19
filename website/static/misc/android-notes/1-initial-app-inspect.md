@@ -1,3 +1,9 @@
+---
+sidebar_position: 10
+---
+
+# Initial Application Inspection
+
 <!-- 
 - Application Overt Inspection:
   - Overt usage?

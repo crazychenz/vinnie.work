@@ -1,3 +1,7 @@
+---
+sidebar_position: 120
+---
+# JvmDebugger
 <!-- 
 
 - Custom debugger and dynamic analysis:

@@ -1,4 +1,8 @@
+---
+sidebar_position: 70
+---
 
+# Static APK Analysis
 
 ## APK Overview
 

@@ -1,4 +1,8 @@
-    
+---
+sidebar_position: 100
+---
+# Dynamic Analysis with JDWP
+
 <!--     
     - What is JDWP and the JDWP agent.
       - Compare with Frida agent.

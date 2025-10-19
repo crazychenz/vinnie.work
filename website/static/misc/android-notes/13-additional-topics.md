@@ -1,3 +1,7 @@
+---
+sidebar_position: 130
+---
+# Additional Topics
 <!-- 
 - Frida embedded in application APK for non-root access
 - Android 14+ debug research

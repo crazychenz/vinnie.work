@@ -1,3 +1,10 @@
+---
+sidebar_position: 40
+---
+
+# Setting Up An Emulator
+
+<!-- 
 - Setup (emulator and analysis) environment
   - Setup openjdk-17
   - Setup commandline tools
@@ -5,7 +12,7 @@
   - Install target system image (e.g. x86_64 Android 13)
   - Install scrcpy
   - Install jadx
-  - Install pipenv: androguard, thirdparty tools, frida, fuzzyfinder, pure-python-adb-reborn, mitmproxy
+  - Install pipenv: androguard, thirdparty tools, frida, fuzzyfinder, pure-python-adb-reborn, mitmproxy -->
 
 ## QEMU - Generic Emulator
 
