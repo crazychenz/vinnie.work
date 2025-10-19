@@ -1,26 +1,4 @@
 
-
-<!-- 
-- Altering APKs:
-  - Two-way vs One-way extractions.
-  - Minimal Extraction for reconstruction.
-  - Reconstruct APK to include debuggable
-    - pyaxml
-    - Zipalign
-    - Apksigner
-  - TODO: Dex modification (updating CRC? updating signatures?)
-    - 0x08 - Alder32 of everything except first 12 bytes.
-    - 0x0C - Sha1 of everything except first 32 bytes.
-
-- Make APK debuggable:
-      - Complexities with reconstruction
-      - Updating only manifest (axml vs xml)
-      - zipalign page size 4096
-      - apk signing
-    - Install debuggable APK as application on emulator
-
-   -->
-
 ## APK Reconstruction
 
 When you have a build system like Gradle and source code for your Android application all wired up, you are building an APK. When you have the already built APK and you want to make a change and you don't have the source code or build system, you are doing something else entirely. Let's call it reconstruction.
@@ -64,85 +42,116 @@ How do you make an Android application debuggable? There are two key things you 
 
 ## Declaring The APK Debuggable
 
-I should probably streamline this script a bit better (and I probably will once I convert it to python or something). For now, this is the script that I have that I use to add the attributes to the XML element in `AndroidManifest.xml`.
+Below is a quick bash script that I've written to streamline the process of extracting an APK (minimally), modifying the AndroidManifest to make it debuggable, and then packaging it all back up again for install into our Android device or emulator.
 
-Note: It does resign the APK with my key. If the application was already installed on the Android device from another developer, you'll have to uninstall it to install the same APK signed by a different developer. You'll also likely lose all of your application specific data in the process. This is why I normally try to do all of this work on a stateless emulator whenever I can.
+Note: It does resign the APK with our keystore and key. If the application was already installed on the Android device from another developer, you'll have to uninstall the application to install the same APK signed by a different developer. **You may lose all of your application specific data in the process.** This is why I normally try to do all of this work on a stateless emulator whenever I can.
+
+Create the file `${ANDROID_HOME}misc-tools/make-debuggable` and populate it with:
 
 ```sh
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
 
-OUTPUT=./output/
-
-APK_SRC_PATH=$1
-APK_DST_PATH=${OUTPUT}$2
-
-APKTOOL="java -jar jars/apktool_2.12.0.jar"
-BAKSMALI="java -jar jars/baksmali-3.0.9-fat.jar"
-
-CACHE=./cache/
-XTR_APK=${CACHE}extracted-apk/
-KS_PREFIX=./keys/
-KEYSTORE=${KS_PREFIX}my-release-key.jks
-KEYNAME=my-key-alias
-KSPASS=password
-APKSIGNER_FLAGS="--ks $KEYSTORE --ks-key-alias $KEYNAME"
-APKSIGNER_FLAGS="$APKSIGNER_FLAGS --ks-pass pass:${KSPASS} --key-pass pass:${KSPASS}"
-
-mkdir -p ${OUTPUT} ; mkdir -p ${KS_PREFIX}
-
+# Check for dependencies
+cmd_deps="apktool keytool apksigner zipalign java pyaxml"
+cmd_deps_not_found=""
 for cmd in keytool apksigner zipalign java pyaxml; do
   if [ -z "$(which $cmd 2>/dev/null)" ]; then
-    echo "Need $cmd in PATH."
-    exit 1
+    echo "$cmd not found in \$PATH."
+    cmd_deps_not_found="$cmd_deps_not_found $cmd"
   fi
 done
-
-if [ ! -e "${KS_PREFIX}" ]; then
-  echo "Making keystore and signing key."
-  mkdir ${KS_PREFIX} \
-  && keytool -genkey -v -keystore ${KEYSTORE} -keyalg RSA \
-    -keysize 2048 -validity 10000 -alias ${KEYNAME}
+if [ -n "$cmd_deps_not_found" ]; then
+  echo "Missing depedencies found: $cmd_deps_not_found"
+  echo "Stopping command."
+  exit 1
 fi
 
-if [ ! -e "${APK_DST_PATH}" ]; then
-  rm -rf ${CACHE} ; mkdir -p ${CACHE}
-
-  # Creating a resigned version of original.
-  apksigner sign ${APKSIGNER_FLAGS} --out ${CACHE}original-signed.apk ${APK_SRC_PATH}
-
-  echo "Extracting apk with apktool (without resources or sources)."
-  rm -rf ${XTR_APK}
-  ${APKTOOL} d --no-res --no-src -o ${XTR_APK} ${APK_SRC_PATH}
-
-  echo "Decoding axml AndroidManifest"
-  cp ${XTR_APK}AndroidManifest.xml ${CACHE}AndroidManifest.original.axml
-  pyaxml -i ${CACHE}AndroidManifest.original.axml -o ${CACHE}AndroidManifest.xml axml2xml
-
-  sed -i '/<application/s/>/ android:profileableFromShell="true" android:debuggable="true">/' ${CACHE}AndroidManifest.xml
-
-  echo "Serializeing AndroidManifest xml to axml."
-  pyaxml -i ${CACHE}AndroidManifest.xml -o ${XTR_APK}AndroidManifest.xml xml2axml
-
-  echo "Rebuilding, aligning, and signing."
-  ${APKTOOL} b -o ${CACHE}unaligned.apk ${XTR_APK} \
-  && zipalign -f -v -p 4096 ${CACHE}unaligned.apk ${CACHE}aligned.apk \
-  && apksigner sign ${APKSIGNER_FLAGS} --out ${APK_DST_PATH} ${CACHE}aligned.apk
+# Fetch arguments or exist with usage
+script_name=$(basename $0)
+if [ "$#" -ne 4 ]; then
+    echo "Usage: $script_name <nodbg.apk> <output.apk> <keystore.jks> <keyname>"
+    exit 1
 fi
+nodbg_apk=$1
+output_apk=$2
+keystore=$3
+keyname=$4
 
-if [ ! -e "${CACHE}smali-src" ]; then
-  echo "Extracting smali with byte code offsets."
-  mkdir -p ${CACHE}smali-src
-  ${BAKSMALI} d --code-offsets ${XTR_APK}build/apk/classes.dex -o ${CACHE}smali-src
-  ${BAKSMALI} d --code-offsets ${XTR_APK}build/apk/classes2.dex -o ${CACHE}smali-src
-fi
+# Create working folder.
+tmpdir=$(mktemp -d)
 
+# Extracting APK with apktool
+apktool d --no-res --no-src -o $tmpdir/extraction $nodbg_apk
+
+# Decoding axml AndroidManifest
+pyaxml -i $tmpdir/extraction/AndroidManifest.xml -o $tmpdir/AndroidManifest.xml axml2xml
+
+# Modify decoded AndroidManifest
+sed -i '/<application/s/>/ android:profileableFromShell="true" android:debuggable="true">/' \
+  $tmpdir/AndroidManifest.xml
+
+# Encode AndroidManifest
+pyaxml -i $tmpdir/AndroidManifest.xml -o $tmpdir/extraction/AndroidManifest.xml xml2axml
+
+# Rebuild APK, zipalign, sign
+APKSIGNER_FLAGS="--ks $keystore --ks-key-alias $keyname"
+apktool b -o "$tmpdir/unaligned.apk" $tmpdir/extraction \
+  && zipalign -f -v -p 4096 "$tmpdir/unaligned.apk" "$tmpdir/aligned.apk" \
+  && apksigner sign ${APKSIGNER_FLAGS} --out $output_apk "$tmpdir/aligned.apk"
+
+# Wipe the working folder
+rm -rf $tmpdir
 ```
 
-<!-- ## Modifications to the DEX
+Make it executable with `chmod +x ${ANDROID_HOME}misc-tools/make-debuggable`.
 
-TODO: Write about modifications to the DEX 
+An example run from `~/apks/hellojni` might look like:
 
--->
+```
+(adb-venv) $ make-debuggable input/app-release-unsigned.apk output/app-release-dbg.apk ../keys/my-release-key.jks my-key-alias
+I: Using Apktool 2.12.1 on app-release-unsigned.apk with 6 threads
+I: Copying raw classes.dex file...
+I: Copying raw resources...
+I: Copying raw manifest...
+I: Copying original files...
+I: Copying assets...
+I: Copying lib...
+I: Copying unknown files...
+I: Using Apktool 2.12.1 on app-release-unsigned.apk with 6 threads
+I: Copying raw classes.dex file...
+I: Checking whether resources have changed...
+I: Copying raw resources...
+I: Building apk file...
+I: Importing assets...
+I: Importing lib...
+I: Importing unknown files...
+I: Built apk into: /tmp/tmp.ukYQKw2MoY/unaligned.apk
+Verifying alignment of /tmp/tmp.ukYQKw2MoY/aligned.apk (4096)...
+      88 res/color-v31/m3_ref_palette_dynamic_neutral_variant98.xml (OK - compressed)
+     394 res/color-v31/m3_ref_palette_dynamic_neutral_variant96.xml (OK - compressed)
+... snip ...
+ 7516427 kotlin-tooling-metadata.json (OK - compressed)
+ 7516769 DebugProbesKt.bin (OK - compressed)
+Verification succesful
+Keystore password for signer #1:
+(adb-venv) $ 
+```
+
+Note: It will asks you to enter a password for the keystore and maybe the key. If you used the suggestion that we did before, it'll likely be the super secure password: `password`.
+
+Once that is done, you'll find the output in `~/apks/hellojni/output/app-release-dbg.apk`. You can partially verify things by installing the APK over the existing installation:
+
+```
+(adb-venv) $ adb install -r output/app-release-dbg.apk
+Performing Incremental Install
+Serving...
+All files should be loaded. Notifying the device.
+Success
+Install command complete in 162 ms
+(adb-venv) $
+```
+
 
 
 
