@@ -259,7 +259,7 @@ Print all of the loaded classes (usually thousands).
 classes
 ```
 
-class <id>
+`class <id>`
 
 ```text
 main[1] class com.example.hellojni.HelloJni
@@ -269,7 +269,7 @@ nested: com.example.hellojni.HelloJni$Companion
 main[1]
 ```
 
-methods <id>
+`methods <id>`
 
 ```text
 main[1] methods com.example.hellojni.HelloJni
@@ -285,7 +285,7 @@ androidx.appcompat.app.AppCompatActivity initDelegate()
 ... over 1000 more lines of methods ...
 ```
 
-fields <id>
+`fields <id>`
 
 ```text
 main[1] fields com.example.hellojni.HelloJni
