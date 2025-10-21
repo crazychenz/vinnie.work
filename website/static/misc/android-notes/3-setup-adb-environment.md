@@ -117,6 +117,7 @@ pip show pure-python-adb-reborn &>/dev/null || pip install pure-python-adb-rebor
 pip show androguard &>/dev/null || pip install androguard
 pip show pyaxml &>/dev/null || pip install pyaxml
 pip show fuzzyfinder &>/dev/null || pip install fuzzyfinder
+pip show mitmproxy &>/dev/null || pip install mitmproxy
 
 exec bash -i
 ```
