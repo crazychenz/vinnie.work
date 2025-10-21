@@ -62,6 +62,16 @@ sudo ip netns exec ns0 bridge link set dev veth1 learning off
 sudo ip netns exec ns0 bridge link set dev tap0 learning off
 sudo ip netns exec ns0 ip addr add 10.0.100.2/24 dev br0
 
+# TODO: Consider this format:
+# sudo ip netns exec ns0 bash <<'EOF'
+# ip tuntap add dev tap0 mode tap
+# ip link set dev veth1 master br0
+# ip link set dev tap0 master br0
+# bridge link set dev veth1 learning off
+# bridge link set dev tap0 learning off
+# ip addr add 10.0.100.2/24 dev br0
+# EOF
+
 sudo ip netns exec ns0 ip link set dev    lo up
 sudo ip netns exec ns0 ip link set dev veth1 up
 sudo ip netns exec ns0 ip link set dev  tap0 up
