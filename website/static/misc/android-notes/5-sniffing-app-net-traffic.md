@@ -53,30 +53,23 @@ bridge link set dev tap0 learning off
 sudo ip netns add ns0
 sudo ip link add veth0 type veth peer name veth1
 sudo ip link set veth1 netns ns0
-sudo ip netns exec ns0 ip link add name br0 type bridge
+
 # TODO: Consider a tap dev in initns as well?
-sudo ip netns exec ns0 ip tuntap add dev tap0 mode tap
-sudo ip netns exec ns0 ip link set dev veth1 master br0
-sudo ip netns exec ns0 ip link set dev tap0 master br0
-sudo ip netns exec ns0 bridge link set dev veth1 learning off
-sudo ip netns exec ns0 bridge link set dev tap0 learning off
-sudo ip netns exec ns0 ip addr add 10.0.100.2/24 dev br0
+sudo ip netns exec ns0 bash <<'EOF'
+  ip link add name br0 type bridge
+  ip tuntap add dev tap0 mode tap
+  ip link set dev veth1 master br0
+  ip link set dev tap0 master br0
+  bridge link set dev veth1 learning off
+  bridge link set dev tap0 learning off
+  ip addr add 10.0.100.2/24 dev br0
 
-# TODO: Consider this format:
-# sudo ip netns exec ns0 bash <<'EOF'
-# ip tuntap add dev tap0 mode tap
-# ip link set dev veth1 master br0
-# ip link set dev tap0 master br0
-# bridge link set dev veth1 learning off
-# bridge link set dev tap0 learning off
-# ip addr add 10.0.100.2/24 dev br0
-# EOF
-
-sudo ip netns exec ns0 ip link set dev    lo up
-sudo ip netns exec ns0 ip link set dev veth1 up
-sudo ip netns exec ns0 ip link set dev  tap0 up
-sudo ip netns exec ns0 ip link set dev   br0 up
-sudo ip netns exec ns0 ip route add default via 10.0.100.1
+  ip link set dev    lo up
+  ip link set dev veth1 up
+  ip link set dev  tap0 up
+  ip link set dev   br0 up
+  ip route add default via 10.0.100.1
+EOF
 
 sudo ip addr add 10.0.100.1/24 dev veth0
 sudo ip link set veth0 up
@@ -88,48 +81,53 @@ Note: Flush addresses with `# ip -4 addr flush dev "$dev" 2>/dev/null || true`
 **Prepare TPROXY setup:**:
 
 ```sh
-# 0) variables
 export PROXY_PORT=3129
 export FWMARK=1
 export NFT_TABLE=mitm
 
-# 1) allow binding non-local addresses
+# List tables: sudo nft list tables
+# Show table : sudo nft list table ip filter
+# Show chain : sudo nft list chain ip filter FORWARD
+
+# enable kernel options for mitm caps
 sudo sysctl -w net.ipv4.ip_forward=1
 sudo sysctl -w net.ipv4.ip_nonlocal_bind=1
+for i in all default veth0 wlo1; do
+  sysctl -w net.ipv4.conf.$i.rp_filter=0
+done
 
-# 2) create an inet table and prerouting chain (if not already present)
-sudo nft add table inet $NFT_TABLE
-sudo nft add chain inet $NFT_TABLE prerouting { type filter hook prerouting priority mangle\; }
+# **prerouting** marking
+sudo nft add table ip nat || true
+sudo nft add chain ip nat prerouting { type nat hook prerouting priority 0 \; } || true
+sudo nft add rule  ip nat prerouting \
+  iifname veth0 \
+  meta l4proto tcp \
+  meta mark set $FWMARK
+# tcp dport != 3129
+# counter
 
-# 3) mark TCP packets arriving on veth0
-sudo nft add rule inet $NFT_TABLE prerouting iifname veth0 \
-  meta l4proto tcp meta mark set $FWMARK
+# REDIRECT only packets that were marked
+# - When TCP (this transport match required)
+# - When marked with $FWMARK
+# - Redirect to port 3129 (i.e. accept and redirect)
+sudo nft add rule ip nat prerouting \
+  meta l4proto tcp \
+  meta mark $FWMARK \
+  redirect to :3129
 
-# 4) deliver marked TCP packets to local transparent socket (tproxy)
-sudo nft add rule inet $NFT_TABLE prerouting iifname veth0 \
-  meta l4proto tcp meta mark $FWMARK tproxy to :$PROXY_PORT
-
-# 5) policy routing: route marked packets to local table so replies are correct
-sudo ip rule add fwmark $FWMARK lookup 100
-sudo ip route add local 0.0.0.0/0 dev lo table 100
-
-# Masquerade for things not TPROXY-ED (UDP, ICMP, etc)
-sudo nft add table ip nat
-sudo nft add chain ip nat postrouting { type nat hook postrouting priority 100 \; }
-sudo nft add rule ip nat postrouting oifname wlo1 masquerade
-
-# Docker drops all forwarded packets. Override that here.
-# generic: sudo nft insert rule ip filter FORWARD accept
+# **forward** acceptance
+#sudo nft add table inet filter || true
+# TODO: Try with our "inet filter forward" chain instead of DOCKER's "ip filter FORWARD" chain
 sudo nft add rule ip filter FORWARD iif "veth0" oif "wlo1" accept
 sudo nft add rule ip filter FORWARD iif "wlo1" oif "veth0" accept
-# sudo sysctl net.ipv4.conf.all.rp_filter
-# sudo sysctl net.ipv4.conf.default.rp_filter
-# sudo sysctl net.ipv4.conf.veth0.rp_filter
-# sudo sysctl net.ipv4.conf.wlo1.rp_filter
+sudo nft add rule ip filter FORWARD ct state established,related accept
 
-# 6) load kernel modules if needed (some kernels require these modules)
-#sudo modprobe nf_defrag_ipv4 nf_conntrack nf_conntrack_proto_tcp nf_conntrack_ipv4 xt_TPROXY nf_tproxy_core
+# **postrouting** masquerade
+sudo nft add chain ip nat postrouting { type nat hook postrouting priority 100 \; } || true
+sudo nft add rule  ip nat postrouting oifname wlo1 masquerade
 ```
+
+**toolbox, toybox**
 
 **Start Emulator**:
 
@@ -155,7 +153,10 @@ adb shell ping 9.9.9.9
 **Start Proxy**:
 
 ```
-mitmproxy --mode transparent --listen-port $PROXY_PORT
+sudo -E env "PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin" \
+  mitmproxy --mode transparent --listen-port 3129 --listen-host 0.0.0.0
+#mitmproxy --mode transparent --listen-port $PROXY_PORT --listen-host 0.0.0.0
+# Consider: sudo setcap 'cap_net_bind_service,cap_net_admin,cap_net_raw+ep' "$(command -v mitmproxy)"
 ```
 
 
