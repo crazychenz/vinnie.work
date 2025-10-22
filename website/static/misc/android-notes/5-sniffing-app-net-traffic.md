@@ -152,8 +152,24 @@ adb shell ping 9.9.9.9
 
 **Start Proxy**:
 
+mitmproxy - used for exploring flows
+- save flows for HAR and JSON export
+- using mitmproxy (transparently) with SSLKEYLOGFILE forces the TLS secrets out for us
+  - with the key, we can do tcpdump in parallel and use wireshark + SSLKEYLOGFILE to decrypt pcaps
+  - Note: cert pinning will block this
+
+Net result:
+- Pcaps with TLS traffic
+- TLS secrets to get decrypted TLS streams
+- mitmproxy flows
+- decrypted HAR files
+- decrypted JSON files
+  
+To decrypt from wireshark: Hamburger -> Edit -> Preferences -> Protocols -> TLS -> \
+  "(Pre)-Master-Secret log filename" = $SSLKEYLOGFILE
+
 ```
-sudo -E env "PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin" \
+sudo -E env "PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin" "SSLKEYLOGFILE=~/apks/pcaps/sslkeylog.txt"\
   mitmproxy --mode transparent --listen-port 3129 --listen-host 0.0.0.0
 #mitmproxy --mode transparent --listen-port $PROXY_PORT --listen-host 0.0.0.0
 # Consider: sudo setcap 'cap_net_bind_service,cap_net_admin,cap_net_raw+ep' "$(command -v mitmproxy)"
