@@ -58,3 +58,7 @@ main > .container {
   /*background-color: #333333;*/
   /*box-sizing: border-box;*/
 }
+
+.only-pandoc {
+  display: none !important;
+}
