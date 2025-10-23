@@ -1,9 +1,12 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.2.8 Chrome/140.0.7339.240 Electron/38.4.0 Safari/537.36" version="28.2.8">
   <diagram name="Page-1" id="8hV8KdCZCJpQ9xhhtPbG">
-    <mxGraphModel dx="706" dy="632" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="747" dy="826" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="ILZ2h2t6b2l2il-okuG9-1" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" parent="1" vertex="1">
+          <mxGeometry width="600" height="500" as="geometry" />
+        </mxCell>
         <mxCell id="yfFJ3O0YZXBXTEFjoLHk-2" value="Emulator Network Namespace (ns0)&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=bottom;" parent="1" vertex="1">
           <mxGeometry x="270" y="310" width="310" height="180" as="geometry" />
         </mxCell>
@@ -16,8 +19,17 @@
         <mxCell id="yfFJ3O0YZXBXTEFjoLHk-7" value="veth1&lt;div&gt;192.168.123.2&lt;/div&gt;&lt;div&gt;default gateway&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" parent="1" vertex="1">
           <mxGeometry x="465" y="290" width="90" height="50" as="geometry" />
         </mxCell>
+        <mxCell id="CDCOIgtLenSO2hJEIrkU-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="yfFJ3O0YZXBXTEFjoLHk-6" target="yfFJ3O0YZXBXTEFjoLHk-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
         <mxCell id="yfFJ3O0YZXBXTEFjoLHk-6" value="veth0&lt;div&gt;192.168.123.1&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#76608a;fontColor=#ffffff;strokeColor=#432D57;" parent="1" vertex="1">
           <mxGeometry x="465" y="190" width="90" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="yfFJ3O0YZXBXTEFjoLHk-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="yfFJ3O0YZXBXTEFjoLHk-17" target="yfFJ3O0YZXBXTEFjoLHk-19" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yfFJ3O0YZXBXTEFjoLHk-17" value="Fwd To Internet" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" parent="1" vertex="1">
+          <mxGeometry x="110" y="110" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yfFJ3O0YZXBXTEFjoLHk-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="yfFJ3O0YZXBXTEFjoLHk-19" target="yfFJ3O0YZXBXTEFjoLHk-20" edge="1">
           <mxGeometry relative="1" as="geometry" />

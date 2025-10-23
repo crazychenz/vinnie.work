@@ -37,8 +37,16 @@ CHAPTERS="1-initial-app-inspect.md
 # --number-sections
 # --listings
 
+# NOTE: Ensure images have sufficiently high DPI. A standard 96 DPI image from a screenshot
+#       will be oversized in the PDF. Try something like 300DPI or higher. FYI, most home
+#       inkjet printers are 300-600 DPI, so this lines up. You can scale image DPI up and
+#       down all day long and it will create zero pixel loss. Only the DPI header value
+#       changes.
+
 echo "Building PDF."
-pandoc metadata.yaml $CHAPTERS --toc --pdf-engine=xelatex --template=template/eisvogel.tex -o book.pdf
+pandoc metadata.yaml $CHAPTERS \
+  --toc --pdf-engine=xelatex --template=template/eisvogel.tex \
+  --lua-filter=pandoc-filter.lua -o book.pdf
 
 echo "Building EPUB."
 pandoc metadata.yaml $CHAPTERS --toc -o book.epub

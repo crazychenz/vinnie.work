@@ -18,31 +18,92 @@ sidebar_position: 10
     - Other Online Research
  -->
 
-## Preface
-
-The approach to this material is a top down approach, or what I like to refer to as a glass down approach. We, as humans, usually are taking in the output of the device through a piece of glass via a screen or monitor and therefore its the top most layer of the system. From there we can delve into the attributes and an application, attributes or the device, the internals of the application, the internals of the system, and perhaps as deep as the operating system or firmware if desired. The key take away with a top down approach to analysis is that you can start at the point where you care, go as deep as required and stop. You shouldn't need to understand how to build a phone, write an operating system, and develop an Android application from scratch to understand some small facet of the thing.
-
-The following material is an advanced topic. I will attempt to describe my thought process as I write, but I will also attempt to keep the material dense and information rich. My hope is that densely written information can be referred to as many times as needed but not require a reader to scan through uneccessary fluff. There is also an expectation that the reader understand an unreasonable amount of base knowledge across a wide range of skill sets and technology. I accept that everyone has different levels of skills in different areas, but that does not mean we need to level set on every piece in material. Instead, I would encourage readers to break and familiarize yourself with unclear topics via your search engine or choice or your large language model of choice. I don't intend for the material to be fully groked, but instead used as a rough outline for how to approach the problem and a future reference for future me when I've flushed all of this knowledge from my head by moving on to other things.
-
-Note: For all specific procedures, assume a 64bit x86-ish (amd64/x86_64/x64) Linux based system running on bare metal (no VMs, but maybe containers) and no hypervisors other than KVM (no VMWare, no VirtualBox). I use Debian 12 and Debian 13 as my base Linux OS, so some procedures may reflect constraints and assumptions based on those distributions.
-
 ## Overt Application Analysis
 
 Ok, so you've downloaded an android application onto your device and its behaving in a way that draws your attention. Perhaps its asking for permissions that you never thought it required. Maybe its generating network traffic that you'd like to know more about. Or, my favorite, maybe you want the application to behave differently than the developer has intended, how do I change the code to make it work the way I want. All of these are topics that I plan to discuss in the following material.
 
-First thing is first. You need to understand everything you can about the application without creating any side effects. For those who know, there is no need to start rooting or connecting the phone to the computer for some super hackering. There is lots of information and research we can do to get started without "going deep".
+First thing is first. You should attempt to understand everything you can about the application in a non-invasive way. For those who have dabbled, you don't always need to start rooting or connecting the phone to the computer to begin analysis of an application. There is a large amount of information and research we can do to get started without "going deep".
 
 ### Settings Menu
 
 For starters, by using the Settings in Android, you should be able to quickly locate the Apps menu to see various information about the applications. The App settings menu for each application is where you'll likely find permissions that you've given to the application, default language, and statistic information like network data usage, battery usage, and device storage. This can all be useful information! Especially if you monitor it over time and over many different applications. Consider that an application's permissions may change over versions.
 
+![App Menu In Settings](./initial-app-inspect/settings-apps-menu-buttons.jpg)
+
+When clicking into the different menus of the App Info menu, you'll find additional information:
+
+<details>
+
+<summary>Reddit App Storage</summary>
+
+![Reddit App Info Button](./initial-app-inspect/reddit-app-storage.png)
+
+</details>
+
+<details>
+<summary>Reddit App Battery Usage</summary>
+
+![Reddit App Info Button](./initial-app-inspect/reddit-battery-usage.png)
+
+</details>
+<br />
+
+Looking at the storage and battery usage screens, are these the kinds of numbers you expected? Maybe you have an application that is using bluetooth that you never considered a bluetooth enabled application? Maybe an online only application is taking up multiple gigabytes? Lots of things can be tips or hints into questionable behavior that we can investigate further if desired.
+
 Finally, grabbing the application Version (possibly at the bottom) is a key peice of information. If you are examining a piece of software, having the exact version sometimes required for repeatability and consistency. Later on, if you are doing any memory related tasks, the memory offsets can change unless you have the exact right version. Of course all that said, versions are usually only the start of verification, usually you'll want to verify via CRC or hash as well. More on that later.
+
 
 ### Playstore Info
 
 If the application was downloaded from the Playstore, there may be a link to the store entry. The "App Support" entry may have information about the developers and relavant support information. This can be useful for additional documentation about the application that is not often accessed. Even downloading the privacy policy, usage agreements, and all the information about the sources of those documents can provide information about the intentions or uses of an applications permissions or network traffic. (Grab it all!)
 
+<details>
+<summary>Reddit Playstore Entry</summary>
+
+![Reddit App Info Button](./initial-app-inspect/reddit-store-full.jpg)
+
+</details>
+
+<details>
+<summary>Reddit Privacy Policy</summary>
+
+![Reddit App Info Button](./initial-app-inspect/reddit-privacy-policy.png)
+
+</details>
+
+<details>
+<summary>Other Reddit Legal Documents</summary>
+
+![Reddit App Info Button](./initial-app-inspect/reddit-privacy-policy-other-docs.png)
+
+</details>
+<br />
+
 The "About this app" entry will have additional descriptions, compatibility information, and current app info. You can even check on what permissions the application will request. But remember, this is about the current application as it is in the Playstore. The app information from the phone and the app information in the Playstore can be completely different unless you've updated in the last few minutes. But if you haven't grabbed the playstore information for your current version installed on the device, having the current Playstore entry at least is something to go on. Make sure any information you gather from here is associated with the advertised version number.
+
+<details>
+<summary>Reddit Playstore About App Entry</summary>
+
+![Reddit App Info Button](./initial-app-inspect/reddit-about-app-full.jpg)
+
+</details>
+
+<details>
+<summary>Reddit Playstore About App Permissions Entry</summary>
+
+![Reddit App Info Button](./initial-app-inspect/reddit-app-perms-full.jpg)
+
+</details>
+
+<details>
+<summary>Reddit Playstore Data Safety Entry</summary>
+
+![Reddit App Info Button](./initial-app-inspect/reddit-store-data-safety-full.jpg)
+
+</details>
+<br />
+
+One of the nice pieces of information you can grab from the Playstore About App entry is the Android compatibility number. Knowing that your application can run on Android 13 and below will make your life significantly easier once you get into more dynamic analysis of the application!
 
 ### Application Screens
 
@@ -50,9 +111,11 @@ GUI applications are normally developed as a set of forms or screens that are th
 
 To the greatest extent possible, you'll want to capture all of these aspects of the application. From a vulnerability analysis standpoint, they are all potential things included in the attack surface of an application. For example, an unvalidated text field can be used to gain access to an application or application server. A set of actions in a particular state can unlock hidden developer features of an application. Its also very nice to use GUI elements to navigate and discover the under the hood calls to external cloud services while doing deeper levels of analysis. All of this is to say, capture everything you can about an application or the area of an application that you care about.
 
+<!-- TODO: Develop a draw.io graph of screens and menus and what not. -->
+
 ### Reinstall Application
 
-After you've captured as much information as you can about an application, a useful task can be to reinstall the applicaiton to see what permissions it asks for or requires on install and startup. I would advise against this if you are stuck with using a Playstore Install that isn't the same version as your target version. But if you don't care what version we're working with yet, by all means do an upgrade by way of removing the existing version from the device, capturing all of the information about the applications install process that you can and then redo everything from above for the current version of the application. 
+After you've captured as much information as you can about an application, a useful task can be to reinstall the applicaiton to see what permissions it asks for and/or requires on install and startup. Note: I would advise against this if you are stuck using a Playstore Install that isn't the same version as your target version. But if you don't care what version we're working with yet, by all means do an upgrade by way of removing the existing version from the device, capturing all of the information about the applications install process that you can and then redo everything from above for the current version of the application. 
 
 ### External Research
 
