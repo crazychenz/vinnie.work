@@ -25,4 +25,8 @@ publisher: vinnie.work
 # titlepage-logo: /absolute/path/to/logo.pdf
 #acknowledgements: "I would like to thank my dog."
 #declaration: "I declare that this book was composed by myself."
+
+# \raggedbottom prevent vertical text spread if image floats off page.
+header-includes:
+  - \raggedbottom
 ---

@@ -7,31 +7,37 @@
 --   end
 -- end
 
+-- Relavant JSON: { "t": "RawBlock", "c": [ "html", "<!-- pagebreak -->" ] },
+function RawBlock(el)
+  -- Must use string.find(text, "", 1, true) or the "-" characters mess things up?
+  if el.format == 'html' and string.find(el.text, "<!-- pagebreak -->", 1, true) then
+    return pandoc.RawBlock("latex", "\\newpage")
+  end
+end
+
+function dump(t, indent)
+  indent = indent or 0
+  for k, v in pairs(t) do
+    local formatting = string.rep("  ", indent) .. k .. ": "
+    if type(v) == "table" then
+      print(formatting)
+      dump(v, indent + 1)
+    else
+      print(formatting .. tostring(v))
+    end
+  end
+end
+
 -- function Image(el)
---   local src = el.src
---   local options = {}
-  
---   -- Collect supported attributes
---   if el.attributes.width then
---     table.insert(options, "width=" .. el.attributes.width)
---   end
-  
---   if el.attributes.height then
---     table.insert(options, "height=" .. el.attributes.height)
---   end
-  
---   if el.attributes.scale then
---     table.insert(options, "scale=" .. el.attributes.scale)
---   end
-  
---   -- Build the command
---   local latex = "\\includegraphics"
-  
---   if #options > 0 then
---     latex = latex .. "[" .. table.concat(options, ",") .. "]"
---   end
-  
---   latex = latex .. "{" .. src .. "}"
-  
---   return pandoc.RawInline('latex', latex)
+--   print("--- IMAGE DUMP")
+--   dump(el)
+--   print("--- IMAGE ATTR DUMP")
+--   dump(el.attr)
+--   -- el.attr.attributes["placement"] = "H"
+--   -- el.attr.attributes["width"] = "100%"
+--   dump(el.attr.attributes)
+--   print("--- IMAGE ATTR DUMP (AFTER)")
+--   dump(el.attr)
+--   -- el.attributes["placement"] = "H"  -- 'H' means "here"
+--   return el
 -- end

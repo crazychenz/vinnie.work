@@ -2,6 +2,8 @@
 sidebar_position: 50
 ---
 
+<!-- pagebreak -->
+
 # Sniffing Application Traffic
 
 When analyzing the behaviors of an application, one of the most obvious things to look at is the network traffic. Nearly all applications on the mobile platform are doing some kind of network transmissions. Even offline applications are known to regularly send out telemetry information. Whether or not you are aware this is happening as a normal end-user can sometimes be credited to the EU's GDPR. But in nearly all cases, the developer would rather not bother you with any of that. "These are not the packets you are looking for." ::: waves hands :::.

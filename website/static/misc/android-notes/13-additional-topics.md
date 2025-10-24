@@ -1,6 +1,9 @@
 ---
 sidebar_position: 130
 ---
+
+<!-- pagebreak -->
+
 # Additional Topics
 <!-- 
 - Frida embedded in application APK for non-root access

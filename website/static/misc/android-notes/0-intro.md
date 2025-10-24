@@ -1,3 +1,13 @@
+---
+sidebar_position: 1
+---
+
+<!-- pagebreak -->
+
+# Overview
+
+<!-- TODO: Mention that all uniqueness starts with JvmDebugger. Talk about why we're going over all the already known things before getting to JvmDebugger ... its about putting it into the context of what is available and the gap that it intends to fill. -->
+
 ## Preface
 
 The approach to this material is a top down approach, or what I like to refer to as a glass down approach. We, as humans, usually are taking in the output of the device through a piece of glass via a screen or monitor and therefore its the top most layer of the system. From there we can delve into the attributes and an application, attributes or the device, the internals of the application, the internals of the system, and perhaps as deep as the operating system or firmware if desired. The key take away with a top down approach to analysis is that you can start at the point where you care, go as deep as required and stop. You shouldn't need to understand how to build a phone, write an operating system, and develop an Android application from scratch to understand some small facet of the thing.

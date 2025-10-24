@@ -2,6 +2,8 @@
 sidebar_position: 10
 ---
 
+<!-- pagebreak -->
+
 # Initial Application Inspection
 
 <!-- 
@@ -28,25 +30,7 @@ First thing is first. You should attempt to understand everything you can about 
 
 For starters, by using the Settings in Android, you should be able to quickly locate the Apps menu to see various information about the applications. The App settings menu for each application is where you'll likely find permissions that you've given to the application, default language, and statistic information like network data usage, battery usage, and device storage. This can all be useful information! Especially if you monitor it over time and over many different applications. Consider that an application's permissions may change over versions.
 
-![App Menu In Settings](./initial-app-inspect/settings-apps-menu-buttons.jpg)
-
-When clicking into the different menus of the App Info menu, you'll find additional information:
-
-<details>
-
-<summary>Reddit App Storage</summary>
-
-![Reddit App Info Button](./initial-app-inspect/reddit-app-storage.png)
-
-</details>
-
-<details>
-<summary>Reddit App Battery Usage</summary>
-
-![Reddit App Info Button](./initial-app-inspect/reddit-battery-usage.png)
-
-</details>
-<br />
+![Local App Information](./initial-app-inspect/settings-apps-button-full.png)
 
 Looking at the storage and battery usage screens, are these the kinds of numbers you expected? Maybe you have an application that is using bluetooth that you never considered a bluetooth enabled application? Maybe an online only application is taking up multiple gigabytes? Lots of things can be tips or hints into questionable behavior that we can investigate further if desired.
 
@@ -57,51 +41,9 @@ Finally, grabbing the application Version (possibly at the bottom) is a key peic
 
 If the application was downloaded from the Playstore, there may be a link to the store entry. The "App Support" entry may have information about the developers and relavant support information. This can be useful for additional documentation about the application that is not often accessed. Even downloading the privacy policy, usage agreements, and all the information about the sources of those documents can provide information about the intentions or uses of an applications permissions or network traffic. (Grab it all!)
 
-<details>
-<summary>Reddit Playstore Entry</summary>
-
-![Reddit App Info Button](./initial-app-inspect/reddit-store-full.jpg)
-
-</details>
-
-<details>
-<summary>Reddit Privacy Policy</summary>
-
-![Reddit App Info Button](./initial-app-inspect/reddit-privacy-policy.png)
-
-</details>
-
-<details>
-<summary>Other Reddit Legal Documents</summary>
-
-![Reddit App Info Button](./initial-app-inspect/reddit-privacy-policy-other-docs.png)
-
-</details>
-<br />
+![Playstore App Information](./initial-app-inspect/reddit-store-brief.png)
 
 The "About this app" entry will have additional descriptions, compatibility information, and current app info. You can even check on what permissions the application will request. But remember, this is about the current application as it is in the Playstore. The app information from the phone and the app information in the Playstore can be completely different unless you've updated in the last few minutes. But if you haven't grabbed the playstore information for your current version installed on the device, having the current Playstore entry at least is something to go on. Make sure any information you gather from here is associated with the advertised version number.
-
-<details>
-<summary>Reddit Playstore About App Entry</summary>
-
-![Reddit App Info Button](./initial-app-inspect/reddit-about-app-full.jpg)
-
-</details>
-
-<details>
-<summary>Reddit Playstore About App Permissions Entry</summary>
-
-![Reddit App Info Button](./initial-app-inspect/reddit-app-perms-full.jpg)
-
-</details>
-
-<details>
-<summary>Reddit Playstore Data Safety Entry</summary>
-
-![Reddit App Info Button](./initial-app-inspect/reddit-store-data-safety-full.jpg)
-
-</details>
-<br />
 
 One of the nice pieces of information you can grab from the Playstore About App entry is the Android compatibility number. Knowing that your application can run on Android 13 and below will make your life significantly easier once you get into more dynamic analysis of the application!
 

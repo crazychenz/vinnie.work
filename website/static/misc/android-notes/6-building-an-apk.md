@@ -2,6 +2,8 @@
 sidebar_position: 60
 ---
 
+<!-- pagebreak -->
+
 # Building An APK From Source
 
 <!-- 

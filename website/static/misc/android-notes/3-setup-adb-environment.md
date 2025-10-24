@@ -2,6 +2,8 @@
 sidebar_position: 30
 ---
 
+<!-- pagebreak -->
+
 # Setting Up ADB Environment
 
 <!-- 
@@ -50,29 +52,25 @@ As we go along, we'll be adding more tools. To make things easy, I've provided a
 
 There are many ways to skin this cat (via .dotfiles, via .profile, vi other shell RC files). Because I work on many different projects across many different languages that use many different SDKs, I don't like to manage SDK folders in my general home dotfiles. Instead, my convention for managing a particular project is to have a script that launches a new shell with the settings I want. This way I'm avoiding unrepeatable environments and I can easily reset with a `exit; ./env.sh` type of behavior. Since the script I have is harmless before you have all the tools, I'll provide everything at once. If you follow along with subsequent procedures, everything should line up fine. Note: There is a pre-requisite that you have `python3` and `python3-pip` already installed.
 
+<!-- pagebreak -->
+
 `~/.android/env.sh`:
 
 ```sh
 #!/usr/bin/env bash
 
 if [ -z "$(which python3)" ]; then
-  echo "Missing 'python3' from \$PATH."
-  echo "Suggestion: apt-get install python3"
-  exit 1
+  echo "Missing 'python3' from \$PATH.\nSuggestion: apt-get install python3"; exit 1
 fi
 
 if [ -z "$(which pip)" -a -z "$(which pip3)" ]; then
-  echo "Missing 'pip' from \$PATH."
-  echo "Suggestion: apt-get install python3-pip"
-  exit 1
+  echo "Missing 'pip' from \$PATH.\nSuggestion: apt-get install python3-pip"; exit 1
 fi
 
 # Check for python3-venv (via ensurepip existance)
 python3 -c "import ensurepip" &>/dev/null
 if [ $? -ne 0 ]; then
-  echo "Missing 'venv' module in Python."
-  echo "Suggestion: apt-get install python3-venv"
-  exit 1
+  echo "Missing 'venv' module in Python.\nSuggestion: apt-get install python3-venv"; exit 1
 fi
 
 export ANDROID_HOME=${HOME}/.android/
@@ -94,24 +92,16 @@ ls ${ANDROID_HOME}misc-tools &>/dev/null || mkdir -p ${ANDROID_HOME}misc-tools
 ls ${ANDROID_HOME}misc-tools/build-tools-symlink &>/dev/null \
   || ln -s ${ANDROID_HOME}build-tools/33.0.0 ${ANDROID_HOME}misc-tools/build-tools-symlink
 
-# Version Specific
-#export PATH=${ANDROID_HOME}cmake/latest/bin:$PATH
-#export PATH=${ANDROID_HOME}ndk/latest/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
-#export PATH=${ANDROID_HOME}ndk/latest:$PATH
-
 export PS1_TAG="(adb-venv) "
 export PS1="${PS1_TAG}${PS1:-\$ }"
 
 if [ ! -f "$ANDROID_HOME/adb-venv" ]; then
-  python3 -m venv $ANDROID_HOME/adb-venv
-  if [ $? -ne 0 ]; then
-    echo "Failed to create venv"
-    exit 1
-  fi
+  python3 -m venv $ANDROID_HOME/adb-venv || 
+  [ $? -ne 0 ] && { echo "Failed to create venv"; exit 1; }
 fi
 source $ANDROID_HOME/adb-venv/bin/activate
 
-pip show frida &>/dev/null || pip install frida-tools
+pip show frida &>/dev/null || pip install frida
 pip show frida-tools &>/dev/null || pip install frida-tools
 pip show pure-python-adb-reborn &>/dev/null || pip install pure-python-adb-reborn
 pip show androguard &>/dev/null || pip install androguard

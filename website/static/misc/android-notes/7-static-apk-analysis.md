@@ -2,6 +2,8 @@
 sidebar_position: 70
 ---
 
+<!-- pagebreak -->
+
 # Static APK Analysis
 
 ## APK Overview

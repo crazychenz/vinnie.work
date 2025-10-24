@@ -2,6 +2,8 @@
 sidebar_position: 40
 ---
 
+<!-- pagebreak -->
+
 # Setting Up An Emulator
 
 <!-- 

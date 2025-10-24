@@ -1,6 +1,9 @@
 ---
 sidebar_position: 110
 ---
+
+<!-- pagebreak -->
+
 # Browsing, Acquiring, and Building AOSP
 <!-- 
 - AOSP

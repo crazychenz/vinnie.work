@@ -1,6 +1,9 @@
 ---
 sidebar_position: 80
 ---
+
+<!-- pagebreak -->
+
 # Dynamic APK Analysis
 
 ## Frida

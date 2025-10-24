@@ -43,10 +43,13 @@ CHAPTERS="1-initial-app-inspect.md
 #       down all day long and it will create zero pixel loss. Only the DPI header value
 #       changes.
 
+echo "Building JSON."
+pandoc metadata.yaml $CHAPTERS -t json > book.json
+
 echo "Building PDF."
 pandoc metadata.yaml $CHAPTERS \
   --toc --pdf-engine=xelatex --template=template/eisvogel.tex \
-  --lua-filter=pandoc-filter.lua -o book.pdf
+  --lua-filter=pandoc-filter.lua -o book.pdf #--verbose
 
 echo "Building EPUB."
 pandoc metadata.yaml $CHAPTERS --toc -o book.epub
