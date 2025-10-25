@@ -19,7 +19,8 @@
 
 # pandoc *.md --toc --number-sections --pdf-engine=xelatex -o book.pdf
 
-CHAPTERS="1-initial-app-inspect.md
+CHAPTERS="0-purpose.md
+1-initial-app-inspect.md
 2-initial-platform-inspect.md
 3-setup-adb-environment.md
 4-setup-emulator.md

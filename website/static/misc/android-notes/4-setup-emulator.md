@@ -18,7 +18,7 @@ sidebar_position: 40
 
 ## QEMU - Generic Emulator
 
-QEMU fancies itself "A generic and open source machine emulator and virtualizer". I've been using QEMU for over 25 years. It is an amazing tool that can emulator completely different CPu architectures on x86ish systems. Nowadays, since the time of Linux Kernel-based Virtual Machines (KVM), it is also a virtualization frontend.
+QEMU fancies itself "A generic and open source machine emulator and virtualizer". I've been using QEMU for over 25 years. It is an amazing tool that can emulate completely different CPU architectures on x86ish (and other types of) host systems. Nowadays, since the time of Linux Kernel-based Virtual Machines (KVM), it is also a virtualization frontend.
 
 - QEMU can do **whole system emulation**, for example: Run a virtual hardware platform with a firmware bootloader that boots a kernel and supports a full user environment. This is very flexible and powerful, but also very slow due to the host CPU having to not only convert all of the applications instructions, but it also must handle all of the hardware emulation (e.g. MMU & IO).
 
@@ -34,7 +34,7 @@ The point that I am driving at here is that we call the Android tool an emulator
 
 Note: I've gone down a great many paths to circumvent the multi-hypervisor issue. Running qemu inside another VM is technically possible, but the overhead is unbearable (IMHO). Please do not consider running qemu inside a container, containers don't work like that. One strategy that has worked for me is to run QEMU on a completely different machine and connect my ADB server to the ADB server on that machine. It makes for a more complicated environment, but it does allow me to continue using VirtualBox on my developer host while using KVM on a second host. More on this later.
 
-TODO: Write about ADB connect later.
+<!-- TODO: Write about ADB connect later. -->
 
 
 ## Installing Emulator and System Image
@@ -160,10 +160,6 @@ To create a default AVD based on the default Android SDK-33 system image for an 
 
 ```text
 (adb-venv) $ avdmanager create avd -n android13 -k "system-images;android-33;default;x86_64"
-Warning: Observed package id 'build-tools;35.0.0' in inconsistent location '/home/user/.android/build-tools/latest' (Expected '/home/user/.android/build-tools/35.0.0')
-Warning: Already observed package id 'build-tools;35.0.0' in '/home/user/.android/build-tools/35.0.0'. Skipping duplicate at '/home/user/.android/build-tools/latest'
-Warning: Observed package id 'ndk;29.0.14033849' in inconsistent location '/home/user/.android/ndk/latest' (Expected '/home/user/.android/ndk/29.0.14033849')
-Warning: Already observed package id 'ndk;29.0.14033849' in '/home/user/.android/ndk/29.0.14033849'. Skipping duplicate at '/home/user/.android/ndk/latest'
 [=======================================] 100% Fetch remote repository...
 Auto-selecting single ABI x86_64
 Do you wish to create a custom hardware profile? [no]
@@ -187,9 +183,9 @@ Now that we have created a emulator, lets fire it up. You can list available AVD
 emulator -avd android13
 ```
 
-Presuming you are in a desktop environment in Linux, the above command (if successful) will launch a new window that shows the Android operating system booting and eventually running. There is a toolbox off to the side where you can poke and prode the AVD as if it were a real device. There are also a numnber of options that allow you to configure various aspects of the AVD (or hardware) state as seen by the system.
+Presuming you are in a desktop environment in Linux, the above command (if successful) will launch a new window that shows the Android operating system booting and eventually running. There is a toolbox off to the side where you can poke and prod the AVD as if it were a real device. There are also a number of options that allow you to configure various aspects of the AVD (or hardware) state as seen by the system.
 
-Personally, I never you use this interface unless I have to. It doesn't perform as well in constrained environments and has a lot of limitations with regards to remote access (that I often require). In the next section we'll discuss using an alternative third party tool called `scrcpy` to get a more flexible visualization of the system's GUI.
+Personally, I never use the emulator GUI interface unless I have to. It doesn't perform well in constrained environments and has a lot of limitations with regards to remote access (that I often require). In the next section we'll discuss using an alternative third party tool called `scrcpy` to get a more flexible visualization of the system's GUI.
 
 Another thing that I don't like about running `emulator -avd android13` is that it doesn't provide the console output I want to see. When I'm working in a device, I want to know where the kernel is struggling, I want to see if I'm in a boot loop, I want to monitor device state changes, and I want to have a general understanding the the system is up and responsive (even if my application is locked up or halted).  To do this, I use a specific set of options with `emulator`:
 
@@ -237,17 +233,19 @@ tar -xf scrcpy-linux-x86_64-v3.3.3.tar.gz
 mv scrcpy-linux-x86_64-v3.3.3 ~/.android/scrcpy
 ```
 
-Note: Once installed, one big thing I'd like everyone to note is that the `$ANDROID_HOME/scrcpy` folder has a `adb` binary in the folder. If you run `which adb` you'll also see that this `adb` has precendence over `platform-tools`. This has never presented an issue for me, but not having the environment configured this was has. `scrcpy` really wants `adb` to exist in its own folder, so I recommend leaving all of that as it is until you have a stronger grasp on the complete environment.
+Note: Once installed, one big thing I'd like everyone to note is that the `$ANDROID_HOME/scrcpy` folder has a `adb` binary in the folder. If you run `which adb` you'll also see that this `adb` has precendence over `platform-tools`. This has never presented an issue for me, but not having the environment configured this way has caused issues. `scrcpy` really wants `adb` to exist in its own folder, so I recommend leaving all of that as it is until you have a stronger grasp on the complete environment.
 
 Now that `scrcpy` has been installed, you can simply run it to get a window with the Android GUI. In the event you have multiple devices on your system, you may need to specifc the `-s` parameter just like the `adb` client. One thing I always do when running `scrcpy` is to disassociate it from my shell. That way I can reuse my shell or close my terminal and not interrupt `scrcpy` window. This is done with:
 
 ```sh
-setsid scrcpy >/dev/null 2>/dev/null &
+setsid scrcpy &>/dev/null &
 ```
 
 Of course this also hides any errors, so only do this after you have things working. Its also worth noting that anytime the Android Server or AVD reboots, `scrcpy` will close. Some `adb` commands will cause this to occur and you'll need to restart your `scrcpy`. I personally work around this by having a tmux pane dedicated to some of the GUI applications and then rerun commands from that shell's history. You could also write a easy script and drop it into the `$ANDROID_HOME/misc-tools` folder (which is already in the `$PATH`).
 
 Since `scrcpy` is more slim in its interface, it has alot of command line options and keyboard shortcuts to perform similar tasks to the side toolbox from pure emulator GUI. See shortcuts below (copied from [`scrcpy` Github](https://github.com/Genymobile/scrcpy/blob/master/doc/shortcuts.md)).
+
+<!-- TODO: Fix this so it works for PDF and web. -->
 
 <details>
 <summary>scrcpy Keyboard Shortcuts (Click Here To Expand)</summary>

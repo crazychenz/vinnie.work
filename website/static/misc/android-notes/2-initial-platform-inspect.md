@@ -10,7 +10,7 @@ Inspection and discovery of details pertaining to the platform we'd like to run 
 
 ## Hardware Details
 
-So far, we've been looking at studying the overt or end user functionality and attributes of an installed or target application. That application, for our purposes, will be running on a platform of some kind. We want to understand that platform as much as reasonable. For example, locating and writing down the following hardware information is key:
+So far, we've been looking at studying the overt or end user functionality and attributes of an Android _application_. That application, for our purposes, will be running on a platform of some kind. We want to understand that platform as much as reasonable. For example, locating and writing down the following hardware information is key:
 
 - Device Manufacturer
 - Device Model
@@ -29,18 +29,18 @@ For more identity based information, take a look at the "Status Information" scr
 
 Using the above information, you can then research technical specifications and look out for technical repair manuals or other hard to find information about the internals of the phone. Getting a look at the inside of any device in the US can often be achived by looking up the device in the [FCC-ID Database](https://www.fcc.gov/oet/ea/fccid). The database will often restrict the public from viewing proprietary information, but includes images of the inside of the phone, which is great because you then don't have to break your device to see the inside immediately.
 
-The more identity specific information (MAC, IP, IMEI) is something that'll be critical to identifying the traffic to and from your phone when doing any network traffic analysis or looking for tracking of your device by an application.
+The more identity specific information (MAC, IP, IMEI) is something that'll be critical for identifying tracking information to and from your phone when doing any network traffic analysis or looking for tracking of your device by an application.
 
 ## Software Platform Details
 
 Our target application isn't just running on a hardware device, its running on a platform composed of a stack of software. That software may include Manufacturer user interface platform (e.g. One UI for Samsung). The platform will also have an Android Version, a baseband version, a kernel version, a build number, and depending on the device vendor, other information. Capture it all!
 
-You can often find something similar to "Software Info" in the Android's system settings. Many vendors have different Settings menu's layout so you'll have to find what matches for you by experimentation or documentation. On my Samsung it looks like the following for the software information:
+You can often find something similar to "Software Info" in the Android's system settings. Many vendors have different Settings menu layouts, so you'll have to find what matches for you by experimentation or documentation. On my Samsung it looks like the following for the software information:
 
 ![Software Information](./initial-platform-inspect/software-info-full.png)
 
 - The Android Version is what the vendor's system image is based on. Use this to determine general system compatibility and API support. That said, the Android version itself is independent of the Android SDK version.
-- The baseband version is the version of the firmware used in the modem of the device to communicate with the local mobile or celluar network.
+- The Baseband version is the version of the firmware used in the modem of the device to communicate with the local mobile network (i.e. cellular network).
 - Android is based on Linux, but it is a fork of Linux. The kernel version is Android's kernel version and generally we can use this to compare capabilities of the Linux kernel to capabilities in the Android kernel. Unfortunately, Google can choose to chage any configurations and change any aspect of the core kernel code that they like, so treat this as a hint in association with the vanilla Linux kernel.
 - The build number is a good identifier to keep track of. More importantly, if you tap on this field a bunch of times, you'll unlock developer mode on the phone.
 
@@ -50,39 +50,41 @@ As before with applications using open source software that requires vendors to 
 
 ![Legal Overview Information](./initial-platform-inspect/legal-info-full.png)
 
-Above we've got a sort of idea of the level of information we can infer from the legal documentation. In the upper right, we've got a bunch of legal documents I'm not even going to mention here, but they all may indicate intent, versions, sources, and so forth. Lawyers love to make discovery annoying, and that's where we are with this flood of information.
+Above we've got a sort of idea of the level of information we can infer from the legal documentation. In the upper left, we've got a bunch of legal documents I'm not even going to mention here, but they all may indicate intent, versions, sources, and so forth. Lawyers love to make discovery annoying, and that's where we are with this flood of information.
 
-In regards to the Open source licenses specifically, they list all of the files implementing or using an OSS license in the system. These can be see listed by library, file, and then as dependencies between files or components. Within this information, fact of the software can be useful and the associated version even more so. Keep in mind that the version may only be an indication of the API version and not the exact code used. The code that Google _actually_ builds in can be changed in ways they aren't always compelled or willing to offer. (But we're not here for truth, we're here to build patterns and a more clear picture of what is involved.)
+In regards to the Open source licenses specifically, they list all of the files implementing or using an OSS license in the system. These can be see listed by library, file, and then as dependencies between files or components. Within this information, "fact-of" the software's existence can be useful and the associated version even more so. Keep in mind that the version may only be an indication of the API version and not the exact code used. The code that Google _actually_ builds into the package can be changed in ways they aren't always compelled to provide or willing to offer publicly. (But we're not here in the legalese for truth, we're here to build patterns and a more clear picture of what is involved.)
+
+Note: In the upper left of the image, I want you to have the take away that the list is sorted with ASCII ordering. Although it appears to be alphabetical, all upper case letters have precedence over lower case letters.
 
 ## Developer Options
 
-As is very well know in Android: `Open Settings -> Find Build Number -> Tap Until Developer Tools Unlocked`
+As is very well know in Android circles: `Open Settings -> Find Build Number -> Tap Until Developer Tools Unlocked`
 
-Unlocking developer settings is not rooting the phone. This is a completely harmless task that allows application developers to do advanced analysis of thier applications for engineering and troubleshooting purposes. Once you've unlocked developer tools, there is an option to disable them again in the Developer Tools menu.
+Unlocking developer settings is not rooting the phone. This is a completely harmless task that allows application developers to do advanced analysis of their applications for engineering and troubleshooting purposes. Once you've unlocked developer tools, there is an option to disable them again in the Developer Tools menu.
 
-Note: Finding the build number to tap and the developer tools menu can be in very different locations (depending on device vendor). They are both somewhere under the Settings menu, but beyond that, you'll have to discover their exact location for yourself.
+Note: Finding the build number to tap and the developer tools menu can be in very different locations (depending on device vendor and model). They are (almost always) somewhere under the Settings menu, but beyond that, you'll have to discover their exact location for yourself.
 
 Assuming you now are in the Developer Tools menu, you'll want to visually inspect all of the options. Different Vendors and different Android versions will expose a different set of options. Those options themselves may even behave differently depending on any number of factors. But being aware of them can lead to some very powerful capabilities.
 
-I'll describe a few here, but I leave it up to the reader to delve deeper into their intentions and capabilities where they believe they're relavant to your goals.
+I'll describe a few here, but I leave it up to the reader to delve deeper into individual option intentions and capabilities where they believe they may be relevant to their goals.
 
-- **Stay awake** - I often have this enabled so that the phone will remain on while I have it plugged into my computer for debugging or remote access.
-- **OEM unlocking** - The OEM unlocking toggle is responsible for enabling the ability to unlock the bootloader. Unlocking the bootloader permits a device owner to replace the entire Android system image with another. More on this later.
-- **USB debugging** - Probably one of the most important switches. This allows the user to connect to the phone with the Android Debug Bridge (ADB). For those that do not know, ADB allows you to gain shell access directly in Android OS.
-- **Revoke USB debugging authorizations** - Useful when you are done debugging or you want to switch debugging systems.
-- **Wireless debugging** - Permits the same debug access as USB except its over the Wi-Fi interface. There is a bit more setup where you need to be able to confirm you are you by dialing in a code.
-- **Select debug app** - A means to mark an application to be controlled by an external debugger. This is intended for debuggers like Android Studio's debugger and the Java Debugger (`jdb`). In reality, it can be used by any JDWP complicant debugger.
-- **Wait for debugger** - If you've selected an application in "Select debug app" and "Wait for debugger" is enabled, the application will start for a short moment and then immediately halt until a debugger is attached and explicitly instructs the application to continue.
+- **Stay awake** - I often have Stay Awake enabled so that the phone will remain on while I have it plugged into my computer for debugging or remote access.
+- **OEM unlocking** - The OEM unlocking toggle is responsible for enabling the ability to unlock the bootloader. Unlocking the bootloader permits a device owner to replace the entire Android system image with another. _More on this later._
+- **USB debugging** - For me, one of the most important switches. This allows the user to connect to the phone with the Android Debug Bridge (ADB). For those that do not know, ADB allows you to gain shell access directly in Android OS.
+- **Revoke USB debugging authorizations** - Useful when you are done debugging or you want to switch debugging systems. (Also a nice panic button to hit when `adb` isn't working.)
+- **Wireless debugging** - Permits the same debug access as USB debugging, except its over the Wi-Fi interface. There is a bit more setup where you need to be able to confirm you are who you claim by dialing in a one time use code.
+- **Select debug app** - A means to mark an application to be controlled by an external debugger. This option is intended for debuggers like Android Studio's debugger and the Java Debugger (`jdb`). In reality, it can be used by any JDWP compliant debugger.
+- **Wait for debugger** - If you've selected an application in "Select debug app" and "Wait for debugger" is enabled, the debugged application will start for a moment and then immediately halt until a debugger is attached. The application will no continue until the debugger explicitly instructs the application to resume.
 - **Show taps** - Shows a visual indicator of a tap on the screen.
-- **Pointer location** - Shows in coordinates, the location of a pointer on the screen. Both this and the show taps are useful when attempting to inject events into an application. Sometimes you need to guess your way to the exact coordinates of a button you want clicked or some other GUI element you need to interact with. "Its all about little adjustments." - Pheneas Flinn.
+- **Pointer location** - Shows, in coordinates on the screen, the location of a pointer (i.e. finger or cursor) on the screen. Both this "Pointer location" option and the "Show taps" option are useful when attempting to inject GUI events into an application. Sometimes you need to guess your way to the exact coordinates of a button you want clicked or some other GUI element you need to interact with. "It's all about little adjustments." - Phineas Flinn.
 
 There are tons of different options, but the above have often been a foundation for setting up a good developer loop that then opens up the flexibility and versatility to go deeper into other areas.
 
 ## Device Rooting Research
 
-You may not be required to root your device to achieve your goals. But to gain a full understanding of the platform, you'll want at least a cursory idea of what the unlocking and rooting capbilities are and the procedure. While performing such research, keep an eye out for the specific analysts, developers, and hackers that are providing the information. They may have other writing, information, or source code that leads to other internal information not otherwise obtainable outside of our own analysis.
+You may not be required to root your device to achieve your goals. But to gain a full understanding of the platform, you'll want at least a cursory idea of what the unlocking and rooting procedures and capabilities are. While performing such research, keep an eye out for the specific analysts, developers, and hackers that are providing the information. They may have other writing, information, or source code that leads to other internal information not otherwise obtainable outside of our own analysis.
 
-To start, I should state that not all devices are designed to be unlockable. Of course any device that you have physical access to can technically be reversed and dismanted. But depending on the tamper mechanisms implemented, the task can require a significant level of effort and require significant costs. Forgetting about hardware dismantling, some vendors sell phones that simply do not implement an unlock feature. Other vendors may release phones that can be unlocked, but they do not make this a publically accessible process. But lets be optimistic!
+To start, I should state that not all devices are designed to be unlockable. Of course any device that you have physical access to can technically be reversed and dismanted. But depending on the tamper-proofing mechanisms implemented, the task can require a significant level of effort and require significant costs. Forgetting about hardware dismantling, some vendors sell phones that simply do not implement an unlock feature. Other vendors may release phones that can be unlocked, but they do not make this a publically accessible process. But lets be optimistic!
 
 ### Terminology
 
@@ -111,7 +113,7 @@ Some example questions to assist with researching rooting an Android device:
 - What capabilities (Magisk, TWRP, and so forth) support my device?
 - Where can I find a replacement system image that matches my make and model (exactly)?
 - Is there a way to relock the bootloader after unlocking? **(Unlikely!)**
-- How long until system images are unlockable from past versions. For example, maybe my new "Device version X" phone isn't unlockable, but 3 versions back "Device version X-3" became unlockable a year after its release. In otherwords, there may not be a unlock procedure today, but you can reasonably estimate when one may show up.
+- How long until system images are unlockable from past versions? For example, maybe my new "Device version X" phone isn't unlockable, but 3 versions back "Device version X-3" became unlockable a year after its release. In otherwords, there may not be a unlock procedure today, but you can reasonably estimate when one may show up.
 
 ### The Process
 

@@ -120,9 +120,9 @@ You should now be left with a shell that resembles something like: `(adb-venv) $
 
 ## Setup Java
 
-To start off, lets make sure we have an expected version of Java running. When doing analysis on Android, you often need to build or use tools on your development host that are written in Java. This means that you'll need Java installed into your environment. Unfortunately, not all software that use Gradle are as mature or prefessional as "download/install the newest" and away you go. There are certain versions you'll need for different versions of Android or the tools. I've found the sweet spot to be Java 17, but I recommend you have maybe Java 8, Java 17, and the newest available for when you need them.
+To start off, lets make sure we have an expected version of Java running. When doing analysis on Android, you often need to build or use tools on your development host that are written in Java. This means that you'll need Java installed into your environment. Unfortunately, not all software that use Gradle are as mature or professional as "download/install the newest" and away you go. There are certain versions you'll need for different versions of Android or the tools. I've found the sweet spot to be Java 17, but I recommend you have maybe Java 8, Java 17, and the newest available for when you need them.
 
-For now, we'll use OpenJDK 17. Since OpenJDK 17 is not longer supported, we must download it from the [OpenJDK Archive site](https://jdk.java.net/archive/). Download the bundle and extract similar to the following:
+For now, we'll use OpenJDK 17. Since OpenJDK 17 is no longer supported, we must download it from the [OpenJDK Archive site](https://jdk.java.net/archive/). Download the bundle and extract similar to the following:
 
 ```sh
 mkdir ~/.android
@@ -139,7 +139,7 @@ OpenJDK Runtime Environment (build 17.0.2+8-86)
 OpenJDK 64-Bit Server VM (build 17.0.2+8-86, mixed mode, sharing)
 ```
 
-## Install via Google's "Command Line Tools"
+## Install via Android's "Command Line Tools"
 
 The command line tools for Android are a minimal set of tools.
 
@@ -179,7 +179,13 @@ Running on Linux 6.12.43+deb13-amd64 (x86_64)
 
 ## ADB Into (Unrooted) Device
 
-Now that we have ADB installed and configured, lets test is on an Android Device. Plug a device into a developer host machine via USB. Hopefully you've gotten some notification that the device was recognized by the developer host machine. Its out of scope to troubleshoot this kind of thing here, but on Linux I recommend monitoring USB insertions with something like `watch | lsusb`. Once the device is connected in recognized:
+Now that we have ADB installed and configured, lets test it on an Android Device. First, start the adb server:
+
+```sh
+adb start-server
+```
+
+Now, plug a device into a developer host machine via USB. Hopefully you've gotten some notification that the device was recognized by the developer host machine. Its out of scope to troubleshoot this kind of thing here, but on Linux I recommend monitoring USB insertions with something like `watch | lsusb`. Once the device is connected and recognized:
 
 - In Developer Tools on the target device, enable "USB debugging".
 
@@ -261,7 +267,7 @@ HeimdAllFS state:
   ...
 ```
 
-These are all different kinds of data structures defined and utilized by the application. Generally, you don't need to understand what everythihng does. Its more important to be able to scan through the data and identify entries that maybe of interest to achieve your goals. For example, see the `Packages:` section and know that there is detailed information about the running package there that you can use to verify APK extraction or locate an APK from an online APK archive. Accurate identity information is also a critical skill when disambiguating communications with peers.
+These are all different kinds of data structures defined and utilized by the application. Generally, you don't need to understand what everything does. Its more important to be able to scan through the data and identify entries that maybe of interest to achieve your goals. For example, see the `Packages:` section and know that there is detailed information about the running package there that you can use to verify APK extraction or locate an APK from an online APK archive. Accurate identity information is also a critical skill when disambiguating communications with peers.
 
 ## Other ADB Shell Commands
 
