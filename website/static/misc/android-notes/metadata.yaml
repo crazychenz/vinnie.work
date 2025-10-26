@@ -27,6 +27,37 @@ publisher: vinnie.work
 #declaration: "I declare that this book was composed by myself."
 
 # \raggedbottom prevent vertical text spread if image floats off page.
+# \definecolor... - highlights inline monospace text
 header-includes:
   - \raggedbottom
+  - |
+    \definecolor{inline-code-color}{HTML}{660000}
+    \let\oldtexttt\texttt
+    \renewcommand{\texttt}[1]{{\color{inline-code-color}\oldtexttt{#1}}}
+  - |
+    \usepackage{xcolor}
+    \usepackage{tcolorbox}
+    \definecolor{quotetext}{HTML}{141414}
+    \definecolor{quotebg}{HTML}{EEEEEE}
+    \definecolor{quoteborder}{HTML}{EEEEEE}
+    \AtBeginDocument{%
+      \renewenvironment{quote}{
+        \begin{tcolorbox}[colback=quotebg,colframe=quoteborder,
+                          boxrule=0.5pt,arc=3pt,left=6pt,right=6pt,top=4pt,bottom=4pt]
+          \color{quotetext}
+      }{
+        \end{tcolorbox}
+      }
+    }
+
+# Links as foot notes
+links-as-notes: true
+colorlinks: true
+linkcolor: blue
+urlcolor: blue
+citecolor: blue
+
+#monofont: "JetBrains Mono"
+#monofontoptions: "Scale=0.9"
+codecolor: red
 ---
