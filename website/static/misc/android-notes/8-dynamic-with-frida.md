@@ -10,11 +10,11 @@ sidebar_position: 80
 
 "Dynamic instrumentation toolkit for developers, reverse-engineers, and security researchers."
 
-Personally I am more of a `gdb` user. Even in more sophisticated setups, I'll almost always jump to something like Cutter/Ghidra, find a hook point, fire up `gdb-server` and start hacking with `gdb` (with relavant plugins). Frida sort of changes that mindset by replacing the breakpoint mindset with a remote controllable agent enabled hooking interface.
+Personally I am more of a `gdb` user. Even in more sophisticated setups, I'll almost always jump to something like Cutter/Ghidra, find a hook point, fire up `gdb-server` and start hacking with `gdb` (with relevant plugins). Frida sort of changes that mindset by replacing the breakpoint mindset with a remote controllable agent enabled hooking interface.
 
 In more simple terms, Frida is a agent that lives within a process and communicates with a client. Because the Frida agent lives within the target process, we have access to everything the application has access to, including its own memory. With access to the memory, we can choose to hook function calls so that calls to them are redirected to our own code.
 
-To make Frida more flexible and reusable for engineers, its agent ships with a javascript interpreter. This means that I can write some javascript, shoot it at the agent and have it immediate applied. The kinds of things that the Javascript API supports include memory read/write/execute, symbol searching, symbol calling (if the symbol points to a function), and hooking. Frida has some slick convienence functions for hooking native code as well as Java code.
+To make Frida more flexible and reusable for engineers, its agent ships with a javascript interpreter. This means that I can write some javascript, shoot it at the agent and have it immediately applied. The kinds of things that the Javascript API supports include memory read/write/execute, symbol searching, symbol calling (if the symbol points to a function), and hooking. Frida has some slick convenience functions for hooking native code as well as Java code.
 
 Note: Frida has been designed as a generic instrumentation tool. There are many features that it provides that aren't reasonable for our purposes, so I'll only be covering the stuff I care about from the Android inspection point of view.
 
@@ -179,9 +179,9 @@ Its only action is to output that the function was run. But you can use any othe
 
 ### Frida 17's Mistake
 
-In the above Frida script, we're using the Java bridge. Frida 16 and before had the Java bridge embedded into the frida-server automatically. This meant all we had to do was load the above code and all was well. In FRida 17, the decision was made to remove the Java Bridge from the frida-server and make the scripts bring it up with them. How to handle this change has been poorly documented, argumentative, and frankly a disappointing betrayal of expected user experience. But hey ... I never really paid for any of it, what am I complaining about... lets clean up the mess!
+In the above Frida script, we're using the Java bridge. Frida 16 and before had the Java bridge embedded into the frida-server automatically. This meant all we had to do was load the above code and all was well. In Frida 17, the decision was made to remove the Java Bridge from the frida-server and make the scripts bring it up with them. How to handle this change has been poorly documented, argumentative, and frankly a disappointing betrayal of expected user experience. But hey ... I never really paid for any of it, what am I complaining about... lets clean up the mess!
 
-The quick work around that I've come up with is to utilize the fact that the Java bridge code is embedded in the `frida-tools` installing the Python environment. We can pull out this artifact using some Python module magic, prepend it to any given script file (or string), add a single line of glue code, and then return it as a fully working script. I recommend you put the following in a file at `${ANDROID_HOME}misc-tools/add-bridge` and make it executable. Here is the `add-bridge` script I've used:
+The quick work around that I've come up with is to utilize the fact that the Java bridge code is embedded in the `frida-tools` installed in the Python environment. We can pull out this artifact using some Python module magic, prepend it to any given script file (or string), add a single line of glue code, and then return it as a fully working script. I recommend you put the following in a file at `${ANDROID_HOME}misc-tools/add-bridge` and make it executable. Here is the `add-bridge` script I've used:
 
 ```python
 # https://github.com/frida/frida/issues/3460
@@ -248,4 +248,4 @@ print("ping -> ", rpc.ping())
 
 ## Other Scripts
 
-For some Frida scripts that can jump start your usage, check our the [Frida Codeshare](https://codeshare.frida.re/). Note: They are no references to the Frida Codeshare directly from the [frida.re documentation](https://frida.re/) site!
+For some Frida scripts that can jump start your usage, check our the [Frida Codeshare](https://codeshare.frida.re/). Note: There are no references to the Frida Codeshare directly from the [frida.re documentation](https://frida.re/) site!

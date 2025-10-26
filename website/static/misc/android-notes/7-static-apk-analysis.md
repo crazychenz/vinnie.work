@@ -263,7 +263,7 @@ Comparing the two, I'd say we got pretty close to the original. I will also say 
 
 ### Challenges With Smali and Kotlin
 
-Another thing I'd like to highlight is that in a weird way, Dalvik is based on Java (with embedded system design decisions). Kotlin is a higher level language that compiles down to Java bytecode. So when you are reverse engineering the Dalvik bytecodes to Smali and perhaps to the higher level Java, you are not decompiling to Kotlin. This makes understanding or following the flow of Kotlin code extra challenging. You can see this in the way that HelloJni builds Java code in response to a Kotlin `companion {}` section of code in `HelloJni.kt`. I find the biggest headaches come from tracing through Kotlin `suspend` functions (i.e. Kotlin's version of coroutines or await/async in other scripting languages). Perhaps more on this later.
+Another thing I'd like to highlight is that, in a weird way, Dalvik is based on Java (with embedded system design decisions). Kotlin is a higher level language that compiles down to Java bytecode. So when you are reverse engineering the Dalvik bytecodes to Smali and perhaps to the higher level Java, you are not decompiling to Kotlin. This makes understanding or following the flow of Kotlin code extra challenging. You can see this in the way that HelloJni builds Java code in response to a Kotlin `companion {}` section of code in `HelloJni.kt`. I find the biggest headaches come from tracing through Kotlin `suspend` functions (i.e. Kotlin's version of coroutines or await/async in other scripting languages). Perhaps more on this later.
 
 In summary, to have a good grasp on Smali, you should have a good grasp on Java, an understanding of how Kotlin builds into JVM bytecode, and a grasp on the Dalvik instruction set. Like any language, you probably only need to know the 20% that is used most often to get going and then learn from experience after that.
 
@@ -307,7 +307,7 @@ If you are using the `env.sh` I referenced before, JADX should now be avaulable 
 
 ## JADX GUI
 
-To start the GUI, simple run `jadx-gui`. To run is deassociated from your terminal and shell, run something like `setsid jadx-gui &>/dev/null &`.
+To start the GUI, simply run `jadx-gui`. To run it deassociated from your terminal and shell, run something like `setsid jadx-gui &>/dev/null &`.
 
 Once JADX is up and running, you'll need to tell it to "Open File". Select the APK that you want it to process and away it goes. If you check out the bottom left of the screen while its processing, you can watch a progress bar bounce around until its complete.
 
@@ -317,7 +317,7 @@ Along the left hand side, if you select "Source code" and then find a class you 
 
 One of the things I'll do while going through code is find an area of interest based on some API usage or a string and then start to trace the calls through usage. If you Right Click on a label in the Java, you can then click on "Find Usage" or "Usage Tree Search".
 
-If you are looking at obfuscated code, as you work out what something is doing, JADX will allow you to refactor the name of something by right clicking and clicking "Rename". It'll rename the usage of that variable everywhere it tell its the same variable.
+If you are looking at obfuscated code, as you work out what something is doing, JADX will allow you to refactor the name of something by right clicking and clicking "Rename". It'll rename the usage of that variable everywhere it can determine its the same variable.
 
 Finally, using the "Navigation" menu and all of the searching capabilites are invaluable when hunting through the code to find collections of useful information while reverse engineering.
 
@@ -341,7 +341,7 @@ Once that command finishes, you'll be left with a pile of source code that you c
 
 ## Programatically Extracting and Analyzing APKs
 
-Between apktool and JADX, it may feel like you have complete visibility of everything in the package. In fact, there is a level deeper you can decend. Androguard is a python package that parses out the entire APK into PYthon data structures. These data structures can then be programatically iterated over for more automated or granular tasks.
+Between apktool and JADX, it may feel like you have complete visibility of everything in the package. In fact, there is a level deeper you can decend. Androguard is a python package that parses out the entire APK into Python data structures. These data structures can then be programatically iterated over for more automated or granular tasks.
 
 The original `env.sh` script should have automatically installed Androguard in the python virtual environment. If it hasn't, you can install or upgrade the package with `pip install -U androguard`.
 

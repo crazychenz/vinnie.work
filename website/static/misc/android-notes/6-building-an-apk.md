@@ -14,9 +14,9 @@ TODO: Consider adding a `~/.android/latest/` folder to house symlinks for \$PATH
 
 ## Building APKs
 
-Often the analysis of an application we don't have the source code for is trivialized as reverse engineering. While software reverse engineering is a succinct description of what you might be doing, I prefer to describe it more as "learning how something works". With this kind of principle, it is highly recommended that as an engineer you put yourself in the shoes of the original developer. That is to say that you should have a general understanding or baseline of how to build an APK from source code.
+Performing analysis of an application that we don't have the source code for is often referred to as reverse engineering. While software reverse engineering is a succinct description of what you might be doing, I prefer to describe it more as "learning how something works". With this kind of principle, it is highly recommended that as an engineer you put yourself in the shoes of the original developer. That is to say that you should have a general understanding or baseline of how to build an APK from source code. (But not from scratch! ... that is itself a whole other profession.)
 
-As I said before, I don't mettle with Android Studio, I only work from command line. Therefore I won't be describing any Android Studio workflows for the time being. Instead, I'll walk through grabbing some APK source code and building it with Gradle.
+As I said before, I don't mettle with Android Studio. I only work from command line whenever reasonable. Therefore I won't be describing any Android Studio workflows for the time being. Instead, I'll walk through grabbing some APK source code and building it with Gradle.
 
 Building an APK from scratch affords you several things:
 
@@ -46,7 +46,7 @@ All I'll say for now is that all build systems have their challenges, and Gradle
 
 The Native Development Kit (NDK) is the C/C++ compiler toolchain, supported by Google, to build native libaries or applications for Android. For example, if you wanted to build some C source code and have it be executable on Android, you'd use the `cc` compiler command from NDK to make that happen.
 
-The plan is to grab example APK source code that includes NDK libraries. This way we'll be able to look at not only the Java side of the APK, but also the native libraries in the APK. 
+The plan is to grab example APK source code that includes NDK libraries. This way we'll be able to look at not only the Java/Kotlin side of the APK, but also the native libraries in the APK. 
 
 Grab the set of NDK example code from `android/ndk-samples`'s Github repository:
 
@@ -62,7 +62,7 @@ If you look in that directory, you should see the following files:
 - gradlew / gradlew.bat - Gradle wrappers for *nix and Windows respectively.
 - settings.gradle - Project structure and module inclusions.
 
-The `gradlew` is the entry point for Gradle. When running `gradlew` for the first time, the wrapper will assume you have internet and attempt to reach out and install Gradle for you. It will attempt to install Gradle, not in the relavant project folder, but into a Gradle cache in your home folder. As you build Gradle projects you may find disk space disappearing and the project folder you are building not accounting for the disk lost. Yes, this is Gradle squirreling away artifacts in your home folder. (Note: Many other tools do this as well, and I sigh loudly everytime!)
+The `gradlew` is the entry point for Gradle. When running `gradlew` for the first time, the wrapper will assume you have internet and attempt to reach out and install Gradle for you. It will attempt to install Gradle, not in the relavant project folder, but into a Gradle cache in your home folder. As you build Gradle projects you may find disk space disappearing and the project folder you are building not accounting for the disk space loss. Yes, this is Gradle squirreling away artifacts in your home folder. (Note: Many other tools do this as well, and I sigh loudly everytime!)
 
 You can of course use Docker to isolate all of this behavior, but you need to ensure you've setup a proper user with a home folder and provided all of the correct dependencies in the Dockerfile or a container state.
 
@@ -164,7 +164,7 @@ Ok, wow. The `android/ndk-samples` developers and Gradle have automatically inst
 sdkmanager "cmake;4.1.0"
 ```
 
-Before we being another build attempt, I want to highlight or reiterate the Gradle home directory caching:
+Before we begin another build attempt, I want to highlight or reiterate the Gradle home directory caching:
 
 ```text
 (adb-venv) $ du -d 1 -h ~/.gradle/

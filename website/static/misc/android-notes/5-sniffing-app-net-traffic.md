@@ -6,7 +6,7 @@ sidebar_position: 50
 
 # Sniffing Application Traffic
 
-When analyzing the behaviors of an application, one of the most obvious things to look at is the network traffic. Nearly all applications on the mobile platform are doing some kind of network transmissions. Even offline applications are known to regularly send out telemetry information. Whether or not you are aware this is happening as a normal end-user can sometimes be credited to the EU's GDPR. But in nearly all cases, the developer would rather not bother you with any of that. "These are not the packets you are looking for." ::: waves hands :::.
+When analyzing the behaviors of an application, one of the most impactful things to look at is the network traffic. Nearly all applications on the mobile platform are doing some kind of network transmissions. Even offline applications are known to regularly send out telemetry information. Whether or not you are aware this is happening as a normal end-user can sometimes be credited to the EU's GDPR. But in nearly all cases, the developer would rather not bother you with any of that. "These are not the packets you are looking for." ::: waves hands :::.
 
 Naturally, getting the application data from the network traffic isn't as straight forward as it was in the 1990s. We now have this pesky thing called TLS (formerly SSL). These rascals attempt to provide a layer of confidentiality (i.e. encryption) around that sweet data. In this article, we'll discuss how to coerce an unsuspecting Android Emulator and application into providing all of the application data within the TLS encryption, and all without doing any reverse engineering of the applications!
 
@@ -41,11 +41,11 @@ Another technique that can be used is to develop or deploy an http-proxy that lo
 
 Note: Using `-debug-proxy` can assist with troubleshooting the setup of `-http-proxy`.
 
-In this case, TCP traffic will be tunneled out through an HTTP(S) tunnel. (Normally useful in corporate environments where the only port they allow internet traffic through is 443.) The HTTP Proxy does have to follow a set of proxy conventions. The proxy itself usually only sees the encrypted data, unless its spoofing as the remote service (e.g. a TLS terminator).
+In this case, TCP traffic will be tunneled out through an HTTP(S) tunnel. (Normally useful in corporate environments where the only port they allow internet traffic through is 443.) The HTTP Proxy does have to follow a set of proxy conventions. The proxy itself usually only sees the encrypted data, unless its masquerading as the remote service (e.g. a TLS terminator).
 
-Note: It is not uncommon for a company to have a TLS terminator on the publically accessible internet gateway and then perform operations internally without TLS. For example, your web service is a TLS terminator with reverse proxies setup to unencypted node or python services. Even if they are encrypted, they don't require publically signed server certificates.
+It is not uncommon for a company to have a TLS terminator near the publicly accessible internet gateway and then perform operations internally without TLS. For example, your web service is a TLS terminator with reverse proxies setup to unencrypted node or python services. Even if they are encrypted internally, they don't require publicly signed server certificates.
 
-**`mitmproxy`** is a MitM process that can act as both an HTTP proxy or a transparent proxy. `mitmproxy` is able to do a large number of operations that meet our needs. It spoofs as remote services, breaks connections up into managable flows, provides mechanisms for filtering flows so we only see what we want and only proxy what we need. And last but not lease, `mitmproxy` provides the bodies of the HTTP requests and responses completely decrypted. These traffic decrypts can also be exported as JSON or HAR files for use in other tools.
+**`mitmproxy`** is a MitM process that can act as both an HTTP proxy or a transparent proxy. `mitmproxy` is able to do a large number of operations that meet our needs. It masquerades as remote services, breaks connections up into manageable flows, provides mechanisms for filtering flows so we only see what we want and only proxy what we need. And last but not lease, `mitmproxy` provides the bodies of the HTTP requests and responses completely decrypted. These traffic decrypts can also be exported as JSON or HAR files for use in other tools.
 
 ## Transparent Proxy
 
@@ -200,7 +200,7 @@ sudo ip netns exec ns0 curl -k https://wikipedia.org
 
 ### Starting Proxy And Packet Capture
 
-Assuming that everything is still on track, we now can start our `mitmproxy` service. The next set of commands have a lot going on. We're going to use `sudo` to start the proxy so that it has access to the required Linux capabilities to do what it needs to do. We'll also be injecting our current environment (via `-E`) the run with standard `root` paths appended. We add our own environment because if you are using the `env.sh`, `mitmproxy` runs from the user's Python virtual environment. Switching to root would cause that to become inaccessible without the `-E`. Finally, we've added SSLKEYLOGFILE environment variable to our run. Setting this variable causes `mitmproxy` to dump all of the TLS secrets between itself and the client connections. The output of the file pointed to by SSLKEYLOGFILE is critical for the decryption of the packet capture:
+Assuming that everything is still on track, we now can start our `mitmproxy` service. The next set of commands have a lot going on. We're going to use `sudo` to start the proxy so that it has access to the required Linux capabilities to do what it needs to do. We'll also be injecting our current environment (via `-E`) into the run with standard `root` paths appended. We add our own environment because if you are using the `env.sh`, `mitmproxy` runs from the user's Python virtual environment. Switching to root would cause that to become inaccessible without the `-E`. Finally, we've added SSLKEYLOGFILE environment variable to our run. Setting this variable causes `mitmproxy` to dump all of the TLS secrets between itself and the client connections. The output of the file pointed to by SSLKEYLOGFILE is critical for the decryption of the packet capture:
 
 **Start Proxy**:
 
@@ -213,9 +213,9 @@ sudo -E env \
 
 Once you've started `mitmproxy`, a Terminal user interface will popup. You can monitor the flows that `mitmproxy` is sniffing from this interface. You can also set filters for finding flows and managing passthroughs. But I'll leave all of those details to the `mitmproxy` documentation. The important thing for us right now is that we can watch the flows happening and we get the SSLKEYLOGFILE output.
 
-After the `mitmproxy` is up and running, in another terminal in the "initial" network namespace, fire up a `tcpdump` to start recording all of the packets coming from the `ns0` namespace.
-
 **Start Packet Capture**:
+
+After the `mitmproxy` is up and running, in another terminal in the "initial" network namespace, fire up a `tcpdump` to start recording all of the packets coming from the `ns0` namespace.
 
 ```sh
 sudo tcpdump -i veth0 -w capture.pcap
@@ -227,17 +227,19 @@ We're almost there! Let's now verify that `mitmproxy` is working, `tcpdump` is w
 sudo ip netns exec ns0 curl -k https://wikipedia.org
 ```
 
-You should immediately see a DNS request in the `tcpdump` window and a new flow pop up in the `mitmproxy` window. At this point, I recommend stopping the `tcpdump` so we can test our SSLKEYLOGFILE with the PCAP. The easiest (albiet manual) way to decrypt the PCAP is via Wireshark. Open Wireshark and open the `capture.pcap`.
+You should immediately see everything in the `tcpdump` window (including a DNS request) and in the `mitmproxy` window a new flow pop up. At this point, I recommend stopping the `tcpdump` so we can test our SSLKEYLOGFILE with the PCAP. The easiest (albiet manual) way to decrypt the PCAP is via Wireshark.
 
 <!-- TODO: Do we need to stop tcpdump to open the PCAP? -->
 
-From inside Wireshark:
+To decrypt with Wireshark:
 
-1. Open Edit Menu
-2. Select Preferences
-3. Expand Protocols in left sidebar
-4. Select TLS
-5. Populate "(Pre)-Master-Secret log filename" with whatever the value of $SSLKEYLOGFILE is. 
+1. Open Wireshark
+2. Open the `capture.pcap`.
+3. Open Edit Menu
+4. Select Preferences
+5. Expand Protocols in left sidebar
+6. Select TLS
+7. Populate "(Pre)-Master-Secret log filename" with whatever the value of $SSLKEYLOGFILE is. 
 
 Once you click Apply and OK in the bottom right of the configuration dialog, you should see the TLS entries in the PCAP become HTTP* entries. On closer inspection, the packets are still TLS, but they now have decrypted HTTP data within the TLS packets. You can Follow the stream to see the whole request and response bodies.
 
@@ -266,7 +268,7 @@ sudo -E env "PATH=$PATH:/usr/local/sbin:/usr/sbin:/sbin" ~/apks/playground/start
 
 Note: Can't `setcap` because it causes ld to ignore LD_LIBRARY_PATH which is used by the emulator.
 
-Lets ensure we have access to the emulator by opening a new terminal and running the following (Note: I think we're up to 4 terminal windows at this point):
+Lets ensure we have access to the emulator by opening a new terminal and running the following (I think we're up toa minimum of 4 terminal windows at this point):
 
 ```sh
 # Drop into the `ns0` shell

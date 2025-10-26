@@ -37,23 +37,25 @@ Note: I originally wanted to only use zip instead of apktool. Unfortunately its 
 
 ## Debuggable APK
 
-Android has developed a policy and process for determining what applications are allowed to be debugged. If the application declares itself a debuggable application, it actually lightens up on several security measures. When an application is debuggable, you can ptrace it (i.e. gdb and frida) and you can run a proper Java debugger on it. This is all defined in the Android Runtime library we'll talk more about later.
+Android has developed a policy and process for determining what applications are allowed to be debugged. If the application declares itself a debuggable application, it actually lightens up on several security measures. When an application is debuggable, you can ptrace it (i.e. gdb and frida) and you can run a proper Java debugger on it as a user. This is all defined in the Android Runtime library we'll talk more about later.
 
 Note: I've had many issues debugging anything after Android 13. For now, I always stick with Android 13 when debugging.
 
 How do you make an Android application debuggable? There are two key things you need to do:
 
-- The APK itself needs to declare that it is debuggable. The APK declares itself debuggable by adding a special attribute (`android:debuggable="true"`) to the `<application />` XML tag in the Android Manifest. It really is that simple. Add the attribute to the Manifest, wrap everything back up, reinstall and you should be good to go. For good measure, I also add `android:profileableFromShell="true"` for additional monitoring capabilities.
+- The APK itself needs to declare that it is debuggable. The APK declares itself debuggable by adding a special attribute (`android:debuggable="true"`) to the `<application />` XML tag in the Android Manifest. It really is that simple. Add the attribute to the Manifest, wrap everything back up (i.e. zip, align, sign), reinstall and you should be good to go. For good measure, I also add `android:profileableFromShell="true"` for additional monitoring capabilities.
 
-- The device user also needs to target the application for debugging. We'll talk about targetting applications for debugging in the next section. For now, it should suffice to know that you can target an application for debug via the Developer Tools or `adb`.
+- The device user also needs to target the application's _process_ for debugging. We'll talk about targeting processes for debugging in the next section. For now, it should suffice to know that you can target an application for debug via the Developer Tools or `adb`.
 
 ## Declaring The APK Debuggable
 
 Below is a quick bash script that I've written to streamline the process of extracting an APK (minimally), modifying the AndroidManifest to make it debuggable, and then packaging it all back up again for install into our Android device or emulator.
 
-Note: It does resign the APK with our keystore and key. If the application was already installed on the Android device from another developer, you'll have to uninstall the application to install the same APK signed by a different developer. **You may lose all of your application specific data in the process.** This is why I normally try to do all of this work on a stateless emulator whenever I can.
+Note: It does re-sign the APK with our keystore and key. If the application was already installed on the Android device from another developer, you'll have to uninstall the application to install the same APK signed by a different developer. **You may lose all of your application specific data in the process.** This is why I normally try to do all of this work on a stateless emulator whenever I can.
 
 Create the file `${ANDROID_HOME}misc-tools/make-debuggable` and populate it with:
+
+<!-- pagebreak -->
 
 ```sh
 #!/usr/bin/env bash
@@ -69,16 +71,13 @@ for cmd in keytool apksigner zipalign java pyaxml; do
   fi
 done
 if [ -n "$cmd_deps_not_found" ]; then
-  echo "Missing depedencies found: $cmd_deps_not_found"
-  echo "Stopping command."
-  exit 1
+  echo "Missing depedencies found: $cmd_deps_not_found\nStopping command."; exit 1
 fi
 
 # Fetch arguments or exist with usage
 script_name=$(basename $0)
 if [ "$#" -ne 4 ]; then
-    echo "Usage: $script_name <nodbg.apk> <output.apk> <keystore.jks> <keyname>"
-    exit 1
+    echo "Usage: $script_name <in.apk> <out.apk> <keystore.jks> <keyname>"; exit 1
 fi
 nodbg_apk=$1
 output_apk=$2
@@ -111,9 +110,18 @@ apktool b -o "$tmpdir/unaligned.apk" $tmpdir/extraction \
 rm -rf $tmpdir
 ```
 
-Make it executable with `chmod +x ${ANDROID_HOME}misc-tools/make-debuggable`.
+<!-- pagebreak -->
 
-An example run from `~/apks/hellojni` might look like:
+Make the script executable with `chmod +x ${ANDROID_HOME}misc-tools/make-debuggable`.
+
+An example command to run with `~/apks/hellojni`:
+
+```sh
+make-debuggable input/app-release-unsigned.apk output/app-release-dbg.apk \
+  ../keys/my-release-key.jks my-key-alias
+```
+
+The example output may look like:
 
 ```text
 (adb-venv) $ make-debuggable input/app-release-unsigned.apk output/app-release-dbg.apk ../keys/my-release-key.jks my-key-alias
@@ -148,6 +156,12 @@ Keystore password for signer #1:
 Note: It will asks you to enter a password for the keystore and maybe the key. If you used the suggestion that we did before, it'll likely be the super secure password: `password`.
 
 Once that is done, you'll find the output in `~/apks/hellojni/output/app-release-dbg.apk`. You can partially verify things by installing the APK over the existing installation:
+
+```sh
+adb install -r output/app-release-dbg.apk
+```
+
+Terminal Output:
 
 ```text
 (adb-venv) $ adb install -r output/app-release-dbg.apk
