@@ -121,6 +121,8 @@ adb forward tcp:8700 jdwp:$PROC_PID
 
 The above script does make some assumptions about the structure of the APK, but hopefully they are reasonable and will work for any of your setups. I usually drop the above script in the folder specific to the target apk. In this case I'd put it in `~/apks/hellojni/setup-debug.sh`. (Ensure its executable with `chmod +x ~/apks/hellojni/setup-debug.sh`.) 
 
+<!-- pagebreak -->
+
 ## Java Debugger (JDB)
 
 Now that the application is sitting there waiting for a debugger, lets attach the terminal based Java Debugger (`jdb`) to the process. Presuming ou are in a `(adb-venv)` environment, `jdb` should already be in your path. We can attach `jdb` with the following command:
@@ -147,11 +149,11 @@ You can list available `jdb` command with:
 > help
 ```
 
-A simple way to set a breakpoint for later is through the `stop` command. If you want to break on the `HelloJni.onCreate()` method, you'd specify the fully qualified Java class name and method:
+A simple way to set a breakpoint for later is through the `stop` command. If you want to break on the `ActivityHelloJniBinding.bind()` method, you'd specify the fully qualified Java class name and method:
 
 ```text
-> stop at com.example.hellojni.HelloJni.onCreate
-Deferring breakpoint com.example.hellojni.HelloJni.onCreate.
+> stop in com.example.hellojni.databinding.ActivityHelloJniBinding.bind
+Deferring breakpoint com.example.hellojni.databinding.ActivityHelloJniBinding.bind.
 It will be set after the class is loaded.
 ```
 
@@ -161,36 +163,45 @@ Once you are satisfied with your processes place in existence and you are ready 
 
 Example resume by a thread by ID: `resume 21574`.
 
-Example resume of all threads:
+Example resume of all threads (compressed for readability):
 
 ```text
 > resume
 All threads resumed.
-> Set deferred breakpoint com.example.hellojni.HelloJni.onCreate
+> Set deferred breakpoint co..ng.ActivityHelloJniBinding.bind
 
-Breakpoint hit: "thread=main", com.example.hellojni.HelloJni.onCreate(), line=25 bci=0
+Breakpoint hit: "thread=main", co..ng.ActivityHelloJniBinding.bind(), line=62 bci=0
 
 main[1]
 ```
 
-In the above example output, we had told `jdb` to stop at a specific place in the code. You'll see that the actual breakpoint was not set until after we resumed. Then a short time after that, the target location was reached and the code is now suspended again. This time the prompt is not a `>` but an actual `main`. This is an indication from `jdb` that we're running the the `main` thread. You can also see in the `Breakpoint hit` line that we're at the breakpoint we specified in the `main` thread. It also is indicating our breakpoint is at source code line `25` and we're at bytecode index (bci) `0`.
+In the above example output, we had told `jdb` to stop at a specific place in the code. You'll see that the actual breakpoint was not set until after we resumed. Then a short time after that, the target location was reached and the code is now suspended again. This time the prompt is not a `>` but an actual `main`. This is an indication from `jdb` that we're running the the `main` thread. You can also see in the `Breakpoint hit` line that we're at the breakpoint we specified in the `main` thread. It also is indicating our breakpoint is at source code line `62` and we're at bytecode index (bci) `0`.
 
 - **line** - The source code line information is quite meaningless without the source code.
 - **bci** - The bytecode (i.e. smali code) has an atomic unit of 16 bits. The index starts at the beginning of the _method_ (not the class and not the file). Therefore, to get the 8-bit byte offset of the instruction, its `bci` divided by `2`. The BCI is what the Dalvik program counter (PC) points at when executing each instruction. **This is one of the most important concepts to understand to walk raw DAlvik code.**
 
-Ok, so our Dalvik breakpoint worked, what about a native breakpoint:
+Ok, so our Dalvik breakpoint worked, what about a native breakpoint? You don't need to follow along with this, but if you do try to set a break point on a JNI entrypoint (i.e. a native library) in `jdb`, you'll get an error that resembles the following:
 
-```
+```text
 > stop at com.example.hellojni.HelloJni.stringFromJNI
-> Exception in thread "event-handler" com.sun.jdi.NativeMethodException: Cannot set breakpoints on native methods
-        at jdk.jdi/com.sun.tools.jdi.EventRequestManagerImpl.createBreakpointRequest(EventRequestManagerImpl.java:842)
-        at jdk.jdi/com.sun.tools.example.debug.tty.BreakpointSpec.resolveEventRequest(BreakpointSpec.java:85)
-        at jdk.jdi/com.sun.tools.example.debug.tty.EventRequestSpec.resolve(EventRequestSpec.java:73)
-        at jdk.jdi/com.sun.tools.example.debug.tty.EventRequestSpecList.resolve(EventRequestSpecList.java:68)
-        at jdk.jdi/com.sun.tools.example.debug.tty.EventHandler.classPrepareEvent(EventHandler.java:246)
-        at jdk.jdi/com.sun.tools.example.debug.tty.EventHandler.handleEvent(EventHandler.java:112)
-        at jdk.jdi/com.sun.tools.example.debug.tty.EventHandler.run(EventHandler.java:74)
-        at java.base/java.lang.Thread.run(Thread.java:833)
+> Exception in thread "event-handler" com.sun.jdi.NativeMethodException: 
+Cannot set breakpoints on native methods
+        at jdk.jdi/com.sun.tools.jdi.EventRequestManagerImpl.createBreakpointRequest
+        (EventRequestManagerImpl.java:842)
+        at jdk.jdi/com.sun.tools.example.debug.tty.BreakpointSpec.resolveEventRequest
+        (BreakpointSpec.java:85)
+        at jdk.jdi/com.sun.tools.example.debug.tty.EventRequestSpec.resolve
+        (EventRequestSpec.java:73)
+        at jdk.jdi/com.sun.tools.example.debug.tty.EventRequestSpecList.resolve
+        (EventRequestSpecList.java:68)
+        at jdk.jdi/com.sun.tools.example.debug.tty.EventHandler.classPrepareEvent
+        (EventHandler.java:246)
+        at jdk.jdi/com.sun.tools.example.debug.tty.EventHandler.handleEvent
+        (EventHandler.java:112)
+        at jdk.jdi/com.sun.tools.example.debug.tty.EventHandler.run
+        (EventHandler.java:74)
+        at java.base/java.lang.Thread.run
+        (Thread.java:833)
 ```
 
 `jdb` does not support setting breakpoints on native calls. Note: This is a limitation of `jdb` alone.
@@ -232,40 +243,54 @@ To see what we _can_ see, use the `locals` command:
 main[1] locals
 Method arguments:
 Local variables:
- = null
+ = instance of androidx.constraintlayout.widget.ConstraintLayout(id=22391)
 ```
 
 `jdb` has a list command that would provide a source code listing if the method we're in, if we had source code.
 
 ```text
 main[1] list
-Source file not found: HelloJni.kt
+Source file not found: ActivityHelloJniBinding.java
 ```
 
 Performing a backtrace is possible. Most documentation will indicate that you want to use the `where` command to see the backtrace. This is wrong for our use case because the `where` command omits the bytecode index (bci). Since we're working entirely from the smali code, we always want the bytecode index and therefore you should always use the `wherei` command when attempting to view the backtrace. (`pc` or program counter is the bytecode index.)
 
+Example (compressed for readability):
+
 ```text
+main[1] wherei
+  [1]  com.example.hellojni.databinding.ActivityHelloJniBinding.bind 
+       (ActivityHelloJniBinding.java:62), pc = 0
+  [2]  com.example.hellojni.databinding.ActivityHelloJniBinding.inflate    
+       (ActivityHelloJniBinding.java:53), pc = 13
+  [3]  com.example.hellojni.databinding.ActivityHelloJniBinding.inflate 
+       (ActivityHelloJniBinding.java:43), pc = 2
+  ... snip ...
+  [19] com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run
+       (RuntimeInit.java:548), pc = 11
+  [20] com.android.internal.os.ZygoteInit.main
+       (ZygoteInit.java:936), pc = 312
+```
+
+In many cases of Java and Kotlin (by design), you'll be running within a class. From this fact, we know that there may be a _this_ reference that we can investigate. You don't need to have the object ID to dereference the _this_ reference. `jdb` allows you to use the `this` keyword. Note: static breakpoints like `ActivityHelloJniBinding.bind` do not have a _this_ pointer, we we'll use `com.example.hellojni.HelloJni.onCreate` for the following example:
+
+Do breakpoint setup (compressed for readability):
+
+```text
+> stop in com.example.hellojni.HelloJni.onCreate
+Deferring breakpoint com.example.hellojni.HelloJni.onCreate.
+It will be set after the class is loaded.
+> resume
+All threads resumed.
+> Set deferred breakpoint co..ni.HelloJni.onCreate
+
+Breakpoint hit: "thread=main", co..ni.HelloJni.onCreate(), line=25 bci=0
+
 main[1] wherei
   [1] com.example.hellojni.HelloJni.onCreate (HelloJni.kt:25), pc = 0
   [2] android.app.Activity.performCreate (Activity.java:8,305), pc = 94
-  [3] android.app.Activity.performCreate (Activity.java:8,284), pc = 1
-  [4] android.app.Instrumentation.callActivityOnCreate (Instrumentation.java:1,417), pc = 3
-  [5] android.app.ActivityThread.performLaunchActivity (ActivityThread.java:3,626), pc = 446
-  [6] android.app.ActivityThread.handleLaunchActivity (ActivityThread.java:3,782), pc = 49
-  [7] android.app.servertransaction.LaunchActivityItem.execute (LaunchActivityItem.java:101), pc = 79
-  [8] android.app.servertransaction.TransactionExecutor.executeCallbacks (TransactionExecutor.java:135), pc = 77
-  [9] android.app.servertransaction.TransactionExecutor.execute (TransactionExecutor.java:95), pc = 76
-  [10] android.app.ActivityThread$H.handleMessage (ActivityThread.java:2,307), pc = 138
-  [11] android.os.Handler.dispatchMessage (Handler.java:106), pc = 19
-  [12] android.os.Looper.loopOnce (Looper.java:201), pc = 173
-  [13] android.os.Looper.loop (Looper.java:288), pc = 81
-  [14] android.app.ActivityThread.main (ActivityThread.java:7,872), pc = 101
-  [15] java.lang.reflect.Method.invoke (native method)
-  [16] com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run (RuntimeInit.java:548), pc = 11
-  [17] com.android.internal.os.ZygoteInit.main (ZygoteInit.java:936), pc = 312
+  /* ... snip ... */
 ```
-
-In every case of Java and Kotlin (by design), you'll be running within a class. From this fact, we know that there is always a _this_ reference that we can investigate. You don't need to have the object ID to dereference the _this_ reference. `jdb` allows you to use the `this` keyword.
 
 See the instance id of the _this_ object.
 
@@ -273,10 +298,47 @@ See the instance id of the _this_ object.
 print this
 ```
 
+Example output:
+
+```text
+main[1] print this
+ this = "com.example.hellojni.HelloJni@6b30581"
+```
+
 See the fields of the _this_ object.
 
 ```text
 dump this
+```
+
+Example output (compressed for readability):
+
+```text
+main[1] dump this
+ this = {
+    Companion: instance of com.example.hellojni.HelloJni$Companion(id=22094)
+    androidx.appcompat.app.AppCompatActivity.DELEGATE_TAG: 
+      "androidx:appcompat"
+    androidx.appcompat.app.AppCompatActivity.mDelegate:
+      instance of androidx.appcompat.app.AppCompatDelegateImpl(id=22096)
+    androidx.appcompat.app.AppCompatActivity.mResources:
+      null
+    androidx.fragment.app.FragmentActivity.FRAGMENTS_TAG:
+      "android:support:fragments"
+    androidx.fragment.app.FragmentActivity.mCreated:
+      false
+
+    /* ... snip ... */
+
+    android.content.Context.WINDOW_SERVICE:
+      "window"
+    android.content.Context.sLastAutofillId:
+      -1
+    java.lang.Object.shadow$_klass_:
+      instance of java.lang.Class(reflected class=co..ni.HelloJni, id=21791)
+    java.lang.Object.shadow$_monitor_:
+      -2035087999
+}
 ```
 
 Sometimes you want to capture all of the classes that are currently loaded in the process. `jdb` makes this easy via the `classes` command. `jdb` also makes this command useless because there is no real way to filter the list and it can be tens of thousands of classes all at once. All of the classes comes from both the general overhead of running an Android application and the fact that many classes are replicated from the forking of Zygote and its process memory.
@@ -321,44 +383,136 @@ See class fields with: `fields <FQCN>`
 main[1] fields com.example.hellojni.HelloJni
 ** fields list **
 com.example.hellojni.HelloJni$Companion Companion
-java.lang.String DELEGATE_TAG (inherited from androidx.appcompat.app.AppCompatActivity)
-androidx.appcompat.app.AppCompatDelegate mDelegate (inherited from androidx.appcompat.app.AppCompatActivity)
+java.lang.String DELEGATE_TAG (inherited from an..pp.AppCompatActivity)
+an..pp.AppCompatDelegate mDelegate (inherited from an..pp.AppCompatActivity)
 ... over 300 more lines of fields ...
 ```
 
 ### Stepping Byte Code
 
-Since we're in a breakpoint, we can step the actual code. If you follow documentation and step with the command `step`, you'll be sorely disappointed because it runs all of the bytecode in between source code line markers all at once. This `step` is clearly defined for normal developers that have source code at their finger tips.
-
-To step one instruction at a time, always use the `stepi` command. 
-
-<!-- TODO: find working step -->
-<!-- TODO: know where we are -->
-<!-- TODO: print bytecode -->
-
-Continue execution until next breakpoint.
+Lets get back to the `ActivityHelloJniBinding.bind` breakpoint:
 
 ```text
-cont
+(adb-venv) $ ./setup-debug.sh
+Starting: Intent { cmp=com.example.hellojni/.HelloJni }
+(adb-venv) $ cat <(echo "suspend") - | jdb -attach localhost:8700
+Set uncaught java.lang.Throwable
+Set deferred uncaught java.lang.Throwable
+Initializing jdb ...
+> All threads suspended.
+> stop in com.example.hellojni.databinding.ActivityHelloJniBinding.bind
+Deferring breakpoint co..ng.ActivityHelloJniBinding.bind.
+It will be set after the class is loaded.
+> resume
+All threads resumed.
+> Set deferred breakpoint co..ni.databinding.ActivityHelloJniBinding.bind
+
+Breakpoint hit: "thread=main", co..ng.ActivityHelloJniBinding.bind(), line=62 bci=0
+
+main[1]
 ```
+
+Before we go any further, I recommend that you use JADX to get the Smali code (including the Dalvik bytecode and offsets) for reference. `jdb` is not able to disassemble or even provide the raw bytecode. (Sigh).
+
+JADX reports the method's code as (compressed for readability):
+
+```smali
+.method public static bind(Landroid/view/View;)Lcom/ex...snip...;
+    .registers 4
+
+    002ff04c: 0730              0000: move-object         v0, v3
+    002ff04e: 1f00 0607         0001: check-cast          v0, type@0706
+    002ff052: 1401 d200 087f    0003: const               v1, 0x7f0800d2
+                              
+    ... snip ...
+```
+
+Since we're in a breakpoint, we can step the actual code. If you follow various documentation sources and step with the command `step`, you'll be sorely disappointed because it runs all of the bytecode in between source code line markers all at once. This `step` is clearly defined for normal developers that have source code at their finger tips.
+
+To step one (smali) instruction at a time, always use the `stepi` command. 
+
+```text
+stepi
+>
+Step completed: "thread=main", co..ng.ActivityHelloJniBinding.bind(), line=62 bci=1
+
+main[1]
+```
+
+As you can see, the step increased the `bci` by 1. Notably, this since `bci` increment is not because it executed a single instruction, but because it executed a single 16-bit instruction (`0730`) and each index value represents a 16-bit word. I also want to point out that even though we executed the instruction, the `line` value is still `62`.
+
+Once more, lets run another step:
+
+```text
+main[1] stepi
+>
+Step completed: "thread=main", co..ng.ActivityHelloJniBinding.bind(), line=62 bci=3
+
+main[1]
+```
+
+Notice that `line` is _still_ 62 after 2 instructions. You can also see that `bci` went from `1` to `3`. This means that the _single_ instruction (`1f00 0607`) that was executed was 32 bits.
+
+If we were to do another `stepi`, based on what we see in the JADX alone (see above), we'd expect that the `line` would still be `62` and the `bci` would be `6` because the `bci` at `3` is a 48 bit instruction. Hopefully you can get a feel for the code execution pattern from here. Once you understand how the BCI and PC work, you can start to follow the code flow and everything left is understanding the Dalvik instructions themselves.
+
+To continue execution until next assigned breakpoint, run: `cont`
+
+### JDB is not intuitive
 
 At this point, a key takeaway for me is that JDB is primitive, difficult to use, and is very limiting in its exposure to all that JDWP has to offer! But it _is_ a nice fallback when you need it.
 
 ## JADX Debugging
 
-<!-- TODO: Need lots of pictures (or maybe a video) here. -->
+JADX, being the amazing APK decomposer and decompiler that it is, has another trick up its sleave. JADX has a built in smali debugger that does the single instruction stepping that `jdb` does, but utilizing the instructions that it has from the APK decomposition, it can also actively show you the instruction that its running, the backtrace and the vregs that it has access to via the JDWP.
 
-Open JADX, select the APK or project that matches the APK.
+To begin:
 
-Click on the green bug logo or via the menu Tools -> Select a process to debug
+- In the terminal, once again reset the target application for debugging. For example, use the following:
 
-Click Launch App
+  ```sh
+  cd ~/apks/hellojni
+  ./setup-debug.sh
+  ```
 
-If "It's Debugging by other", "This process seemes like its being debugged, should we proceed?" Click OK.
+![Setup JADX Breakpoint](./dynamic-with-jdwp/jadx-bind-breakpoint.png)
 
-Jadx will automatically suspend the process. At this point you can set your own breakpoints by clicking to the left of the line. Note: You can only click on read bytecode lines.
+To setup the desired breakpoint in JADX:
 
-Click the play button and wait for the breakpoint to hit.
+- Open `jadx-gui`.
+
+- Select the APK or project that matches the APK.
+
+- Optionally, you can also launch the process from JADX.
+
+- In the JADX source code viewer, open `com`/`example.hellojni`/`databinding`.
+
+- Select `ActivityHelloJniBinding`
+
+- Select the `Smali` view at the bottom of the window.
+
+- Roughly, line ~33 should be the first instruction of the `bind()` method. The instruction is `0730    mode-object  v0, v3`. Set that as a breakpoint by clicking the left most column to the left of the code listing. Note: You can only click on read bytecode lines.
+
+To start the debug session:
+
+- Click on the green bug logo or via the menu Tools -> Select a process to debug
+
+- Locate the target application (`com.example.hellojni`) and double click on it. If "It's Debugging by other", "This process seemes like its being debugged, should we proceed?" Click OK. Note: It may restart the application and automatically attach and breakpoint at `onCreate()`.
+
+  ![Locate Target Application in JADX](./dynamic-with-jdwp/jadx-locate-app.png)
+
+- Click the play button (green triangle) until you hit the `ActivityHelloJniBinding.bind` breakpoint.
+
+  - Initially, JADX will bring you to an `onCreate` breakpoint _setup_ for the main activity before the application is actually resumes.
+
+    ![onCreate Breakpoint](./dynamic-with-jdwp/jadx-onCreate-breakpoint.png)
+
+  - The first time you click "play", it will get you to the `onCreate` breakpoint.
+
+    ![onCreate Breakpoint](./dynamic-with-jdwp/jadx-onCreate-breakpoint-running.png)
+
+  - Finally, the second time you click "play", we'll get to our own `bind` breakpoint.
+
+    ![bind Breakpoint](./dynamic-with-jdwp/jadx-bind-bci0.png)
 
 Once the breakpoint has hit, you'll see:
 
@@ -366,7 +520,20 @@ Once the breakpoint has hit, you'll see:
 - Bottom Middle - A watch window of this object and local variables.
 - Bottom Right - Debugger Log and Android's Logcat
 
-You can step over, into, and out with the various arrow keys between the listing and the bottom panes.
+You can step over, into, and out of the smali code with the various arrow keys between the listing and the bottom panes.
+
+Lets go through a few steps and walk through some of the state changes:
+
+- ![BCI:1](./dynamic-with-jdwp/jadx-bind-bci1.png)
+  - Things and stuff
+- ![BCI:3](./dynamic-with-jdwp/jadx-bind-bci3.png)
+  - Things and stuff
+- ![BCI:6](./dynamic-with-jdwp/jadx-bind-bci6.png)
+  - Things and stuff
+- ![BCI:9](./dynamic-with-jdwp/jadx-bind-bci9.png)
+  - Things and stuff
+- ![BCI:A](./dynamic-with-jdwp/jadx-bind-bciA.png)
+  - Things and stuff
 
 Issues:
 
@@ -374,3 +541,7 @@ Issues:
 - Jadx Variable watch only sees what is available via the StackFrame values. JDWP does not expose the actual values in the vregs in Dalvik.
 - Jadx variables that are exposed do not provide any information of value. If I saw a object in a register, maybe I want to see its field values or any number of depth searching of that object instance tree.
 - Jadx logcat is a nice addition, but it needs a fuzzyfinder and I'd rather watch logcat in tmux anyway.
+
+Wish list:
+
+If only JADX had a JDB REPL, it would be a really awesome interface. That said, neither (sadly) have the ability to see the real values of vregs as Smali is executing.
