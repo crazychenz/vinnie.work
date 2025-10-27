@@ -1,10 +1,17 @@
 ---
 sidebar_position: 90
+sidebar_label: APK Reconstruction (Incomplete)
 ---
 
 <!-- pagebreak -->
 
 # APK Reconstruction
+
+:::danger
+
+Work In Progress - Missing Critical Content
+
+:::
 
 ## APK Reconstruction
 

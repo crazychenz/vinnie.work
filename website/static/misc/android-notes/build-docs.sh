@@ -45,13 +45,13 @@ CHAPTERS="0-purpose.md
 #       changes.
 
 echo "Building JSON."
-pandoc metadata.yaml $CHAPTERS -t json > book.json
+pandoc metadata.yaml $CHAPTERS metadata-tail.yaml -t json > book.json
 
 echo "Building PDF."
-pandoc metadata.yaml $CHAPTERS \
+pandoc metadata.yaml $CHAPTERS metadata-tail.yaml \
   --toc --pdf-engine=xelatex --template=template/eisvogel.tex \
   --lua-filter=pandoc-filter.lua -o book.pdf #--verbose
 
 echo "Building EPUB."
-pandoc metadata.yaml $CHAPTERS --toc -o book.epub
+pandoc metadata.yaml $CHAPTERS metadata-tail.yaml --toc -o book.epub
 

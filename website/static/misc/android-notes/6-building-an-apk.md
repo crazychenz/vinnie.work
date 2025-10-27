@@ -1,10 +1,17 @@
 ---
 sidebar_position: 60
+sidebar_label: Building An APK From Source (WIP)
 ---
 
 <!-- pagebreak -->
 
 # Building An APK From Source
+
+:::warning
+
+Work In Progress - Initial Rough Draft
+
+:::
 
 <!-- 
 TODO: Need to move the `~/apks` workspace convention to earlier in materal.
@@ -30,15 +37,11 @@ I should start by saying I have a disdain for Gradle about as much as cats have 
 
 ChatGPT describes Grade as:
 
-```text
-Gradle is a build automation tool—a system that automates compiling, testing, packaging, and deploying software. It’s most commonly used in Android development, but it’s also widely used for Java, Kotlin, Groovy, C/C++, and even Python or JavaScript projects.
-```
+> Gradle is a build automation tool—a system that automates compiling, testing, packaging, and deploying software. It’s most commonly used in Android development, but it’s also widely used for Java, Kotlin, Groovy, C/C++, and even Python or JavaScript projects.
 
 Wikipedia further adds: 
 
-```text
-Gradle builds on the concepts of Apache Ant and Apache Maven, and introduces a Groovy- and Kotlin-based domain-specific language contrasted with the XML-based project configuration used by Maven.
-```
+> Gradle builds on the concepts of Apache Ant and Apache Maven, and introduces a Groovy- and Kotlin-based domain-specific language contrasted with the XML-based project configuration used by Maven.
 
 All I'll say for now is that all build systems have their challenges, and Gradle is at the top of my "list".
 

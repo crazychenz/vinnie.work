@@ -1,10 +1,17 @@
 ---
 sidebar_position: 100
+sidebar_label: Dynamic Analysis with JDWP (WIP)
 ---
 
 <!-- pagebreak -->
 
 # Dynamic Analysis with JDWP
+
+:::warning
+
+Work In Progress - Initial Rough Draft
+
+:::
 
 <!--     
     - What is JDWP and the JDWP agent.
@@ -524,16 +531,25 @@ You can step over, into, and out of the smali code with the various arrow keys b
 
 Lets go through a few steps and walk through some of the state changes:
 
-- ![BCI:1](./dynamic-with-jdwp/jadx-bind-bci1.png)
-  - Things and stuff
-- ![BCI:3](./dynamic-with-jdwp/jadx-bind-bci3.png)
-  - Things and stuff
-- ![BCI:6](./dynamic-with-jdwp/jadx-bind-bci6.png)
-  - Things and stuff
-- ![BCI:9](./dynamic-with-jdwp/jadx-bind-bci9.png)
-  - Things and stuff
-- ![BCI:A](./dynamic-with-jdwp/jadx-bind-bciA.png)
-  - Things and stuff
+![BCI:1](./dynamic-with-jdwp/jadx-bind-bci1.png)
+
+- In the above step, we see that the breakpoint is clearly highlighted in red, which is a bit misleading. The line 33 has already been executed and the PC is now pointing at `BCI:0001`. You can also see the BCI value in the thread backtrace in the lower left pane.
+
+![BCI:3](./dynamic-with-jdwp/jadx-bind-bci3.png)
+
+- At `BCI:0003`, you can now see that the `check-cast` instruction set the `v0` in the bottom middle "watch" pane. I'd like to highlight that while we can see the type of `v0`, JADX isn't actually able to provide a real value. (The lack of value is probably due to implicity vreg that isn't directly accessible via JDWP).
+
+![BCI:6](./dynamic-with-jdwp/jadx-bind-bci6.png)
+
+- Moving on to `BCI:6`, we see that the previous instruction set `v1` to a constant value. The "watch" pane clearly shows you the value and the type (as it should).
+
+![BCI:9](./dynamic-with-jdwp/jadx-bind-bci9.png)
+
+- In the previous instruction (`BC:0006`), the code called a static method and returned. We could have chosen to "step into" that call if we wished. Instead I stepped over because I wanted to see the return value. But at this point, the return value itself is hidden away into memory our bytecode can not access. To access a method's return value, we must run this current `move-result-object` instruction.
+
+![BCI:A](./dynamic-with-jdwp/jadx-bind-bciA.png)
+
+- After the `move-result-object` has been executed, Dalvik has now set v2 to the return value of the static function that was called in `BCI:0006`. Once again, you can see the setting was successful because there is a type, but there is no value, no object id, or any other information we can use to chase down.
 
 Issues:
 

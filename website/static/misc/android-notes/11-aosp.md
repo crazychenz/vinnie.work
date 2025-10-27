@@ -1,10 +1,18 @@
 ---
 sidebar_position: 110
+sidebar_label: Browsing, Acquiring, and Building AOSP (Notes Only)
 ---
 
 <!-- pagebreak -->
 
 # Browsing, Acquiring, and Building AOSP
+
+:::danger
+
+Work In Progress - Missing Critical Content
+
+:::
+
 <!-- 
 - AOSP
     - AOSP is enormous, cs.android.com, using repo/git.

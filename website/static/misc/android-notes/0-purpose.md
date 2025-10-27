@@ -1,10 +1,17 @@
 ---
 sidebar_position: 1
+sidebar_label: Purpose (WIP)
 ---
 
 <!-- pagebreak -->
 
 # Purpose
+
+:::warning
+
+Work In Progress - Initial Rough Draft
+
+:::
 
 It is not (solely) my intention to provide yet another introduction to Android debugging and reverse engineering with this material. The real purpose of this material is to provide a context to the development of a new debugging framework that I've been developing. 
 

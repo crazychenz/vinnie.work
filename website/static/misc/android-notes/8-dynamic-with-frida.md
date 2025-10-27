@@ -1,10 +1,17 @@
 ---
 sidebar_position: 80
+sidebar_label: Dynamic APK Analysis (WIP)
 ---
 
 <!-- pagebreak -->
 
 # Dynamic APK Analysis
+
+:::warning
+
+Work In Progress - Initial Rough Draft
+
+:::
 
 ## Frida
 

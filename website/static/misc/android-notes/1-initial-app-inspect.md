@@ -1,10 +1,17 @@
 ---
 sidebar_position: 10
+sidebar_label: Initial Application Inspection (WIP)
 ---
 
 <!-- pagebreak -->
 
 # Initial Application Inspection
+
+:::warning
+
+Work In Progress - Initial Rough Draft
+
+:::
 
 <!-- 
 - Application Overt Inspection:

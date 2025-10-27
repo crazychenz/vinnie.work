@@ -1,10 +1,17 @@
 ---
 sidebar_position: 30
+sidebar_label: Setting Up ADB Environment (WIP)
 ---
 
 <!-- pagebreak -->
 
 # Setting Up ADB Environment
+
+:::warning
+
+Work In Progress - Initial Rough Draft
+
+:::
 
 <!-- 
 - ADB into device.

@@ -13,7 +13,8 @@ lof: true
 lot: true
 # code-block-font-size: \small
 code-block-font-size: \scriptsize
-watermark: Vinnie
+watermark: Work In Progress
+watermark-color: "gray!90"
 title: "Android Application Analysis"
 # abstract: "Android Application Analysis"
 author: Vinnie
@@ -29,11 +30,16 @@ publisher: vinnie.work
 # \raggedbottom prevent vertical text spread if image floats off page.
 # \definecolor... - highlights inline monospace text
 header-includes:
+  # Do not vertically space content when images float off page.
   - \raggedbottom
+
+  # Highlight inlined monospace text
   - |
     \definecolor{inline-code-color}{HTML}{660000}
     \let\oldtexttt\texttt
     \renewcommand{\texttt}[1]{{\color{inline-code-color}\oldtexttt{#1}}}
+
+  # Quotes a blocked.
   - |
     \usepackage{xcolor}
     \usepackage{tcolorbox}
@@ -49,6 +55,87 @@ header-includes:
         \end{tcolorbox}
       }
     }
+
+  # Note (Gray) Admonition For Pandoc
+  - |
+    \usepackage{xcolor}
+    \usepackage{tcolorbox}
+    \definecolor{notetext}{HTML}{000000}
+    \definecolor{notebg}{HTML}{c9c9c9}
+    \definecolor{noteborder}{HTML}{141414}
+    \newenvironment{note-box}{
+      \begin{tcolorbox}[colback=notebg,
+                        colframe=noteborder,
+                        boxrule=0.8pt,
+                        arc=3pt,
+                        left=6pt,right=6pt,top=4pt,bottom=4pt]
+        \color{notetext}
+      }{\end{tcolorbox}}
+
+  # Tip (Green) Admonition For Pandoc
+  - |
+    \usepackage{xcolor}
+    \usepackage{tcolorbox}
+    \definecolor{tiptext}{HTML}{000000}
+    \definecolor{tipbg}{HTML}{b1e2ae}
+    \definecolor{tipborder}{HTML}{113810}
+    \newenvironment{tip-box}{
+      \begin{tcolorbox}[colback=tipbg,
+                        colframe=tipborder,
+                        boxrule=0.8pt,
+                        arc=3pt,
+                        left=6pt,right=6pt,top=4pt,bottom=4pt]
+        \color{tiptext}
+      }{\end{tcolorbox}}
+
+  # Info (Blue) Admonition For Pandoc
+  - |
+    \usepackage{xcolor}
+    \usepackage{tcolorbox}
+    \definecolor{infotext}{HTML}{000000}
+    \definecolor{infobg}{HTML}{83e2fc}
+    \definecolor{infoborder}{HTML}{010e38}
+    \newenvironment{info-box}{
+      \begin{tcolorbox}[colback=infobg,
+                        colframe=infoborder,
+                        boxrule=0.8pt,
+                        arc=3pt,
+                        left=6pt,right=6pt,top=4pt,bottom=4pt]
+        \color{infotext}
+      }{\end{tcolorbox}}
+
+  # Warning (Yellow) Admonition For Pandoc
+  - |
+    \usepackage{xcolor}
+    \usepackage{tcolorbox}
+    \definecolor{warningtext}{HTML}{000000}
+    \definecolor{warningbg}{HTML}{f3fc79}
+    \definecolor{warningborder}{HTML}{2a2d00}
+    \newenvironment{warning-box}{
+      \begin{tcolorbox}[colback=warningbg,
+                        colframe=warningborder,
+                        boxrule=0.8pt,
+                        arc=3pt,
+                        left=6pt,right=6pt,top=4pt,bottom=4pt]
+        \color{warningtext}
+      }{\end{tcolorbox}}
+
+  # Danger (Red) Admonition For Pandoc
+  - |
+    \usepackage{xcolor}
+    \usepackage{tcolorbox}
+    \definecolor{dangertext}{HTML}{000000}
+    \definecolor{dangerbg}{HTML}{e0cfce}
+    \definecolor{dangerborder}{HTML}{b71203}
+    \newenvironment{danger-box}{
+      \begin{tcolorbox}[colback=dangerbg,
+                        colframe=dangerborder,
+                        boxrule=0.8pt,
+                        arc=3pt,
+                        left=6pt,right=6pt,top=4pt,bottom=4pt]
+        \color{dangertext}
+      }{\end{tcolorbox}}
+  
 
 # Links as foot notes
 links-as-notes: true

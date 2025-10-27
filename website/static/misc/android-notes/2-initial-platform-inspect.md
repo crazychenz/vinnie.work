@@ -1,10 +1,17 @@
 ---
 sidebar_position: 20
+sidebar_label: Initial Platform Inspection (WIP)
 ---
 
 <!-- pagebreak -->
 
 # Initial Platform Inspection
+
+:::warning
+
+Work In Progress - Initial Rough Draft
+
+:::
 
 Inspection and discovery of details pertaining to the platform we'd like to run our target application from.
 

@@ -1,10 +1,18 @@
 ---
 sidebar_position: 120
+sidebar_label: JvmDebugger (No Content)
 ---
 
 <!-- pagebreak -->
 
 # JvmDebugger
+
+:::danger
+
+Work In Progress - Missing Critical Content
+
+:::
+
 <!-- 
 
 - Custom debugger and dynamic analysis:

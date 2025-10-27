@@ -1,10 +1,17 @@
 ---
 sidebar_position: 40
+sidebar_label: Setting Up An Emulator (WIP)
 ---
 
 <!-- pagebreak -->
 
 # Setting Up An Emulator
+
+:::warning
+
+Work In Progress - Initial Rough Draft
+
+:::
 
 <!-- 
 - Setup (emulator and analysis) environment

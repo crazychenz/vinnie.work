@@ -1,10 +1,18 @@
 ---
 sidebar_position: 130
+sidebar_label: Additional Topics (No Content)
 ---
 
 <!-- pagebreak -->
 
 # Additional Topics
+
+:::danger
+
+Work In Progress - Missing Critical Content
+
+:::
+
 <!-- 
 - Frida embedded in application APK for non-root access
 - Android 14+ debug research

@@ -1,10 +1,17 @@
 ---
 sidebar_position: 70
+sidebar_label: Static APK Analysis (WIP)
 ---
 
 <!-- pagebreak -->
 
 # Static APK Analysis
+
+:::warning
+
+Work In Progress - Initial Rough Draft
+
+:::
 
 ## APK Overview
 
@@ -307,6 +314,8 @@ If you are using the `env.sh` I referenced before, JADX should now be avaulable 
 
 ## JADX GUI
 
+<!-- TODO: section needs love -->
+
 To start the GUI, simply run `jadx-gui`. To run it deassociated from your terminal and shell, run something like `setsid jadx-gui &>/dev/null &`.
 
 Once JADX is up and running, you'll need to tell it to "Open File". Select the APK that you want it to process and away it goes. If you check out the bottom left of the screen while its processing, you can watch a progress bar bounce around until its complete.
@@ -314,6 +323,12 @@ Once JADX is up and running, you'll need to tell it to "Open File". Select the A
 Once JADX has initially processed the APK, you can save the result in a JADX project file. There are other reasons to save the project file that we'll discuss in a moment.
 
 Along the left hand side, if you select "Source code" and then find a class you are interested in, like `com.example.hellojni.databinding.ActivityHelloJniBinding` (the one we used above), and click on it, it'll show you the Java decompilation for the Smali that it saw. Once you have the decompilation shown, you can click through different decompilation strategies along the bottom of the window. Code, Smali, Simple, and Fallback. These are very useful when you want to see code that is less inferred and more aligned with what the actual Smali code is doing beneath the source.
+
+If you select the Smali view, make sure you have selected to view "Show Dalvik Bytecode" in the right-click Context menu. Once completed, you'll should be able to see in the Smali listing that its broken up into:
+
+  ```text
+  [DEX Offset]: [Btecode Words]   [Bytecode Index]: [Disassembled Instruction]
+  ```
 
 One of the things I'll do while going through code is find an area of interest based on some API usage or a string and then start to trace the calls through usage. If you Right Click on a label in the Java, you can then click on "Find Usage" or "Usage Tree Search".
 

@@ -28,6 +28,50 @@ function dump(t, indent)
   end
 end
 
+-- Admonition definitions
+function Div(el)
+  if el.classes:includes("note") then
+    el.content:insert(1, pandoc.Para({ pandoc.Str("Note:") }))
+    return {
+      pandoc.RawBlock("latex", "\\begin{note-box}"),
+      el,
+      pandoc.RawBlock("latex", "\\end{note-box}")
+    }
+  end
+  if el.classes:includes("tip") then
+    el.content:insert(1, pandoc.Para({ pandoc.Str("Tip:") }))
+    return {
+      pandoc.RawBlock("latex", "\\begin{tip-box}"),
+      el,
+      pandoc.RawBlock("latex", "\\end{tip-box}")
+    }
+  end
+  if el.classes:includes("info") then
+    el.content:insert(1, pandoc.Para({ pandoc.Str("Info:") }))
+    return {
+      pandoc.RawBlock("latex", "\\begin{info-box}"),
+      el,
+      pandoc.RawBlock("latex", "\\end{info-box}")
+    }
+  end
+  if el.classes:includes("warning") then
+    el.content:insert(1, pandoc.Para({ pandoc.Str("Warning:") }))
+    return {
+      pandoc.RawBlock("latex", "\\begin{warning-box}"),
+      el,
+      pandoc.RawBlock("latex", "\\end{warning-box}")
+    }
+  end
+  if el.classes:includes("danger") then
+    el.content:insert(1, pandoc.Para({ pandoc.Str("Danger:") }))
+    return {
+      pandoc.RawBlock("latex", "\\begin{danger-box}"),
+      el,
+      pandoc.RawBlock("latex", "\\end{danger-box}")
+    }
+  end
+end
+
 -- function Image(el)
 --   print("--- IMAGE DUMP")
 --   dump(el)
