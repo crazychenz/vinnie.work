@@ -49,26 +49,70 @@ This `instance_` variable is the singleton for the Runtime environment. If you a
 
 ## Acquire AOSP Code
 
+https://source.android.com/docs/setup/start/requirements
+
+```
+export REPO=$(mktemp /tmp/repo.XXXXXXXXX)
+curl -o ${REPO} https://storage.googleapis.com/git-repo-downloads/repo
+gpg --recv-keys 8BB9AD793E8E6153AF0F9A4416530D5E920F5C65
+curl -s https://storage.googleapis.com/git-repo-downloads/repo.asc | gpg --verify - ${REPO} && install -m 755 ${REPO} ~/bin/repo
+```
+
+
 Install minimal system dependencies with your package manager:
 
 ```sh
 sudo apt update
-sudo apt install git curl python3 unzip 
+sudo apt install git curl python3 unzip libncurses-dev
 ```
+
+sudo apt install \
+    gnupg flex bison build-essential  zlib1g-dev \
+    gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev \
+    x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev \
+    libxml2-utils xsltproc  fontconfig zip
+    
+    git-core
+    unzip
+    libncurses5
+    
+    curl
+
+
+From GPT:
+
+```
+AOSP’s prebuilts are self-contained tools, but they still depend on a minimal baseline of host libraries — primarily:
+
+glibc
+
+libncurses5 / libtinfo5
+
+libz
+
+libstdc++
+
+fontconfig (for some host tools)
+
+and a few X11 libs (for emulator)
+
+That’s why the setup instructions tell you to install libncurses5 and friends, even though Clang itself is in prebuilts/.
+```
+
 <!-- TODO: Do everything without these from APK: repo openjdk-11-jdk -->
 
 Install Google's `repo` tool into our `env.sh` environment:
 
 ```sh
-mkdir -p ${ANDROID_HOME}/misc-tools
+mkdir -p ${ANDROID_HOME}misc-tools
 # Note: repo is roughly 44KiB
-curl -o ${ANDROID_HOME}/misc-tools/repo -L https://storage.googleapis.com/git-repo-downloads/repo
-chmod a+x ${ANDROID_HOME}/misc-tools/repo
+curl -o ${ANDROID_HOME}misc-tools/repo -L https://storage.googleapis.com/git-repo-downloads/repo
+chmod a+x ${ANDROID_HOME}misc-tools/repo
 ```
 
 ```sh
-mkdir ${ANDROID_HOME}/aosp
-cd ${ANDROID_HOME}/aosp
+mkdir -p ${ANDROID_HOME}aosp
+cd ${ANDROID_HOME}aosp
 ```
 
 Pick a branch: https://android.googlesource.com/platform/manifest/+refs
@@ -86,7 +130,7 @@ Example output:
 Downloading Repo source from https://gerrit.googlesource.com/git-repo
 repo: Updating release signing keys to keyset ver 2.3
 
-Your identity is: chenz <crazychenz@gmail.com>
+Your identity is: user <user@gmail.com>
 If you want to change this, please re-run 'repo init' with --config-name
 
 Testing colorized output (for 'repo diff', 'repo status'):
@@ -94,11 +138,11 @@ Testing colorized output (for 'repo diff', 'repo status'):
   bold     dim      ul       reverse
 Enable color display in this user account (y/N)? y
 
-repo has been initialized in /home/chenz/.android/aosp
+repo has been initialized in /home/user/.android/aosp
 (adb-venv) $
 ```
 
-Get/Update _all_ the things. Idempotent (can be rerun if interrupted.)
+Get/Update _all_ the things. Idempotent (can be rerun if interrupted.) Caution: This can take a VERY long time. I would do this one overnight or start in the morning and don't expect it to finish before lunch:
 
 ```sh
 repo sync -c -j$(nproc)
@@ -124,6 +168,17 @@ Syncing: 100% (1145/1145), done in 37m8.509s
 Syncing: 100% (1145/1145) 37:08 | ..working..repo sync has finished successfully.
 (adb-venv) $
 ```
+
+A quick rerun should look like:
+
+```text
+(adb-venv) $ repo sync -c -j$(nproc)
+Syncing: 100% (1145/1145), done in 1m8.240s
+
+repo sync has finished successfully.
+```
+
+I've observed it sometimes locking up as well. It should be safe to Ctrl-C out of and rerun if its lingering on the same repo for over an hour.
 
 Note: The last time I downloaded AOSP in this manner it was over 128 GB (gigabytes)! And due to the sheer number of files that git creates and manages, it took a full day worth of hours to download the first time.
 
@@ -265,10 +320,9 @@ Start the make:
 m -j$(nproc)
 ```
 
-Example output:
+If you're machine doesn't have sufficient memory, you may get a warning that looks like:
 
 ```text
-(adb-venv) $ m -j$(nproc)
 12:10:22 ************************************************************
 12:10:22 You are building on a machine with 15.4GB of RAM
 12:10:22
@@ -278,6 +332,12 @@ Example output:
 12:10:22 If you run into segfaults or other errors, try reducing your
 12:10:22 -j value.
 12:10:22 ************************************************************
+```
+
+Example output:
+
+```text
+(adb-venv) $ m -j$(nproc)
 build/make/core/soong_config.mk:209: warning: BOARD_PLAT_PUBLIC_SEPOLICY_DIR has been deprecated. Use S
 YSTEM_EXT_PUBLIC_SEPOLICY_DIRS instead.
 build/make/core/soong_config.mk:210: warning: BOARD_PLAT_PRIVATE_SEPOLICY_DIR has been deprecated. Use
@@ -299,6 +359,56 @@ TARGET_PRODUCT=aosp_x86_64
     0:58 test android/soong/sdk
 
 ... snip ...
+
+
+
+
+environment variables changed value:
+   LOG_DIR ("/home/user/.android/aosp/out" -> "/opt/aosp/out")
+Environment variable PATH was modified (/home/user/.android/aosp/prebuilts/build-tools/path/linux-x86:/home/user/.android
+/aosp/out/.path => /opt/aosp/prebuilts/build-tools/path/linux-x86:/opt/aosp/out/.path), regenerating...
+Environment variable BUILD_HOSTNAME was modified (desktop => 26d77413d6ef), regenerating...
+[ 98% 1187/1203] including system/sepolicy/Android.mk ...
+system/sepolicy/Android.mk:57: warning: BOARD_PLAT_PUBLIC_SEPOLICY_DIR has been deprecated. Use SYSTEM_EXT_PUBLIC_SEPOLICY_
+DIRS instead.
+system/sepolicy/Android.mk:62: warning: BOARD_PLAT_PRIVATE_SEPOLICY_DIR has been deprecated. Use SYSTEM_EXT_PRIVATE_SEPOLIC
+Y_DIRS instead.
+out/target/product/generic_x86_64/obj/CONFIG/kati_packaging/dist.mk was modified, regenerating...
+[  1% 1774/164611] build out/target/common/obj/all-event-log-tags.txt
+packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:6: warning: tag "lock_screen_type" (9020
+0) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:6
+packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:9: warning: tag "exp_det_device_admin_ac
+tivated_by_user" (90201) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:9
+packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:12: warning: tag "exp_det_device_admin_$
+eclined_by_user" (90202) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:12
+packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:15: warning: tag "exp_det_device_admin_u
+ninstalled_by_user" (90203) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:15
+packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:18: warning: tag "settings_latency" (902
+04) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:18
+[  1% 1775/164611] build out/target/product/generic_x86_64/system/etc/event-log-tags
+packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:6: warning: tag "lock_screen_type" (9020
+0) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:6
+packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:9: warning: tag "exp_det_device_admin_ac
+tivated_by_user" (90201) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:9
+packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:12: warning: tag "exp_det_device_admin_d
+eclined_by_user" (90202) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:12
+packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:15: warning: tag "exp_det_device_admin_u
+ninstalled_by_user" (90203) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:15
+packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:18: warning: tag "settings_latency" (902
+04) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:18
+[  3% 6216/164611] //bionic/libc:common_libc versioner preprocess include
+warning: attempted to generate guard with empty availability: obsoleted = 21
+warning: attempted to generate guard with empty availability: obsoleted = 23
+[  4% 6857/164611] //dalvik/tools/hprof-conv:hprof-conv clang HprofConv.c [linux_glibc]
+dalvik/tools/hprof-conv/HprofConv.c:666:22: warning: variable 'timestamp' set but not used [-Wunused-but-set-variable]
+        unsigned int timestamp, length;
+                     ^
+1 warning generated.
+[  4% 7800/164611] //external/aac:libFraunhoferAAC clang++ libSBRdec/src/psbitdec.cpp [apex29]
+    0:00 //external/aac:libFraunhoferAAC clang++ libMpegTPDec/src/tpdec_asc.cpp [apex29]
+    0:00 //external/aac:libFraunhoferAAC clang++ libMpegTPDec/src/tpdec_lib.cpp [apex29]
+    0:00 //external/aac:libFraunhoferAAC clang++ libMpegTPEnc/src/tpenc_adif.cpp [apex29]
+
 
 
 
