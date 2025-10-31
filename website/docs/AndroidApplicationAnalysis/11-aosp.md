@@ -280,10 +280,192 @@ hardware/google/camera/devices/EmulatedCamera
 ```
 
 ```sh
-lunch aosp_x86_64-eng
+# Caution: `lunch aosp_x86_64-eng` builds, but without qemu_img_zip target available
+lunch sdk_phone_x86_64
 ```
 
 Example Output:
+
+```text
+user@6ed9f11c4f4d:/opt/aosp$ m -j3
+08:34:06 Build sandboxing disabled due to nsjail error.
+build/make/core/soong_config.mk:209: warning: BOARD_PLAT_PUBLIC_SEPOLICY_DIR has been deprecated. Use SYSTEM_EXT_PUBLIC_SEP
+OLICY_DIRS instead.
+build/make/core/soong_config.mk:210: warning: BOARD_PLAT_PRIVATE_SEPOLICY_DIR has been deprecated. Use SYSTEM_EXT_PRIVATE_S
+EPOLICY_DIRS instead.
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=13
+TARGET_PRODUCT=sdk_phone_x86_64
+TARGET_BUILD_VARIANT=eng
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=x86_64
+TARGET_ARCH_VARIANT=x86_64
+TARGET_2ND_ARCH=x86
+TARGET_2ND_ARCH_VARIANT=x86_64
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-6.12.43+deb13-amd64-x86_64-Ubuntu-20.04.6-LTS
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=TQ3A.230805.001.S2
+OUT_DIR=out
+[ 97% 581/597] including system/sepolicy/Android.mk ...
+system/sepolicy/Android.mk:57: warning: BOARD_PLAT_PUBLIC_SEPOLICY_DIR has been deprecated. Use SYSTEM_EXT_PUBLIC_SEPOLICY_
+DIRS instead.
+system/sepolicy/Android.mk:62: warning: BOARD_PLAT_PRIVATE_SEPOLICY_DIR has been deprecated. Use SYSTEM_EXT_PRIVATE_SEPOLIC
+Y_DIRS instead.
+[ 99% 594/597] including out/soong/late-sdk_phone_x86_64.mk ...
+    0:01 including out/soong/late-sdk_phone_x86_64.mk ...
+
+... snip ...
+
+[  0% 890/155351] bc: libclcore_x86.bc <= frameworks/rs/driver/runtime/arch/generic.c
+    0:00 bc: libclcore_g.bc <= frameworks/rs/driver/runtime/rs_sample.c
+    0:00 bc: libclcore_g.bc <= frameworks/rs/driver/runtime/rs_sampler.c
+    0:00 bc: libclcore_g.bc <= frameworks/rs/driver/runtime/rs_convert.c
+
+... snip ...
+
+[100% 155351/155351] Create system-qemu.img now
+removing out/target/product/emulator_x86_64/system-qemu.img.qcow2
+out/host/linux-x86/bin/sgdisk --clear out/target/product/emulator_x86_64/system-qemu.img
+
+#### build completed successfully (05:59:13 (hh:mm:ss)) ####
+
+user@6ed9f11c4f4d:/opt/aosp$
+
+```
+
+```
+$ m emu_img_zip
+19:50:37 Build sandboxing disabled due to nsjail error.
+build/make/core/soong_config.mk:209: warning: BOARD_PLAT_PUBLIC_SEPOLICY_DIR has been deprecated. Use SYSTEM_EXT_PUBLIC_SEP
+OLICY_DIRS instead.
+build/make/core/soong_config.mk:210: warning: BOARD_PLAT_PRIVATE_SEPOLICY_DIR has been deprecated. Use SYSTEM_EXT_PRIVATE_S
+EPOLICY_DIRS instead.
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=13
+TARGET_PRODUCT=sdk_phone_x86_64
+TARGET_BUILD_VARIANT=eng
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=x86_64
+TARGET_ARCH_VARIANT=x86_64
+TARGET_2ND_ARCH=x86
+TARGET_2ND_ARCH_VARIANT=x86_64
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-6.12.43+deb13-amd64-x86_64-Ubuntu-20.04.6-LTS
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=TQ3A.230805.001.S2
+OUT_DIR=out
+PRODUCT_SOONG_NAMESPACES=device/generic/goldfish device/generic/goldfish-opengl hardware/google/camera hardware/google/came
+ra/devices/EmulatedCamera device/generic/goldfish device/generic/goldfish-opengl
+============================================
+wildcard(out/target/product/emulator_x86_64/clean_steps.mk) was changed, regenerating...
+[ 86% 1188/1376] //system/librustutils:libcutils_bindgen bindgen bindgen/cutils.h
+
+... snip ...
+
+[ 99% 1374/1376] Create system-qemu.img now
+removing out/target/product/emulator_x86_64/system-qemu.img.qcow2
+updating out/target/product/emulator_x86_64/system-qemu.img ...
+done
+[100% 1376/1376] Package: out/target/product/emulator_x86_64/sdk-repo-linux-system-images-eng.user.zip
+
+#### build completed successfully (03:26 (mm:ss)) ####
+
+user@6ed9f11c4f4d:/opt/aosp$
+```
+
+Note: Can't have aosp beneath ${ANDROID_HOME} because SDK scans AOSP for files names that are not compatible with SDK within AOSP.
+
+Create ${ANDROID_HOME}system-images/android-33/custom
+
+Decompress zip from AOSP output:
+
+```sh
+cd ${ANDROID_HOME}system-images/android-33/custom
+unzip ${AOSP_HOME}out/target/product/emulator_x86_64/sdk-repo-linux-system-images-eng.user.zip
+```
+
+Add `package.xml` (rename various fields as appropriate):
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<ns2:repository
+    xmlns:ns2="http://schemas.android.com/repository/android/common/02"
+    xmlns:ns3="http://schemas.android.com/repository/android/common/01"
+    xmlns:ns4="http://schemas.android.com/repository/android/generic/01"
+    xmlns:ns5="http://schemas.android.com/repository/android/generic/02"
+    xmlns:ns6="http://schemas.android.com/sdk/android/repo/addon2/01"
+    xmlns:ns7="http://schemas.android.com/sdk/android/repo/addon2/02"
+    xmlns:ns8="http://schemas.android.com/sdk/android/repo/addon2/03"
+    xmlns:ns9="http://schemas.android.com/sdk/android/repo/repository2/01"
+    xmlns:ns10="http://schemas.android.com/sdk/android/repo/repository2/02"
+    xmlns:ns11="http://schemas.android.com/sdk/android/repo/repository2/03"
+    xmlns:ns12="http://schemas.android.com/sdk/android/repo/sys-img2/04"
+    xmlns:ns13="http://schemas.android.com/sdk/android/repo/sys-img2/03"
+    xmlns:ns14="http://schemas.android.com/sdk/android/repo/sys-img2/02"
+    xmlns:ns15="http://schemas.android.com/sdk/android/repo/sys-img2/01">
+  <license id="android-sdk-license" type="text">You good.</license>
+  <localPackage
+      path="system-images;android-33;custom;x86_64"
+      obsolete="false">
+    <type-details
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:type="ns12:sysImgDetailsType">
+      <api-level>33</api-level>
+      <base-extension>true</base-extension>
+      <tag>
+        <id>custom</id>
+        <display>Custom Android System Image</display>
+      </tag>
+      <abi>x86_64</abi>
+      <abis>x86_64</abis>
+    </type-details>
+    <revision><major>2</major></revision>
+    <display-name>Intel x86_64 Atom System Image</display-name>
+    <uses-license ref="android-sdk-license"/>
+    <dependencies>
+      <dependency path="emulator">
+        <min-revision>
+          <major>29</major>
+          <minor>1</minor>
+          <micro>11</micro>
+        </min-revision>
+      </dependency>
+    </dependencies>
+  </localPackage>
+</ns2:repository>
+```
+
+Create AVD:
+
+avdmanager create avd -n aosp -k "system-images;android-33;custom;x86_64"
+
+Delete AVD:
+
+avdmanager delete avd -n aosp
+
+Start AVD:
+
+```sh
+emulator -avd aosp \
+  -no-snapshot -writable-system -selinux permissive \
+  -show-kernel -verbose -no-audio -no-window
+```
+
+
 
 ```text
 (adb-venv) $ lunch aosp_x86_64-eng
@@ -360,68 +542,60 @@ TARGET_PRODUCT=aosp_x86_64
 
 ... snip ...
 
+[  0% 963/164155] Build hyb out/target/product/generic_x86_64/obj/ETC/hyph-de-1996_intermediates/hyph-de-1996.hyb <- exter$
+    0:01 Build hyb out/target/product/generic_x86_64/obj/ETC/hyph-af_intermediates/hyph-af.hyb <- external/hyphenation-patt
+    0:00 Build hyb out/target/product/generic_x86_64/obj/ETC/hyph-cs_intermediates/hyph-cs.hyb <- external/hyphenation-patt
+    0:00 Build hyb out/target/product/generic_x86_64/obj/ETC/hyph-cu_intermediates/hyph-cu.hyb <- external/hyphenation-patt
+```
 
 
+```text
+[ 99% 107127/107142] //frameworks/base/packages/SystemUI:SystemUI r8
+Warning: Missing class android.compat.annotation.UnsupportedAppUsage (referenced from: void com.android.systemui.people.wid
+get.PeopleBackupHelper.writeNewStateDescription(android.os.ParcelFileDescriptor))
+[100% 107142/107142] Target vbmeta image: out/target/product/generic/vbmeta.img
 
-environment variables changed value:
-   LOG_DIR ("/home/user/.android/aosp/out" -> "/opt/aosp/out")
-Environment variable PATH was modified (/home/user/.android/aosp/prebuilts/build-tools/path/linux-x86:/home/user/.android
-/aosp/out/.path => /opt/aosp/prebuilts/build-tools/path/linux-x86:/opt/aosp/out/.path), regenerating...
-Environment variable BUILD_HOSTNAME was modified (desktop => 26d77413d6ef), regenerating...
-[ 98% 1187/1203] including system/sepolicy/Android.mk ...
-system/sepolicy/Android.mk:57: warning: BOARD_PLAT_PUBLIC_SEPOLICY_DIR has been deprecated. Use SYSTEM_EXT_PUBLIC_SEPOLICY_
-DIRS instead.
-system/sepolicy/Android.mk:62: warning: BOARD_PLAT_PRIVATE_SEPOLICY_DIR has been deprecated. Use SYSTEM_EXT_PRIVATE_SEPOLIC
-Y_DIRS instead.
-out/target/product/generic_x86_64/obj/CONFIG/kati_packaging/dist.mk was modified, regenerating...
-[  1% 1774/164611] build out/target/common/obj/all-event-log-tags.txt
-packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:6: warning: tag "lock_screen_type" (9020
-0) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:6
-packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:9: warning: tag "exp_det_device_admin_ac
-tivated_by_user" (90201) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:9
-packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:12: warning: tag "exp_det_device_admin_$
-eclined_by_user" (90202) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:12
-packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:15: warning: tag "exp_det_device_admin_u
-ninstalled_by_user" (90203) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:15
-packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:18: warning: tag "settings_latency" (902
-04) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:18
-[  1% 1775/164611] build out/target/product/generic_x86_64/system/etc/event-log-tags
-packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:6: warning: tag "lock_screen_type" (9020
-0) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:6
-packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:9: warning: tag "exp_det_device_admin_ac
-tivated_by_user" (90201) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:9
-packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:12: warning: tag "exp_det_device_admin_d
-eclined_by_user" (90202) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:12
-packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:15: warning: tag "exp_det_device_admin_u
-ninstalled_by_user" (90203) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:15
-packages/apps/TvSettings/Settings/src/com/android/tv/settings/EventLogTags.logtags:18: warning: tag "settings_latency" (902
-04) duplicated in packages/apps/Settings/src/com/android/settings/EventLogTags.logtags:18
-[  3% 6216/164611] //bionic/libc:common_libc versioner preprocess include
-warning: attempted to generate guard with empty availability: obsoleted = 21
-warning: attempted to generate guard with empty availability: obsoleted = 23
-[  4% 6857/164611] //dalvik/tools/hprof-conv:hprof-conv clang HprofConv.c [linux_glibc]
-dalvik/tools/hprof-conv/HprofConv.c:666:22: warning: variable 'timestamp' set but not used [-Wunused-but-set-variable]
-        unsigned int timestamp, length;
-                     ^
-1 warning generated.
-[  4% 7800/164611] //external/aac:libFraunhoferAAC clang++ libSBRdec/src/psbitdec.cpp [apex29]
-    0:00 //external/aac:libFraunhoferAAC clang++ libMpegTPDec/src/tpdec_asc.cpp [apex29]
-    0:00 //external/aac:libFraunhoferAAC clang++ libMpegTPDec/src/tpdec_lib.cpp [apex29]
-    0:00 //external/aac:libFraunhoferAAC clang++ libMpegTPEnc/src/tpenc_adif.cpp [apex29]
+#### build completed successfully (03:41:01 (hh:mm:ss)) ####
 
-
-
-
+user@460c305ada5d:/opt/aosp$
 ```
 
 Emulator build should be in:
 
 ```text
+# FALSE
 out/target/product/generic_x86_64/
 ```
 
 
+
+
+
+
 ## Run AOSP Build
+
+Android 13+: `make emu_img_zip`
+- `sdk-repo-linux-system-images-eng.[username]].zip`
+- Used as _AVD System Image URL_
+
+Android 12-: `make -j32 sdk sdk_repo`
+- `aosp-android-latest-release/out/host/linux-x86/sdk/sdk_phone_x86/sdk-repo-linux-system-images-eng.[username].zip`
+- `aosp-android-latest-release/out/host/linux-x86/sdk/sdk_phone_x86/repo-sys-img.xml`
+- Edit `repo-sys-img.xml`
+  - Update `<sdk:url>`
+- Used as _Custom Update Site URL_.
+
+
+
+
+DOES NOT WORK
+
+emulator -verbose -show-kernel -selinux permissive \
+  -kernel prebuilt/android-emulator/kernel-ranchu-64 \
+  -ramdisk out/target/product/emulator_x86_64/ramdisk.img \
+  -system out/target/product/emulator_x86_64/system.img \
+  -vendor out/target/product/emulator_x86_64/vendor.img \
+  -data out/target/product/emulator_x86_64/userdata.img
 
 <!--
 ```
@@ -434,3 +608,60 @@ emulator -avd <your_avd_name> -system out/target/product/generic_x86_64/system.i
 $ANDROID_SDK/emulator/emulator -avd <avd_name> -system out/target/product/generic_x86_64/system.img
 ```
 -->
+
+
+Convention:
+
+~/aosp/source - AOSP
+~/aosp/context - Docker context
+~/aosp/Dockerfile
+~/aosp/build-docker-image.sh - Script to rebuilt docker image.
+~/aosp/run-docker-image.sh - Script to run within docker image.
+~/aosp/build-sysimg-sdk33-emu-x86_64.sh - Script to build AOSP
+
+```sh
+mkdir -p ~/aosp/context
+cd ~/aosp/
+```
+
+
+`Dockerfile`:
+
+```Dockerfile
+FROM ubuntu:20.04
+
+ARG USER_UID=1000
+ARG USER_GID=1000
+
+RUN apt-get update
+RUN apt-get install -y git curl python3 unzip libncurses5 passwd zip
+
+RUN /sbin/groupadd -g $USER_GID user
+RUN /sbin/useradd -u $USER_UID -g $USER_GID -m user
+
+USER $USER_UID:$USER_GID
+
+WORKDIR /home/user
+```
+
+`build.sh`:
+
+```sh
+#!/bin/bash
+
+docker build -t android-builder \
+  --build-arg USER_UID=$(id -u) \
+  --build-arg USER_GID=$(id -g) \
+  -f Dockerfile context
+```
+
+`run.sh`:
+
+```sh
+#!/usr/bin/env bash
+
+docker run -ti --rm \
+  -v $(pwd)/aosp:/opt/aosp -w /opt/aosp \
+  -u $(id -u):$(id -g) \
+  android-builder
+```
