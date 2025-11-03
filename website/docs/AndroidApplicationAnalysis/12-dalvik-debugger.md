@@ -31,6 +31,9 @@ The Dalvik debugger is designed to be run programatically, via a REPL, or via a 
 
 ### Environment Setup
 
+<!-- TODO: Frida server needs to be installed on the emulator or device first. -->
+<!-- TODO: thirdparty.jdwp needs to be installed -->
+
 I will presuming we're working from "adb-venv" environment and using hellojni as the target application. The plan is to walk through all of the major sections of the setup code and then present the final product at the end.
 
 ```python
