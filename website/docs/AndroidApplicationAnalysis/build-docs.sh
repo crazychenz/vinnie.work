@@ -31,7 +31,7 @@ CHAPTERS="0-purpose.md
 9-change-release-apk.md
 10-dynamic-with-jdwp.md
 11-aosp.md
-12-jvmdebugger.md
+12-dalvik-debugger.md
 13-additional-topics.md
 14-realistic-use-case.md"
 
