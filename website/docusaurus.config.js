@@ -157,6 +157,19 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+
+  plugins:
+  [
+    [
+      require.resolve('@cmfcmf/docusaurus-search-local'),
+      {
+        indexDocs: true,
+        indexBlog: true,
+        indexPages: false,
+        language: "en",
+      },
+    ],
+  ],
 };
 
 export default config;
