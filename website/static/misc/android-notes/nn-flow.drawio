@@ -1,0 +1,322 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/28.1.2 Chrome/138.0.7204.243 Electron/37.4.0 Safari/537.36" version="28.1.2">
+  <diagram name="Page-1" id="gsYCZvaHaHWDxuvQ_KE1">
+    <mxGraphModel dx="2780" dy="3460" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-140" value="High Level Model Orchestration and Communication" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-354" y="-940" width="530" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-135" value="High Level Model Orchestration and Communication" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-407" y="-960" width="530" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-134" value="High Level Model Orchestration and Communication" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-462" y="-980" width="530" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-57" value="&amp;nbsp; Python Process Space&lt;div&gt;&amp;nbsp; /usr/bin/python3&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;strokeColor=light-dark(#6E1414,#6E1414);strokeWidth=9;" vertex="1" parent="1">
+          <mxGeometry x="-820" y="-450" width="1020" height="860" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-117" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-109" target="m1H9gGeUZeV9_AxdN-eV-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-109" value="CUDA Libs" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+          <mxGeometry x="-780" y="-202.5" width="310" height="502" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-70" value="&amp;nbsp; &amp;nbsp;Linux Kernel Process Space" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;strokeColor=light-dark(#6E1414,#6E1414);strokeWidth=9;" vertex="1" parent="1">
+          <mxGeometry x="-820" y="500" width="310" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-4" value="&amp;nbsp; &amp;nbsp;GPU&lt;div&gt;&amp;nbsp; &amp;nbsp;-&amp;gt; SM Verion &amp;lt;-&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;align=left;strokeColor=light-dark(#19330F,#19330F);strokeWidth=9;" vertex="1" parent="1">
+          <mxGeometry x="-479" y="480" width="722" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-97" value="Volatile Elements" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-407" y="550" width="290" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-23" value="Fatbinary&lt;div&gt;(PTX)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+          <mxGeometry x="-338" y="-2.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-1" value="TENSORS &amp;amp; ARGS &amp;amp; OPS &amp;amp; PTX &amp;amp; FATBIN w/ SASS" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+          <mxGeometry x="-410" y="150" width="170" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-2" target="m1H9gGeUZeV9_AxdN-eV-74">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-630" y="-600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-2" value="Python Code" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-800" y="-630" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-75" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-7" target="m1H9gGeUZeV9_AxdN-eV-74">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-630" y="-520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-7" value="__pycache__" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-800" y="-550" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-88" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-12" target="m1H9gGeUZeV9_AxdN-eV-87">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-12" value="CUDA Runtime API&lt;div&gt;(libcudart.so)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-385" y="70" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-13" value="PyTorch C++&lt;div&gt;(libtorch.so)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-420" y="-222.5" width="190" height="132.5" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-16" value="&lt;u&gt;cuBLAS&lt;/u&gt;&lt;div&gt;Basic Linear Algebra Subprograms: MatMul, MatVec Ops, VecOps (dot, axpy, scale)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-770" y="-170.5" width="140" height="112.5" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-17" value="&lt;u&gt;cuDNN&lt;/u&gt;&lt;div&gt;Deep Neural Network: Convolution, RNNs, LSTMs, GRUs, [Batch|Layer]Norm, Activation&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-770" y="-50.5" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-18" value="cuSparse&lt;div&gt;Sparse Matrix Library: CSR, COO Ops, MatMul, Sparse-Dense Multiply, Triangular Solve, Reduction&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-620" y="-170.5" width="140" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-19" value="cuFFT&lt;div&gt;Fast Fourier Transform: 1D, 2D, 3D, Real/Complex Transforms&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-620" y="19.5" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-22" value="CUDA Driver&lt;div&gt;nvidia.ko&lt;/div&gt;&lt;div&gt;/dev/nvidia0&lt;/div&gt;&lt;div&gt;/dev/nvidiactl&lt;/div&gt;&lt;div&gt;MMIO&lt;/div&gt;&lt;div&gt;GPU Phys Mem Calls&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-755" y="557" width="150" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-90" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-39" target="m1H9gGeUZeV9_AxdN-eV-87">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-39" value="PTX JIT" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-205" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-43" target="m1H9gGeUZeV9_AxdN-eV-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-43" value="PyTorch 2.x+ -&amp;gt; FX Graph -&amp;gt; Triton IR -&amp;gt; PTX (via LLVM)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+          <mxGeometry x="-193" y="90" width="173" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-45" target="m1H9gGeUZeV9_AxdN-eV-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-45" value="libtorch_cuda.so (ELF)" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+          <mxGeometry x="-130" y="-422.5" width="300" height="420" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-46" value=".nv_fatbin&lt;div&gt;(PTX + SASS + meta)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-50" y="-390" width="160" height="137.5" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-47" value=".text.sm_70" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="-242.5" width="120" height="27" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-48" value=".text.sm_X" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="-202.5" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-49" value=".nvFatBinaries" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="-162.5" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-50" value="header:&lt;br&gt;image 1: sm_70&lt;div&gt;image 2: sm_X&lt;/div&gt;&lt;div&gt;image 3: PTX fallback&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="-342.5" width="140" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-51" value="readelf -S&lt;div&gt;objdump -s -j .nv_fatbin&lt;/div&gt;&lt;div&gt;cuobjdump -dump-sass libtorch_cuda.so&lt;/div&gt;&lt;div&gt;nvdisasm&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="-125" y="-90" width="290" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-53" target="m1H9gGeUZeV9_AxdN-eV-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-53" value="ATen / Torch Kernels&lt;div&gt;(libtorch_cuda.so)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+          <mxGeometry x="-290" y="-380" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-62" value="AOT PTX from NVCC at PyTorch Buildtime" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="-171.25" width="155" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-72" value="CUDA Kernel" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-257" y="580" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-73" value="CUDA Kernel" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-387" y="580" width="130" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-76" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-74" target="m1H9gGeUZeV9_AxdN-eV-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-630" y="-520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-77" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-74" target="m1H9gGeUZeV9_AxdN-eV-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-450" y="-330" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-83" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.716;exitY=0.033;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-74" target="m1H9gGeUZeV9_AxdN-eV-78">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-584" y="-410" />
+              <mxPoint x="-435" y="-410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-74" value="&lt;div&gt;Python Interpreter&lt;/div&gt;libpython.so" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-720" y="-360" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-81" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.716;entryY=-0.05;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-78" target="m1H9gGeUZeV9_AxdN-eV-74">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-435" y="-410" />
+              <mxPoint x="-584" y="-410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-78" value="Model File" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-610" y="-630" width="350" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-79" value="Graph / Code / Config" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-590" y="-595" width="170" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-80" value="Tensor Data" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-410" y="-595" width="130" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-92" value="TENSORS &amp;amp; ARGS &amp;amp; OPS" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+          <mxGeometry x="-340" y="-70" width="188" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-3" value="SASS" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+          <mxGeometry x="-557" y="640" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-84" value="TENSORS &amp;amp; ARGS &amp;amp; OPS" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+          <mxGeometry x="-589" y="530" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-85" value="TENSORS &amp;amp; ARGS &amp;amp; OPS &amp;amp; SASS" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+          <mxGeometry x="-690" y="420" width="236.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-96" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-87" target="m1H9gGeUZeV9_AxdN-eV-22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-325" y="360" />
+              <mxPoint x="-680" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-87" value="&lt;div&gt;CUDA Driver Userspace API&lt;/div&gt;(libcuda.so)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-385" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-13" target="m1H9gGeUZeV9_AxdN-eV-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-95" value="TENSORS &amp;amp; ARGS &amp;amp; OPS" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;dashPattern=8 8;" vertex="1" parent="1">
+          <mxGeometry x="-490" y="-282.5" width="188" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-98" value="Nonvolatile Elements" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-97" y="550" width="300" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-100" value="VBIOS Flash" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-72" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-101" value="SM Flash" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-72" y="670" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-102" value="Video Decoders" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="63" y="590" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-103" value="Memory Controller" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="63" y="670" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-105" value="SRAM" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="-387" y="640" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-99" value="VBIOS / GPU BIOS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-367" y="670" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-104" value="Microcode" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-257" y="670" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-22" target="m1H9gGeUZeV9_AxdN-eV-97">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-108" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-107" target="m1H9gGeUZeV9_AxdN-eV-98">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-107" value="nvflash (root) userspace process&lt;div&gt;GPU must not be executing or in use&lt;/div&gt;&lt;div&gt;Power Cycle required for activation&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+          <mxGeometry x="-85" y="850" width="280" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-110" value="&lt;u&gt;cuSOLVER&lt;/u&gt;&lt;div&gt;Decomposition and Solver Routines: LU, QR, Cholesky, Eigenvalue, SVD, Least Square&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-770" y="219.5" width="290" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-111" value="cuRAND&lt;div&gt;Random Number Generation&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-620" y="-50.5" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-112" value="cuTENSOR&lt;div&gt;Tensor Contraction (Einstein Summation)&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-770" y="59.5" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-113" value="cuTENSORNet&lt;div&gt;Tensor Networks: MPS, MTT, Quantum Circuits&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-620" y="109.5" width="140" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-114" value="cuB&lt;div&gt;Parallel Primitives: Scan, Radix Sort, Reduction&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-770" y="139.5" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-118" value="Other Infrerence Libraries:&lt;div&gt;&lt;ul&gt;&lt;li&gt;NPP - Performance Primitives: Image PRocessing, Color/Pixel Ops, Signal/Array Ops&lt;/li&gt;&lt;li&gt;NCCL - Multi-GPU Collective Communication Library (e.g. NVLink, PCIe, Ethernet)&lt;/li&gt;&lt;li&gt;cuDLA - Deep Learning Accelerator for hardware block NOT associated with CUDA, Tensors, SMs, and General Purpose Compute&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;spacingRight=5;" vertex="1" parent="1">
+          <mxGeometry x="-820" y="-830" width="310" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-119" value="Other Notes:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;RDMA - Remote Direct Memory Access ... consider NVLink with direct access to another host&#39;s memory, enabling access to other hardware such as a Ethernet NIC.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="-820" y="740" width="310" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-121" value="Model Serving Infrastructure" style="rounded=0;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="-527" y="-860" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-146" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-122" target="m1H9gGeUZeV9_AxdN-eV-57">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-197" y="-460" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-122" value="&lt;u&gt;Scheduling &amp;amp; Cluster Orchestration&lt;/u&gt;&lt;div&gt;K8S, GPU Allocation, Autoscaling, Multi-Node NCCL Setup&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-367" y="-780" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-123" value="&lt;u&gt;Machine Learning Operations (MLOps)&lt;/u&gt;&lt;div&gt;CI/CD, Deployment Automation &amp;amp; Pipelines, Agentic Planner&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-367" y="-860" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-124" value="&lt;u&gt;Business Application Layer&lt;/u&gt;&lt;div&gt;End User Portal, Authentication, Load Balancer, Logs, Metrics&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-367" y="-940" width="340" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-125" value="ML Repositories and Registries" style="rounded=0;whiteSpace=wrap;html=1;rotation=-90;" vertex="1" parent="1">
+          <mxGeometry x="-97" y="-860" width="230" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-141" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-131" target="m1H9gGeUZeV9_AxdN-eV-134">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-197" y="-1010" />
+              <mxPoint x="-197" y="-1010" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-131" value="&lt;u&gt;Model Context Protocol (MCP)&lt;/u&gt;&lt;div&gt;API for exporting and importing model contrexts between engines.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;rotation=0;" vertex="1" parent="1">
+          <mxGeometry x="-247" y="-1080" width="430" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-143" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.956;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-131" target="m1H9gGeUZeV9_AxdN-eV-140">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="153" y="-1000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-144" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.948;entryY=0.007;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.797;exitY=1.013;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-131" target="m1H9gGeUZeV9_AxdN-eV-135">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="96" y="-1010" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-148" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="m1H9gGeUZeV9_AxdN-eV-147" target="m1H9gGeUZeV9_AxdN-eV-134">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-330" y="-1000" />
+              <mxPoint x="-329" y="-1000" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-147" value="User Client/Browser" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-450" y="-1080" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-150" value="Notes:&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- High Level Model Orchestration usually happens within a single organization&#39;s WAN/LAN (not open internet). Access to anything beneath this layer is an access or tunnel to an internal service.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- The MCP and User Client will communicate over open internet (usually over HTTPS).&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Everything below the High Level Model Orchestration will happen on a &quot;single host&quot;. Virtualization makes this hard to describe, but we can conceptually assume that a single host is all hardware and its state as controlled and managed by a single Linux/OS kernel.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;spacingLeft=10;align=left;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="-820" y="-1080" width="310" height="230" as="geometry" />
+        </mxCell>
+        <mxCell id="m1H9gGeUZeV9_AxdN-eV-151" value="For reference:&lt;div&gt;- PTX - Assembly for CUDA Op&lt;/div&gt;&lt;div&gt;- SASS - SM specific machine code that does what PTX defines.&lt;/div&gt;&lt;div&gt;- FATBIN - Container for SASS and PTX&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=10;spacingRight=6;" vertex="1" parent="1">
+          <mxGeometry x="-50" y="289.5" width="237" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
