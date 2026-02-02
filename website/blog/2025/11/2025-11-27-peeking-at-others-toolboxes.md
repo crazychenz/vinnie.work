@@ -8,7 +8,7 @@ draft: false
 
 As I'm sure many other do, I peruse reddit for current events, curiousities, and new things to discover. One habbit I have is to see a new tool that looks like it could remotely apply to some use case I've encountered in my past and then I'll share it to myself in a chat application. The hope here is that I'll actually go back and look more into it when I have time. As you can probably guess, that chat stream gets ever longer without me ever going back and checking on the entries.
 
-Because I've found some extra time Thanksgiving morning to go back through the list a bit, I've taken a bit of a dive into [`Dark-Alex-17`'s `dtools` repository]() as advertised in [this reddit post](https://www.reddit.com/r/bash/s/swSpcDMxU7). Its yet another toolbox repo that's been tailored to a specific engineer's experience and use cases. I very much appreciate this kind of thing because it's like rummaging through a physical workshop and finding all of the tools and things that you may not have know about, or in my case I usually find things I've seen in passing, but now get extra points for being used in the wild.
+Because I've found some extra time Thanksgiving morning to go back through the list a bit, I've taken a bit of a dive into [`Dark-Alex-17`'s `dtools` repository](https://github.com/Dark-Alex-17/dtools) as advertised in [this reddit post](https://www.reddit.com/r/bash/s/swSpcDMxU7). Its yet another toolbox repo that's been tailored to a specific engineer's experience and use cases. I very much appreciate this kind of thing because it's like rummaging through a physical workshop and finding all of the tools and things that you may not have know about, or in my case I usually find things I've seen in passing, but now get extra points for being used in the wild.
 
 <!-- truncate -->
 
@@ -16,7 +16,7 @@ Because I've found some extra time Thanksgiving morning to go back through the l
 
 The `dtools` is tailored for the developer's needs. I can very much appreciate the care and feeding that has gone into this toolset. I think it shows a level of dicipline of the developer. Especially with regard to having standard library components, documentation, and completions. I mean, I never give myself the time to implement completions for my own personal scripts (unless used by other users).
 
-That said, I have no time or interest to learn yet another small framework for managing my CLI or TUI workflows. But even so, that doesn't mean there are a lot of little goodies that I've taken away from looking at this repository... 
+That said, I have no time or interest to learn yet another small framework for managing my CLI or TUI workflows. But even so, that doesn't mean there are a lot of little goodies that I've taken away from looking at this repository...
 
 ## Snippets
 
@@ -152,7 +152,7 @@ If I sourced that into my current shell, I type "show_filter", hit TAB TAB and t
 
 ## Tools
 
-Now, the biggest thing to get from a repository like this is the actual underlying tools that are used by the developer. It seems like since circa 2020, there has been an explosion of great cross platform tooling developed without a lot of marketing. Although a lot of these tools have also fallen out of maintenance, I simply don't know they are there unless I'm frantically scouring the internet for something to help me with a _current_ project. I love looking at new tools, often resulting in some pretty critical judgments as to their actual or potential value add to my past and current experiences. 
+Now, the biggest thing to get from a repository like this is the actual underlying tools that are used by the developer. It seems like since circa 2020, there has been an explosion of great cross platform tooling developed without a lot of marketing. Although a lot of these tools have also fallen out of maintenance, I simply don't know they are there unless I'm frantically scouring the internet for something to help me with a _current_ project. I love looking at new tools, often resulting in some pretty critical judgments as to their actual or potential value add to my past and current experiences.
 
 Note: There is also a reference to another [linux utility library](https://github.com/ChrisTitusTech/linutil) that I have no plan to checkout now. Basically a swiss army knife with a fuzzy finder and TUI for each of the tools integrated. ... A little too much hand holding for me personally.
 
