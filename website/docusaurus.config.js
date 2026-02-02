@@ -4,7 +4,7 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
+import { themes as prismThemes } from 'prism-react-renderer';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -92,6 +92,7 @@ const config = {
           { to: '/blog', label: 'Blog', position: 'left' },
           { type: 'doc', docId: 'Inform', label: 'Inform', position: 'left' },
           { type: 'doc', docId: 'Stream', label: 'Stream', position: 'left' },
+          { to: '/journal', label: 'Journal', position: 'left' },
           { to: '/about', label: 'About', position: 'left' },
           // {
           //   type: 'docSidebar',
@@ -158,15 +159,29 @@ const config = {
       },
     }),
 
-  plugins:
-  [
+  plugins: [
     [
       require.resolve('@cmfcmf/docusaurus-search-local'),
       {
         indexDocs: true,
         indexBlog: true,
         indexPages: false,
-        language: "en",
+        language: 'en',
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-blog',
+      /** @type {import('@docusaurus/plugin-content-blog').Options} */
+      {
+        id: 'journal', // Unique ID for this blog instance
+        path: './journal', // Path to your developer blog folder
+        routeBasePath: 'journal', // Base URL for these blog posts (e.g., yoursite.com/dev-blog/...)
+        showReadingTime: false,
+        blogTitle: 'Journal',
+        blogDescription: 'Less highlighting, more discovery and action.',
+        // More options specific to this blog, like:
+        // postsPerPage: 5,
+        // feedOptions: { type: 'all' },
       },
     ],
   ],
