@@ -134,49 +134,49 @@ systemctl --user enable --now flatpak-update.timer
 flatpak install -u flathub app.zen_browser.zen
 
 # Draw.io for diagramming
-flatpak install flathub com.jgraph.drawio.desktop
+flatpak install -u flathub com.jgraph.drawio.desktop
 
 # Pinta (My Linux alternative to Paint.Net)
-flatpak install flathub com.github.PintaProject.Pinta
+flatpak install -u flathub com.github.PintaProject.Pinta
 
 # Spotify Music Player
-flatpak install flathub com.spotify.Client
+flatpak install -u flathub com.spotify.Client
 
 # WezTerm (My current terminal emulator of choice)
-flatpak install flathub org.wezfurlong.wezterm
+flatpak install -u flathub org.wezfurlong.wezterm
 
 # Zulip Chat Application
-flatpak install flathub org.zulip.Zulip
+flatpak install -u flathub org.zulip.Zulip
 
 # Steam Game Launcher
-flatpak install flathub com.valvesoftware.Steam
+flatpak install -u flathub com.valvesoftware.Steam
 
 # VLC Video Viewer
-flatpak install flathub org.videolan.VLC
+flatpak install -u flathub org.videolan.VLC
 
 # OBS Studio Video Capture Application
-flatpak install flathub com.obsproject.Studio
+flatpak install -u flathub com.obsproject.Studio
 
 # Inkscape Vector Graphics Editor
-flatpak install flathub org.inkscape.Inkscape
+flatpak install -u flathub org.inkscape.Inkscape
 
 # Blender 3D Modeling Software
-flatpak install flathub org.blender.Blender
+flatpak install -u flathub org.blender.Blender
 
 # Audacity Audio Recording and Shaping Application
-flatpak install flathub org.audacityteam.Audacity
+flatpak install -u flathub org.audacityteam.Audacity
 
 # Remmina Remote Desktop Application (VNC & RDP)
-flatpak install flathub org.remmina.Remmina
+flatpak install -u flathub org.remmina.Remmina
 
 # VirtManager Linux/KVM Virtual Machine Manager
-flatpak install flathub org.virt_manager.virt-manager
+flatpak install -u flathub org.virt_manager.virt-manager
 
 # SyncThingy Background File Synchronization
-flatpak install flathub com.github.zocker_160.SyncThingy
+flatpak install -u flathub com.github.zocker_160.SyncThingy
 
 # Godot Game Engine and Editor
-flatpak install flathub org.godotengine.Godot
+flatpak install -u flathub org.godotengine.Godot
 
 ```
 
