@@ -179,6 +179,8 @@ const config = {
         showReadingTime: false,
         blogTitle: 'Journal',
         blogDescription: 'Less highlighting, more discovery and action.',
+        blogSidebarTitle: 'Journal Entries',
+        blogSidebarCount: 100,
         // More options specific to this blog, like:
         // postsPerPage: 5,
         // feedOptions: { type: 'all' },
